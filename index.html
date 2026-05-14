@@ -267,6 +267,12 @@
     .footer-bottom-links a:hover { color: #9daaf2; }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    /* ── Comparison table: 2-col on mobile (hide Search Alone column) ── */
+    @media (max-width: 767px) {
+      .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .compare-grid > *:nth-child(3) { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -490,7 +496,7 @@
     </div>
 
     <!-- Column headers -->
-    <div class="grid grid-cols-3 gap-2 mb-3 text-center text-xs font-bold uppercase tracking-wider px-1">
+    <div class="compare-grid grid grid-cols-3 gap-2 mb-3 text-center text-xs font-bold uppercase tracking-wider px-1">
       <div class="rounded-xl py-3 px-2" style="background:#0F1338; color:#9DAAF2;">
         <div style="color:#fff; font-size: 1.1rem; margin-bottom:2px;">Best Choice</div>
         Apartment Agents
@@ -501,37 +507,37 @@
 
     <!-- Feature rows -->
     <div style="border-radius:16px; overflow:hidden; box-shadow:0 4px 30px rgba(15,19,56,0.1);">
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Free Service</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Free Service</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1">N/A</div></div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Fast Response</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span style="color:#FFD67B;">~</span></div>Fast Response</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1">N/A</div></div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Expert Guidance</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span style="color:#FFD67B;">~</span></div>Expert Guidance</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1"><span class="cross">✗</span></div>Expert Guidance</div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Free Utility Setup</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span style="color:#FFD67B;">~</span></div>Free Utility Setup</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1"><span class="cross">✗</span></div>Free Utility Setup</div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Exclusive Discounts</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="cross">✗</span></div>Exclusive Discounts</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1"><span class="cross">✗</span></div>Exclusive Discounts</div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center" style="border-bottom:1px solid #f0f0f0;">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>$200 Move or Cash</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="cross">✗</span></div>$200 Move or Cash</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1"><span class="cross">✗</span></div>$200 Move or Cash</div>
       </div>
-      <div class="grid grid-cols-3 gap-0 text-center">
+      <div class="compare-grid grid grid-cols-3 gap-0 text-center">
         <div class="py-3 px-2 text-xs font-semibold text-[#0F1338]" style="background:rgba(15,19,56,0.03); border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="check">✓</span></div>Best Offer Guarantee</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]" style="border-right:1px solid #f0f0f0;"><div class="mb-1"><span class="cross">✗</span></div>Best Offer Guarantee</div>
         <div class="py-3 px-2 text-xs text-[#0F1338]"><div class="mb-1"><span class="cross">✗</span></div>Best Offer Guarantee</div>

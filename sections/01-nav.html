@@ -239,6 +239,12 @@
     .footer-bottom-links a:hover { color: #9daaf2; }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    /* ── Comparison table: 2-col on mobile (hide Search Alone column) ── */
+    @media (max-width: 767px) {
+      .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .compare-grid > *:nth-child(3) { display: none !important; }
+    }
   
 </style>
 <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
