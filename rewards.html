@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Up to $250 Move or Cash | Apartment Agents Dallas</title>
+  <meta name="description" content="Get up to $250 toward your move or as cash when you lease through Apartment Agents. The best pricing, all the specials, plus a reward on us." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; color: #0F1338; margin: 0; font-size: 1.1rem; padding-top: 66px; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .check-icon { width: 22px; height: 22px; border-radius: 50%; background: #AECD81; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #0F1338; font-weight: 900; font-size: 0.7rem; }
+
+    .nav-link {
+      color: #0F1338; font-weight: 600; font-size: 1.1rem;
+      text-decoration: none; transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: #9DAAF2; }
+
+    .btn-primary {
+      background-color: #0d6efd; color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-primary:hover { background-color: #0b5ed7; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
+
+    .btn-coral {
+      background-color: #0d6efd; color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-coral:hover { background-color: #0b5ed7; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0); }
+    .btn-coral:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
+
+    .section-badge {
+      display: inline-block; background: rgba(157,170,242,0.12); color: #9DAAF2;
+      font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 20px; padding: 4px 14px;
+    }
+
+    /* Reward tier cards */
+    .reward-group {
+      background: #fff;
+      border: 1px solid rgba(15,19,56,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(15,19,56,0.08), 0 1px 4px rgba(15,19,56,0.05);
+    }
+    .reward-group-header {
+      padding: 22px 24px 18px;
+    }
+    .reward-tier {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-top: 1px solid rgba(15,19,56,0.07);
+      gap: 16px;
+    }
+    .reward-amount {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.9rem;
+      color: #AECD81;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+    .reward-amount.top-tier {
+      color: #AECD81;
+      font-size: 2.2rem;
+    }
+
+    /* Feature list items */
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(15,19,56,0.07);
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: rgba(174,205,129,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #AECD81; font-size: 1.2rem;
+    }
+
+    /* Footer */
+    .site-footer { background: #0F1338; color: #fff; padding: 48px 24px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 1.1rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { color: #fff; font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #9daaf2; }
+    .footer-col p { font-size: 1.1rem; line-height: 1.7; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #9daaf2; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon { width: 44px; height: 44px; border-radius: 50%; background: #9DAAF2; color: #0F1338; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.1); }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 1.1rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .footer-bottom-links a:hover { color: #9daaf2; }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" onclick="toggleMobileMenu()" aria-label="Open menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="h-10 object-contain" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.1rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="#cta" class="md:hidden btn-coral px-4 py-4 text-sm font-bold" style="text-decoration:none; border-radius:999px;">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link" style="color:#9DAAF2;">$250 Move or Cash</a>
+        <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link">Connect Utilities</a>
+        <a href="tel:+19729937300" class="nav-link" style="color:#0F1338;">(972) 993-7300</a>
+        <a href="#cta" class="btn-primary px-5 py-4 text-sm" style="text-decoration:none; border-radius:999px;">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="color:#9DAAF2;" onclick="toggleMobileMenu()">$250 Move or Cash</a>
+      <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link" onclick="toggleMobileMenu()">Connect Utilities</a>
+      <a href="tel:+19729937300" class="nav-link" style="color:#0F1338;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="#cta" class="btn-primary px-5 py-4 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px;" onclick="toggleMobileMenu()">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="background: #0F1338; padding: 72px 24px 88px; position: relative; overflow: hidden;">
+    <!-- Background glow accents -->
+    <div style="position:absolute; top:-120px; right:10%; width:560px; height:560px; background: radial-gradient(circle, rgba(157,170,242,0.1) 0%, transparent 65%); pointer-events:none;"></div>
+    <div style="position:absolute; bottom:-80px; left:-60px; width:400px; height:400px; background: radial-gradient(circle, rgba(245,115,108,0.07) 0%, transparent 65%); pointer-events:none;"></div>
+
+    <div class="max-w-5xl mx-auto" style="position:relative;">
+      <div style="display:flex; align-items:center; gap:56px; flex-wrap:wrap; justify-content:center;">
+
+        <!-- Text column -->
+        <div style="flex:1; min-width:280px; max-width:500px;">
+          <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); color:#fff; line-height:1.05; margin:0 0 28px; letter-spacing:-0.03em;">
+            Rent Smarter
+          </h1>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">Your dream apartment, found faster and easier</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">You get the best rates and move-in specials</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">Get rewarded with up to <span style="color:#AECD81; font-weight:700;">$250</span> for your move or extra cash on us!</span></div>
+          </div>
+        </div>
+
+        <!-- Photo with badge overlay -->
+        <div style="flex-shrink:0; position:relative; width:300px;">
+          <img src="images/happy_customer.png" alt="Happy couple celebrating in their new apartment" style="width:100%; display:block; border-radius:20px; box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.3);" />
+          <!-- Floating reward badge -->
+          <div style="position:absolute; bottom:-18px; left:-18px; background:#AECD81; border-radius:16px; padding:16px 22px; box-shadow: 0 8px 32px rgba(174,205,129,0.5), 0 2px 8px rgba(174,205,129,0.3);">
+            <p style="margin:0 0 2px; color:rgba(15,19,56,0.65); font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Best Offer</p>
+            <p style="margin:0; color:#0F1338; font-family:'DM Serif Display',Georgia,serif; font-size:1.6rem; letter-spacing:-0.03em; line-height:1.1;">Guaranteed</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: HOW IS THIS POSSIBLE? -->
+  <section style="background: #fff; padding: 88px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div style="display:flex; align-items:center; gap:56px; flex-wrap:wrap; justify-content:center;">
+
+        <!-- Text -->
+        <div style="flex:1; min-width:260px; max-width:480px;">
+          <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 28px; line-height: 1.15;">How is this possible?</h2>
+          <p style="color: #4a4a6a; line-height: 1.8; margin: 0; font-size: 1.1rem;">
+            When you find your new apartment through us and list Apartment Agents as your referral source, the property pays us a referral fee from its advertising budget. Instead of keeping the entire commission like most apartment locators, we use a portion of it to give you a free move or cash back.          </p>
+        </div>
+
+        <!-- Image (moves left on desktop, below text on mobile) -->
+        <div class="md:order-first" style="flex-shrink:0; width:380px; max-width:100%;">
+          <img src="images/Why-You-Rented-Here.png" alt="Guest card and rental application showing Apartment Agents as the referral source" style="width:100%; display:block; border-radius:16px; box-shadow: 0 8px 32px rgba(15,19,56,0.12), 0 2px 8px rgba(15,19,56,0.07);" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.1) 20%, rgba(15,19,56,0.1) 80%, transparent); margin: 0 24px;"></div>
+
+  <!-- SECTION 3: MORE REWARD, MORE CHOICE -->
+  <section style="background: #fff; padding: 88px 24px;">
+    <div class="max-w-3xl mx-auto">
+
+      <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 48px; line-height: 1.15; max-width: 580px;">More reward. More choice. More peace of mind.</h2>
+      <div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <div>
+            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">Up to $250 move or cash</p>
+            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">Get up to $250 toward your movers or as extra cash, the best offer in the industry.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <div>
+            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">Compare quotes from reputable DFW movers</p>
+            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">We'll help you get quotes from vetted DFW moving companies so you can choose who moves your valuables instead of being locked into a single option.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">We'll match or beat any competitor's offer</p>
+            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">You're getting the best free move or cash back in the industry. If you find a better offer, we'll match or beat it, guaranteed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: QUALIFICATION TIERS -->
+  <section style="background: rgba(157,170,242,0.07); padding: 88px 24px;">
+    <div class="max-w-3xl mx-auto">
+
+      <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 16px; line-height: 1.15;">See How Much You Qualify For</h2>
+      <p style="color: #5a5a7a; line-height: 1.8; margin: 0 0 48px; font-size: 1.1rem; max-width: 560px;">
+        Your reward is based on two things: your monthly rent and the referral fee paid by the apartment community.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- GROUP 1: $1,250+ -->
+        <div class="reward-group">
+          <div class="reward-group-header" style="background: #0F1338;">
+            <p style="margin: 0 0 6px; color: rgba(255,255,255,0.6); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">Monthly Rent</p>
+            <p style="margin: 0; color: #fff; font-family: 'DM Serif Display', serif; font-size: 1.65rem; letter-spacing: -0.02em; line-height: 1.2;">$1,250 or More</p>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Full Referral Fee Paid</p>
+            </div>
+            <div class="reward-amount top-tier">$250</div>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee, Over 50%</p>
+            </div>
+            <div class="reward-amount">$150</div>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee, Under 50%</p>
+            </div>
+            <div class="reward-amount">$75</div>
+          </div>
+        </div>
+
+        <!-- GROUP 2: Under $1,250 -->
+        <div class="reward-group">
+          <div class="reward-group-header" style="background: #1A2240;">
+            <p style="margin: 0 0 6px; color: rgba(255,255,255,0.6); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">Monthly Rent</p>
+            <p style="margin: 0; color: #fff; font-family: 'DM Serif Display', serif; font-size: 1.65rem; letter-spacing: -0.02em; line-height: 1.2;">Under $1,250</p>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Full Referral Fee Paid</p>
+            </div>
+            <div class="reward-amount">$150</div>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee, Over 50%</p>
+            </div>
+            <div class="reward-amount">$100</div>
+          </div>
+          <div class="reward-tier">
+            <div style="flex: 1;">
+              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee, Under 50%</p>
+            </div>
+            <div class="reward-amount">$50</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="margin: 36px 0 0; color: #7a7a7a; font-size: 1rem; line-height: 1.75;">
+        Not sure what referral fee the communities you're interested in pay? Your agent can let you know when we match you with apartments. See terms for full details.
+      </p>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section id="cta" style="padding: 96px 24px; position: relative; overflow: hidden;">
+    <!-- Skyline background -->
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img src="dallas-skyline.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:grayscale(100%);" />
+      <div style="position:absolute; inset:0; background:rgba(15,19,56,0.88);"></div>
+    </div>
+    <!-- Radial glow -->
+    <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:700px; height:100%; background:radial-gradient(ellipse at center top, rgba(157,170,242,0.1) 0%, transparent 65%); pointer-events:none; z-index:1;"></div>
+    <div class="max-w-2xl mx-auto text-center" style="position:relative; z-index:2;">
+
+      <h2 style="font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.1rem, 5.5vw, 3.5rem); color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 22px;">
+        Save more on your next apartment
+      </h2>
+      <p style="font-size: 1.15rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin: 0 0 44px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        It takes less than two minutes to start your search.
+      </p>
+      <a href="index.html#contact-form" class="btn-coral" style="padding: 18px 44px; font-size: 1.15rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
+        Get Started
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/dallas-apartments/search/">Start Your Search</a></li>
+          <li><a href="https://apartmentagents.com/dallas-apartments/how-it-works/">How it Works</a></li>
+          <li><a href="rewards.html">$250 Move or Cash</a></li>
+          <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+        <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size: 1.1rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

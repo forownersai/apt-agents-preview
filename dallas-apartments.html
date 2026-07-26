@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dallas Apartment Deals – Apartment Agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:    '#9daaf2',
+            secondary:  '#f5736c',
+            dark:       '#0F1338',
+            tertiary:   '#aecd81',
+            yellow:     '#FFD67B',
+            bodyText:   '#7A7A7A',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Poppins', system-ui, sans-serif; color: #0F1338; margin: 0; font-size: 18px; line-height: 1.6; }
+
+    /* ── NAV ── */
+    .site-header { background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+    .logo img { height: 44px; object-fit: contain; display: block; }
+    .main-nav { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    .main-nav a { color: #0F1338; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+    .main-nav a:hover { color: #9daaf2; }
+    .nav-phone a { color: #7A7A7A; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-phone a:hover { color: #9daaf2; }
+    .btn-start {
+      background: #9daaf2; color: #0F1338; font-weight: 700; font-size: 0.85rem;
+      padding: 10px 20px; border-radius: 6px; text-decoration: none; white-space: nowrap;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-start:hover { background: #b4bef5; transform: translateY(-1px); }
+    .btn-start:active { transform: translateY(0); }
+    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: #0F1338; }
+    .mobile-menu { display: none; background: #fff; border-top: 1px solid #f0f0f0; padding: 16px 24px; flex-direction: column; gap: 12px; }
+    .mobile-menu a { color: #0F1338; font-size: 0.9rem; font-weight: 600; text-decoration: none; padding: 6px 0; border-bottom: 1px solid #f5f5f5; }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── BG EFFECTS ── */
+    .bg-effect { position: absolute; background-size: contain; background-repeat: no-repeat; pointer-events: none; z-index: 0; }
+
+    /* ── HERO ── */
+    .hero-section { background: #fff; position: relative; overflow: hidden; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .hero-h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.2; color: #0F1338; margin: 0 0 16px; letter-spacing: -0.02em; }
+    .hero-sub { color: #7A7A7A; font-size: 1rem; margin: 0 0 10px; }
+    .hero-sub2 { color: #7A7A7A; font-size: 1rem; margin: 0 0 28px; font-weight: 600; }
+    .hero-img { width: 100%; border-radius: 16px; object-fit: cover; max-height: 440px; box-shadow: 0 8px 40px rgba(15,19,56,0.12); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #9daaf2; color: #0F1338; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { background: #b4bef5; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(157,170,242,0.4); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid #9daaf2; outline-offset: 2px; }
+    .btn-primary img.emoji { width: 1em; height: 1em; vertical-align: middle; display: inline; margin: 0; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar { background: #0F1338; color: white; padding: 20px 24px; }
+    .trust-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-item { text-align: center; }
+    .trust-item .num { font-size: 1.4rem; font-weight: 800; color: #9daaf2; line-height: 1.2; }
+    .trust-item .label { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+    /* ── REVIEWS STRIP ── */
+    .reviews-strip { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { padding: 0; }
+    .review-name { font-size: 1rem; font-weight: 700; color: #0F1338; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .review-stars { color: gold; display: flex; gap: 1px; font-size: 1rem; }
+    .review-text { font-size: 0.9rem; color: #0F1338; line-height: 1.6; }
+
+    /* ── VALUE SECTION ── */
+    .value-section { background: #f8f9ff; position: relative; }
+    .value-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .value-h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800; color: #0F1338; margin: 0 0 32px; line-height: 1.3; }
+    .value-feature { display: flex; gap: 16px; margin-bottom: 24px; }
+    .value-icon { color: #9daaf2; font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .value-feature-body h4 { font-size: 1rem; font-weight: 700; color: #0F1338; margin: 0 0 4px; }
+    .value-feature-body p { font-size: 0.9rem; color: #7A7A7A; margin: 0; line-height: 1.7; }
+    .value-nofee { padding: 20px 24px; border: 2px solid #9daaf2; border-radius: 12px; margin-top: 8px; }
+    .value-nofee h4 { font-size: 1rem; font-weight: 700; color: #0F1338; margin: 0 0 6px; }
+    .value-nofee p { font-size: 0.9rem; color: #7A7A7A; margin: 0; line-height: 1.7; }
+    .value-img-wrap img { width: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 8px 40px rgba(15,19,56,0.12); }
+
+    /* ── HOW IT WORKS ── */
+    .hiw-section { background: #0F1338; padding: 64px 24px; }
+    .hiw-inner { max-width: 1200px; margin: 0 auto; }
+    .hiw-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff; text-align: center; margin: 0 0 40px; }
+    .hiw-video-wrap {
+      position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 16px; overflow: hidden;
+      margin-bottom: 48px; background: #1a2060;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .hiw-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .hiw-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+    .hiw-step h4 { font-size: 0.95rem; font-weight: 700; color: #9daaf2; margin: 0 0 8px; }
+    .hiw-step p { font-size: 0.82rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.6; }
+    .hiw-cta { text-align: center; margin-top: 40px; }
+    .hiw-note { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 10px; text-align: center; }
+
+    /* ── COMPARISON ── */
+    .compare-section { padding: 64px 24px; background: #fff; }
+    .compare-inner { max-width: 900px; margin: 0 auto; }
+    .compare-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: #0F1338; text-align: center; margin: 0 0 40px; }
+    .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 30px rgba(15,19,56,0.08); }
+    .compare-table th { padding: 16px 20px; font-size: 0.9rem; font-weight: 700; text-align: center; }
+    .compare-table th:first-child { text-align: left; background: #f8f9ff; color: #0F1338; }
+    .th-other { background: #f8f9ff; color: #7A7A7A; }
+    .th-aa { background: #9daaf2; color: #0F1338; }
+    .compare-table td { padding: 14px 20px; font-size: 0.9rem; text-align: center; border-top: 1px solid #f0f0f0; }
+    .compare-table td:first-child { text-align: left; font-weight: 600; color: #0F1338; background: #fafafa; }
+    .compare-table td:nth-child(2) { color: #7A7A7A; }
+    .compare-table td:nth-child(3) { background: rgba(157,170,242,0.06); }
+    .icon-check { color: #aecd81; font-size: 1.1rem; font-weight: 900; }
+    .icon-cross { color: #f5736c; font-size: 1.1rem; font-weight: 900; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 64px 24px; background: #f8f9ff; }
+    .faq-inner { max-width: 780px; margin: 0 auto; }
+    .faq-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0F1338; text-align: center; margin: 0 0 40px; }
+    .faq-item { border-bottom: 1px solid #e4e4e4; }
+    .faq-btn {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #0F1338;
+      padding: 20px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      transition: color 0.2s;
+    }
+    .faq-btn:hover { color: #9daaf2; }
+    .faq-btn:focus-visible { outline: 2px solid #9daaf2; }
+    .faq-icon { font-size: 1.4rem; color: #9daaf2; flex-shrink: 0; transition: transform 0.3s ease; line-height: 1; }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-body p { color: #7A7A7A; font-size: 0.92rem; line-height: 1.75; margin: 0; padding-bottom: 20px; }
+    .faq-body a { color: #9daaf2; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-body { max-height: 400px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { padding: 64px 24px; background: #fff; overflow: hidden; }
+    .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+    .testimonials-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0F1338; text-align: center; margin: 0 0 40px; }
+    .swiper-outer { position: relative; overflow: hidden; }
+    .swiper-track { display: flex; gap: 20px; transition: transform 0.5s ease; }
+    .testimonial-card {
+      min-width: 340px; flex-shrink: 0; background: #f8f9ff; border-radius: 16px;
+      padding: 24px; box-shadow: 0 2px 16px rgba(15,19,56,0.06);
+    }
+    .tcard-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .tcard-name { font-weight: 700; font-size: 1rem; color: #0F1338; }
+    .tcard-stars { color: gold; font-size: 0.95rem; letter-spacing: 1px; }
+    .tcard-text { font-size: 0.88rem; color: #4a4a4a; line-height: 1.7; margin: 0; }
+    .swiper-nav { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
+    .swiper-btn {
+      width: 40px; height: 40px; border-radius: 50%; border: 2px solid #9daaf2; background: #fff;
+      color: #9daaf2; font-size: 1rem; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; transition: background 0.2s, color 0.2s;
+    }
+    .swiper-btn:hover { background: #9daaf2; color: #fff; }
+    .swiper-btn:focus-visible { outline: 2px solid #9daaf2; }
+
+    /* ── CTA ── */
+    .cta-section { background: #f5736c; padding: 64px 24px; text-align: center; }
+    .cta-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: #fff; margin: 0 0 12px; }
+    .cta-sub { color: rgba(255,255,255,0.85); font-size: 1rem; margin: 0 0 28px; }
+    .cta-note { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-top: 12px; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: #f5736c; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-white:hover { background: #0F1338; color: #fff; transform: translateY(-2px); }
+    .btn-white:active { transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #0F1338; color: rgba(255,255,255,0.7); padding: 48px 24px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { color: rgba(255,255,255,0.65); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #9daaf2; }
+    .footer-col p { font-size: 0.85rem; line-height: 1.7; margin: 0; }
+    .footer-col a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #9daaf2; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .social-icon:hover { background: #9daaf2; color: #0F1338; }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom-links a:hover { color: #9daaf2; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img { max-height: 280px; }
+      .value-inner { grid-template-columns: 1fr; }
+      .value-img-wrap { order: -1; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .main-nav { display: none; }
+      .mobile-toggle { display: block; }
+      .hiw-steps { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .trust-inner { gap: 24px; }
+      .testimonial-card { min-width: 280px; }
+    }
+    @media (max-width: 768px) {
+      .compare-table thead th { font-size: 0.78rem; padding: 12px 10px; }
+      .compare-table td { font-size: 0.8rem; padding: 12px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo">
+      <a href="https://apartmentagents.com/">
+        <img src="https://apartmentagents.com/wp-content/uploads/2022/07/logo.png" alt="Apartment Agents" />
+      </a>
+    </div>
+
+    <ul class="main-nav">
+      <li><a href="https://apartmentagents.com/dallas-apartments/deals/">Latest Deals</a></li>
+      <li><a href="https://apartmentagents.com/dallas-apartments/how-it-works/">How It Works</a></li>
+      <li><a href="https://apartmentagents.com/dallas-apartments/rewards/">$200 Move or Cash</a></li>
+      <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div class="nav-phone">
+        <a href="tel:+19729937300"><i class="fas fa-mobile-alt"></i> (972) 993-7300</a>
+      </div>
+      <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-start">Start Here</a>
+    </div>
+
+    <button class="mobile-toggle" onclick="toggleMobile()" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="https://apartmentagents.com/dallas-apartments/deals/">Latest Deals</a>
+    <a href="https://apartmentagents.com/dallas-apartments/how-it-works/">How It Works</a>
+    <a href="https://apartmentagents.com/dallas-apartments/rewards/">$200 Move or Cash</a>
+    <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a>
+    <a href="tel:+19729937300">(972) 993-7300</a>
+    <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-start" style="text-align:center;margin-top:4px;">Start Here</a>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero-section">
+  <!-- Decorative SVG effects -->
+  <div class="bg-effect" style="width:64px;height:274px;background-image:url(https://apartmentagents.com/wp-content/uploads/2022/05/effect1.svg);left:0;top:60px;"></div>
+  <div class="bg-effect" style="width:96px;height:334px;background-image:url(https://apartmentagents.com/wp-content/uploads/2022/05/effect2.svg);top:120px;right:0;"></div>
+
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-h1">Find your dream apartment in Dallas, save money, and we'll pay $200 for your move.</h1>
+      <p class="hero-sub">No searching, no stress—just pick your favorites, tour, and apply. We handle the rest.</p>
+      <p class="hero-sub2">Get matched with top apartments &amp; deals in as little as 24 hours!</p>
+      <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-primary">
+        <img src="https://s.w.org/images/core/emoji/17.0.2/svg/1f680.svg" alt="🚀" class="emoji" style="width:1.1em;height:1.1em;" />
+        Find Your Apartment
+      </a>
+    </div>
+    <div>
+      <img
+        src="https://apartmentagents.com/wp-content/uploads/2025/03/Dallas-Central_2025.png"
+        alt="Dallas Apartments"
+        class="hero-img"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST BAR ═══════════ -->
+<section class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="num">Trusted For Over 22 Years</div>
+    </div>
+    <div style="color:rgba(255,255,255,0.2);font-size:1.5rem;">|</div>
+    <div class="trust-item">
+      <div class="num">200,000+</div>
+      <div class="label">Customers Served</div>
+    </div>
+    <div style="color:rgba(255,255,255,0.2);font-size:1.5rem;">|</div>
+    <div class="trust-item">
+      <div class="num">2025 Consumer's Choice</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ REVIEWS STRIP ═══════════ -->
+<div class="reviews-strip">
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-name">
+        <strong>Jonathan B</strong>
+        <div class="review-stars">
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+        </div>
+      </div>
+      <p class="review-text">By far the best experience I've had apartment shopping. Highly recommend using their services!</p>
+    </div>
+    <div class="review-card">
+      <div class="review-name">
+        <strong>Aveline C</strong>
+        <div class="review-stars">
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+        </div>
+      </div>
+      <p class="review-text">Apartment Agents found my dream apartment within 48 hours of reaching out. They deliver!</p>
+    </div>
+    <div class="review-card">
+      <div class="review-name">
+        <strong>Stacey H</strong>
+        <div class="review-stars">
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+          <span class="material-icons-round">star</span>
+        </div>
+      </div>
+      <p class="review-text">I have moved three times, and each time, my agent found what I wanted at the price I wanted.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ VALUE SECTION ═══════════ -->
+<section class="value-section">
+  <div class="bg-effect" style="width:59px;height:250px;background-image:url(https://apartmentagents.com/wp-content/uploads/2022/05/effect3.svg);left:0;top:80px;"></div>
+  <div class="value-inner">
+    <div>
+      <h3 class="value-h3">Work with a company with the track record and tools to find the apartment you want and save you more money.</h3>
+
+      <div class="value-feature">
+        <div class="value-icon"><i class="far fa-check-circle"></i></div>
+        <div class="value-feature-body">
+          <h4>20+ Years' Experience</h4>
+          <p>Our local experts have matched thousands of renters with their perfect apartment—<em>quickly and within budget</em>.</p>
+        </div>
+      </div>
+
+      <div class="value-feature">
+        <div class="value-icon"><i class="far fa-check-circle"></i></div>
+        <div class="value-feature-body">
+          <h4>Exclusive Search Technology</h4>
+          <p>Our proprietary platform finds the best-priced floor plans and uncovers deals others miss.</p>
+        </div>
+      </div>
+
+      <div class="value-feature">
+        <div class="value-icon"><i class="far fa-check-circle"></i></div>
+        <div class="value-feature-body">
+          <h4>Extra Savings</h4>
+          <p>Our service is 100% free. Plus, you pick your mover and we'll pay $200 toward your move or give you extra cash when you lease through us.</p>
+        </div>
+      </div>
+
+      <div class="value-nofee">
+        <h4>No Hidden Fees, No Surprises</h4>
+        <p>The apartments pay us from their advertising budgets, and you always get the <strong>best pricing and every special</strong> the properties offer.</p>
+      </div>
+    </div>
+
+    <div class="value-img-wrap">
+      <img
+        src="https://apartmentagents.com/wp-content/uploads/2025/08/Cortland-M-line-A1-Mezz-floor-plan-958-sq.ft-unit.jpg"
+        alt="Dallas Luxury Apartment"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section class="hiw-section" id="how-it-works">
+  <div class="hiw-inner">
+    <h2 class="hiw-title">How It Works</h2>
+
+    <!-- Wistia Video -->
+    <div class="hiw-video-wrap">
+      <iframe
+        src="https://fast.wistia.net/embed/iframe/a4a4vfdfwc?videoFoam=true"
+        title="How Apartment Agents Works"
+        allowtransparency="true"
+        allowfullscreen
+        scrolling="no"
+        class="wistia_embed"
+      ></iframe>
+    </div>
+
+    <!-- 5 Steps -->
+    <div class="hiw-steps">
+      <div class="hiw-step">
+        <h4>1. Tell Us What You're Looking For</h4>
+        <p>Let us know where you want to live, what you'd like to spend, when you plan to move, and what matters most, and we'll take care of everything else.</p>
+      </div>
+      <div class="hiw-step">
+        <h4>2. Your Best Apartment Matches</h4>
+        <p>We use <strong style="color:#9daaf2;">proprietary technology</strong> to scan the market for the best-priced floor plans and deals, then send you a hand-tailored list of your best options to review.</p>
+      </div>
+      <div class="hiw-step">
+        <h4>3. Tour Your Favorites</h4>
+        <p>Pick your top choices and we'll arrange easy, efficient tours so you can see them in person.</p>
+      </div>
+      <div class="hiw-step">
+        <h4>4. $200 Off Your Move or Extra Cash</h4>
+        <p>Choose your apartment, select your preferred mover, and receive $200 off—or extra cash from us. We guide you through gathering quotes and booking your move.</p>
+      </div>
+      <div class="hiw-step">
+        <h4>5. Move-In Made Easy</h4>
+        <p>Let our Connect Team secure the best offers for your electricity, internet, TV, and renters insurance, and get you connected for free, so you settle in with ease.</p>
+      </div>
+    </div>
+
+    <div class="hiw-cta">
+      <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-primary">
+        <img src="https://s.w.org/images/core/emoji/17.0.2/svg/26a1.svg" alt="⚡" style="width:1.1em;height:1.1em;" />
+        Find Your Apartment
+      </a>
+      <p class="hiw-note">No cost. No obligation. Free service.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHY APARTMENT AGENTS ═══════════ -->
+<section class="compare-section" id="why-us">
+  <div class="compare-inner">
+    <h2 class="compare-title">Why You Should Work With&nbsp;Apartment Agents</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="background:#f8f9ff; text-align:left; color:#0F1338;"></th>
+            <th class="th-other">Other<br>Locators</th>
+            <th class="th-aa">Apt<br>Agents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quick Response Time</td>
+            <td><span class="icon-cross"><i class="fas fa-times"></i></span></td>
+            <td><span class="icon-check"><i class="fas fa-check"></i></span></td>
+          </tr>
+          <tr>
+            <td>$200 off Your Move or Extra Cash on Us</td>
+            <td><span class="icon-cross"><i class="fas fa-times"></i></span></td>
+            <td><span class="icon-check"><i class="fas fa-check"></i></span></td>
+          </tr>
+          <tr>
+            <td>20+ Years of In-Depth Market Expertise</td>
+            <td><span class="icon-cross"><i class="fas fa-times"></i></span></td>
+            <td><span class="icon-check"><i class="fas fa-check"></i></span></td>
+          </tr>
+          <tr>
+            <td>Proprietary Deal-Finding Software</td>
+            <td><span class="icon-cross"><i class="fas fa-times"></i></span></td>
+            <td><span class="icon-check"><i class="fas fa-check"></i></span></td>
+          </tr>
+          <tr>
+            <td>Exclusive Discounts &amp; Free Utilities Setup</td>
+            <td><span class="icon-cross"><i class="fas fa-times"></i></span></td>
+            <td><span class="icon-check"><i class="fas fa-check"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQs ═══════════ -->
+<section class="faq-section" id="faqs">
+  <div class="faq-inner">
+    <h2 class="faq-title">FAQs</h2>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        How do you make money if your service is free?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <p>When you lease an apartment and list us as your referral source, we are paid from the property's advertising budget.<br><br>Managers like our pay-for-performance model because we spend the advertising dollars, and they only pay us when we refer them a new resident and a lease is signed, unlike other advertising methods, which can be more costly and unpredictable.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Are there any hidden costs for using your service?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <p>There are no hidden costs or extra fees for using our service.<br><br>You receive the same pricing and move-in specials that the properties offer everyone, and sometimes, they even give our customers extra incentives.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Do I really get more when I use your service?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <p>Yes, our service is better than free. We take a portion of the money we receive and provide you with up to a $200 move or extra cash. This is in addition to all the specials that the apartments offer.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Do you share my personal information?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <p>We dislike SPAM just as much as you do. We only use your information to assist in your apartment search. Your information is <strong>never sold</strong> and will be kept confidential in accordance with our <a href="https://apartmentagents.com/privacy-policy/">privacy policy</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        So, what's the catch?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <p>There isn't one. With our service, you're not just finding a new home; you're saving more money.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-inner">
+    <h2 class="testimonials-title">Our customers have some great things to say!</h2>
+
+    <div class="swiper-outer">
+      <div class="swiper-track" id="swiper-track">
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Savannah</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">I am so thankful to have found Apartment Agents! My roommates and I had been looking for a 3 bedroom for months and had tried other agencies, but couldn't ever find what we were looking for. My agent found our new home within a couple of days and we couldn't be happier!! Thank you!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Eric</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">If you need to find an apartment in the Metroplex, Apartment Agents is your best way to locate what you need. I have used their services 3 times. I cannot say enough good about my agent and the team. Very professional and saved me a lot of time.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Troy</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents was GREAT to work with and found me a new apartment (and exactly what I wanted!) that SAME DAY. I sent my agent a list of 'must haves' for accommodations and areas and prices, and I had several choices in my inbox very quickly.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Shannon</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents was extremely helpful with my apartment search. My agent listened to all my needs and found so many amazing locations that matched my preferences. Highly recommend!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">DaLedra</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">I worked with Apartment Agents during my move & I'm VERY pleased with the outcome. My agent was very knowledgeable, personable, & professional throughout the entire experience. Within 24 hours of contacting them, I was provided with listings.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Martin</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents help me for the past three weeks and all I can say is Thank You! My Agent's service was quick and helpful, especially during a remarkably difficult time to be apartment hunting. She was the reason I found a home in time for my new job. 10/10!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Kevin</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents made it very easy to find a great apartment. Found one within just a day thanks to my agent's recommendations and at a great deal.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Deja</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents was great. My agent found my dream apartment! Definitely would recommend them to anyone looking to rent in the DFW.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Adriana</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents were very helpful in our apartment search. My agent took the time to search apartment communities that had the amenities and everything we needed. I highly recommend them. We found the perfect apartment with their help!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Stefani</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents is the best! My agent was with me every step of the way! I was nervous about using a locator but I recommend this now to everyone! It saves a lot of time and stress!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Keith</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">This agency was great. My agent was amazing and I will work with her again in the future. Really made my moving experience effortless.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">JB</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">I am so glad to have worked with Apartment Agents! I absolutely love the apartment that my agent helped me find! She was incredibly helpful as I was moving to a new city. My agent made the process so much easier and I am so grateful for her!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Erick</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents was so helpful in assisting my husband and me find a new place after we just tied the knot! I love that my agent followed up with me and reached out to the leasing staff on my behalf.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Austin</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents goes above and beyond to help you find the apartment that fits all of your wants/needs. They help you narrow your search down to those that check all of your boxes. Then, you just pick your favorite!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Thelma</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Working with Apartment Agents was a great experience. My agent was very professional, and kept me updated til the very end. She was able to find me exactly what I was looking for.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Raven</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">Apartment Agents was so great helping my husband and me locate our new place!!! My agent only picked the best apartments in the metroplex and was very attentive to our preferences. We will continue to use them for the years to come!</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Keundra</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">One of the best experiences I could ever ask for. My agent was very patient, she helped me a lot and never gave up. They made the process very fast and easy and I would recommend them to anyone who's looking for a nice luxury place to call home within their budget.</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <span class="tcard-name">Carleshia</span>
+            <span class="tcard-stars">★★★★★</span>
+          </div>
+          <p class="tcard-text">I've used Apartment Agents for my last two apartments. My agent was super helpful and found me exactly what I needed in my price range and the area that I wanted. I highly recommend using Apartment Agents to find your next home.</p>
+        </div>
+
+      </div><!-- /swiper-track -->
+    </div><!-- /swiper-outer -->
+
+    <div class="swiper-nav">
+      <button class="swiper-btn" onclick="slideLeft()" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="swiper-btn" onclick="slideRight()" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BOTTOM CTA ═══════════ -->
+<section class="cta-section">
+  <h2 class="cta-title">Ready to put us to work for you?</h2>
+  <p class="cta-sub">It takes less than two minutes to start your search. Let's find your new apartment today.</p>
+  <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-white">
+    <img src="https://s.w.org/images/core/emoji/17.0.2/svg/1f44b.svg" alt="👋" style="width:1.1em;height:1.1em;" />
+    Find Your Apartment
+  </a>
+  <p class="cta-note">We don't bite – promise! <img src="https://s.w.org/images/core/emoji/17.0.2/svg/1f609.svg" alt="😉" style="width:1em;height:1em;vertical-align:middle;" /></p>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="https://apartmentagents.com/dallas-apartments/search/">Start Your Search</a></li>
+        <li><a href="https://apartmentagents.com/dallas-apartments/how-it-works/">How it Works</a></li>
+        <li><a href="https://apartmentagents.com/dallas-apartments/rewards/">$200 Move or Cash</a></li>
+        <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Learn More</h4>
+      <ul>
+        <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+        <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+        <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>Dallas Office<br>
+        <a href="tel:+19729937300">(972) 993-7300</a><br>
+        <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+        2626 Cole Ave Ste 370<br>Dallas, TX 75204
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Currently Accepting Followers</h4>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+      <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+      <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  function toggleMobile() {
+    const m = document.getElementById('mobile-menu');
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Testimonial slider
+  let slideIndex = 0;
+  const track = document.getElementById('swiper-track');
+  const CARD_WIDTH = 360; // card 340 + gap 20
+
+  function updateSlider() {
+    track.style.transform = `translateX(-${slideIndex * CARD_WIDTH}px)`;
+  }
+
+  function slideRight() {
+    const cards = track.querySelectorAll('.testimonial-card');
+    const maxIndex = cards.length - 3;
+    if (slideIndex < maxIndex) slideIndex++;
+    updateSlider();
+  }
+
+  function slideLeft() {
+    if (slideIndex > 0) slideIndex--;
+    updateSlider();
+  }
+
+  // Auto-advance testimonials
+  setInterval(() => {
+    const cards = track.querySelectorAll('.testimonial-card');
+    const maxIndex = cards.length - 3;
+    if (slideIndex >= maxIndex) slideIndex = 0;
+    else slideIndex++;
+    updateSlider();
+  }, 5000);
+</script>
+</body>
+</html>

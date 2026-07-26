@@ -62,8 +62,8 @@
 
     /* Buttons */
     .btn-primary {
-      background-color: #9DAAF2;
-      color: #0F1338;
+      background-color: #0d6efd;
+      color: #fff;
       font-weight: 800;
       border-radius: 999px;
       transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
@@ -71,16 +71,16 @@
       cursor: pointer;
     }
     .btn-primary:hover {
-      background-color: #b4bef5;
+      background-color: #0b5ed7;
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(157,170,242,0.4);
+      box-shadow: 0 4px 16px rgba(13,110,253,0.4);
     }
     .btn-primary:active { transform: translateY(0); }
-    .btn-primary:focus-visible { outline: 3px solid #9DAAF2; outline-offset: 2px; }
+    .btn-primary:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
 
     .btn-coral {
-      background-color: #F5736C;
-      color: white;
+      background-color: #0d6efd;
+      color: #fff;
       font-weight: 800;
       border-radius: 999px;
       transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
@@ -88,9 +88,9 @@
       cursor: pointer;
     }
     .btn-coral:hover {
-      background-color: #f45d55;
+      background-color: #0b5ed7;
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(245,115,108,0.4);
+      box-shadow: 0 4px 16px rgba(13,110,253,0.4);
     }
     .btn-coral:active { transform: translateY(0); }
     .btn-coral:focus-visible { outline: 3px solid #F5736C; outline-offset: 2px; }
@@ -273,6 +273,39 @@
       .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
       .compare-grid > *:nth-child(3) { display: none !important; }
     }
+
+    /* ===== Animated orbit stage (ported from how-it-works.html, scoped under .aa-hero-orbit) =====
+       Adapted for light #f8f9ff background: navy-tinted shadows at lower opacity, opaque white card borders. */
+    .aa-hero-orbit { flex-shrink: 0; width: 460px; max-width: 100%; perspective: 1100px; }
+    .aa-hero-orbit .aa-orbit-stage { position: relative; width: 100%; height: 540px; --rx: 206px; --ry: 158px; }
+    .aa-hero-orbit .aa-model-wrap { position: absolute; left: 50%; margin-left: -38%; bottom: 0; width: 76%; z-index: 20; will-change: transform; }
+    .aa-hero-orbit .aa-model-img { position: relative; width: 100%; display: block; z-index: 2; -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 99%); mask-image: linear-gradient(to bottom, #000 86%, transparent 99%); }
+    .aa-hero-orbit .aa-model-shadow { position: absolute; left: 50%; bottom: -12px; width: 84%; height: 46px; margin-left: -42%; background: radial-gradient(ellipse at center, rgba(15,19,56,0.30) 0%, rgba(15,19,56,0) 68%); filter: blur(7px); z-index: 1; }
+    .aa-hero-orbit .aa-card { position: absolute; top: 46%; left: 50%; width: 148px; margin: 0; will-change: transform, opacity; }
+    .aa-hero-orbit .aa-card > img { width: 100%; height: 112px; object-fit: cover; border-radius: 14px; display: block; border: 2px solid #fff; box-shadow: 0 18px 40px rgba(15,19,56,0.18), 0 4px 12px rgba(15,19,56,0.12); }
+    .aa-hero-orbit .aa-card--pool > img { object-position: center 40%; }
+    .aa-hero-orbit .aa-card--kitchen > img { object-position: center 55%; }
+    .aa-hero-orbit .aa-card--laundry > img { object-position: center 72%; }
+    .aa-hero-orbit .aa-chip { position: absolute; left: -10px; bottom: -12px; background: rgba(38,43,84,0.92); color: #fff; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.92rem; line-height: 1; padding: 9px 14px; border-radius: 10px; white-space: nowrap; box-shadow: 0 6px 18px rgba(15,19,56,0.22); }
+    /* Static arrangement — also the no-JS / reduced-motion fallback. JS overwrites transform/opacity/z-index. */
+    .aa-hero-orbit .aa-card--pool    { transform: translate(-50%,-50%) translate(calc(var(--rx) * -0.940), calc(var(--ry) *  0.342)) scale(0.951) rotate(-3deg); opacity: 0.951; z-index: 30; }
+    .aa-hero-orbit .aa-card--gym     { transform: translate(-50%,-50%) translate(calc(var(--rx) * -0.616), calc(var(--ry) * -0.788)) scale(0.782) rotate(2deg);  opacity: 0.866; z-index: 10; }
+    .aa-hero-orbit .aa-card--kitchen { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.559), calc(var(--ry) * -0.829)) scale(0.776) rotate(-2deg); opacity: 0.863; z-index: 10; }
+    .aa-hero-orbit .aa-card--laundry { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.961), calc(var(--ry) *  0.276)) scale(0.941) rotate(3deg);  opacity: 0.946; z-index: 30; }
+    .aa-hero-orbit .aa-card--pet     { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.035), calc(var(--ry) *  0.999)) scale(1.050) rotate(-2deg); opacity: 1;     z-index: 30; }
+    /* Chips counter-rotate against their card's tilt so labels stay upright */
+    .aa-hero-orbit .aa-card--pool .aa-chip    { transform: rotate(3deg); }
+    .aa-hero-orbit .aa-card--gym .aa-chip     { transform: rotate(-2deg); }
+    .aa-hero-orbit .aa-card--kitchen .aa-chip { transform: rotate(2deg); }
+    .aa-hero-orbit .aa-card--laundry .aa-chip { transform: rotate(-3deg); }
+    .aa-hero-orbit .aa-card--pet .aa-chip     { transform: rotate(2deg); }
+    @media (max-width: 639px) {
+      /* Radius tuned so cards + chips stay fully inside a 350px column on light bg (no edge clipping) */
+      .aa-hero-orbit .aa-orbit-stage { height: 400px; --rx: 120px; --ry: 108px; }
+      .aa-hero-orbit .aa-card { width: 102px; }
+      .aa-hero-orbit .aa-card > img { height: 78px; border-radius: 11px; }
+      .aa-hero-orbit .aa-chip { font-size: 0.72rem; padding: 7px 10px; left: -6px; bottom: -9px; border-radius: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -428,7 +461,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════ HOW IT WORKS ═══════════════════════════════════════════ -->
-<section id="how-it-works" class="py-16 md:py-20" style="background:#f8f9ff;">
+<section id="how-it-works" class="py-16 md:py-20" style="background:#f8f9ff; overflow:hidden;">
   <div class="max-w-7xl mx-auto px-5">
     <div class="text-center mb-12">
       <div class="section-badge mb-3">Simple Process</div>
@@ -436,39 +469,76 @@
       <p class="text-[#0F1338] max-w-xl mx-auto" style="line-height:1.7;">From your first conversation to moving day, we handle the heavy lifting so you can focus on finding the right home.</p>
     </div>
 
-    <div class="grid md:grid-cols-4 gap-8">
-      <!-- Step 1 -->
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="step-num">1</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+
+      <!-- Orbit stage (first on mobile, right column on desktop) -->
+      <div class="order-1 md:order-2 flex justify-center min-w-0">
+        <div class="aa-hero-orbit">
+          <div class="aa-orbit-stage" id="aaOrbitStage">
+            <div class="aa-model-wrap" id="aaModelWrap">
+              <div class="aa-model-shadow" aria-hidden="true"></div>
+              <img class="aa-model-img" src="images/hero-model.png" alt="Renter browsing curated apartment matches on her phone" />
+            </div>
+            <div class="aa-card aa-card--pool" data-base="160" data-tilt="-3">
+              <img src="images/amenity-pool.jpg" alt="Friends relaxing in a resort-style apartment pool" />
+              <span class="aa-chip">Great Pool</span>
+            </div>
+            <div class="aa-card aa-card--gym" data-base="232" data-tilt="2">
+              <img src="images/amenity-gym.jpg" alt="Apartment fitness center with spin bikes" />
+              <span class="aa-chip">Nice Gym</span>
+            </div>
+            <div class="aa-card aa-card--kitchen" data-base="304" data-tilt="-2">
+              <img src="images/amenity-kitchen.jpg" alt="Bright open-concept kitchen with island and pendant lights" />
+              <span class="aa-chip">Open Concept</span>
+            </div>
+            <div class="aa-card aa-card--laundry" data-base="16" data-tilt="3">
+              <img src="images/amenity-laundry.jpg" alt="In-unit washer and dryer pair" />
+              <span class="aa-chip">W/D Included</span>
+            </div>
+            <div class="aa-card aa-card--pet" data-base="88" data-tilt="-2">
+              <img src="images/amenity-pet.jpg" alt="Beagle on a walk in a pet-friendly community" />
+              <span class="aa-chip">Pet Friendly</span>
+            </div>
+          </div>
         </div>
-        <h3 class="font-black text-[#0F1338] text-lg mb-2">Tell Us What You're Looking For</h3>
-        <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Share where you want to live, your budget, move date, and what matters most. We'll handle the rest.</p>
       </div>
-      <!-- Step 2 -->
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="step-num">2</div>
+
+      <!-- Steps: stacked on mobile, 2x2 grid on desktop (left column) -->
+      <div class="order-2 md:order-1 grid grid-cols-1 md:grid-cols-2 gap-8 min-w-0">
+        <!-- Step 1 -->
+        <div class="text-center">
+          <div class="flex justify-center mb-4">
+            <div class="step-num">1</div>
+          </div>
+          <h3 class="font-black text-[#0F1338] text-lg mb-2">Tell Us What You're Looking For</h3>
+          <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Share where you want to live, your budget, move date, and what matters most. We'll handle the rest.</p>
         </div>
-        <h3 class="font-black text-[#0F1338] text-lg mb-2">Your Best Apartment Matches</h3>
-        <p class="text-[#0F1338] text-sm" style="line-height:1.7;">We search the market for the best-priced floor plans and deals, then send you a hand-tailored list of apartments to review.</p>
-      </div>
-      <!-- Step 3 -->
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="step-num">3</div>
+        <!-- Step 2 -->
+        <div class="text-center">
+          <div class="flex justify-center mb-4">
+            <div class="step-num">2</div>
+          </div>
+          <h3 class="font-black text-[#0F1338] text-lg mb-2">Your Best Apartment Matches</h3>
+          <p class="text-[#0F1338] text-sm" style="line-height:1.7;">We search the market for the best-priced floor plans and deals, then send you a hand-tailored list of apartments to review.</p>
         </div>
-        <h3 class="font-black text-[#0F1338] text-lg mb-2">$200 Free Move or Cash on Us</h3>
-        <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Tour your favorites, tell us where you leased, and get $200 towards a mover of your choice or extra cash on us!</p>
-      </div>
-      <!-- Step 4 / Extra Bonus -->
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="step-num" style="background:linear-gradient(135deg,#FFD67B,#F5736C); color:#0F1338;">★</div>
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="flex justify-center mb-4">
+            <div class="step-num">3</div>
+          </div>
+          <h3 class="font-black text-[#0F1338] text-lg mb-2">Up to $250 Free Move or Cash on Us</h3>
+          <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Tour your favorites, tell us where you leased, and get up to $250 towards a mover of your choice or extra cash on us!</p>
         </div>
-        <h3 class="font-black text-[#0F1338] text-lg mb-2">Extra Bonus</h3>
-        <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Our Connect Team locks in the best deals on your electricity, internet, and renters insurance and sets them up for free so that you can move in stress-free.</p>
+        <!-- Step 4 / Extra Bonus -->
+        <div class="text-center">
+          <div class="flex justify-center mb-4">
+            <div class="step-num" style="background:linear-gradient(135deg,#FFD67B,#F5736C); color:#0F1338;">★</div>
+          </div>
+          <h3 class="font-black text-[#0F1338] text-lg mb-2">Extra Bonus</h3>
+          <p class="text-[#0F1338] text-sm" style="line-height:1.7;">Our Connect Team locks in the best deals on your electricity, internet, and renters insurance and sets them up for free so that you can move in stress-free.</p>
+        </div>
       </div>
+
     </div>
 
     <div class="text-center mt-10">
@@ -482,7 +552,7 @@
   <div class="max-w-4xl mx-auto px-5 py-10 md:py-12 text-center">
     <div class="section-badge mb-3" style="background:rgba(157,170,242,0.15); color:#9DAAF2; border-color:rgba(157,170,242,0.3);">SAVE MORE WITH US</div>
     <h2 class="font-black text-white mb-3" style="font-size:clamp(1.5rem,3vw,2rem); letter-spacing:-0.02em;">No Hidden Fees, No Surprises</h2>
-    <p class="text-white max-w-2xl mx-auto" style="font-size: 1.1rem; line-height:1.75;">The apartments pay us from their advertising budgets.<br>You always get the best pricing and all the specials the properties offer, plus a $200 free move or cash on us!</p>
+    <p class="text-white max-w-2xl mx-auto" style="font-size: 1.1rem; line-height:1.75;">The apartments pay us from their advertising budgets.<br>You always get the best pricing and all the specials the properties offer, plus up to a $250 free move or cash on us!</p>
   </div>
 </section>
 
@@ -987,6 +1057,79 @@
       }
     });
   });
+
+  /* ===== How-it-works orbit animation (ported from how-it-works.html) =====
+     Mid-page section, so the orbit angle is driven by scroll progress RELATIVE
+     TO THE SECTION (getBoundingClientRect) — it turns while the section crosses
+     the viewport. Transforms/opacity only; reduced-motion falls back to the CSS
+     static arrangement. */
+  (function () {
+    var stage = document.getElementById('aaOrbitStage');
+    if (!stage) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // CSS static arrangement stands
+    var section = document.getElementById('how-it-works');
+    var modelWrap = document.getElementById('aaModelWrap');
+    var meta = Array.prototype.slice.call(stage.querySelectorAll('.aa-card')).map(function (el, i) {
+      return {
+        el: el,
+        base: (parseFloat(el.getAttribute('data-base')) || 0) * Math.PI / 180,
+        tilt: parseFloat(el.getAttribute('data-tilt')) || 0,
+        phase: i * 1.7
+      };
+    });
+
+    var rx = 206, ry = 158, floatAmp = 7;
+    function readVars() {
+      var cs = getComputedStyle(stage);
+      rx = parseFloat(cs.getPropertyValue('--rx')) || stage.clientWidth * 0.45;
+      ry = parseFloat(cs.getPropertyValue('--ry')) || stage.clientHeight * 0.29;
+      floatAmp = stage.clientWidth < 400 ? 5 : 7;
+    }
+    readVars();
+    window.addEventListener('resize', readVars);
+
+    // Desktop-only cursor tilt (eased in the rAF loop)
+    var tiltOn = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)');
+    var tiltTX = 0, tiltTY = 0, tiltCX = 0, tiltCY = 0;
+    window.addEventListener('mousemove', function (e) {
+      if (!tiltOn.matches) { tiltTX = 0; tiltTY = 0; return; }
+      var nx = e.clientX / window.innerWidth - 0.5;
+      var ny = e.clientY / window.innerHeight - 0.5;
+      tiltTY = Math.max(-4, Math.min(4, nx * 8));
+      tiltTX = Math.max(-4, Math.min(4, -ny * 8));
+    }, { passive: true });
+
+    var SPEED = 0.005; // radians of orbit per px the section travels through the viewport (full orbit ~1250px)
+    function frame(now) {
+      var rect = section.getBoundingClientRect();
+      var vh = window.innerHeight || 1;
+      // Only animate while the section is near the viewport
+      if (rect.bottom > -200 && rect.top < vh + 200) {
+        var travel = vh - rect.top; // px the section has risen into/through the viewport
+        var t = now / 1000;
+        tiltCX += (tiltTX - tiltCX) * 0.06;
+        tiltCY += (tiltTY - tiltCY) * 0.06;
+        stage.style.transform = 'rotateX(' + tiltCX.toFixed(3) + 'deg) rotateY(' + tiltCY.toFixed(3) + 'deg)';
+        // Subtle model parallax across the section's pass through the viewport (-12px..+12px)
+        var p = Math.max(0, Math.min(1, travel / (vh + rect.height)));
+        modelWrap.style.transform = 'translate3d(0,' + ((p - 0.5) * 24).toFixed(1) + 'px,0)';
+        var a0 = Math.max(0, travel) * SPEED;
+        for (var i = 0; i < meta.length; i++) {
+          var m = meta[i];
+          var a = m.base + a0;
+          var d = Math.sin(a); // -1 = far side, +1 = near side
+          var x = Math.cos(a) * rx;
+          var y = d * ry + Math.sin(t * 1.1 + m.phase) * floatAmp; // + idle float drift
+          var s = 0.9 + 0.15 * d; // 0.75 far -> 1.05 near
+          m.el.style.transform = 'translate(-50%,-50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + s.toFixed(3) + ') rotate(' + m.tilt + 'deg)';
+          m.el.style.opacity = (0.925 + 0.075 * d).toFixed(3); // 0.85 far -> 1 near
+          m.el.style.zIndex = d >= 0 ? 30 : 10; // swap happens at the orbit's left/right extremes
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
 </script>
 </body>
 </html>
