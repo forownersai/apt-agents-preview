@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works | Apartment Agents Dallas</title>
-  <meta name="description" content="See exactly how Apartment Agents works — from your first conversation to moving day. Free service, best pricing, and up to $250 for your move." />
+  <meta name="description" content="The whole process in detail. What you tell us, what your licensed apartment expert does with it, how self-guided touring works, and what we handle after you sign." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -33,7 +33,6 @@
     /* ============================================================
        DESIGN TOKENS — inherited verbatim from dallas-apartments-new.html.
        This page is a member of that system, not its own thing.
-       RESTYLE ONLY — the copy in the body is the owner's original page.
        ============================================================ */
     :root {
       --navy:      #0F1338;
@@ -86,11 +85,6 @@
     /* current page marker — colour alone isn't enough, so it also carries an underline */
     .nav-link--current { color: #5f6cbb; box-shadow: inset 0 -2px 0 var(--lav); }
     .nav-link--current:hover { color: #4c58a8; }
-    /* logo link carries the same three states as everything else clickable */
-    nav a:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 8px; }
-    nav a[href="index.html"] { transition: opacity 0.2s ease; }
-    nav a[href="index.html"]:hover { opacity: 0.78; }
-    nav a[href="index.html"]:active { opacity: 0.6; }
 
     /* ---------------- BUTTONS ---------------- */
     .btn-primary {
@@ -131,23 +125,22 @@
     .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
     .link-quiet:active { opacity: 0.75; }
 
+    .link-onnavy { color: #cfd6ff; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(207,214,255,0.45); transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease; }
+    .link-onnavy:hover { color: #fff; text-decoration-color: currentColor; }
+    .link-onnavy:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .link-onnavy:active { opacity: 0.75; }
+
     .section-badge {
       display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
       font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
       border-radius: 20px; padding: 5px 14px;
     }
-    .section-badge--dark { background: rgba(174,205,129,0.18); color: var(--green); }
-
-    .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
-    .check-item:last-child { margin-bottom: 0; }
-    .check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; color: var(--navy); font-weight: 900; font-size: 0.7rem; }
-    .check-text { color: var(--ink); font-size: 1rem; line-height: 1.65; }
-    .check-text--dark { color: rgba(255,255,255,0.86); }
+    .section-badge--dark { background: rgba(157,170,242,0.18); color: var(--lav); }
 
     /* ---------------- HERO (light lavender-white field) ----------------
-       Near-white base + low-opacity lavender/green radial washes + faint
-       grain. Text flips to dark navy; every hero surface is re-tuned for
-       a light field rather than inverted-on-navy.
+       Same near-white base, lavender/green radial washes and grain as the
+       Dallas page. The orbit collage that used to sit on navy is re-tuned
+       below for this field.
        ------------------------------------------------------------------ */
     .hero {
       background:
@@ -156,17 +149,43 @@
         radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
         linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
       position: relative; overflow: hidden;
-      padding: 30px 20px 30px;
+      padding: 24px 20px 30px;
       border-bottom: 1px solid rgba(15,19,56,0.06);
     }
-    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
     .hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
     }
     .hero-inner { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
-    .hero h1 { color: var(--navy); font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1.04; margin: 0 0 14px; }
-    .hero-sub { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.7; margin: 0; max-width: 460px; }
+    .hero h1 { color: var(--navy); font-size: clamp(2rem, 8vw, 3.6rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 16px; }
+
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.9); border: 1px solid rgba(157,170,242,0.6);
+      color: var(--navy); font-size: 0.9rem; font-weight: 600; border-radius: 999px; padding: 7px 13px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 6px 16px rgba(90,104,190,0.10);
+      backdrop-filter: blur(4px);
+    }
+    .hero-pill i { color: #4C6B22; font-size: 0.8rem; }
+    .hero-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 15px 30px; font-size: 1.05rem; }
+
+    /* ---------------- CTA CARD (no form fields — link-out only) ---------------- */
+    .form-card {
+      background: #fff; border-radius: 22px; padding: 18px 16px 16px;
+      box-shadow: var(--sh-float);
+      border: 1px solid rgba(255,255,255,0.5);
+      position: relative;
+    }
+    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
+    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 12px; color: var(--navy); }
+    .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; }
+    @media (min-width: 768px) {
+      .form-submit { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; padding: 15px 36px; }
+    }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 10px 0 0; text-align: center; }
 
     /* ---------------- SECTION SHELL ---------------- */
     .sec { padding: var(--s6) 20px; }
@@ -175,66 +194,100 @@
     .wrap-narrow { max-width: 760px; margin: 0 auto; }
     .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.75rem); line-height: 1.14; margin: 12px 0 14px; }
     .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
+    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
 
-    /* ---------------- STEP RAIL ----------------
-       Same shape the original page had (numeral column + connector + card),
-       re-drawn in the Dallas colour + elevation system.
-       ------------------------------------------- */
-    .step-row { display: flex; gap: 16px; align-items: stretch; }
-    .step-rail { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-    /* navy on lavender rather than white on lavender — white numerals only clear
-       ~2:1 against #9DAAF2, navy clears ~8.9:1 */
-    .step-num {
-      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+    /* ---------------- EXPANDED PROCESS STEPS ----------------
+       The Dallas page runs a compact 3-step block. This page is where the
+       detail lives, so each step is a full card: canonical headline copy on
+       top, then "what you do" / "what we do" broken out underneath.
+       -------------------------------------------------------- */
+    .psteps { --pstep-pad: 20px; }
+    @media (min-width: 700px) { .psteps { --pstep-pad: 26px; } }
+    .pstep {
+      position: relative; background: #fff;
+      border: 1px solid rgba(15,19,56,0.08); border-radius: 22px;
+      padding: var(--pstep-pad);
+      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 8px 22px rgba(90,104,190,0.10), 0 24px 56px rgba(48,58,140,0.07);
+    }
+    .pstep + .pstep { margin-top: 26px; }
+    /* connector tying the numerals together, drawn into the gap above the card */
+    .pstep + .pstep::before {
+      content: ''; position: absolute; top: -26px; left: calc(var(--pstep-pad) + 25px);
+      width: 2px; height: 26px;
+      background: linear-gradient(to bottom, rgba(157,170,242,0.15), rgba(157,170,242,0.85));
+    }
+    .pstep__head { display: flex; gap: 14px; align-items: flex-start; }
+    /* navy on lavender, not white on lavender — white numerals clear only ~2:1 */
+    .pstep__num {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem;
+      font-family: 'DM Serif Display', Georgia, serif; font-size: 1.45rem;
       background: var(--lav); color: var(--navy);
       box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30);
     }
-    .step-num--dark { background: var(--navy); color: var(--lav); box-shadow: 0 2px 6px rgba(15,19,56,0.22), 0 10px 24px rgba(48,58,140,0.28); }
-    .step-num--last { background: linear-gradient(135deg, #9DAAF2, #7b8ee8); color: var(--navy); }
-    .step-connector { width: 2px; flex: 1; min-height: 40px; margin-top: 10px; background: linear-gradient(to bottom, rgba(157,170,242,0.85), rgba(157,170,242,0.12)); }
-
-    .step-card {
-      flex: 1; min-width: 0; background: #fff;
-      border: 1px solid rgba(15,19,56,0.08); border-radius: 20px;
-      padding: 22px 20px; margin-bottom: 26px;
-      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 8px 22px rgba(90,104,190,0.10), 0 24px 56px rgba(48,58,140,0.07);
+    .pstep__eyebrow { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6b78c4; margin: 0 0 4px; }
+    .pstep__head h3 { font-size: clamp(1.2rem, 4.4vw, 1.6rem); line-height: 1.2; margin: 0; }
+    .pstep__lead { color: var(--ink); font-size: 1.02rem; line-height: 1.72; margin: 16px 0 0; }
+    .pstep__detail { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(15,19,56,0.09); }
+    .pstep__label { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 12px; }
+    .dlist { list-style: none; margin: 0; padding: 0; }
+    .dlist li { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 12px; color: var(--ink-mute); font-size: 1rem; line-height: 1.65; }
+    .dlist li:last-child { margin-bottom: 0; }
+    .dcheck { width: 22px; height: 22px; border-radius: 50%; background: var(--green); color: var(--navy); font-weight: 900; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; }
+    .dcheck--lav { background: var(--lav); }
+    .pstep__note {
+      margin-top: 18px; background: var(--paper-2);
+      border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav);
+      border-radius: 14px; padding: 16px 18px;
+      color: var(--ink-mute); font-size: 1rem; line-height: 1.7;
     }
-    .step-row:last-child .step-card { margin-bottom: 0; }
-    .step-card h2 { font-size: clamp(1.3rem, 5vw, 1.7rem); line-height: 1.2; margin: 0 0 10px; }
-    .step-card > p { color: var(--ink-mute); font-size: 1.02rem; line-height: 1.72; margin: 0 0 18px; }
+    .pstep__note strong { color: var(--navy); }
+    .pstep__note p { margin: 0; }
+    .pstep__note p + p { margin-top: 10px; }
+    @media (min-width: 900px) {
+      .pstep { padding: 30px 32px; }
+      .psteps { --pstep-pad: 32px; }
+      .pstep__two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+      .pstep__two .pstep__detail:last-child { border-top-color: rgba(15,19,56,0.09); }
+    }
 
-    /* Step 4 — the one that has to land. Navy card inside the light stack. */
-    .step-card--dark {
+    /* ---------------- BEYOND THE APARTMENT (navy band) ---------------- */
+    .move-sec {
       background:
-        radial-gradient(620px 380px at 8% 0%, rgba(174,205,129,0.16) 0%, transparent 62%),
-        radial-gradient(560px 400px at 96% 100%, rgba(157,170,242,0.16) 0%, transparent 64%),
+        radial-gradient(760px 460px at 12% 0%, rgba(174,205,129,0.16) 0%, transparent 60%),
+        radial-gradient(700px 500px at 95% 100%, rgba(157,170,242,0.16) 0%, transparent 62%),
         var(--navy);
-      border: 1px solid rgba(174,205,129,0.30);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 6px rgba(15,19,56,0.10), 0 14px 34px rgba(15,19,56,0.22), 0 36px 80px rgba(15,19,56,0.18);
+      position: relative; overflow: hidden;
     }
-    .step-card--dark h2 { color: #fff; }
-    .step-card--dark > p { color: rgba(255,255,255,0.76); }
-    .step-badge { margin-bottom: 14px; }
+    .move-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n2)' opacity='0.3'/%3E%3C/svg%3E");
+    }
+    .move-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .move-card {
+      background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px; padding: 22px 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 14px 34px rgba(4,7,26,0.28);
+    }
+    .move-card h3 { color: #fff; font-size: 1.2rem; margin: 14px 0 8px; line-height: 1.25; }
+    .move-card p { color: rgba(255,255,255,0.74); font-size: 1rem; line-height: 1.72; margin: 0; }
+    .move-card p + p { margin-top: 12px; }
+    .move-ico { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: rgba(174,205,129,0.18); color: var(--green); }
+    .move-card--lead { background: linear-gradient(160deg, rgba(174,205,129,0.20), rgba(174,205,129,0.06)); border-color: rgba(174,205,129,0.4); }
+    .move-card--lead .move-ico { background: var(--green); color: var(--navy); }
 
-    @media (min-width: 700px) {
-      .step-row { gap: 24px; }
-      .step-num { width: 56px; height: 56px; font-size: 1.5rem; }
-      .step-card { padding: 30px 32px; margin-bottom: 32px; }
+    /* ---------------- WHAT WE DON'T DO ---------------- */
+    .nope-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .nope-card {
+      background: #fff; border: 1px solid rgba(245,115,108,0.26);
+      border-left: 4px solid var(--coral); border-radius: 18px; padding: 22px 20px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 8px 22px rgba(178,72,66,0.09), 0 24px 56px rgba(15,19,56,0.06);
     }
-
-    /* ---------------- TRUST BAND ---------------- */
-    .trust-sec {
-      background:
-        radial-gradient(680px 420px at 50% 0%, rgba(157,170,242,0.22) 0%, transparent 66%),
-        var(--paper-2);
-      text-align: center;
-      border-top: 1px solid rgba(15,19,56,0.06);
-      border-bottom: 1px solid rgba(15,19,56,0.06);
-    }
-    .trust-sec h2 { margin-top: 0; }
-    .trust-sec p { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.8; margin: 0 auto; max-width: 560px; }
+    .nope-ico { width: 40px; height: 40px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: rgba(245,115,108,0.15); color: #b8443d; font-size: 0.95rem; }
+    .nope-card h3 { font-size: 1.15rem; margin: 14px 0 8px; line-height: 1.28; }
+    .nope-card p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.72; }
+    .nope-card p + p { margin-top: 10px; }
+    @media (min-width: 900px) { .nope-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
 
     /* ---------------- FINAL CTA ---------------- */
     .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
@@ -243,7 +296,6 @@
     .cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%); }
     .cta-bg .veil { position: absolute; inset: 0; background: rgba(15,19,56,0.9); }
     .cta-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 760px; max-width: 130%; height: 100%; background: radial-gradient(ellipse at center top, rgba(157,170,242,0.16) 0%, transparent 62%); pointer-events: none; z-index: 1; }
-    .cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 16px 38px; font-size: 1.05rem; }
 
     /* ---------------- FOOTER (system) ---------------- */
     .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
@@ -276,12 +328,16 @@
        ============================================================ */
     @media (min-width: 700px) {
       .hero { padding: 48px 24px 40px; }
+      .form-card { padding: 26px 24px 22px; }
+      .form-card__title { font-size: 1.5rem; }
+      .move-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (min-width: 1000px) {
-      .hero { padding: 60px 24px 48px; }
+      .hero { padding: 56px 24px 48px; }
       .hero-layout { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 48px; align-items: center; }
-      .hero h1 { font-size: clamp(3rem, 5vw, 4rem); }
-      .hero-sub { font-size: 1.2rem; }
+      .hero h1 { font-size: clamp(2.6rem, 4.2vw, 3.6rem); }
+      .hero-sub { font-size: 1.15rem; }
+      .move-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
@@ -296,9 +352,8 @@
     .aa-hero-orbit { flex-shrink: 0; width: 460px; max-width: 100%; margin: 0 auto; perspective: 1100px; }
     .aa-hero-orbit .aa-orbit-stage { position: relative; width: 100%; height: 540px; --rx: 206px; --ry: 158px; }
     .aa-hero-orbit .aa-model-wrap { position: absolute; left: 50%; margin-left: -38%; bottom: 0; width: 76%; z-index: 20; will-change: transform; }
-    .aa-hero-orbit .aa-model-img { position: relative; width: 100%; display: block; z-index: 2; }
-    /* LIGHT-FIELD SHADOW: navy-lavender tint at low opacity, wider blur —
-       the original rgba(4,7,26,0.6) read as a black smudge on near-white. */
+    .aa-hero-orbit .aa-model-img { position: relative; width: 100%; display: block; z-index: 2; -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 99%); mask-image: linear-gradient(to bottom, #000 86%, transparent 99%); }
+    /* LIGHT-FIELD SHADOW: navy-lavender tint at low opacity, wider blur. */
     .aa-hero-orbit .aa-model-shadow {
       position: absolute; left: 50%; bottom: -10px; width: 82%; height: 40px; margin-left: -41%;
       background: radial-gradient(ellipse at center, rgba(48,58,140,0.30) 0%, rgba(48,58,140,0.11) 44%, rgba(48,58,140,0) 70%);
@@ -340,6 +395,8 @@
     /* Mobile orbit radius is sized so the widest card never crosses the 390px
        viewport edge (rx 116 + half a 1.05-scaled 96px card = 166 < 175). */
     @media (max-width: 639px) {
+      /* Stage is tall enough to hold the model (72% of a 350px stage renders
+         ~364px tall) so her head never collides with the hero CTA above. */
       .aa-hero-orbit { margin-top: 10px; }
       .aa-hero-orbit .aa-orbit-stage { height: 404px; --rx: 116px; --ry: 94px; }
       .aa-hero-orbit .aa-model-wrap { width: 72%; margin-left: -36%; }
@@ -361,7 +418,7 @@
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
-        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none; min-height:44px;">
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
           <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
             Apartment<span style="color:#9DAAF2;">Agents</span>
@@ -386,25 +443,32 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════ HERO (light field + orbit) ══════════════════════ -->
-  <section class="hero">
+  <!-- ══════════════════════════ 1 · HERO (light field + orbit) ══════════════════════════ -->
+  <section class="hero" id="signup">
     <div class="hero-inner">
       <div class="hero-layout">
 
-        <!-- Text -->
         <div>
-          <h1>How It Works</h1>
-          <p class="hero-sub">
-            From your first conversation to moving day, we handle the heavy lifting so you can focus on finding the right home.
-          </p>
+          <p class="hero-kicker">The process, in detail</p>
+          <h1>How it works, start to finish.</h1>
+          <p class="hero-sub">Three steps on your side. Here is what happens inside each one, and what we handle after you sign.</p>
+          <ul class="hero-pills">
+            <li class="hero-pill"><i class="fas fa-check"></i>100% free service</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Up to $250 cash back</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Best offer guaranteed</li>
+          </ul>
+          <a href="SIGNUP_URL" class="btn-primary hero-cta">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.55em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
         </div>
 
-        <!-- Animated orbit collage — kept from the original build, restyled for the light field -->
+        <!-- Animated orbit collage — kept from the previous build, restyled for light -->
         <div class="aa-hero-orbit">
           <div class="aa-orbit-stage" id="aaOrbitStage">
             <div class="aa-model-wrap" id="aaModelWrap">
               <div class="aa-model-shadow" aria-hidden="true"></div>
-              <img class="aa-model-img" src="images/hero-model.png" alt="Renter browsing curated apartment matches on her phone" />
+              <img class="aa-model-img" src="images/hero-model.png" alt="Renter looking through apartment matches on her phone" />
             </div>
             <div class="aa-card aa-card--pool" data-base="160" data-tilt="-3">
               <img src="images/amenity-pool.jpg" alt="Friends relaxing in a resort-style apartment pool" />
@@ -433,137 +497,220 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════ STEPS SECTION ══════════════════════════ -->
+  <!-- ══════════════════ 2 · THE THREE STEPS, EXPANDED ══════════════════
+       The Dallas page runs the short version of this. Anyone who lands here
+       wants the long version, so every step opens up into what the renter
+       does and what the agent does. Headline copy per step stays canonical
+       (see brain/messaging-and-claims.md §3) so it matches every other page.
+       ══════════════════════════════════════════════════════════════════ -->
   <section class="sec" style="background:#fff;">
     <div class="wrap-narrow">
+      <div class="section-badge">The process</div>
+      <h2>Three steps. Here is what is inside each one.</h2>
+      <p class="lede">No fees, no contract, and no obligation to tour anything you don't like. You can stop at any point and it costs you nothing.</p>
 
-      <!-- Step 1 -->
-      <div class="step-row">
-        <div class="step-rail">
-          <div class="step-num">1</div>
-          <div class="step-connector"></div>
-        </div>
-        <div class="step-card">
-          <h2>Tell Us What You're Looking For</h2>
-          <p>
-            Start by answering a few simple questions by text, phone, or email. It takes just a few minutes and gives us everything we need to find your best apartment options.
-          </p>
-          <div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Your budget, desired move-in date, and preferred neighborhoods</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Must-haves like pets, parking, in-unit washer/dryer, or a home office</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Any questions you have about the market, pricing, or the process</span></div>
+      <div class="psteps">
+
+        <!-- STEP 1 -->
+        <article class="pstep">
+          <div class="pstep__head">
+            <div class="pstep__num" aria-hidden="true">1</div>
+            <div>
+              <p class="pstep__eyebrow">Step one</p>
+              <h3>Tell us what you're looking for</h3>
+            </div>
           </div>
-        </div>
-      </div>
+          <p class="pstep__lead">Where you want to live, your budget, your move-in date and your must-haves. A quick call or text, not a twenty-question form.</p>
 
-      <!-- Step 2 -->
-      <div class="step-row">
-        <div class="step-rail">
-          <div class="step-num">2</div>
-          <div class="step-connector"></div>
-        </div>
-        <div class="step-card">
-          <h2>We Go To Work</h2>
-          <p>
-            Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit, with our top picks up front.
-          </p>
-          <div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Every move-in special, concession, and promotion surfaced for you</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Best-priced floor plans matched to your budget and preferences</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Matched and delivered in as little as 24 hours</span></div>
+          <div class="pstep__two">
+            <div class="pstep__detail">
+              <p class="pstep__label">What we ask you</p>
+              <ul class="dlist">
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>The areas you are considering, or what you need to be close to. Work, school, a highway, family.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Your budget, and whether that number is rent on its own or rent plus utilities, parking and pet rent.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Your move-in date, and how far it can move if a better price shows up a couple of weeks either side.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Must-haves and deal-breakers. Pets and their weight, covered parking, washer and dryer in the unit, a room you can work in, ground floor or top floor.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Anything that could affect approval. Income, credit, rental history, a broken lease. Worth saying up front instead of finding out after an application fee.</span></li>
+              </ul>
+            </div>
+
+            <div class="pstep__detail">
+              <p class="pstep__label">What happens on our side</p>
+              <ul class="dlist">
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Your search goes to one licensed apartment expert who works this market every day. You deal with that person, not a rotating queue.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>They turn your must-haves into actual search criteria. Bed count, price ceiling, pet policy, square footage, submarket.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>If your budget and your must-have list don't meet in the middle, you hear that early rather than after two weeks of dead ends.</span></li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Step 3 -->
-      <div class="step-row">
-        <div class="step-rail">
-          <div class="step-num">3</div>
-          <div class="step-connector"></div>
-        </div>
-        <div class="step-card">
-          <h2>Tour, Choose, and Collect Your Reward</h2>
-          <p>
-            Tour your favorite apartments and choose the one you love. We'll verify your lease, gather quotes and exclusive discounts from trusted DFW movers, and arrange your reward.
-          </p>
-          <div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Tour the apartments that made your shortlist</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Apply and tell us where you leased, we handle the rest</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Receive up to $250 toward your movers or as extra cash</span></div>
+        <!-- STEP 2 -->
+        <article class="pstep">
+          <div class="pstep__head">
+            <div class="pstep__num" aria-hidden="true">2</div>
+            <div>
+              <p class="pstep__eyebrow">Step two</p>
+              <h3>We send the right matches</h3>
+            </div>
           </div>
-        </div>
-      </div>
+          <p class="pstep__lead">Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit, with our top picks up front.</p>
 
-      <!-- Step 4 — highlighted navy card -->
-      <div class="step-row">
-        <div class="step-rail">
-          <div class="step-num step-num--dark">4</div>
-          <div class="step-connector"></div>
-        </div>
-        <div class="step-card step-card--dark">
-          <div class="section-badge section-badge--dark step-badge">Two Important Steps</div>
-          <h2>List Us as Your Referral</h2>
-          <p>
-            When you apply, make sure to write <strong style="color:#AECD81;">Apartment Agents</strong> as your referral source on both the guest card and your application. This is the step that unlocks your reward &mdash; don't skip it.
-          </p>
-          <div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text check-text--dark">When you visit a property, let the leasing office know you found them through Apartment Agents and list us as your referral source on the guest card.</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text check-text--dark">Do the same on your rental application when you apply</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text check-text--dark">This is how the property pays us, and how we pay you</span></div>
+          <div class="pstep__two">
+            <div class="pstep__detail">
+              <p class="pstep__label">What we are looking at</p>
+              <ul class="dlist">
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Live pricing on individual floor plans, not the "starting at" number a listing site shows for the cheapest unit in the building.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Move-in specials and concessions running right now. Free weeks, waived admin and application fees, reduced deposits. These change week to week, which is most of the reason a locator is worth anything.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Which of your must-haves each community actually has, so you are not reading twelve amenity pages to find out nobody allows your dog.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>What we know that a listing never says. Which buildings get noise complaints, which ones are slow on maintenance, what a block feels like at night.</span></li>
+              </ul>
+            </div>
+
+            <div class="pstep__detail">
+              <p class="pstep__label">What lands in your inbox</p>
+              <ul class="dlist">
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>A list of apartments that fit what you asked for, with our top picks at the top.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>The floor plan, the price we are seeing, and the special attached to it, so you can compare like for like.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Nothing you have to answer. Reply with what you liked and what you didn't, and the next round comes back sharper.</span></li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Step 5 -->
-      <div class="step-row">
-        <div class="step-rail">
-          <div class="step-num step-num--last">5</div>
-        </div>
-        <div class="step-card">
-          <h2>We Set Up Your Utilities for Free</h2>
-          <p>
-            Our Connect Team shops the market for the best deals on electricity, internet, and renters insurance, then sets everything up for you at no charge.
-          </p>
-          <div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">Our team continuously analyzes the market to find the best rates from top providers</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">A dedicated advisor handles all the research, comparison, and setup</span></div>
-            <div class="check-item"><div class="check-icon">&#10003;</div><span class="check-text">100% free and you won't have to make a single phone call.</span></div>
+          <div class="pstep__note">
+            <p>Prices move. A community can change a floor plan's price overnight and pull a special with no notice, so treat what we send as the number we are seeing that day. If a place is on your shortlist, it is worth confirming the price when you tour.</p>
           </div>
-        </div>
-      </div>
+        </article>
 
+        <!-- STEP 3 -->
+        <article class="pstep">
+          <div class="pstep__head">
+            <div class="pstep__num" aria-hidden="true">3</div>
+            <div>
+              <p class="pstep__eyebrow">Step three</p>
+              <h3>Tour your favorites and get up to $250 on us</h3>
+            </div>
+          </div>
+          <p class="pstep__lead">Visit the apartments whenever it suits you. No agent tagging along, no schedules to coordinate.</p>
+
+          <div class="pstep__two">
+            <div class="pstep__detail">
+              <p class="pstep__label">Touring on your own terms</p>
+              <ul class="dlist">
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Go when you want to go. Tuesday evening after work, Saturday morning, two places in a row on a lunch break. Nobody is waiting on you.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>Many communities now offer self-guided tours. Others will walk you around when you show up. Call ahead if you want a specific floor plan opened.</span></li>
+                <li><span class="dcheck dcheck--lav" aria-hidden="true">&#10003;</span><span>See something you hate, or something you love that wasn't on the list. Tell us either way and we adjust.</span></li>
+              </ul>
+            </div>
+
+            <div class="pstep__detail">
+              <p class="pstep__label">The part that protects your reward</p>
+              <ul class="dlist">
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>At every community you visit, list <strong>Apartment Agents</strong> on the guest card as how you learned about their property. Do it before you tour, not after.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Put the same answer on your application when you apply.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Applying with a roommate or a partner? Everyone on the lease gives the same answer. A community only pays one locator per lease, so a different name from one applicant can cancel the reward for all of you.</span></li>
+                <li><span class="dcheck" aria-hidden="true">&#10003;</span><span>Tell us where you leased and we get your reward started. It is paid straight to you by Zelle, Venmo, PayPal or an Amazon gift card. <a href="rewards.html" class="inline-link">See the amounts</a>.</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════ TRUST BAND ══════════════════════════ -->
-  <section class="sec trust-sec">
-    <div class="wrap-narrow">
-      <h2>Free to you. Always.</h2>
-      <p>
-        The apartment communities pay us from their advertising budget when we place a resident. You always get the same pricing and all the specials the properties offer, plus up to an extra $250 on us!
-      </p>
+  <div class="rule"></div>
+
+  <!-- ══════════════ 3 · BEYOND THE APARTMENT ══════════════ -->
+  <section class="sec move-sec">
+    <div class="wrap" style="position:relative; z-index:2;">
+      <div class="section-badge section-badge--dark">After you pick a place</div>
+      <h2 style="color:#fff;">The rest of the move, handled.</h2>
+      <p class="lede" style="color:rgba(255,255,255,0.72); max-width:660px;">Finding the apartment is the part everyone talks about. Then there is a moving truck to book and five utility accounts to open, usually in the same week. That part is on us too.</p>
+
+      <div class="move-grid">
+        <div class="move-card move-card--lead">
+          <div class="move-ico"><i class="fas fa-clipboard-list"></i></div>
+          <h3>Mover quotes, gathered for you</h3>
+          <p>You tell us which moving companies you want quotes from. We send them your move details and collect what comes back, so you are comparing real numbers side by side instead of chasing five companies yourself.</p>
+          <p>We don't take a cut from any of them. No referral links, no kickback baked into your price. A quote is just a quote, and you book whoever you want, direct.</p>
+        </div>
+        <div class="move-card">
+          <div class="move-ico"><i class="fas fa-shield-halved"></i></div>
+          <h3>And none of the sales calls</h3>
+          <p>The quotes come to us, not to you. The movers never get your phone number or email, so you are not fielding calls and texts from five companies for the rest of the week.</p>
+          <p>Pick the one you want and we pass along your contact details to that company only.</p>
+        </div>
+        <div class="move-card">
+          <div class="move-ico"><i class="fas fa-bolt"></i></div>
+          <h3>Utilities on for move-in day</h3>
+          <p>Our Connect Team compares rates on electricity, internet and renters insurance, then has everything set up and switched on for your move-in date. One conversation instead of calling around yourself, and it costs you nothing.</p>
+          <p>They will also tell you what the building requires. Plenty of communities want proof of renters insurance and power in your name before they hand over keys.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════ BOTTOM CTA ══════════════════════════ -->
-  <section class="cta-sec" id="signup">
-    <span id="cta" aria-hidden="true"></span>
+  <!-- ══════════════ 4 · WHAT WE DON'T DO ══════════════
+       Deliberately kept on the page. The three things below are the ones
+       people find out later and feel misled by, so they go up front.
+       ══════════════════════════════════════════════════ -->
+  <section class="sec" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="section-badge">Straight answers</div>
+      <h2>What we don't do.</h2>
+      <p class="lede" style="max-width:660px;">Three things worth knowing before you start, so nothing about this comes as a surprise halfway through.</p>
+
+      <div class="nope-grid">
+        <div class="nope-card">
+          <div class="nope-ico" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+          <h3>We don't escort tours</h3>
+          <p>You tour on your own. We don't drive you around, we don't sit in the leasing office with you, and we don't book your appointments.</p>
+          <p>That is the trade. You get your evenings and weekends back instead of working around somebody else's calendar. If you want a person walking the halls with you, we are not that.</p>
+        </div>
+        <div class="nope-card">
+          <div class="nope-ico" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+          <h3>We don't charge renters</h3>
+          <p>No fee, no deposit, no percentage, not at any point. Communities set aside a marketing budget to fill their units and pay us only when someone we refer signs a lease.</p>
+          <p>Your rent is not a dollar higher for using us. Going direct gets you the same apartment at the same price, minus the reward.</p>
+        </div>
+        <div class="nope-card">
+          <div class="nope-ico" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+          <h3>We don't work with communities paying under 50%</h3>
+          <p>If a community pays less than 50% of a month's rent as a referral fee, it is not on the list we search. That does keep some buildings out of your results.</p>
+          <p>It is also what funds the cash back and the free service, and we would rather say so than pretend the entire market is on the table.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 5 · FINAL CTA ══════════════════════════ -->
+  <section class="cta-sec" id="signup-bottom">
     <div class="cta-bg" aria-hidden="true">
       <img src="dallas-skyline.png" alt="" loading="lazy" />
       <div class="veil"></div>
     </div>
     <div class="cta-glow" aria-hidden="true"></div>
-    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto; text-align:center;">
-      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 14px;">
-        Save more on your next apartment
-      </h2>
-      <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; line-height:1.7; margin:0 0 28px;">
-        It takes less than two minutes to start your search.
+    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">Start at step one.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
+
+      <div class="form-card" id="bottomCard">
+        <div class="form-body">
+          <p class="form-card__eyebrow">Free &middot; No obligation</p>
+          <h3 class="form-card__title">Get your free Dallas matches</h3>
+          <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and our licensed Dallas apartment experts go to work for you right away.</p>
+          <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <p class="form-micro">No cost, no obligation, no spam.</p>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
+        Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
       </p>
-      <a href="SIGNUP_URL" class="btn-primary cta-btn">
-        Get Started
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.55em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
     </div>
   </section>
 
@@ -645,12 +792,12 @@
         };
       });
 
-      var rx = 206, ry = 158, floatAmp = 0;
+      var rx = 206, ry = 158, floatAmp = 7;
       function readVars() {
         var cs = getComputedStyle(stage);
         rx = parseFloat(cs.getPropertyValue('--rx')) || stage.clientWidth * 0.45;
         ry = parseFloat(cs.getPropertyValue('--ry')) || stage.clientHeight * 0.29;
-        floatAmp = 0;
+        floatAmp = stage.clientWidth < 400 ? 5 : 7;
       }
       readVars();
       window.addEventListener('resize', readVars);

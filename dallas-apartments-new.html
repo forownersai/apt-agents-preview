@@ -4,8 +4,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dallas Apartments | Free Search + Up to $250 Back | Apartment Agents</title>
-  <meta name="description" content="Save more on your dream Dallas apartment. Free apartment search, a curated shortlist priced today, up to $250 toward your move or as cash, and real help with the move itself." />
+  <title>Dallas Apartments | Free Search + Up to $250 for Your Move | Apartment Agents</title>
+  <meta name="description" content="The Dallas apartment you actually want, without the search. Right matches, best prices, and up to $250 cash back. Free, licensed Dallas apartment locators." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -107,6 +107,16 @@
     @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
     .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
 
+    /* inline text links on light surfaces — every state accounted for */
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
     .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
     .link-quiet:hover { color: #fff; }
     .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
@@ -122,72 +132,79 @@
     .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
     .check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; color: var(--navy); font-weight: 900; font-size: 0.7rem; }
 
-    /* ---------------- HERO ---------------- */
+    /* ---------------- HERO (light lavender-white field) ----------------
+       Near-white base + low-opacity lavender/green radial washes + faint
+       grain. Text flips to dark navy; every hero surface is re-tuned for
+       a light field rather than inverted-on-navy.
+       ------------------------------------------------------------------ */
     .hero {
       background:
-        radial-gradient(900px 520px at 85% -10%, rgba(157,170,242,0.20) 0%, transparent 62%),
-        radial-gradient(700px 480px at -10% 100%, rgba(174,205,129,0.13) 0%, transparent 60%),
-        radial-gradient(600px 400px at 50% 120%, rgba(245,115,108,0.08) 0%, transparent 65%),
-        var(--navy);
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
       position: relative; overflow: hidden;
       padding: 24px 20px 34px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
     }
-    /* SVG grain for depth — never a flat colour field */
+    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
     .hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.4; mix-blend-mode: overlay;
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
     }
     .hero-inner { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
-    .hero h1 { color: #fff; font-size: clamp(2rem, 8vw, 4rem); line-height: 1.06; margin: 0 0 12px; }
-    .hero h1 em { font-style: normal; color: var(--green); }
-    .hero-sub { color: rgba(255,255,255,0.82); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
+    .hero h1 { color: var(--navy); font-size: clamp(2rem, 8vw, 4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero h1 em { font-style: normal; color: inherit; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
 
     .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
-      color: #fff; font-size: 0.9rem; font-weight: 600; border-radius: 999px; padding: 7px 13px;
+      background: rgba(255,255,255,0.9); border: 1px solid rgba(157,170,242,0.6);
+      color: var(--navy); font-size: 0.9rem; font-weight: 600; border-radius: 999px; padding: 7px 13px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 6px 16px rgba(90,104,190,0.10);
       backdrop-filter: blur(4px);
     }
-    .hero-pill i { color: var(--green); font-size: 0.8rem; }
+    .hero-pill i { color: #4C6B22; font-size: 0.8rem; }
 
-    /* ---------------- FORM CARD ---------------- */
+    /* ---------------- CTA CARD (no form fields — link-out only) ---------------- */
     .form-card {
       background: #fff; border-radius: 22px; padding: 18px 16px 16px;
       box-shadow: var(--sh-float);
       border: 1px solid rgba(255,255,255,0.5);
       position: relative;
     }
-    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #6b78c4; margin: 0 0 4px; }
-    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 12px; color: var(--navy); }
-    .field { margin-bottom: 9px; }
-    .field label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .field input {
-      width: 100%; min-height: 52px; font-size: 16px; font-family: 'DM Sans', sans-serif;
-      padding: 13px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
-      background: #fbfbff; color: var(--navy); line-height: 1.4;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    /* On the light hero field a white card needs its own definition:
+       lavender hairline + inner highlight + layered lavender-tinted shadow. */
+    .form-card--light {
+      border: 1px solid rgba(157,170,242,0.75);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 1px 2px rgba(15,19,56,0.06),
+        0 10px 24px rgba(90,104,190,0.18),
+        0 30px 64px rgba(48,58,140,0.20);
     }
-    .field input::placeholder { color: #8b8fae; }
-    .field input:hover { border-color: rgba(15,19,56,0.3); }
-    .field input:focus { outline: none; border-color: var(--lav); background: #fff; box-shadow: 0 0 0 4px rgba(157,170,242,0.28); }
-    .field input:focus-visible { outline: none; }
+    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
+    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 12px; color: var(--navy); }
     .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; }
-    .form-micro { font-size: 0.88rem; color: #6d6d8c; line-height: 1.5; margin: 10px 0 0; text-align: center; }
-    .form-thanks { display: none; text-align: center; padding: 8px 0 4px; }
-    .form-card.is-sent .form-thanks { display: block; }
-    .form-card.is-sent .form-body { display: none; }
+    @media (min-width: 768px) {
+      .form-submit { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; padding: 15px 36px; }
+    }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 10px 0 0; text-align: center; }
 
-    /* ---------------- TRUST STRIP ---------------- */
+    /* ---------------- TRUST STRIP (light hero) ---------------- */
     .trust-strip {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-      margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.13); padding-top: 14px;
+      margin-top: 16px; border-top: 1px solid rgba(15,19,56,0.12); padding-top: 14px;
     }
     .trust-item { text-align: center; }
-    .trust-item .t-top { color: #fff; font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
-    .trust-item .t-bot { color: rgba(255,255,255,0.68); font-size: 0.78rem; font-weight: 600; margin-top: 2px; display: block; line-height: 1.3; }
+    .trust-item .t-top { color: var(--navy); font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+    .trust-item .t-bot { color: #464a6d; font-size: 0.8rem; font-weight: 600; margin-top: 2px; display: block; line-height: 1.3; }
     @media (min-width: 700px) { .trust-item .t-bot { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78rem; } }
     .stars { color: var(--yellow); letter-spacing: 1px; }
+    /* gold on a light field needs a darker amber to stay legible */
+    .trust-item .t-top.stars { color: #9a6c07; }
 
     /* ---------------- SECTION SHELL ---------------- */
     .sec { padding: var(--s6) 20px; }
@@ -198,26 +215,7 @@
     .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
     .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
 
-    /* ---------------- VALUE STACK ---------------- */
-    .stack { background: #fff; border: 1px solid rgba(15,19,56,0.09); border-radius: 22px; overflow: hidden; box-shadow: var(--sh-elev); }
-    .stack-row { display: flex; align-items: flex-start; gap: 13px; padding: 16px 16px; border-bottom: 1px solid rgba(15,19,56,0.07); }
-    .stack-ico { width: 40px; height: 40px; border-radius: 12px; background: rgba(157,170,242,0.16); color: #6b78c4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.95rem; }
-    .stack-txt { flex: 1; min-width: 0; }
-    .stack-txt strong { display: block; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
-    .stack-txt span { display: block; font-size: 0.95rem; color: var(--ink-mute); line-height: 1.6; margin-top: 3px; }
-    .stack-val { flex-shrink: 0; font-weight: 700; color: #8b8fae; font-size: 0.98rem; padding-top: 2px; font-variant-numeric: tabular-nums; }
-    .stack-row--hero { background: linear-gradient(180deg, rgba(174,205,129,0.13), rgba(174,205,129,0.05)); }
-    .stack-row--hero .stack-ico { background: rgba(174,205,129,0.28); color: #5f7a36; }
-    .stack-row--hero .stack-val { color: #5f7a36; text-align: right; }
-    .stack-val .upto { display: block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; line-height: 1.2; }
-    .stack-total { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; background: rgba(15,19,56,0.035); border-bottom: 1px solid rgba(15,19,56,0.07); }
-    .stack-total span { font-weight: 700; color: var(--ink-soft); font-size: 0.98rem; }
-    .stack-total b { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; color: var(--ink-soft); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(245,115,108,0.85); }
-    .stack-price { padding: 26px 20px; background: var(--navy); text-align: center; }
-    .stack-price .p-lab { color: rgba(255,255,255,0.65); font-size: 0.84rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin: 0 0 4px; }
-    .stack-price .p-amt { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.6rem, 11vw, 3.6rem); color: var(--green); line-height: 1; letter-spacing: -0.03em; margin: 0; }
-    .stack-price .p-sub { color: rgba(255,255,255,0.72); font-size: 0.95rem; margin: 10px auto 0; max-width: 380px; line-height: 1.6; }
-
+    /* ---------------- "WHAT'S THE CATCH" CALLOUT ---------------- */
     .catch { margin-top: var(--s4); background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav); border-radius: 16px; padding: 20px 20px; }
     .catch h3 { font-size: 1.15rem; margin: 0 0 8px; }
     .catch p { margin: 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.75; }
@@ -247,73 +245,16 @@
     .move-card--lead .move-ico { background: var(--green); color: var(--navy); }
     .move-amount { font-family: 'DM Serif Display', Georgia, serif; color: var(--green); font-size: 2.1rem; line-height: 1; letter-spacing: -0.03em; display: block; margin-bottom: 4px; }
 
-    /* ---------------- SAMPLE SHORTLIST ---------------- */
-    .example-banner {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: rgba(255,214,123,0.18); border: 1.5px dashed rgba(196,142,26,0.55);
-      border-radius: 14px; padding: 14px 16px; margin-bottom: var(--s4);
-    }
-    .example-banner i { color: #a9791a; margin-top: 3px; flex-shrink: 0; }
-    .example-banner p { margin: 0; font-size: 0.96rem; line-height: 1.6; color: #6b5410; }
-    .example-banner strong { color: #4d3c08; }
-
-    .brief-line { background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 14px; padding: 14px 16px; margin-bottom: var(--s4); font-size: 0.96rem; color: var(--ink-mute); line-height: 1.6; }
-    .brief-line strong { color: var(--navy); }
-
-    .rec-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
-    .rec {
-      background: #fff; border-radius: 20px; overflow: hidden; position: relative;
-      border: 1px solid rgba(15,19,56,0.09); box-shadow: var(--sh-base);
-    }
-    /* Only these three get chrome — Star strongest. */
-    .rec--star { border: 2px solid var(--green); box-shadow: var(--sh-star); }
-    .rec--under { border: 1.5px solid rgba(157,170,242,0.6); box-shadow: var(--sh-elev); }
-    .rec--wild { border: 1.5px solid rgba(255,214,123,0.9); box-shadow: var(--sh-elev); }
-
-    .rec-photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #e9ebf6; }
-    .rec-photo > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* colour treatment + gradient overlay (never a raw photo) */
-    .rec-photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(157,170,242,0.35), rgba(15,19,56,0.10)); mix-blend-mode: multiply; pointer-events: none; z-index: 1; }
-    .rec-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,19,56,0.62) 0%, rgba(15,19,56,0.12) 42%, transparent 68%); pointer-events: none; z-index: 2; }
-    .rec-ribbon {
-      position: absolute; top: 12px; left: 12px; z-index: 4;
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase;
-      border-radius: 999px; padding: 6px 12px;
-    }
-    .rib-star  { background: var(--green); color: var(--navy); box-shadow: 0 6px 18px rgba(174,205,129,0.5); }
-    .rib-under { background: var(--lav);   color: var(--navy); box-shadow: 0 6px 18px rgba(157,170,242,0.45); }
-    .rib-wild  { background: var(--yellow);color: #5c440a;     box-shadow: 0 6px 18px rgba(255,214,123,0.5); }
-    .rec-example-tag {
-      position: absolute; top: 12px; right: 12px; z-index: 4;
-      background: rgba(15,19,56,0.82); color: rgba(255,255,255,0.92);
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 6px; padding: 5px 9px; border: 1px solid rgba(255,255,255,0.22);
-    }
-    .rec-photo-foot { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 4; }
-    .rec-photo-foot h3 { color: #fff; font-size: 1.28rem; margin: 0; line-height: 1.2; text-shadow: 0 2px 12px rgba(4,7,26,0.6); }
-    .rec-photo-foot .hood { color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; }
-
-    .rec-body { padding: 18px 18px 16px; }
-    .rec-specs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .rec-spec { background: rgba(15,19,56,0.05); border-radius: 8px; padding: 4px 9px; font-size: 0.83rem; font-weight: 600; color: var(--ink-soft); }
-    .rec-value { font-size: 1rem; line-height: 1.65; margin: 0 0 12px; color: var(--navy); }
-    .rec-value .net { font-weight: 800; color: #3f6b12; background: rgba(174,205,129,0.28); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
-    .rec--wild .rec-value .net { color: #7a5a0a; background: rgba(255,214,123,0.4); }
-    .rec--under .rec-value .net { color: #3f6b12; background: rgba(174,205,129,0.28); }
-    .rec-value .ask { color: #8b8fae; text-decoration: line-through; text-decoration-thickness: 1.5px; }
-    .rec-why { font-size: 0.95rem; line-height: 1.72; color: var(--ink-mute); margin: 0 0 14px; border-left: 3px solid rgba(157,170,242,0.5); padding-left: 12px; }
-    .rec--star .rec-why { border-left-color: var(--green); }
-    .rec--wild .rec-why { border-left-color: var(--yellow); }
-    .rec-why b { color: var(--navy); font-weight: 700; }
-    .rec-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(15,19,56,0.08); padding-top: 12px; }
-    .rec-checked { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #3f6b12; background: rgba(174,205,129,0.2); border-radius: 999px; padding: 6px 11px; }
-    .rec-fees { font-size: 0.85rem; color: #74748f; font-weight: 600; }
+    /* Sample-shortlist card CSS (.example-banner / .brief-line / .rec-*) lived
+       here and was removed with its section. See the marker comment in the body
+       for why, and what has to ship before it comes back. */
 
     /* ---------------- STEPS ---------------- */
     .step { display: flex; gap: 18px; align-items: flex-start; }
     .step + .step { margin-top: 18px; }
-    .step-num { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.4rem; flex-shrink: 0; background: var(--lav); color: #fff; box-shadow: 0 6px 18px rgba(157,170,242,0.4); }
+    /* navy on lavender rather than white on lavender — white numerals only clear
+       ~2:1 against #9DAAF2, navy clears ~8.9:1 */
+    .step-num { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.45rem; flex-shrink: 0; background: var(--lav); color: var(--navy); box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30); }
     .step-card { flex: 1; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px; padding: 20px 20px; box-shadow: var(--sh-base); }
     .step-card h3 { font-size: 1.2rem; margin: 0 0 8px; line-height: 1.25; }
     .step-card p { margin: 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.72; }
@@ -323,9 +264,22 @@
     .proof-stat { background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px; padding: 18px 18px; box-shadow: var(--sh-base); display: flex; align-items: center; gap: 14px; }
     .proof-stat .n { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.7rem; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
     .proof-stat .l { font-size: 0.9rem; color: var(--ink-mute); line-height: 1.5; }
-    .tcard { background: #fff; border: 1px solid rgba(15,19,56,0.07); border-radius: 18px; padding: 20px; box-shadow: var(--sh-base); }
-    .tcard p { color: var(--navy); font-size: 0.95rem; line-height: 1.72; margin: 8px 0 14px; }
+    /* ---------------- WALL OF REVIEWS (masonry) ----------------
+       CSS multi-column masonry, same pattern as index.html:
+       1 column on mobile, 3 on desktop. Cards never break across columns. */
+    .reviews-wall { margin-top: 40px; column-count: 1; column-gap: 20px; }
+    @media (min-width: 768px) { .reviews-wall { column-count: 2; column-gap: 22px; } }
+    @media (min-width: 1000px) { .reviews-wall { column-count: 3; column-gap: 24px; } }
+    .tcard {
+      background: #fff; border: 1px solid rgba(15,19,56,0.07); border-radius: 18px; padding: 20px;
+      box-shadow: var(--sh-base);
+      break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid;
+      margin-bottom: 20px; display: inline-block; width: 100%;
+    }
+    .tcard p { color: var(--navy); font-size: 1rem; line-height: 1.72; margin: 8px 0 14px; }
+    .tcard .stars { color: #C98A12; font-size: 1.05rem; }
     .tavatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.75rem; color: #fff; flex-shrink: 0; }
+    .tname { font-weight: 700; font-size: 0.95rem; color: var(--navy); }
     .review-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; color: var(--navy); text-decoration: none; box-shadow: inset 0 -2px 0 var(--lav); transition: color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease; }
     .review-link:hover { color: #6b78c4; box-shadow: inset 0 -2px 0 #6b78c4; transform: translateY(-1px); }
     .review-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 4px; border-radius: 4px; }
@@ -398,20 +352,17 @@
       .trust-strip {
         display: inline-grid; grid-auto-flow: column; align-items: center;
         gap: 0; margin: 26px 0 0; padding: 14px 8px; border-top: none;
-        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.72); border: 1px solid rgba(157,170,242,0.5);
         border-radius: 16px; backdrop-filter: blur(4px);
+        box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 8px 22px rgba(90,104,190,0.10);
       }
       .trust-item { padding: 0 30px; }
-      .trust-item + .trust-item { border-left: 1px solid rgba(255,255,255,0.14); }
-      .rec-grid { grid-template-columns: 1.22fr 1fr 1fr; gap: 24px; align-items: start; }
-      .rec--star { transform: translateY(-10px); }
-      .rec--star .rec-photo-foot h3 { font-size: 1.45rem; }
+      .trust-item + .trust-item { border-left: 1px solid rgba(15,19,56,0.12); }
       .move-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .move-card--lead { grid-column: 1 / -1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center; padding: 28px 30px; }
       .move-card--lead .move-lead-head { display: flex; align-items: flex-start; gap: 18px; }
       .move-card--lead .move-ico { margin-top: 4px; }
       .move-card--lead h3 { margin: 0; }
-      .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
     }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
@@ -431,21 +382,21 @@
           </span>
         </a>
       </div>
-      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       <div class="hidden md:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
-        <a href="rewards.html" class="nav-link">Up to $250 Move or Cash</a>
-        <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link">Connect Utilities</a>
-        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Shortlist <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+        <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
       <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
-      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Move or Cash</a>
-      <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Connect Utilities</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
-      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Shortlist</a>
+      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
     </div>
   </nav>
 
@@ -455,42 +406,27 @@
       <div class="hero-layout">
 
         <div>
-          <h1>Save more on your dream <em>Dallas</em> apartment.</h1>
-          <p class="hero-sub">Free to you, always &mdash; and we help with the move itself.</p>
+          <p class="hero-kicker">Save more with us</p>
+          <h1>The <em>Dallas</em> apartment you actually want.<br>Without the search.</h1>
+          <p class="hero-sub">Right matches. Best prices. Up to $250 cash back.</p>
           <ul class="hero-pills">
             <li class="hero-pill"><i class="fas fa-check"></i>100% free service</li>
-            <li class="hero-pill"><i class="fas fa-check"></i>Up to $250 back</li>
-            <li class="hero-pill"><i class="fas fa-check"></i>We handle the move</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Up to $250 cash back</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Best offer guaranteed</li>
           </ul>
         </div>
 
-        <!-- FORM CARD — 3 fields only. Deeper qualification happens AFTER we have contact info. -->
-        <div class="form-card" id="heroCard">
+        <!-- CTA CARD — no form here. Sends to the VSL + GHL form page (SIGNUP_URL below). -->
+        <div class="form-card form-card--light" id="heroCard">
           <div class="form-body">
-            <p class="form-card__eyebrow">Free · Takes 30 seconds</p>
-            <h2 class="form-card__title" style="font-size:1.35rem;">Get your free Dallas shortlist</h2>
-            <!-- TODO before launch: point action/handler at the live GHL form endpoint. -->
-            <form novalidate onsubmit="return aaSubmit(event, 'heroCard')">
-              <div class="field">
-                <label for="hero-name">First name</label>
-                <input id="hero-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name" required />
-              </div>
-              <div class="field">
-                <label for="hero-email">Email address</label>
-                <input id="hero-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Email address" required />
-              </div>
-              <div class="field">
-                <label for="hero-phone">Mobile number</label>
-                <input id="hero-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Mobile number" required />
-              </div>
-              <button type="submit" class="btn-primary form-submit">Get My Free Shortlist</button>
-            </form>
-            <p class="form-micro">No cost, no obligation, no spam. A licensed Dallas agent sends your picks &mdash; usually the same day.</p>
-          </div>
-          <div class="form-thanks" role="status" aria-live="polite">
-            <div style="width:52px; height:52px; border-radius:50%; background:rgba(174,205,129,0.25); color:#3f6b12; display:flex; align-items:center; justify-content:center; margin:8px auto 14px; font-size:1.3rem;"><i class="fas fa-check"></i></div>
-            <h3 style="margin:0 0 8px; font-size:1.25rem;">You're in.</h3>
-            <p style="margin:0 0 6px; color:#5A5A7A; font-size:0.98rem; line-height:1.7;">A licensed Dallas agent will reach out shortly to lock in your neighborhoods, budget and move-in date &mdash; then your shortlist goes out.</p>
+            <p class="form-card__eyebrow">Free · No obligation</p>
+            <h2 class="form-card__title" style="font-size:1.35rem;">Get your free Dallas matches</h2>
+            <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and our licensed Dallas apartment experts go to work for you right away.</p>
+            <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+              Get My Free Matches
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <p class="form-micro">No cost, no obligation, no spam.</p>
           </div>
         </div>
 
@@ -507,103 +443,61 @@
           <span class="t-bot">In DFW</span>
         </div>
         <div class="trust-item">
-          <!-- TODO before launch: replace with the live Google rating + review count from the Business Profile. -->
-          <div class="t-top stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <!-- Live Google Business Profile data pulled 2026-08-02: 4.9 average across 177 reviews. Re-check periodically. -->
+          <div class="t-top stars">4.9 &#9733;</div>
           <span class="t-bot">Google Reviews</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ 2 · WHAT YOU GET (VALUE STACK) ══════════════════════ -->
-  <section class="sec" style="background:#fff;">
+  <!-- ═══════════════ 2 · HOW IT WORKS — THE ONLY 3-STEP SECTION ═══════════════
+       This replaced the old "What you get" value stack. Stacking dollar values
+       against a free service reads as justification, not proof.
+       The standalone "How it works" section that used to sit further down the page
+       was MERGED into this one — there is exactly one 3-step process block on this
+       page, and it lives here.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec" id="how-it-works" style="background:#fff;">
     <div class="wrap-narrow">
-      <div class="section-badge">What you get</div>
-      <h2>Everything below is included. You pay nothing for any of it.</h2>
-      <p class="lede">Here's the whole package, with what each piece actually costs when you buy it on its own in DFW.</p>
+      <div class="section-badge">Simple process</div>
+      <h2>Three steps. That's the whole thing.</h2>
+      <p class="lede">No hidden fees, no contract, no obligation to tour anything you don't like.</p>
 
-      <div class="stack">
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-list-check"></i></div>
-          <div class="stack-txt">
-            <strong>A curated shortlist, not a data dump</strong>
-            <span>Three hand-picked matches with a written reason for each, from a licensed Dallas agent &mdash; plus under-budget and wildcard picks.</span>
-          </div>
-          <div class="stack-val">$199</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-card">
+          <h3>Tell us what you're looking for</h3>
+          <p>Where you want to live, your budget, your move-in date and your must-haves. A quick call or text &mdash; not a twenty-question form.</p>
         </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-calculator"></i></div>
-          <div class="stack-txt">
-            <strong>Same-day pricing with the net-effective math done</strong>
-            <span>Every price re-checked the day we send it, with the real monthly cost after concessions &mdash; not the headline rent.</span>
-          </div>
-          <div class="stack-val">$99</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-card">
+          <h3>We send the right matches</h3>
+          <p>Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit &mdash; with our top picks up front.</p>
         </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-calendar-check"></i></div>
-          <div class="stack-txt">
-            <strong>Tour scheduling and coordination</strong>
-            <span>We book the tours around your calendar and pre-register you so nothing jams up at the leasing desk.</span>
-          </div>
-          <div class="stack-val">$75</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-file-signature"></i></div>
-          <div class="stack-txt">
-            <strong>Fees surfaced before you apply</strong>
-            <span>Application and administration fees on every recommendation, up front, plus a walk-through of the application itself.</span>
-          </div>
-          <div class="stack-val">$50</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-plug"></i></div>
-          <div class="stack-txt">
-            <strong>Utilities, internet and renters insurance set up for you</strong>
-            <span>Our Connect team shops providers, picks the best rates and handles the setup. You don't make a single call.</span>
-          </div>
-          <div class="stack-val">$99</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-truck-ramp-box"></i></div>
-          <div class="stack-txt">
-            <strong>Mover quotes and negotiated rates</strong>
-            <span>Side-by-side quotes from vetted DFW movers at rates we negotiated &mdash; not affiliate links that quietly mark the price up.</span>
-          </div>
-          <div class="stack-val">$99</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-ico"><i class="fas fa-book-open"></i></div>
-          <div class="stack-txt">
-            <strong>The DFW Insider's Guide</strong>
-            <span>Neighborhood-by-neighborhood breakdown of where to live in Dallas&ndash;Fort Worth and what things really cost.</span>
-          </div>
-          <div class="stack-val">$29</div>
-        </div>
-        <div class="stack-row stack-row--hero">
-          <div class="stack-ico"><i class="fas fa-sack-dollar"></i></div>
-          <div class="stack-txt">
-            <strong>Up to $250 toward your move, or as cash</strong>
-            <span>Paid after you lease. The exact amount depends on your rent and what the community pays us &mdash; your agent confirms it.</span>
-          </div>
-          <div class="stack-val"><span class="upto">up to</span>$250</div>
-        </div>
-
-        <div class="stack-total">
-          <span>Total real-world value</span>
-          <b>$900</b>
-        </div>
-
-        <div class="stack-price">
-          <p class="p-lab">Your price</p>
-          <p class="p-amt">$0</p>
-          <p class="p-sub">No fee, no markup on your rent, no catch you find out about later.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-card">
+          <h3>Tour your favorites and get up to $250 on us</h3>
+          <p>Visit the apartments whenever it suits you &mdash; no agent tagging along, no schedules to coordinate. List <strong>Apartment Agents</strong> on your guest card and application as how you learned about their property, tell us where you leased, and we&rsquo;ll get your reward started.</p>
         </div>
       </div>
 
       <div class="catch">
         <h3>So what's the catch?</h3>
-        <p>There isn't one, but there is a reason. Apartment communities set aside a marketing budget to fill units, and they pay us a referral fee when you list Apartment Agents on your guest card and application. That's our entire business model. You get the exact same rent and the exact same specials you'd get walking in alone &mdash; and then we hand a slice of our fee back to you as up to $250. <a href="https://apartmentagents.com/rebate-terms/" style="color:#0d6efd; font-weight:600;">Full reward terms</a>.</p>
+        <p>There isn't one, but there is a reason. Apartment communities set aside a marketing budget to fill their units, and they only pay us when someone we refer signs a lease. You get a great new apartment, the property gets a new resident, and your apartment expert gets paid for making the match. Everybody wins.</p>
+        <p style="margin-top:14px;">Using us never costs you a dollar more. What it gets you is people who track this market every day &mdash; who know which communities are running the best move-in specials right now and which ones fit what you're after &mdash; plus up to $250 to offset some of your moving costs. <a href="rewards.html" class="inline-link">Learn more</a>.</p>
       </div>
+
+      <p style="text-align:center; margin:var(--s5) 0 0;">
+        <a href="#signup" class="btn-primary" style="padding:16px 34px; font-size:1.05rem; min-height:52px; display:inline-flex; align-items:center; gap:10px;">
+          Get My Free Matches
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </p>
     </div>
   </section>
 
@@ -613,187 +507,131 @@
   <section class="sec move-sec">
     <div class="wrap" style="position:relative; z-index:2;">
       <div class="section-badge section-badge--dark">The part nobody else does</div>
-      <h2 style="color:#fff;">Finding the apartment is half of it. We help with the move too.</h2>
+      <h2 style="color:#fff;">The most cash back in Dallas &mdash; plus help with the move.</h2>
       <p class="lede" style="color:rgba(255,255,255,0.72); max-width:640px;">Every locator in Dallas will send you listings. This is the part where we're different &mdash; and it's the part that actually costs you money.</p>
 
       <div class="move-grid">
         <div class="move-card move-card--lead">
           <div class="move-lead-head">
             <div class="move-ico"><i class="fas fa-sack-dollar"></i></div>
-            <h3><span class="move-amount">Up to $250</span>toward your move, or as cash</h3>
+            <h3><span class="move-amount">Up to $250</span>cash back &mdash; guaranteed highest</h3>
           </div>
-          <p>The most any Dallas locator puts back in your pocket &mdash; the industry tops out at $200. Roughly two hours of a professional DFW moving crew, or straight cash if you'd rather. Take it as a move credit arranged before moving day, or as a payment after you lease.</p>
+          <p>The highest cash back in Dallas. <strong style="color:#fff;">Find a locator offering more on the same apartment and we'll match it.</strong> Paid straight to you by Zelle, Venmo, PayPal or an Amazon gift card.</p>
         </div>
         <div class="move-card">
           <div class="move-ico"><i class="fas fa-clipboard-list"></i></div>
-          <h3>Quotes from DFW's best movers</h3>
-          <p>We pull side-by-side quotes from vetted, insured DFW moving companies so you can compare real numbers instead of guessing &mdash; and choose who handles your things.</p>
+          <h3>Mover quotes, gathered for you</h3>
+          <p>Choose which moving companies you want quotes from and we'll take it from there. We don't take a cut from any of them &mdash; no referral links, no kickback baked into your price &mdash; so a quote is just a quote. You pick who you want and book them direct.</p>
         </div>
         <div class="move-card">
-          <div class="move-ico"><i class="fas fa-tags"></i></div>
-          <h3>Genuinely negotiated discounts</h3>
-          <p>Rates we negotiated on volume, not an affiliate link with a kickback baked into the price. If a "discount" would cost you more than booking direct, we won't send it.</p>
+          <div class="move-ico"><i class="fas fa-shield-halved"></i></div>
+          <h3>And none of the sales calls</h3>
+          <p>The movers send their quotes to us, not to you. They never get your phone number or email &mdash; so you compare real numbers in peace instead of fielding calls and texts from five companies all week.</p>
         </div>
         <div class="move-card">
-          <div class="move-ico"><i class="fas fa-calendar-day"></i></div>
-          <h3>We help you book it</h3>
-          <p>Pick the crew you want and we help lock the date, coordinate with the community's move-in window and reserve the elevator or loading dock.</p>
+          <div class="move-ico"><i class="fas fa-bolt"></i></div>
+          <h3>Utilities handled for you</h3>
+          <p>Our Connect Team compares rates on electricity, internet and renters insurance, then has it all set up and switched on for your move-in date. One conversation instead of calling around to five companies yourself &mdash; and it costs you nothing.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ 4 · WHAT OUR RECOMMENDATIONS ACTUALLY LOOK LIKE ═══════════ -->
-  <section class="sec" style="background:var(--paper-2);">
-    <div class="wrap">
-      <div class="section-badge">Show, don't tell</div>
-      <h2>What our recommendations actually look like</h2>
-      <p class="lede" style="max-width:640px;">Most services hand you forty listings and call it a search. You get three decisions, each with the reason we picked it and the price we verified today.</p>
+  <!-- ═══════════════════ REMOVED · SAMPLE SHORTLIST SECTION ═══════════════════
+       The "What our recommendations actually look like" cards (Top Pick / Under
+       Budget / Wildcard, each stamped EXAMPLE) sat here, along with the example
+       banner and sample-brief line. Removed on purpose: hand-built fake listings
+       with invented names and prices are a liability while the real product isn't
+       live, and the EXAMPLE chips were doing a lot of apologising.
 
-      <!-- ── EXAMPLE MARKER: these cards are illustrative, not live inventory ── -->
-      <div class="example-banner">
-        <i class="fas fa-circle-info" aria-hidden="true"></i>
-        <p><strong>This is an example, not current availability.</strong> The three cards below are a sample shortlist built to show the format &mdash; the property names, prices and units are illustrative. Your real shortlist is built from live Dallas inventory and priced the day it's sent.</p>
-      </div>
+       BRING IT BACK when Apartment List Builder ships — then these cards can be
+       generated from real Dallas inventory with real verified pricing instead of
+       illustrative copy. The supporting CSS (.example-banner, .brief-line, .rec-*)
+       was removed from the <style> block at the same time; see the note there.
+       ═══════════════════════════════════════════════════════════════════════════ -->
 
-      <div class="brief-line">
-        <strong>Sample brief:</strong> 1 bedroom &middot; up to $1,700/mo &middot; Uptown, Victory Park or Turtle Creek &middot; in-unit washer/dryer &middot; moving October 1
-      </div>
-
-      <div class="rec-grid">
-
-        <!-- STAR — strongest treatment -->
-        <article class="rec rec--star">
-          <div class="rec-photo">
-            <img src="images/energy-efficient-apartment.png" alt="Example listing photo: high-floor apartment kitchen with floor-to-ceiling windows over the city" loading="lazy" />
-            <span class="rec-ribbon rib-star"><i class="fas fa-star" aria-hidden="true"></i> Top Pick</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Uptown &middot; McKinney Ave</span>
-              <h3>The Wren</h3>
-            </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">1 bed / 1 bath</span>
-              <span class="rec-spec">742 sq ft</span>
-              <span class="rec-spec">11th floor, corner</span>
-            </div>
-            <p class="rec-value">Asking <span class="ask">$1,880</span>, but 6 weeks free on a 13-month lease brings it to <span class="net">$1,680/mo</span> &mdash; $20 under your ceiling for the nicest unit on this list.</p>
-            <p class="rec-why">Corner unit on the 11th floor, floor-to-ceiling windows facing the Katy Trail so the light lasts all afternoon. Full-size washer/dryer in the unit and <b>garage parking is included</b> instead of the usual $75/mo. It's a lease-up, which is exactly why the concession is this deep &mdash; it won't be by winter.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$75 app &middot; $200 admin</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- UNDER BUDGET -->
-        <article class="rec rec--under">
-          <div class="rec-photo">
-            <img src="images/amenity-kitchen.jpg" alt="Example listing photo: bright open-concept apartment kitchen with island and pendant lighting" loading="lazy" />
-            <span class="rec-ribbon rib-under"><i class="fas fa-arrow-trend-down" aria-hidden="true"></i> Under Budget</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Victory Park &middot; Design District edge</span>
-              <h3>Verano Flats</h3>
-            </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">1 bed / 1 bath</span>
-              <span class="rec-spec">688 sq ft</span>
-              <span class="rec-spec">4th floor</span>
-            </div>
-            <p class="rec-value">Asking <span class="ask">$1,545</span>; one month free on a 12-month lease nets out to <span class="net">$1,416/mo</span> &mdash; that's $284 a month back under your budget.</p>
-            <p class="rec-why">Quieter block on the Design District side, a five-minute walk to the DART green line. Rooftop pool and a real gym, not a closet with two treadmills. <b>The trade is the view</b> &mdash; you're looking at the parking structure, not the skyline. We're showing it because $284/month is worth knowing about.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$60 app &middot; $150 admin</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- WILDCARD -->
-        <article class="rec rec--wild">
-          <div class="rec-photo">
-            <img src="Dallas-Luxury-Apartment-Loft.jpg" alt="Example listing photo: high-floor luxury Dallas apartment loft interior" loading="lazy" />
-            <span class="rec-ribbon rib-wild"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Wildcard</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Turtle Creek</span>
-              <h3>Cascade on the Creek</h3>
-            </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">2 bed / 2 bath</span>
-              <span class="rec-spec">1,204 sq ft</span>
-              <span class="rec-spec">24th floor</span>
-            </div>
-            <p class="rec-value">Asking <span class="ask">$2,455</span>; 8 weeks free on a 15-month lease works out to <span class="net">$2,153/mo</span> &mdash; $453 over budget, and we're showing it anyway.</p>
-            <p class="rec-why">Top-floor corner: two-story wall of glass, a loft above the living room and a wraparound terrace over Turtle Creek. Two full baths and a den big enough to actually work in. <b>Over your number, on purpose</b> &mdash; if a roommate or a work-from-home setup is on the table the math changes fast, and this is the one people regret not touring.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$85 app &middot; $275 admin</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <p style="text-align:center; margin:var(--s5) 0 0;">
-        <a href="#signup" class="btn-primary" style="padding:16px 34px; font-size:1.05rem; min-height:52px; display:inline-flex; align-items:center; gap:10px;">
-          Get My Free Shortlist
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ 5 · HOW IT WORKS ══════════════════════════ -->
+    <!-- ═══════════ 4 · OBJECTIONS / STRAIGHT ANSWERS (must precede reviews) ═══════════ -->
   <section class="sec" style="background:#fff;">
     <div class="wrap-narrow">
-      <div class="section-badge">Simple process</div>
-      <h2>Three steps. That's the whole thing.</h2>
-      <p class="lede">No fee, no contract, no obligation to tour anything you don't like.</p>
+      <div class="section-badge">Straight answers</div>
+      <h2>The questions everyone asks.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">Short versions, no fine-print games.</p>
 
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-card">
-          <h3>Tell us what you want</h3>
-          <p>Name, email and number to start &mdash; then a quick conversation by text about budget, neighborhoods, move-in date and your must-haves. Two minutes, not a twenty-question form.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-card">
-          <h3>We send your shortlist &mdash; usually the same day</h3>
-          <p>A licensed Dallas agent searches the market, verifies today's pricing and the current specials, does the net-effective math, and sends you a handful of real options with the reason we picked each one.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-card">
-          <h3>Tour, lease, get paid</h3>
-          <p>We schedule the tours. When you find it, list Apartment Agents on the guest card and application &mdash; that one step is what unlocks your reward &mdash; then tell us where you leased and we arrange up to $250 toward your move or as cash.</p>
-        </div>
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>I can find an apartment myself &mdash; why use you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          You can, and plenty of people do. The difference is what it costs you. The rent is identical either way &mdash; communities don't give you a better price for going direct &mdash; so doing it alone means the same apartment, at the same price, minus up to $250. You'd also be doing the part that takes the longest: mindlessly scrolling listing sites, navigating fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you. Which buildings get noise complaints from residents or the bars next door. Which ones have maintenance problems. What a block actually feels like at night. And after all that, you're still chasing down mover quotes and setting up your utilities yourself.
+        </div></div>
       </div>
 
-      <p style="margin:var(--s4) 0 0; font-size:0.92rem; color:#7A7A7A; line-height:1.7;">
-        Reward amount depends on your net-effective rent and the referral fee the community pays. Your agent confirms the exact amount &mdash; see the <a href="https://apartmentagents.com/rebate-terms/" style="color:#0d6efd; font-weight:600;">full reward terms</a>. Prefer to talk it through? <a href="tel:+19729937300" style="color:#0d6efd; font-weight:600;">(972) 993-7300</a>.
-      </p>
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Is it really free? What's the catch?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          There's no catch, but there is a reason. Communities set aside a marketing budget to fill their units and pay us a referral fee only when someone we refer signs a lease. You never pay us anything, and your rent isn't a dollar higher for using us.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Do you just send me wherever pays you the most?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Straight answer: we only work with communities that pay a referral fee &mdash; that's what makes this free for you. But we're not paid unless you actually sign a lease, so sending you somewhere that doesn't fit what you asked for gets us nothing. A large share of our business comes from repeat clients and referrals, so a bad recommendation costs us far more than a bigger fee is ever worth.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>If I'm applying with a roommate or partner, does everyone need to list you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes &mdash; and this one trips people up. A community can only pay one locator per lease. If one applicant lists Apartment Agents and another lists a different company or referral source, it can cancel the referral out entirely and the reward disappears for everyone on the lease.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>When do I actually get the money?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          After you move in and the community pays our referral fee, we send it by Zelle, Venmo, PayPal or an Amazon gift card &mdash; whichever you prefer. The exact amount depends on your rent and the referral fee the community pays. <a href="rewards.html" class="inline-link">See the amounts</a>.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Can I still use you if I've already started looking?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes, and most people have already started looking by the time they find us. The main thing that gets in the way is if you've already toured or listed someone else as your referral source at a community. Tell us where you've been and we'll sort out quickly what still works.
+        </div></div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════ 6 · PROOF ══════════════════════════ -->
-  <section class="sec" style="background:var(--paper-2);">
+  <!-- ══════════════════════════ 5 · WALL OF REVIEWS ══════════════════════════
+       Every card below is a REAL published Google review, copied verbatim from
+       index.html. Do not edit, reword, shorten or invent one. New reviews come
+       from the live Google Business profile only.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec" id="reviews" style="background:var(--paper-2);">
     <div class="wrap">
       <div class="section-badge">Why trust us</div>
-      <h2>Dallas renters have been using us since 2003.</h2>
-      <p class="lede" style="max-width:620px;">We're a licensed Texas brokerage with a Dallas office, not a lead-selling website.</p>
+      <h2>Saving Dallas renters money since 2003.</h2>
+      <p class="lede" style="max-width:620px;">We're a licensed Texas brokerage that focuses 100% on apartment rentals, not home sales, so every bit of our expertise goes into getting you the right place at the right price.</p>
 
-      <div class="proof-stats" style="margin-bottom:var(--s5);">
+      <div class="proof-stats">
         <div class="proof-stat">
           <div><div class="n">23</div><div class="l">years finding apartments in DFW</div></div>
         </div>
@@ -807,97 +645,251 @@
         </div>
       </div>
 
-      <!--
-        TESTIMONIALS: these three are REAL Google reviews already published on index.html
-        (Jordyn S., Troy H., Ros M.). Do not edit the wording. If more are added here,
-        pull them from the live Google Business profile — never write new ones.
-      -->
-      <div class="tgrid" style="display:grid; gap:20px;">
+      <div class="reviews-wall">
+
+        <!-- 1: Amanda E. -->
         <div class="tcard">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"I worked with 4 people from different companies this time around, and Sydney at Apartment Agents was by far the best! She sent me a list of available units with all the specs, and even set up tours for me to attend. After just 2 weeks of searching I signed a lease for an apartment that had pretty much all of my wants &amp; needs for an amazing price! I even got a rebate!"</p>
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige was awesome in helping my boyfriend and me find somewhere to live. She listened to our needs and did everything she could to make sure they were met."</p>
           <div style="display:flex; align-items:center; gap:12px;">
-            <div class="tavatar" style="background:#F5736C;">JS</div>
-            <div style="font-weight:700; font-size:0.92rem;">Jordyn S.</div>
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">AE</div>
+            <div class="tname">Amanda E.</div>
           </div>
         </div>
+
+        <!-- 2: Lx -->
         <div class="tcard">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Apartment Agents (and Cindy Little in particular) were GREAT to work with, and found me a new apartment (and exactly what I wanted!) that SAME DAY. I sent her a list of 'must haves' and I had several choices in my inbox very quickly. Her first choice for me was the one I ended up choosing after looking at like 5 others."</p>
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I worked with Jeff A., he made the experience painless, he provided great options based on what I told him I was looking for. Very efficient, and anytime I emailed questions or concerns he responded in a timely manner. I would work with Jeff again and I would recommend him. Thanks Jeff!"</p>
           <div style="display:flex; align-items:center; gap:12px;">
-            <div class="tavatar" style="background:#9DAAF2;">TH</div>
-            <div style="font-weight:700; font-size:0.92rem;">Troy H.</div>
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">L</div>
+            <div class="tname">Lx</div>
           </div>
         </div>
+
+        <!-- 3: Jordyn S. -->
         <div class="tcard">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Kristina was an amazing agent &mdash; she was kind, attentive, listened to my needs and wants, and was able to provide me with several amazing options within my requested price range. She scheduled everything and made the entire process unbelievably easy, and I was able to find and sign a lease at a great apartment within a week of reaching out. 10/10"</p>
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"After many failed attempts at moving the last two years, I finally decided to look into help from an apartment locator. I worked with 4 people from different companies this time around, and Sydney at Apartment Agents was by far the best! I'm a very particular person when it comes to where I live, and Sydney was very understanding and worked tirelessly to help find my dream apartment. She sent me a list of available units with all the specs, and even set up tours for me to attend. After just 2 weeks of searching I signed a lease for an apartment that had pretty much all of my wants &amp; needs for an amazing price! I even got a rebate! I would recommend Apartment Agents (specifically Sydney Jepson) to everyone I know looking for a new place!"</p>
           <div style="display:flex; align-items:center; gap:12px;">
-            <div class="tavatar" style="background:#AECD81; color:#0F1338;">RM</div>
-            <div style="font-weight:700; font-size:0.92rem;">Ros M.</div>
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">JS</div>
+            <div class="tname">Jordyn S.</div>
           </div>
         </div>
+
+        <!-- 4: Ally C. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I'm moving cross country to Texas. I was getting so distraught and nervous because I didn't know what location I should move to and I couldn't find an apartment that fit all my needs. I found Alex and his company on Google and after 30 minutes from contacting him, he found me the perfect location and place. Before you exhaust yourself with endless searches, I recommend 100% you contact Alex first!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">AC</div>
+            <div class="tname">Ally C.</div>
+          </div>
+        </div>
+
+        <!-- 5: Sam Z. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"No money? No problem! A friend of mine recommended this service to me when I said I was moving into town, and this made it incredibly easy to find a quality apartment and move in without any hassle. I would recommend SIX stars if I could! Thank you Ms. Cindy!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">SZ</div>
+            <div class="tname">Sam Z.</div>
+          </div>
+        </div>
+
+        <!-- 6: Isaac Z. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Sydney was the apartment realtor who helped me relocate to Dallas. She was extremely helpful in locating an apartment that best fit my requirements. I am honestly more than satisfied with the choice she provided as my new apartment. I would definitely recommend Apartment Agents for their services and their realtors like Sydney!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">IZ</div>
+            <div class="tname">Isaac Z.</div>
+          </div>
+        </div>
+
+        <!-- 7: Annie B. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"When I found out I had to find a place to move on such short notice (2 weeks!) I was overwhelmed. I needed private garage parking and a yard and it's nearly impossible to sort through apartment websites looking for those 'must-haves'. Paige reached out to me and made it happen! She worked hard to find me multiple options and I settled on a place that was brand new, had everything I wanted (and more!), great move-in specials, and most importantly, felt like home. I was able to move-in just 4 days after viewing the property. I could not have done it without Paige!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">AB</div>
+            <div class="tname">Annie B.</div>
+          </div>
+        </div>
+
+        <!-- 8: Trey M. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige Prestwood is absolutely amazing. I started a search over a year ago and then decided to stay put. She not only kept in touch with me, but was extremely professional and ultimately found me the perfect place well within my budget. Thanks so much Paige! I'll be sending friends and family your way."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">TM</div>
+            <div class="tname">Trey M.</div>
+          </div>
+        </div>
+
+        <!-- 9: Blaine S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige is incredible. Trust me when I tell you she is the one you want to work with. Went above and beyond to find me the perfect place. If you do only one thing, ask for Paige. She rocks."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">BS</div>
+            <div class="tname">Blaine S.</div>
+          </div>
+        </div>
+
+        <!-- 10: Jessica S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I have used Shannon with Apartment Agents now twice to find my perfect home. She's delivered in spades both times and I cannot more highly recommend her and Apartment Agents as a whole."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">JS</div>
+            <div class="tname">Jessica S.</div>
+          </div>
+        </div>
+
+        <!-- 11: J. S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I've been using Shannon as my apartment locator for the past 4 years and she's nothing short of amazing. Always willing to make adjustments for different areas I've been interested in and catering to my requests for amenities. I also never have to wait around for an updated list because she's on top of everything and knows the DFW like the back of her hand. As long as I'm living in apartments, she's my go-to without hesitation!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">JS</div>
+            <div class="tname">J. S.</div>
+          </div>
+        </div>
+
+        <!-- 12: Ros M. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Kristina was an amazing agent &ndash; she was kind, attentive, listened to my needs and wants, and was able to provide me with several amazing options within my requested price range. She scheduled everything and made the entire process unbelievably easy, and I was able to find and sign a lease at a great apartment within a week of reaching out to Kristina! 10/10"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">RM</div>
+            <div class="tname">Ros M.</div>
+          </div>
+        </div>
+
+        <!-- 13: Dina D. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Shannon was great in helping my colleagues and I find accommodation in Dallas. We told her what we were looking for, size, location, amenities, and she very quickly sent us a list of places within our budget and helped set up viewings. Moving to a new place can be very difficult and stressful. Shannon helped ease that stress for us, and we all ended up in a fantastic apartment complex that more than fulfilled all our wish list."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">DD</div>
+            <div class="tname">Dina D.</div>
+          </div>
+        </div>
+
+        <!-- 14: Carline U. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Cindy from Apartment Agents was amazing, quick responses and provided a comprehensive list that allowed me to narrow down my options. It is now week 3 in my apartment and I love it more each day. Thanks again, Cindy!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">CU</div>
+            <div class="tname">Carline U.</div>
+          </div>
+        </div>
+
+        <!-- 15: John G. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I have used this apartment locator service 2x in a row. Kristina C. is so helpful and flexible. I'm very picky with where I live and Kristina definitely catered to that. She helped me look through several apartments across the metroplex and find the right one. She is very communicative and goal-oriented. Thanks for all your help Kristina!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">JG</div>
+            <div class="tname">John G.</div>
+          </div>
+        </div>
+
+        <!-- 16: Troy H. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Apartment Agents (and Cindy Little in particular) were GREAT to work with, and found me a new apartment (and exactly what I wanted!) that SAME DAY. I sent her a list of 'must haves' and I had several choices in my inbox very quickly. Her first choice for me was the one I ended up choosing after looking at like 5 others. I would highly recommend Cindy and WILL be using her again if the need arises."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">TH</div>
+            <div class="tname">Troy H.</div>
+          </div>
+        </div>
+
+        <!-- 17: Frances F. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I've been using Sara Dahlen for a couple of years now for my apartment finding needs and she is amazing!! All you have to do is tell her what you're looking for and she does all the rest. She will find perfect matches all the way up to booking tours for you. Not only does she have a strong work ethic, she is such a joy to get to work with. I highly recommend using Sara for your next move!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">FF</div>
+            <div class="tname">Frances F.</div>
+          </div>
+        </div>
+
+        <!-- 18: Deja T. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Shannon was great. She found my dream apartment! Definitely would recommend her to anyone looking to rent in the DFW."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">DT</div>
+            <div class="tname">Deja T.</div>
+          </div>
+        </div>
+
+        <!-- 19: Kat P. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I had the pleasure of having Kristina helping me with my apartment search. She has been wonderful. She would always respond to my emails within a few minutes and went above and beyond to accommodate my criteria. She would even follow up on properties that matched exactly what I wanted but did not have any availability. Finding a decent apartment in Dallas area is close to impossible and the search can be very frustrating but having someone like Kristina on your side is a tremendous help."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">KP</div>
+            <div class="tname">Kat P.</div>
+          </div>
+        </div>
+
+        <!-- 20: Eric L. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"If you need to find an apartment in the Metroplex, Apartment Agents is your best way to locate what you need. I have used their services 3 times. I cannot say enough good about Cindy and the team. Very professional and saved me a lot of time."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">EL</div>
+            <div class="tname">Eric L.</div>
+          </div>
+        </div>
+
+        <!-- 21: Callie D. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Apartment Agents is AMAZING!!! My boyfriend and I had gone to look at apartments on our own 4&ndash;5 times. We thought we had exhausted all our options, until we found Apartment Agents! Cindy Little was our agent, and she was super helpful, professional, quick at responding, and just a HUGE HELP! I told her where we wanted to be and the things we wanted, and she sent me a personalized list that checked all the boxes. I wouldn't have found a place to live if it wasn't for Cindy's help!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">CD</div>
+            <div class="tname">Callie D.</div>
+          </div>
+        </div>
+
+        <!-- 22: Michael C. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I cannot thank Jeff enough for his help in finding an apartment. I gave him the challenge of finding a 3-month lease that balances the needs of two work locations, and his work was INCREDIBLE. He was extremely responsive to my feedback, and was able to quickly narrow down which option would be the best fit for me. Loving the apartment he found for me!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">MC</div>
+            <div class="tname">Michael C.</div>
+          </div>
+        </div>
+
+        <!-- 23: Adolph E. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"It only took Cindy what felt like a matter of minutes to return a list of apartments to me that were directly aligned to my requirements. Within a week I had seen 3 places and made a decision for one of them. Customer experience is what drives loyalty and Cindy has made sure my experience will drive loyalty for a long time to come. Cindy is most definitely an expert in her field and it was a memorable experience working with her."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">AE</div>
+            <div class="tname">Adolph E.</div>
+          </div>
+        </div>
+
       </div>
 
       <p style="text-align:center; margin:var(--s5) 0 0;">
         <a href="https://share.google/tMcbzN3GUeJdmye3K" target="_blank" rel="noopener" class="review-link">
-          Read our Google reviews
+          See all our reviews
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </p>
     </div>
   </section>
 
-  <!-- ══════════════════════════ 7 · OBJECTIONS ══════════════════════════ -->
-  <section class="sec" style="background:#fff;">
-    <div class="wrap-narrow">
-      <div class="section-badge">Straight answers</div>
-      <h2>The four questions everyone asks.</h2>
-      <p class="lede" style="margin-bottom:var(--s4);">Short versions, no fine-print games.</p>
 
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>Is it really free?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          Yes. You never pay us anything, and your rent isn't a dollar higher for using us. You get the same pricing and the same move-in specials the community offers everyone &mdash; plus up to $250 back that you wouldn't have gotten on your own.
-        </div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>So what's the catch?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          Apartment communities pay a referral fee out of their marketing budget when we send them a resident. Most locators keep all of it. We give a piece back to you. The one thing you have to do is list <strong>Apartment Agents</strong> as your referral source on the guest card and on your application &mdash; that's how the community knows to pay us, and it's how we pay you. Skip it and the reward doesn't happen.
-        </div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>Do I have to tour with an agent?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          No. Most people tour on their own &mdash; we schedule the appointments, pre-register you with each community and stay on text while you're there. If you'd rather have someone with you, we can do that too. Either way it costs you nothing and doesn't change your reward.
-        </div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>Can I still use you if I've already started looking?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          Absolutely, and most people have. Tell your agent which communities you've already contacted so we can work around them, and we'll pick it up from there. The sooner you loop us in the more of the market stays open to you &mdash; but starting late doesn't shut you out.
-        </div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ 8 · FINAL CTA ══════════════════════════ -->
+  <!-- ══════════════════════════ 7 · FINAL CTA ══════════════════════════ -->
   <section class="cta-sec" id="signup-bottom">
     <div class="cta-bg" aria-hidden="true">
       <img src="dallas-skyline.png" alt="" loading="lazy" />
@@ -905,39 +897,25 @@
     </div>
     <div class="cta-glow" aria-hidden="true"></div>
     <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
-      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">Save more on your dream Dallas apartment.</h2>
-      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Free service, up to $250 back, and real help with the move. Thirty seconds to start.</p>
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">The Dallas apartment you actually want.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
 
       <div class="form-card" id="bottomCard">
         <div class="form-body">
           <p class="form-card__eyebrow">Free · No obligation</p>
-          <h3 class="form-card__title">Get your free Dallas shortlist</h3>
-          <!-- TODO before launch: point action/handler at the live GHL form endpoint. -->
-          <form novalidate onsubmit="return aaSubmit(event, 'bottomCard')">
-            <div class="field">
-              <label for="b-name">First name</label>
-              <input id="b-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name" required />
-            </div>
-            <div class="field">
-              <label for="b-email">Email address</label>
-              <input id="b-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Email address" required />
-            </div>
-            <div class="field">
-              <label for="b-phone">Mobile number</label>
-              <input id="b-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Mobile number" required />
-            </div>
-            <button type="submit" class="btn-primary form-submit">Get My Free Shortlist</button>
-          </form>
-          <p class="form-micro">No cost, no obligation, no spam. A licensed Dallas agent sends your picks &mdash; usually the same day.</p>
+          <h3 class="form-card__title">Get your free Dallas matches</h3>
+          <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and our licensed Dallas apartment experts go to work for you right away.</p>
+          <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <p class="form-micro">No cost, no obligation, no spam.</p>
         </div>
-        <div class="form-thanks" role="status" aria-live="polite">
-          <div style="width:52px; height:52px; border-radius:50%; background:rgba(174,205,129,0.25); color:#3f6b12; display:flex; align-items:center; justify-content:center; margin:8px auto 14px; font-size:1.3rem;"><i class="fas fa-check"></i></div>
-          <h3 style="margin:0 0 8px; font-size:1.25rem;">You're in.</h3>
-          <p style="margin:0; color:#5A5A7A; font-size:0.98rem; line-height:1.7;">A licensed Dallas agent will reach out shortly to lock in your neighborhoods, budget and move-in date &mdash; then your shortlist goes out.</p>
-        </div>
+        <!-- Success/thanks panel removed with the on-page form. Both cards now link
+             straight out to SIGNUP_URL, so the confirmation lives on that page. -->
       </div>
 
-      <p style="text-align:center; margin:20px 0 0; font-size:0.9rem; color:rgba(255,255,255,0.55);">
+      <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
         Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
       </p>
     </div>
@@ -949,10 +927,10 @@
       <div class="footer-col">
         <h4>Menu</h4>
         <ul>
-          <li><a href="#signup">Start Your Search</a></li>
+          <li><a href="#signup">Get My Free Matches</a></li>
           <li><a href="how-it-works.html">How it Works</a></li>
-          <li><a href="rewards.html">Up to $250 Move or Cash</a></li>
-          <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1013,18 +991,6 @@
         var b = el.querySelector('.faq-btn'); if (b) b.setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-    }
-    /* Placeholder submit handler — replace with the live GHL post before launch. */
-    function aaSubmit(e, cardId) {
-      e.preventDefault();
-      var form = e.target;
-      var bad = null;
-      Array.prototype.forEach.call(form.querySelectorAll('input[required]'), function (i) {
-        if (!i.value.trim() && !bad) bad = i;
-      });
-      if (bad) { bad.focus(); bad.style.borderColor = '#F5736C'; return false; }
-      document.getElementById(cardId).classList.add('is-sent');
-      return false;
     }
   </script>
 </body>

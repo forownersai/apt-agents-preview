@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Up to $250 Cash Back | Apartment Agents Dallas</title>
+  <meta name="description" content="Up to $250 cash back when you lease through Apartment Agents. The highest cash back in Dallas, paid straight to you by Zelle, Venmo, PayPal or an Amazon gift card." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — copied verbatim from dallas-apartments-new.html.
+       That page is the system; this page inherits it without drift.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --green-ink: #4C6B22;   /* the green, darkened until it is legible on white */
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+
+      /* spacing scale */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      /* layered, colour-tinted elevation system (base -> elevated -> floating) */
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+      --sh-star:  0 2px 6px rgba(174,205,129,0.22), 0 14px 32px rgba(15,19,56,0.16), 0 36px 80px rgba(15,19,56,0.16);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------------- NAV (verbatim system) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-link[aria-current="page"] { color: #6b78c4; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn-primary {
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    .btn-coral { /* kept as the sibling pages define it (same blue pill) */
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    /* Secondary pill — for people who already leased. Same geometry, quieter fill. */
+    .btn-ghost {
+      background: #fff; color: var(--navy); font-weight: 800; border-radius: 999px;
+      border: 1.5px solid rgba(15,19,56,0.18); cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 52px; padding: 14px 26px; font-size: 1rem;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 6px 16px rgba(90,104,190,0.10);
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+    }
+    .btn-ghost:hover { border-color: var(--lav); color: #4a56a8; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(15,19,56,0.06), 0 12px 26px rgba(90,104,190,0.18); }
+    .btn-ghost:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; }
+    .btn-ghost:active { transform: translateY(0) scale(0.985); }
+
+    /* Mobile nav CTA — declared after .btn-coral so its display wins */
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+
+    /* inline text links on light surfaces — every state accounted for */
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
+    .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
+    .link-quiet:hover { color: #fff; }
+    .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .link-quiet:active { opacity: 0.75; }
+
+    .section-badge {
+      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      border-radius: 20px; padding: 5px 14px;
+    }
+    .section-badge--dark { background: rgba(157,170,242,0.18); color: var(--lav); }
+
+    /* ---------------- HERO (light lavender-white field) ---------------- */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 24px 20px 34px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
+    }
+    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
+    .hero h1 { color: var(--navy); font-size: clamp(2rem, 8vw, 4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero h1 em { font-style: normal; color: inherit; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
+
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.9); border: 1px solid rgba(157,170,242,0.6);
+      color: var(--navy); font-size: 0.9rem; font-weight: 600; border-radius: 999px; padding: 7px 13px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 6px 16px rgba(90,104,190,0.10);
+      backdrop-filter: blur(4px);
+    }
+    .hero-pill i { color: #4C6B22; font-size: 0.8rem; }
+
+    .hero-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+    @media (min-width: 560px) { .hero-actions { flex-direction: row; flex-wrap: wrap; align-items: center; } }
+
+    /* ---------------- CARDS ---------------- */
+    .form-card {
+      background: #fff; border-radius: 22px; padding: 18px 16px 16px;
+      box-shadow: var(--sh-float);
+      border: 1px solid rgba(255,255,255,0.5);
+      position: relative;
+    }
+    .form-card--light {
+      border: 1px solid rgba(157,170,242,0.75);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 1px 2px rgba(15,19,56,0.06),
+        0 10px 24px rgba(90,104,190,0.18),
+        0 30px 64px rgba(48,58,140,0.20);
+    }
+    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
+    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 12px; color: var(--navy); }
+    .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; }
+    @media (min-width: 768px) {
+      .form-submit { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; padding: 15px 36px; }
+    }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 10px 0 0; text-align: center; }
+
+    /* ---------------- HERO REWARD CARD ---------------- */
+    .reward-card { text-align: center; padding: 24px 18px 20px; }
+    .reward-card__eyebrow { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #5f6cbb; margin: 0; }
+    .reward-card__amount {
+      font-family: 'DM Serif Display', Georgia, serif; color: var(--navy);
+      font-size: clamp(3.6rem, 18vw, 5.4rem); line-height: 1; letter-spacing: -0.04em;
+      margin: 6px 0 2px; display: block;
+    }
+    .reward-card__amount .up { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-ink); margin-bottom: 2px; }
+    .reward-card__label { margin: 0; color: var(--ink-mute); font-size: 1rem; font-weight: 600; }
+    .reward-card__rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.14), transparent); margin: 18px 0 16px; }
+    .reward-card__guarantee { margin: 0; color: var(--navy); font-size: 1rem; line-height: 1.65; }
+    .reward-card__foot { margin: 14px 0 0; padding-top: 14px; border-top: 1px dashed rgba(15,19,56,0.12); color: var(--ink-mute); font-size: 0.92rem; line-height: 1.6; }
+    .guarantee-tag {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px;
+      background: rgba(174,205,129,0.22); border: 1px solid rgba(76,107,34,0.28); color: #3d5a17;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 999px; padding: 6px 14px;
+    }
+
+    /* ---------------- SECTION SHELL ---------------- */
+    .sec { padding: var(--s6) 20px; }
+    @media (min-width: 700px) { .sec { padding: var(--s7) 24px; } }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .wrap-narrow { max-width: 760px; margin: 0 auto; }
+    .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.75rem); line-height: 1.14; margin: 12px 0 14px; }
+    .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
+    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
+
+    /* ============================================================
+       TIER CARDS — the two rent bands.
+       Built as cards from the start, not a table that collapses:
+       header band + stacked label/amount rows. Nothing to scroll
+       sideways at 390px, and the amount stays the loudest thing.
+       ============================================================ */
+    .tier-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 760px) { .tier-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+
+    .tier-card {
+      background: #fff; border: 1px solid rgba(15,19,56,0.09); border-radius: 20px; overflow: hidden;
+      box-shadow: var(--sh-elev);
+    }
+    .tier-card--lead { box-shadow: var(--sh-star); border-color: rgba(76,107,34,0.22); }
+    .tier-head { padding: 18px 20px 16px; background: var(--navy); position: relative; }
+    .tier-card--lead .tier-head { background: linear-gradient(150deg, #182050 0%, var(--navy) 62%); }
+    .tier-head::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(to right, rgba(174,205,129,0.9), rgba(157,170,242,0.9));
+    }
+    .tier-card:not(.tier-card--lead) .tier-head::after { background: linear-gradient(to right, rgba(157,170,242,0.7), rgba(157,170,242,0.15)); }
+    .tier-eyebrow { margin: 0 0 4px; color: rgba(255,255,255,0.62); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; }
+    .tier-band { margin: 0; color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; letter-spacing: -0.02em; line-height: 1.2; }
+
+    .tier-rows { list-style: none; margin: 0; padding: 0; }
+    .tier-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 16px 20px;
+    }
+    .tier-row + .tier-row { border-top: 1px solid rgba(15,19,56,0.08); }
+    .tier-row__label { min-width: 0; }
+    .tier-row__label b { display: block; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .tier-row__label span { display: block; font-size: 0.86rem; color: var(--ink-mute); line-height: 1.45; margin-top: 2px; }
+    .tier-amt {
+      font-family: 'DM Serif Display', Georgia, serif; color: var(--green-ink);
+      font-size: 2rem; line-height: 1; letter-spacing: -0.03em; flex-shrink: 0;
+    }
+    .tier-amt--top { font-size: 2.5rem; }
+
+    .tier-note { margin: var(--s4) 0 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+
+    /* ---------------- STEPS (system) ---------------- */
+    .step { display: flex; gap: 18px; align-items: flex-start; }
+    .step + .step { margin-top: 18px; }
+    .step-num { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.45rem; flex-shrink: 0; background: var(--lav); color: var(--navy); box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30); }
+    .step-card { flex: 1; min-width: 0; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px; padding: 20px 20px; box-shadow: var(--sh-base); }
+    .step-card h3 { font-size: 1.2rem; margin: 0 0 8px; line-height: 1.25; }
+    .step-card p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.72; }
+    .step-card p + p { margin-top: 12px; }
+
+    /* ---------------- CALLOUT (system "catch" card) ---------------- */
+    .catch { margin-top: var(--s4); background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav); border-radius: 16px; padding: 20px 20px; }
+    .catch h3 { font-size: 1.15rem; margin: 0 0 8px; }
+    .catch p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+
+    /* ---------------- ROOMMATE SECTION (the money nuance) ----------------
+       Deliberately the loudest block on the page after the hero: it is the
+       one thing on this page that costs a renter real money if missed. */
+    .roommate-sec {
+      background:
+        radial-gradient(760px 460px at 12% 0%, rgba(174,205,129,0.16) 0%, transparent 60%),
+        radial-gradient(700px 500px at 95% 100%, rgba(157,170,242,0.16) 0%, transparent 62%),
+        var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .roommate-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n2)' opacity='0.3'/%3E%3C/svg%3E");
+    }
+    .rm-card {
+      background: linear-gradient(160deg, rgba(174,205,129,0.18), rgba(174,205,129,0.05));
+      border: 1px solid rgba(174,205,129,0.4); border-radius: 20px; padding: 22px 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 14px 34px rgba(4,7,26,0.28);
+    }
+    .rm-card p { color: rgba(255,255,255,0.82); font-size: 1rem; line-height: 1.75; margin: 0; }
+    .rm-card p + p { margin-top: 14px; }
+    .rm-card strong { color: #fff; }
+    .rm-ico { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: var(--green); color: var(--navy); margin-bottom: 14px; }
+
+    /* ---------------- PAYOUT TILES ---------------- */
+    .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (min-width: 700px) { .pay-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+    .pay-tile {
+      background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px;
+      padding: 20px 14px; text-align: center; box-shadow: var(--sh-base);
+    }
+    .pay-tile i { font-size: 1.5rem; color: #6b78c4; display: block; margin-bottom: 10px; }
+    .pay-tile span { font-weight: 700; font-size: 0.98rem; color: var(--navy); }
+
+    /* ---------------- CLAIM STRIP ---------------- */
+    .claim-card {
+      background: #fff; border: 1px solid rgba(157,170,242,0.6); border-radius: 20px;
+      padding: 24px 20px; text-align: center;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(15,19,56,0.06), 0 10px 24px rgba(90,104,190,0.16), 0 28px 60px rgba(48,58,140,0.14);
+    }
+    .claim-card h2 { margin: 0 0 10px; font-size: clamp(1.5rem, 5.4vw, 2.1rem); line-height: 1.18; }
+    .claim-card p { margin: 0 0 20px; color: var(--ink-mute); font-size: 1rem; line-height: 1.7; }
+    .claim-btn { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 22px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+    @media (min-width: 560px) { .claim-btn { width: auto; padding: 15px 38px; } }
+
+    /* ---------------- FINAL CTA ---------------- */
+    .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
+    @media (min-width: 700px) { .cta-sec { padding: var(--s7) 24px; } }
+    .cta-bg { position: absolute; inset: 0; z-index: 0; }
+    .cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%); }
+    .cta-bg .veil { position: absolute; inset: 0; background: rgba(15,19,56,0.9); }
+    .cta-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 760px; max-width: 130%; height: 100%; background: radial-gradient(ellipse at center top, rgba(157,170,242,0.16) 0%, transparent 62%); pointer-events: none; z-index: 1; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.95rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 0.95rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    nav button:active { opacity: 0.65; }
+
+    /* ============================================================
+       BREAKPOINTS — mobile is the design; desktop adapts.
+       ============================================================ */
+    @media (min-width: 700px) {
+      .hero { padding: 56px 24px 64px; }
+      .form-card { padding: 26px 24px 22px; }
+      .form-card__title { font-size: 1.5rem; }
+      .reward-card { padding: 32px 26px 26px; }
+      .claim-card { padding: 34px 32px; }
+      .tier-head { padding: 22px 24px 18px; }
+      .tier-row { padding: 18px 24px; }
+      .tier-band { font-size: 1.65rem; }
+    }
+    @media (min-width: 1000px) {
+      .hero { padding: 68px 24px 64px; }
+      .hero-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+      .hero h1 { font-size: clamp(2.8rem, 4.4vw, 4rem); }
+      .hero-sub { font-size: 1.15rem; }
+    }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none; min-height:44px;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link" aria-current="page">Up to $250 Cash Back</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" aria-current="page" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════ 1 · HERO ══════════════════════════
+       Light treatment from the system: near-white base, lavender washes,
+       grain, dark navy text. The amount is the centrepiece and the
+       guarantee sits with it, not three sections down.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-layout">
+
+        <div>
+          <p class="hero-kicker">Your reward</p>
+          <h1>Up to $250 cash back.</h1>
+          <p class="hero-sub"><strong>The highest cash back in Dallas. Find a locator offering more on the same apartment and we'll match it.</strong></p>
+          <p class="hero-sub" style="color:var(--ink-mute); font-size:1rem;">Lease an apartment we send you and a slice of what the community pays us comes back to you. The search costs you nothing either way.</p>
+          <ul class="hero-pills">
+            <li class="hero-pill"><i class="fas fa-check"></i>100% free service</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Paid straight to you</li>
+            <li class="hero-pill"><i class="fas fa-check"></i>Best offer guaranteed</li>
+          </ul>
+          <div class="hero-actions">
+            <a href="#signup" class="btn-primary" style="min-height:52px; padding:15px 30px; font-size:1.05rem; display:inline-flex; align-items:center; justify-content:center; gap:10px;">
+              Get My Free Matches
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a href="claim-reward.html" class="btn-ghost">Already leased? Claim your reward</a>
+          </div>
+        </div>
+
+        <!-- The number itself, given its own surface -->
+        <div class="form-card form-card--light reward-card" style="margin-top:28px;">
+          <span class="reward-card__amount"><span class="up">Up to</span>$250</span>
+          <p class="reward-card__label">cash back when you lease through us</p>
+          <div class="reward-card__rule"></div>
+          <div class="guarantee-tag"><i class="fas fa-shield-halved" aria-hidden="true"></i>Best offer guaranteed</div>
+          <p class="reward-card__guarantee">Find a locator offering more on the same apartment and we'll match it.</p>
+          <p class="reward-card__foot">Paid straight to you by Zelle, Venmo, PayPal or an Amazon gift card.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 2 · THE AMOUNTS ══════════════════════ -->
+  <section class="sec" id="amounts" style="background:#fff;">
+    <div class="wrap-narrow">
+      <div class="section-badge">The amounts</div>
+      <h2>How much you get.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">Two things set the amount: your monthly rent, and the referral fee the community pays us. Bigger fee, bigger reward. Your agent confirms the exact number once we know where you're leasing.</p>
+
+      <div class="tier-grid">
+
+        <!-- BAND 1 -->
+        <div class="tier-card tier-card--lead">
+          <div class="tier-head">
+            <p class="tier-eyebrow">Monthly rent</p>
+            <p class="tier-band">$1,250 or more</p>
+          </div>
+          <ul class="tier-rows">
+            <li class="tier-row">
+              <span class="tier-row__label"><b>Full referral fee</b><span>Community pays a full month</span></span>
+              <span class="tier-amt tier-amt--top">$250</span>
+            </li>
+            <li class="tier-row">
+              <span class="tier-row__label"><b>Reduced fee</b><span>Community pays a partial fee</span></span>
+              <span class="tier-amt">$150</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- BAND 2 -->
+        <div class="tier-card">
+          <div class="tier-head">
+            <p class="tier-eyebrow">Monthly rent</p>
+            <p class="tier-band">Under $1,250</p>
+          </div>
+          <ul class="tier-rows">
+            <li class="tier-row">
+              <span class="tier-row__label"><b>Full referral fee</b><span>Community pays a full month</span></span>
+              <span class="tier-amt">$150</span>
+            </li>
+            <li class="tier-row">
+              <span class="tier-row__label"><b>Reduced fee</b><span>Community pays a partial fee</span></span>
+              <span class="tier-amt">$100</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="tier-note">Not sure what the communities you like pay? Your agent can tell you when we send your matches. Full details are in the <a href="https://apartmentagents.com/rebate-terms/" class="inline-link" target="_blank" rel="noopener">reward terms</a>.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══════════════════════ 3 · HOW YOU EARN IT ══════════════════════ -->
+  <section class="sec" id="how-you-earn-it" style="background:#fff;">
+    <div class="wrap-narrow">
+      <div class="section-badge">How you earn it</div>
+      <h2>One thing to remember.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">When a leasing office asks how you heard about them, the answer is Apartment Agents. That is the whole job.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-card">
+          <h3>Get your matches first</h3>
+          <p>Tell us what you're after and your licensed apartment expert sends over the places that fit, with the best-priced floor plans and the real move-in specials up front.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-card">
+          <h3>Write us in when you tour and when you apply</h3>
+          <p>Every community hands you a guest card at the door and asks the same question on the lease application: how did you learn about this property? Put <strong>Apartment Agents</strong> there both times.</p>
+          <p>If nobody hands you a card, just say it out loud to the leasing agent. It takes five seconds and it's what tells the community the referral came from us.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-card">
+          <h3>Tell us where you leased</h3>
+          <p>Send us the community and your move-in date, or fill out the reward claim, and we'll take it from there.</p>
+        </div>
+      </div>
+
+      <div class="catch">
+        <h3>Not sure whether you did it right?</h3>
+        <p>Plenty of people can't remember what they wrote on a guest card weeks later, and it works out fine. Tell us where you leased either way and we'll sort it out on our end. Nothing here is a test you can fail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 4 · ROOMMATES — the expensive misunderstanding ══════════════════
+       This is the single most valuable block on the page. A co-applicant
+       naming a different source is the most common way a reward evaporates,
+       and it is entirely preventable with one sentence to a roommate.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="sec roommate-sec" id="roommates">
+    <div class="wrap-narrow" style="position:relative; z-index:2;">
+      <div class="section-badge section-badge--dark">Read this if you have a roommate</div>
+      <h2 style="color:#fff;">Everyone on the lease lists us. All of you.</h2>
+      <p class="lede" style="color:rgba(255,255,255,0.72); margin-bottom:var(--s4);">This is the one that costs people money, and it's the easiest to avoid.</p>
+
+      <div class="rm-card">
+        <div class="rm-ico"><i class="fas fa-user-group" aria-hidden="true"></i></div>
+        <p>A community can only pay one locator per lease. If you list Apartment Agents and your roommate lists a different company, or a website, or a friend, the community has two sources pointing at the same lease. <strong>That can cancel the referral out entirely, and the reward goes away for everyone on the lease.</strong></p>
+        <p>So before anyone tours or applies, send your roommates one text: we're using Apartment Agents, put that down as how we heard about the place. Partners, co-signers, anybody whose name goes on the application. One answer, from all of you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 5 · HOW YOU GET PAID ══════════════════════ -->
+  <section class="sec" id="how-you-get-paid" style="background:var(--paper-2);">
+    <div class="wrap-narrow">
+      <div class="section-badge">Getting paid</div>
+      <h2>Paid straight to you.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">Not a store credit, not an account you have to keep money in. Your reward comes to you, in whichever form you pick.</p>
+
+      <div class="pay-grid">
+        <div class="pay-tile"><i class="fas fa-bolt" aria-hidden="true"></i><span>Zelle</span></div>
+        <div class="pay-tile"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i><span>Venmo</span></div>
+        <div class="pay-tile"><i class="fab fa-paypal" aria-hidden="true"></i><span>PayPal</span></div>
+        <div class="pay-tile"><i class="fab fa-amazon" aria-hidden="true"></i><span>Amazon gift card</span></div>
+      </div>
+
+      <p class="tier-note">One reward per apartment. Your name has to be on the lease. The rest of the fine print lives in the <a href="https://apartmentagents.com/rebate-terms/" class="inline-link" target="_blank" rel="noopener">reward terms</a>.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 6 · ALREADY LEASED ══════════════════════ -->
+  <section class="sec" style="background:#fff; padding-top:var(--s5);">
+    <div class="wrap-narrow">
+      <div class="claim-card">
+        <h2>Already signed a lease?</h2>
+        <p>Tell us where you landed and we'll start your reward. It takes a few minutes and you don't need paperwork in front of you.</p>
+        <a href="claim-reward.html" class="btn-primary claim-btn">
+          Claim Your Reward
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 7 · FINAL CTA ══════════════════════ -->
+  <section class="cta-sec" id="signup">
+    <div class="cta-bg" aria-hidden="true">
+      <img src="dallas-skyline.png" alt="" loading="lazy" />
+      <div class="veil"></div>
+    </div>
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">Start with the search, end with the cash back.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
+
+      <div class="form-card">
+        <div class="form-body">
+          <p class="form-card__eyebrow">Free &middot; No obligation</p>
+          <h3 class="form-card__title">Get your free Dallas matches</h3>
+          <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and our licensed Dallas apartment experts go to work for you right away.</p>
+          <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <p class="form-micro">No cost, no obligation, no spam.</p>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
+        Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+        <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size:0.92rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
+      menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+    }
+  </script>
+</body>
+</html>

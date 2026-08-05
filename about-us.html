@@ -4,7 +4,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | Apartment Agents Dallas</title>
+  <title>About Us | Licensed DFW Apartment Locators Since 2003 | Apartment Agents</title>
+  <meta name="description" content="Apartment Agents is a licensed Texas brokerage in Dallas that has helped 200,000+ DFW renters since 2003. Apartments only. The communities pay us, so you never do." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -14,392 +15,746 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: { brand: { dark:'#0F1338', purple:'#9DAAF2', coral:'#F5736C', green:'#AECD81', yellow:'#FFD67B', gray:'#7A7A7A' } },
-          fontFamily: { sans:['DM Sans','system-ui','-apple-system','sans-serif'], serif:['DM Serif Display','Georgia','serif'] }
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
         }
       }
     }
   </script>
   <style>
+    /* ============================================================
+       DESIGN TOKENS — inherited VERBATIM from dallas-apartments-new.html.
+       This page adds components (people, specialise/don't, credentials)
+       but never invents a colour, shadow or spacing step.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+
+      /* spacing scale */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      /* layered, colour-tinted elevation system (base -> elevated -> floating) */
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+    }
+
     * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', system-ui, sans-serif; color: #0F1338; margin: 0; font-size: 1.1rem; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
     h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
 
-    .nav-link { color: #0F1338; font-weight: 600; font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
-    .nav-link:hover { color: #9DAAF2; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+    }
 
+    /* ---------------- NAV (verbatim system from sibling pages) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+
+    /* ---------------- BUTTONS ---------------- */
     .btn-primary {
-      background-color: #9DAAF2; color: #0F1338; font-weight: 800; border-radius: 999px;
-      transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; display: inline-block; text-decoration: none;
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
     }
-    .btn-primary:hover { background-color: #b4bef5; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(157,170,242,0.4); }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
 
-    .btn-coral {
-      background-color: #F5736C; color: white; font-weight: 800; border-radius: 999px;
-      transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    .btn-coral { /* kept as the sibling pages define it (same blue pill) */
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
     }
-    .btn-coral:hover { background-color: #f45d55; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(245,115,108,0.4); }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    /* Mobile nav CTA — declared after .btn-coral so its display wins */
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+
+    /* inline text links on light surfaces — every state accounted for */
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
+    /* inline links on the dark field */
+    .inline-link--dark { color: #cdd5ff; text-decoration-color: rgba(205,213,255,0.45); }
+    .inline-link--dark:hover { color: #fff; text-decoration-color: currentColor; }
+
+    .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
+    .link-quiet:hover { color: #fff; }
+    .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .link-quiet:active { opacity: 0.75; }
 
     .section-badge {
-      display: inline-block; background: rgba(157,170,242,0.12); color: #9DAAF2;
-      font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-      border-radius: 20px; padding: 4px 14px;
+      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      border-radius: 20px; padding: 5px 14px;
     }
+    .section-badge--dark { background: rgba(157,170,242,0.18); color: var(--lav); }
 
-    /* Pillar cards */
-    .pillar-card {
-      background: #fff; border-radius: 16px; padding: 32px 28px;
-      box-shadow: 0 2px 20px rgba(15,19,56,0.07);
-      border-top: 4px solid transparent;
-      transition: transform 0.2s, box-shadow 0.2s;
+    /* ---------------- HERO (light lavender-white field) ---------------- */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 34px 20px 34px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
     }
-    .pillar-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(15,19,56,0.12); }
-
-    /* Stat cards */
-    .stat-card {
-      text-align: center; padding: 32px 24px;
-      border-right: 1px solid rgba(255,255,255,0.1);
+    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
     }
-    .stat-card:last-child { border-right: none; }
+    /* Single content axis: hero, prose and grids all share one 820px column so
+       the page has exactly one left edge on desktop instead of three. */
+    .hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .hero h1 { color: var(--navy); font-size: clamp(2rem, 8vw, 3.6rem); line-height: 1.06; margin: 0 0 14px; }
+    .hero h1 em { font-style: normal; color: inherit; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.6; margin: 0; max-width: 640px; }
 
-    /* Timeline */
-    .timeline-item { display: flex; gap: 24px; margin-bottom: 40px; }
-    .timeline-dot { width: 16px; height: 16px; border-radius: 50%; background: #9DAAF2; flex-shrink: 0; margin-top: 6px; position: relative; }
-    .timeline-dot::after { content: ''; position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 2px; height: calc(100% + 24px); background: linear-gradient(to bottom, #9DAAF2, rgba(157,170,242,0.1)); }
-    .timeline-item:last-child .timeline-dot::after { display: none; }
+    /* ---------------- TRUST STRIP (light hero) ---------------- */
+    .trust-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-top: 22px; border-top: 1px solid rgba(15,19,56,0.12); padding-top: 16px;
+    }
+    .trust-item { text-align: center; }
+    .trust-item .t-top { color: var(--navy); font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+    .trust-item .t-bot { color: #464a6d; font-size: 0.8rem; font-weight: 600; margin-top: 2px; display: block; line-height: 1.3; }
+    @media (min-width: 700px) { .trust-item .t-bot { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78rem; } }
+    .stars { color: var(--yellow); letter-spacing: 1px; }
+    .trust-item .t-top.stars { color: #9a6c07; }
 
-    /* Min font size */
-    .text-xs, .text-sm, .text-base { font-size: 1.1rem !important; }
-    html { scroll-behavior: smooth; }
+    /* ---------------- SECTION SHELL ---------------- */
+    .sec { padding: var(--s6) 20px; }
+    @media (min-width: 700px) { .sec { padding: var(--s7) 24px; } }
+    .wrap, .wrap-narrow { max-width: 820px; margin: 0 auto; }
+    .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.75rem); line-height: 1.14; margin: 12px 0 14px; max-width: 720px; }
+    .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s4); max-width: 700px; }
+    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
 
-    /* Footer */
-    .site-footer { background: #0F1338; color: rgba(255,255,255,0.7); padding: 48px 24px 32px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
-    .footer-col h4 { font-size: 1.1rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
-    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul a { color: rgba(255,255,255,0.65); font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
-    .footer-col ul a:hover { color: #9daaf2; }
-    .footer-col p { font-size: 1.1rem; line-height: 1.7; margin: 0; }
-    .footer-col a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: #9daaf2; }
+    /* ---------------- STORY PROSE ---------------- */
+    .story p { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.8; margin: 0 0 var(--s3); max-width: 700px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story p strong { color: var(--navy); font-weight: 700; }
+    .pull {
+      margin: var(--s4) 0; padding: 20px 22px; background: var(--paper-2);
+      border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav); border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 8px 22px rgba(90,104,190,0.09);
+    }
+    .pull p { margin: 0; color: var(--navy); font-size: 1.05rem; line-height: 1.72; }
+
+    /* ---------------- PAID (dark field) ---------------- */
+    .dark-sec {
+      background:
+        radial-gradient(760px 460px at 12% 0%, rgba(174,205,129,0.16) 0%, transparent 60%),
+        radial-gradient(700px 500px at 95% 100%, rgba(157,170,242,0.16) 0%, transparent 62%),
+        var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .dark-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n2)' opacity='0.3'/%3E%3C/svg%3E");
+    }
+    .dark-sec p.body { color: rgba(255,255,255,0.76); font-size: 1.0625rem; line-height: 1.8; margin: 0 0 var(--s3); max-width: 700px; }
+    .dark-sec p.body strong { color: #fff; font-weight: 700; }
+
+    .three-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: var(--s4) 0 0; }
+    @media (min-width: 700px) { .three-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+    .three-card {
+      background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px; padding: 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 14px 34px rgba(4,7,26,0.28);
+    }
+    .three-ico { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; background: rgba(174,205,129,0.18); color: var(--green); margin-bottom: 12px; }
+    .three-card h3 { color: #fff; font-size: 1.12rem; margin: 0 0 6px; line-height: 1.3; }
+    .three-card p { color: rgba(255,255,255,0.72); font-size: 0.96rem; line-height: 1.68; margin: 0; }
+
+    .disclose {
+      margin-top: var(--s4); background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(157,170,242,0.32); border-left: 4px solid var(--lav);
+      border-radius: 16px; padding: 20px 22px;
+    }
+    .disclose h3 { color: #fff; font-size: 1.12rem; margin: 0 0 8px; }
+    .disclose p { color: rgba(255,255,255,0.76); font-size: 0.98rem; line-height: 1.75; margin: 0; }
+    .disclose p + p { margin-top: 12px; }
+
+    /* ---------------- PEOPLE ---------------- */
+    .people-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 760px) { .people-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+    .person {
+      background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px;
+      padding: 22px 20px; box-shadow: var(--sh-base);
+    }
+    .person__head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    /* PLACEHOLDER AVATARS — initials only. Swap in real headshots (see comment in markup). */
+    .avatar {
+      width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.05rem; letter-spacing: 0.02em;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 2px 6px rgba(15,19,56,0.10), 0 10px 24px rgba(90,104,190,0.18);
+    }
+    .person__name { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; line-height: 1.2; color: var(--navy); margin: 0 0 3px; letter-spacing: -0.02em; }
+    .person__role { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6b78c4; }
+    .person p { margin: 0; color: var(--ink-mute); font-size: 0.99rem; line-height: 1.75; }
+    .person p + p { margin-top: 12px; }
+
+    /* ---------------- SPECIALISE / DON'T ---------------- */
+    .spec-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 860px) { .spec-grid { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; } }
+    .spec-card { border-radius: 20px; padding: 24px 20px; }
+    .spec-card--yes {
+      background: #fff; border: 1px solid rgba(174,205,129,0.55);
+      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 10px 26px rgba(90,104,190,0.10), 0 28px 60px rgba(48,58,140,0.08);
+    }
+    .spec-card--no {
+      background: var(--paper-2); border: 1px solid rgba(157,170,242,0.42);
+      box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 8px 22px rgba(90,104,190,0.09);
+    }
+    .spec-card h3 { font-size: 1.25rem; margin: 0 0 6px; line-height: 1.25; }
+    .spec-card > p.spec-intro { margin: 0 0 6px; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.7; }
+    .spec-list { list-style: none; margin: 10px 0 0; padding: 0; }
+    .spec-list li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(15,19,56,0.08); }
+    .spec-list li:last-child { padding-bottom: 0; }
+    .spec-list .ico { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 900; }
+    .spec-list .ico--yes { background: var(--green); color: var(--navy); }
+    .spec-list .ico--no { background: rgba(157,170,242,0.34); color: #4a54a8; }
+    .spec-list .t { font-weight: 700; color: var(--navy); font-size: 1rem; display: block; line-height: 1.45; }
+    .spec-list .d { color: var(--ink-mute); font-size: 0.95rem; line-height: 1.65; display: block; margin-top: 3px; }
+    .spec-foot { margin: var(--s3) 0 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.75; max-width: 700px; }
+
+    /* ---------------- CREDENTIALS ---------------- */
+    .cred-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 700px) { .cred-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+    .cred {
+      background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px;
+      padding: 18px; box-shadow: var(--sh-base);
+      display: flex; align-items: center; gap: 14px; min-height: 100px;
+    }
+    .cred .n { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.7rem; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+    .cred .l { font-size: 0.92rem; color: var(--ink-mute); line-height: 1.5; }
+    .cred .l-strong { font-weight: 700; color: var(--navy); font-size: 0.98rem; line-height: 1.4; }
+    .cred-ico { width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; background: rgba(157,170,242,0.18); color: #5563b8; }
+
+    /* ---------------- CTA CARD ---------------- */
+    .form-card {
+      background: #fff; border-radius: 22px; padding: 18px 16px 16px;
+      box-shadow: var(--sh-float);
+      border: 1px solid rgba(255,255,255,0.5);
+      position: relative;
+    }
+    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
+    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 12px; color: var(--navy); }
+    .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; }
+    @media (min-width: 768px) {
+      .form-submit { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; padding: 15px 36px; }
+    }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 10px 0 0; text-align: center; }
+
+    /* ---------------- FINAL CTA ---------------- */
+    .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
+    @media (min-width: 700px) { .cta-sec { padding: var(--s7) 24px; } }
+    .cta-bg { position: absolute; inset: 0; z-index: 0; }
+    .cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%); }
+    .cta-bg .veil { position: absolute; inset: 0; background: rgba(15,19,56,0.9); }
+    .cta-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 760px; max-width: 130%; height: 100%; background: radial-gradient(ellipse at center top, rgba(157,170,242,0.16) 0%, transparent 62%); pointer-events: none; z-index: 1; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
     .social-icons { display: flex; gap: 12px; margin-top: 4px; }
-    .social-icon { width: 44px; height: 44px; border-radius: 50%; background: #9DAAF2; color: #0F1338; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: background 0.2s, transform 0.15s; }
-    .social-icon:hover { background: #b8c3f7; transform: scale(1.1); }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
     .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 1.1rem; color: rgba(255,255,255,0.4); margin: 0; }
-    .footer-bottom-links { display: flex; gap: 20px; }
-    .footer-bottom-links a { font-size: 1.1rem; color: rgba(255,255,255,0.4); text-decoration: none; }
-    .footer-bottom-links a:hover { color: #9daaf2; }
-    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); } }
+    .footer-bottom p { font-size: 0.95rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 0.95rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    nav button:active { opacity: 0.65; }
+
+    /* ============================================================
+       BREAKPOINTS — mobile is the design; desktop adapts.
+       ============================================================ */
+    @media (min-width: 700px) {
+      .hero { padding: 56px 24px 56px; }
+      .form-card { padding: 26px 24px 22px; }
+      .form-card__title { font-size: 1.5rem; }
+      .trust-item .t-top { font-size: 1.05rem; }
+      .spec-card { padding: 30px 28px; }
+    }
+    @media (min-width: 1000px) {
+      .hero { padding: 68px 24px 60px; }
+      .hero h1 { font-size: clamp(2.8rem, 4.2vw, 3.6rem); }
+      .hero-sub { font-size: 1.15rem; }
+      .trust-strip {
+        display: inline-grid; grid-auto-flow: column; align-items: center;
+        gap: 0; margin: 30px 0 0; padding: 14px 8px; border-top: none;
+        background: rgba(255,255,255,0.72); border: 1px solid rgba(157,170,242,0.5);
+        border-radius: 16px; backdrop-filter: blur(4px);
+        box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 8px 22px rgba(90,104,190,0.10);
+      }
+      .trust-item { padding: 0 30px; }
+      .trust-item + .trust-item { border-left: 1px solid rgba(15,19,56,0.12); }
+    }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
-<nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="sticky top-0 z-50 w-full">
-  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <button class="md:hidden text-[#0F1338] text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Open menu">&#9776;</button>
-      <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
-        <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="h-10 object-contain" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" />
-        <span style="display:none; color:#0F1338; font-weight:900; font-size:1.1rem; align-items:center; gap:1px;">Apartment<span style="color:#9DAAF2;">Agents</span></span>
-      </a>
+  <!-- ══════════════════════════════ NAV (verbatim) ══════════════════════════════ -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
     </div>
-    <a href="https://apartmentagents.com/dallas-apartments/search" class="md:hidden btn-coral px-4 py-2" style="font-size:1rem; font-weight:800; border-radius:999px;">Get Started</a>
-    <div class="hidden md:flex items-center gap-6">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="how-it-works.html" class="nav-link">How It Works</a>
-      <a href="index.html#faq" class="nav-link">FAQ</a>
-      <a href="index.html#testimonials" class="nav-link">Reviews</a>
-      <a href="tel:+19729937300" class="nav-link" style="color:#7A7A7A;">(972) 993-7300</a>
-      <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-primary px-5 py-2" style="font-size:1rem;">Get Matched Free</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
     </div>
-  </div>
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="how-it-works.html" class="nav-link">How It Works</a>
-    <a href="index.html#faq" class="nav-link">FAQ</a>
-    <a href="index.html#testimonials" class="nav-link">Reviews</a>
-    <a href="tel:+19729937300" class="nav-link" style="color:#7A7A7A;">(972) 993-7300</a>
-    <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-primary px-5 py-2 text-center mt-1" style="font-size:1rem;">Get Matched Free</a>
-  </div>
-</nav>
+  </nav>
 
-<!-- ═══ HERO ═══ -->
-<section style="background:linear-gradient(135deg, #0F1338 0%, #1a2060 100%); padding: 80px 20px 72px; position:relative; overflow:hidden;">
-  <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 30% 50%, rgba(157,170,242,0.12) 0%, transparent 60%); pointer-events:none;"></div>
-  <div class="max-w-6xl mx-auto" style="position:relative; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
-    <div>
-      <div class="section-badge mb-5" style="background:rgba(157,170,242,0.15); color:#9DAAF2;">Our Story</div>
-      <h1 class="text-white mb-5" style="font-size:clamp(2.5rem,5vw,3.75rem); line-height:1.1;">The DFW Apartment Experts Renters Trust</h1>
-      <p style="color:rgba(255,255,255,0.75); font-size:1.2rem; line-height:1.75; margin-bottom:2rem;">For over 22 years, Apartment Agents has helped more than 200,000 Dallas-Fort Worth renters find the right apartment, at the right price, with zero cost and zero stress.</p>
-      <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-coral px-8 py-4" style="font-size:1.1rem; font-weight:800;">🚀 Start Your Free Search</a>
-    </div>
-    <div style="display:flex; justify-content:center; align-items:center; gap:32px; flex-wrap:wrap;">
-      <img src="dallas-central-2025.png" alt="2025 Consumer's Choice Award" style="height:180px; width:auto; filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4));" />
-      <div style="display:flex; flex-direction:column; gap:20px;">
-        <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:20px 24px; text-align:center;">
-          <div style="font-family:'DM Serif Display',serif; font-size:2.5rem; color:#9DAAF2; line-height:1;">22+</div>
-          <div style="color:rgba(255,255,255,0.7); font-size:1rem; margin-top:4px;">Years in DFW</div>
+  <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">About Apartment Agents</p>
+      <h1>We do one thing.<br>We have done it since <em>2003</em>.</h1>
+      <p class="hero-sub">A licensed Texas brokerage in Dallas that helps renters find apartments. The communities pay us, so you never do.</p>
+
+      <div class="trust-strip">
+        <div class="trust-item">
+          <div class="t-top">23 Years</div>
+          <span class="t-bot">In DFW</span>
         </div>
-        <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:20px 24px; text-align:center;">
-          <div style="font-family:'DM Serif Display',serif; font-size:2.5rem; color:#AECD81; line-height:1;">200K+</div>
-          <div style="color:rgba(255,255,255,0.7); font-size:1rem; margin-top:4px;">Customers Served</div>
+        <div class="trust-item">
+          <div class="t-top">200,000+</div>
+          <span class="t-bot">Renters Helped</span>
+        </div>
+        <div class="trust-item">
+          <!-- Rating only, no review count (John's preference). Live Google profile: 4.9 avg. -->
+          <div class="t-top stars">4.9 &#9733;</div>
+          <span class="t-bot">Google Reviews</span>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Mobile hero layout -->
-  <style>
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr !important; }
-      .hero-award { display: none !important; }
-    }
-  </style>
-</section>
+  </section>
 
-<!-- ═══ MISSION STRIP ═══ -->
-<section style="background:#9DAAF2; padding:32px 20px; text-align:center;">
-  <p class="max-w-3xl mx-auto" style="font-size:1.25rem; font-weight:700; color:#0F1338; margin:0; line-height:1.6;">
-    Our mission: match every renter with their best apartment options, secure the best deals available, and make the whole process easier and more rewarding than going it alone.
-  </p>
-</section>
+  <!-- ══════════════════════════ 2 · OUR STORY ══════════════════════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap-narrow story">
+      <div class="section-badge">Our story</div>
+      <h2>Twenty-three years in the same market.</h2>
 
-<!-- ═══ OUR STORY ═══ -->
-<section style="background:#fff; padding:80px 20px;">
-  <div class="max-w-6xl mx-auto" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
-    <div>
-      <div class="section-badge mb-4">Who We Are</div>
-      <h2 style="font-size:clamp(1.8rem,3vw,2.6rem); margin:0 0 20px; color:#0F1338;">Built by Dallas locals, for Dallas renters</h2>
-      <p style="color:#7A7A7A; line-height:1.8; margin-bottom:20px;">Apartment Agents was founded in Dallas with one straightforward idea: renters deserve better than spending hours sifting through listings, calling leasing offices, and guessing which apartments actually have the best deals.</p>
-      <p style="color:#7A7A7A; line-height:1.8; margin-bottom:20px;">Our licensed agents focus 100% on apartment rentals, not home sales. Every bit of our expertise goes into getting you the right place at the right price. We live and breathe the DFW rental market so you don't have to.</p>
-      <p style="color:#7A7A7A; line-height:1.8;">Over two decades later, we've helped more than 200,000 renters across Dallas, Uptown, Frisco, Plano, Fort Worth, and every corner of the Metroplex find their next home faster, smarter, and with more money in their pocket.</p>
+      <p>Apartment Agents opened in Dallas in 2003. The market was slower then. Rents held for months at a stretch, and if you wanted to know what a one bedroom in Uptown went for, you called the leasing office and somebody picked up the phone.</p>
+
+      <p>That is not the market anymore. Pricing is set by revenue software now and it can move week to week on the same floor plan. There are more listing sites than anyone can keep up with, and plenty of what sits on them is stale or was never real. Leave a message at a busy leasing office today and there is a decent chance nobody calls you back.</p>
+
+      <p>What has not changed is the part that is genuinely hard to look up. Which communities are running a real special this month and which ones only say so. Which ones residents complain about for maintenance. What a block actually feels like at ten on a Friday night. None of that is on a listing site. It sits with people who work this market every day, and that is the whole reason a company like ours still exists.</p>
+
+      <div class="pull">
+        <p>We have helped more than <strong>200,000 DFW renters</strong> since 2003. A good share of our business every year is people who moved with us before, or a friend they sent.</p>
+      </div>
+
+      <p>We are still a small team. Two agents take new searches full time, one works a book of repeat clients she has had for years, and the owner is in the building. Nobody here sells houses. Every hour we spend is spent on apartments.</p>
     </div>
-    <div>
-      <!-- Timeline -->
-      <div style="padding-top:8px;">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div>
-            <div style="font-weight:700; color:#0F1338; margin-bottom:4px;">Founded in Dallas</div>
-            <p style="color:#7A7A7A; margin:0; line-height:1.7;">Started with a simple goal: make apartment searching easier and more rewarding for DFW renters.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══════════════════════════ 3 · HOW WE GET PAID ══════════════════════════
+       Transparency is the trust play on this page, so the money section gets the
+       dark treatment and sits above the team. Three-way framing per messaging brain.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec dark-sec">
+    <div class="wrap-narrow" style="position:relative; z-index:2;">
+      <div class="section-badge section-badge--dark">The money</div>
+      <h2 style="color:#fff;">How we actually get paid.</h2>
+      <p class="lede" style="color:rgba(255,255,255,0.72); margin-bottom:var(--s3);">It is the first thing most people want to know, so it goes near the top rather than in the fine print.</p>
+
+      <p class="body">Apartment communities set aside a marketing budget to fill their units. They pay a referral fee to whoever sends them a resident who signs a lease. That fee is where all of our money comes from.</p>
+
+      <p class="body"><strong>The renter never pays us.</strong> No fee, no deposit, no percentage. Your rent is not a dollar higher for using us either, because the fee comes out of the community's marketing budget and not out of your lease.</p>
+
+      <div class="three-grid">
+        <div class="three-card">
+          <div class="three-ico"><i class="fas fa-key"></i></div>
+          <h3>You get the apartment</h3>
+          <p>The right fit, at the best price that community is offering, plus up to $250 cash back after you move in.</p>
+        </div>
+        <div class="three-card">
+          <div class="three-ico"><i class="fas fa-building"></i></div>
+          <h3>The community gets a resident</h3>
+          <p>A filled unit is worth more to them than the fee they pay for it, which is why the budget exists in the first place.</p>
+        </div>
+        <div class="three-card">
+          <div class="three-ico"><i class="fas fa-handshake"></i></div>
+          <h3>Your agent gets paid for the match</h3>
+          <p>Only after you sign. Nothing is owed by anyone if we send you somewhere you do not want to live.</p>
+        </div>
+      </div>
+
+      <div class="disclose">
+        <h3>The honest version of that</h3>
+        <p>We only work with communities that pay a referral fee. That is what makes this free for you, and it does mean our list is not every apartment in Dallas. We are also not paid unless you actually sign, so steering you somewhere that does not fit what you asked for earns us nothing and costs us the repeat business that keeps the lights on.</p>
+        <p>Two more things worth saying out loud. We earn <strong>no commission from any moving company</strong>, so a mover quote we pass along is just a quote. We <strong>do</strong> earn a commission when you set up electricity, internet or renters insurance through our Connect Team. That service costs you nothing either way, but you should know where the money is before you decide.</p>
+        <p>Part of the referral fee comes back to you as up to $250 cash back, paid by Zelle, Venmo, PayPal or an Amazon gift card. <a href="rewards.html" class="inline-link inline-link--dark">See how the amounts work</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 4 · THE PEOPLE ══════════════════════════
+       PHOTOS: the circles below are initials-only placeholders. Swap in real
+       headshots for Jeff, Paige, Cindy and John when the shoot is done. Replace the
+       <div class="avatar"> with an <img class="avatar" src="..." alt="Jeff Anderson">
+       (same 60px circle, keep the layered shadow). Do NOT use stock photography.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap-narrow">
+      <div class="section-badge">The people</div>
+      <h2>Who you will actually be talking to.</h2>
+      <p class="lede">Four names, and that is close to the whole company. When you reach out, one of the first two picks it up.</p>
+
+      <div class="people-grid">
+
+        <div class="person">
+          <div class="person__head">
+            <div class="avatar" style="background:#9DAAF2; color:#0F1338;" aria-hidden="true">JA</div>
+            <div>
+              <h3 class="person__name">Jeff Anderson</h3>
+              <span class="person__role">Full-time agent</span>
+            </div>
           </div>
+          <p>Jeff is one of two agents taking new searches. The thing renters write about him most often is that he answers. You send a question at four in the afternoon and you have an answer, not a callback next week.</p>
+          <p>He is good with an awkward brief. Short lease terms, two work commutes to balance, a move-in date that will not move.</p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:#AECD81;"></div>
-          <div>
-            <div style="font-weight:700; color:#0F1338; margin-bottom:4px;">Proprietary Technology</div>
-            <p style="color:#7A7A7A; margin:0; line-height:1.7;">Built our own platform to surface the best-priced floor plans and deals other companies miss.</p>
+
+        <div class="person">
+          <div class="person__head">
+            <div class="avatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">PP</div>
+            <div>
+              <h3 class="person__name">Paige Prestwood</h3>
+              <span class="person__role">Full-time agent</span>
+            </div>
           </div>
+          <p>Paige takes the other half of new searches. Her reviews tend to be about the hard ones. A private garage and a yard found in under two weeks. A search that went on hold for a year and got picked back up like no time had passed.</p>
+          <p>If you have a list of must-haves that listing site filters cannot handle, she is the one who goes looking anyway.</p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:#FFD67B;"></div>
-          <div>
-            <div style="font-weight:700; color:#0F1338; margin-bottom:4px;">200,000+ Customers Served</div>
-            <p style="color:#7A7A7A; margin:0; line-height:1.7;">Helped renters across every DFW neighborhood find the right place at the right price.</p>
+
+        <div class="person">
+          <div class="person__head">
+            <div class="avatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">CL</div>
+            <div>
+              <h3 class="person__name">Cindy Little</h3>
+              <span class="person__role">Repeat and referral clients</span>
+            </div>
           </div>
+          <p>Cindy has been doing this longer than anyone else here, is our top producer, and trained the rest of the team. The way Jeff and Paige work a search is essentially the way Cindy taught them to.</p>
+          <p>She works only her own repeat and referral clients now, people who have moved with her three and four times, so she is usually not available for a new search. That is not a brush-off. It is the honest answer to why you get one of the other two.</p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:#F5736C;"></div>
-          <div>
-            <div style="font-weight:700; color:#0F1338; margin-bottom:4px;">Better Than Free</div>
-            <p style="color:#7A7A7A; margin:0; line-height:1.7;">Introduced our $200 move or cash offer so renters walk away with more money, not less.</p>
+
+        <div class="person">
+          <div class="person__head">
+            <div class="avatar" style="background:#F5736C; color:#ffffff;" aria-hidden="true">JC</div>
+            <div>
+              <h3 class="person__name">John Cameron</h3>
+              <span class="person__role">Owner</span>
+            </div>
           </div>
+          <p>John owns Apartment Agents. Most of his time right now goes into the systems behind the service, including the pricing tools the agents use to tell you what a floor plan should really cost this week.</p>
+          <p>If something about how we handled your search was not right, it reaches him. That is a short trip in a company this size.</p>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:#9DAAF2;"></div>
-          <div>
-            <div style="font-weight:700; color:#0F1338; margin-bottom:4px;">2025 Consumer's Choice Award</div>
-            <p style="color:#7A7A7A; margin:0; line-height:1.7;">Recognized by Dallas Central as the top apartment locator in the Metroplex.</p>
-          </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 5 · WHAT WE SPECIALIZE IN ══════════════════════════ -->
+  <section class="sec" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="section-badge">Fit</div>
+      <h2>What we specialize in, and what we don't.</h2>
+      <p class="lede">Knowing where we are useful is worth more to you than a page telling you we do everything. If we are the wrong call, we would rather you find that out in the first minute than the second week.</p>
+
+      <div class="spec-grid">
+
+        <div class="spec-card spec-card--yes">
+          <h3>Where we are genuinely useful</h3>
+          <p class="spec-intro">This is the market we track daily and the work we have done for 23 years.</p>
+          <ul class="spec-list">
+            <li>
+              <span class="ico ico--yes" aria-hidden="true"><i class="fas fa-check"></i></span>
+              <span>
+                <span class="t">Apartments, and only apartments</span>
+                <span class="d">A licensed Texas brokerage that focuses 100% on apartment rentals, not home sales. We are not going to try to sell you a house on the way out.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--yes" aria-hidden="true"><i class="fas fa-check"></i></span>
+              <span>
+                <span class="t">Dallas and the northern suburbs</span>
+                <span class="d">The Dallas urban core plus Frisco, Allen, McKinney and Plano is where we know the inventory best. We cover the rest of DFW, including Fort Worth, but those are the areas we are in every day.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--yes" aria-hidden="true"><i class="fas fa-check"></i></span>
+              <span>
+                <span class="t">Pricing, specials and the parts nobody publishes</span>
+                <span class="d">Which floor plans are priced well right now, which communities have a real move-in special, and the things a listing never tells you about a building.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--yes" aria-hidden="true"><i class="fas fa-check"></i></span>
+              <span>
+                <span class="t">Renters who will be approved without friction</span>
+                <span class="d">Most of the communities we work with, especially the new ones, screen hard on income and credit. That is who we are set up to place quickly.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="spec-card spec-card--no">
+          <h3>Where we are not the right resource</h3>
+          <p class="spec-intro">We will help anyone we can if you reach out, and Fair Housing applies to every person who contacts us without exception. But we do not have the community relationships to be much use in these situations, and pretending otherwise would waste your time.</p>
+          <ul class="spec-list">
+            <li>
+              <span class="ico ico--no" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+              <span>
+                <span class="t">Second-chance leasing</span>
+                <span class="d">Broken leases, evictions, or an approval problem on your record. <a href="https://apartmentagents.com/second-chance-apartments/" class="inline-link">Start here instead</a>.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--no" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+              <span>
+                <span class="t">Housing vouchers and Section 8</span>
+                <span class="d">We do not place voucher holders, and the communities on our list generally do not participate. <a href="https://apartmentagents.com/section-8-housing/" class="inline-link">Better places to look</a>.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--no" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+              <span>
+                <span class="t">Short-term and furnished stays</span>
+                <span class="d">Anything under a standard lease term is a different market with different operators. <a href="https://apartmentagents.com/short-term-rental/" class="inline-link">Where to go for that</a>.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico ico--no" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+              <span>
+                <span class="t">Buying a home</span>
+                <span class="d">We are a rentals-only brokerage. If you are buying, you want a residential agent, and that is not us.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="spec-foot">None of that is a judgment about anyone. It is just the difference between a company that can help you in a week and one that will string you along for a month.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 6 · CREDENTIALS ══════════════════════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-badge">The receipts</div>
+      <h2>What you can check on us.</h2>
+      <p class="lede">Every one of these is verifiable without taking our word for it.</p>
+
+      <div class="cred-grid">
+        <div class="cred">
+          <div><div class="n">23</div><div class="l">years finding apartments in DFW, since 2003</div></div>
+        </div>
+        <div class="cred">
+          <div><div class="n">200,000+</div><div class="l">DFW renters helped</div></div>
+        </div>
+        <div class="cred">
+          <!-- Badge art on file is the 2025 seal; swap in the 2026 artwork when it arrives, then simplify the caption. -->
+          <img src="dallas-central-2025.png" alt="Consumer's Choice Award, Dallas Central" style="height:76px; width:auto; flex-shrink:0;" loading="lazy" />
+          <div><div class="l-strong">Consumer's Choice Award</div><div class="l">Dallas Central &middot; 2025 &amp; 2026</div></div>
+        </div>
+        <div class="cred">
+          <div class="cred-ico" aria-hidden="true"><i class="fas fa-scale-balanced"></i></div>
+          <div><div class="l-strong">Licensed Texas brokerage</div><div class="l">TREC Broker #505184</div></div>
+        </div>
+        <div class="cred">
+          <div class="cred-ico" aria-hidden="true"><i class="fas fa-star"></i></div>
+          <div><div class="l-strong">4.9 stars on Google</div><div class="l"><a href="https://share.google/tMcbzN3GUeJdmye3K" target="_blank" rel="noopener" class="inline-link">Read the reviews</a></div></div>
+        </div>
+        <div class="cred">
+          <div class="cred-ico" aria-hidden="true"><i class="fas fa-building"></i></div>
+          <div><div class="l-strong">Apartment rentals only</div><div class="l">Not home sales. It is all we do.</div></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ WHAT MAKES US DIFFERENT ═══ -->
-<section style="background:#f8f9ff; padding:80px 20px;">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <div class="section-badge mb-3">Our Difference</div>
-      <h2 style="font-size:clamp(1.8rem,3vw,2.6rem); margin:0 0 12px; color:#0F1338;">What sets us apart</h2>
-      <p style="color:#7A7A7A; max-width:540px; margin:0 auto; line-height:1.75;">Five things we get right every time — and why 200,000 renters have trusted us with their search.</p>
+  <!-- ══════════════════════════ 7 · CTA ══════════════════════════ -->
+  <section class="cta-sec" id="signup">
+    <div class="cta-bg" aria-hidden="true">
+      <img src="dallas-skyline.png" alt="" loading="lazy" />
+      <div class="veil"></div>
     </div>
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">Now you know who you are dealing with.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
 
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <div class="pillar-card" style="border-top-color:#9DAAF2;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(157,170,242,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-map-marker-alt" style="color:#9DAAF2; font-size:1.3rem;"></i>
+      <div class="form-card">
+        <div class="form-body">
+          <p class="form-card__eyebrow">Free &middot; No obligation</p>
+          <h3 class="form-card__title">Get your free Dallas matches</h3>
+          <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and our licensed Dallas apartment experts go to work for you right away.</p>
+          <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <p class="form-micro">No cost, no obligation, no spam.</p>
         </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">Best Options, Not Just Listings</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">We send you a personalized shortlist matched to your budget, location, and must-haves. No generic link dumps, no wasted time.</p>
       </div>
 
-      <div class="pillar-card" style="border-top-color:#AECD81;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(174,205,129,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-tag" style="color:#AECD81; font-size:1.3rem;"></i>
-        </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">Best Deals on Those Options</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">Our proprietary platform surfaces every move-in special, concession, and incentive available so you never leave money on the table.</p>
-      </div>
-
-      <div class="pillar-card" style="border-top-color:#FFD67B;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(255,214,123,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-star" style="color:#FFD67B; font-size:1.3rem;"></i>
-        </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">Better Than Free</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">Our service is 100% free to renters, and most people save more using us than they could searching on their own — plus get up to $200 on top.</p>
-      </div>
-
-      <div class="pillar-card" style="border-top-color:#F5736C;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(245,115,108,0.12); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-truck" style="color:#F5736C; font-size:1.3rem;"></i>
-        </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">You Choose the Mover, We Pay</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">Unlike locators that lock you into one moving company, you pick whoever you want. We cover up to $200 of the cost, and you keep the savings.</p>
-      </div>
-
-      <div class="pillar-card" style="border-top-color:#9DAAF2;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(157,170,242,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-bolt" style="color:#9DAAF2; font-size:1.3rem;"></i>
-        </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">Fast, Expert Guidance</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">Our local specialists know the inventory, pricing patterns, and which properties have the best deals right now. Average response time: under 1 hour.</p>
-      </div>
-
-      <div class="pillar-card" style="border-top-color:#AECD81;">
-        <div style="width:48px; height:48px; border-radius:12px; background:rgba(174,205,129,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <i class="fas fa-plug" style="color:#AECD81; font-size:1.3rem;"></i>
-        </div>
-        <h3 style="font-size:1.2rem; margin:0 0 10px; color:#0F1338;">Free Utility Setup</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.75;">Our Connect Team sets up your electricity, internet, and renters insurance for free, locking in the best available rates before you move in.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ STATS BAR ═══ -->
-<section style="background:#0F1338; padding:0; overflow:hidden; position:relative;">
-  <div class="hidden md:flex max-w-7xl mx-auto px-5" style="align-items:center; justify-content:center; gap:48px; padding-top:20px; padding-bottom:20px;">
-    <div style="flex-shrink:0;">
-      <img src="dallas-central-2025.png" alt="2025 Consumer's Choice Award" style="height:160px; width:auto; display:block; margin-top:-24px; margin-bottom:-24px;" />
-    </div>
-    <div style="display:flex; flex-direction:column; gap:12px;">
-      <div style="color:#fff; font-size:1.35rem; font-weight:700; line-height:1.2;">Trusted For Over 22 Years</div>
-      <div style="color:#fff; font-size:1.35rem; font-weight:700; line-height:1.2;">200,000+ <span style="display:block; font-size:1.1rem; font-weight:600;">Customers Served</span></div>
-      <div style="color:#fff; font-size:1.35rem; font-weight:700; line-height:1.2;">2025 Consumer's Choice</div>
-    </div>
-  </div>
-  <div class="md:hidden" style="position:relative; padding:28px 24px; min-height:180px;">
-    <img src="dallas-central-2025.png" alt="" aria-hidden="true" style="position:absolute; right:-10px; top:50%; transform:translateY(-50%); height:190px; width:auto; opacity:0.35; pointer-events:none;" />
-    <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:14px;">
-      <div style="color:#fff; font-size:1.25rem; font-weight:700;">Trusted For Over 22 Years</div>
-      <div style="color:#fff; font-size:1.25rem; font-weight:700;">200,000+ Customers Served</div>
-      <div style="color:#fff; font-size:1.25rem; font-weight:700;">2025 Consumer's Choice</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ OUR PROMISE ═══ -->
-<section style="background:#fff; padding:80px 20px;">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="section-badge mb-4">Our Promise</div>
-    <h2 style="font-size:clamp(1.8rem,3vw,2.6rem); margin:0 0 20px; color:#0F1338;">Free apartment locating that's better than free</h2>
-    <p style="color:#7A7A7A; line-height:1.8; font-size:1.15rem; max-width:680px; margin:0 auto 40px;">The apartments pay us from their advertising budgets when you sign a lease. That means you get the same pricing and all the specials the properties offer, plus our $200 move or cash bonus on top. You never pay us a dime, and you always come out ahead.</p>
-
-    <div class="grid md:grid-cols-3 gap-8 text-left">
-      <div style="padding:28px; background:#f8f9ff; border-radius:16px;">
-        <div style="font-size:2rem; margin-bottom:12px;">🎯</div>
-        <h3 style="font-size:1.15rem; margin:0 0 8px; color:#0F1338;">Matched to You</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.7;">Every recommendation is filtered by your budget, location, timeline, and preferences. We find your best options, not just any options.</p>
-      </div>
-      <div style="padding:28px; background:#f8f9ff; border-radius:16px;">
-        <div style="font-size:2rem; margin-bottom:12px;">💰</div>
-        <h3 style="font-size:1.15rem; margin:0 0 8px; color:#0F1338;">Best Pricing Guaranteed</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.7;">You always get the best pricing the property offers. We surface every special and incentive available so you don't miss a dollar.</p>
-      </div>
-      <div style="padding:28px; background:#f8f9ff; border-radius:16px;">
-        <div style="font-size:2rem; margin-bottom:12px;">🚚</div>
-        <h3 style="font-size:1.15rem; margin:0 0 8px; color:#0F1338;">$200 Move or Cash</h3>
-        <p style="color:#7A7A7A; margin:0; line-height:1.7;">After you lease, choose any mover you want and we'll cover up to $200 of the cost. Or take the $200 as extra cash. Your move, your choice.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section style="position:relative; overflow:hidden; padding:80px 0;">
-  <div style="position:absolute; inset:0; z-index:0;">
-    <img src="dallas-skyline.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:grayscale(100%);" />
-    <div style="position:absolute; inset:0; background:rgba(15,19,56,0.88);"></div>
-  </div>
-  <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:700px; height:100%; background:radial-gradient(ellipse at center top, rgba(157,170,242,0.1) 0%, transparent 65%); pointer-events:none; z-index:1;"></div>
-  <div class="max-w-3xl mx-auto px-5 text-center" style="position:relative; z-index:2;">
-    <h2 class="text-white mb-4" style="font-family:'DM Serif Display',Georgia,serif; font-size:clamp(2.2rem,4vw,3.5rem); line-height:1.1; letter-spacing:-0.02em;">Ready to find your perfect <em style="font-style:italic; color:#9DAAF2;">Dallas apartment?</em></h2>
-    <p style="color:rgba(255,255,255,0.7); font-size:1.1rem; line-height:1.7; margin-bottom:2rem;">Join 200,000+ renters who found their home through Apartment Agents. It's free, fast, and better than searching on your own.</p>
-    <a href="https://apartmentagents.com/dallas-apartments/search" class="btn-primary inline-block px-10 py-4 font-bold" style="font-size:1.15rem; border-radius:999px; text-decoration:none;">Get Started — It's Free &rsaquo;</a>
-    <p style="color:rgba(255,255,255,0.45); font-size:1rem; margin-top:1.25rem;">No spam. No obligation. We'll reach out immediately.</p>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>Menu</h4>
-      <ul>
-        <li><a href="https://apartmentagents.com/dallas-apartments/search/">Start Your Search</a></li>
-        <li><a href="how-it-works.html">How it Works</a></li>
-        <li><a href="https://apartmentagents.com/dallas-apartments/rewards/">$200 Move or Cash</a></li>
-        <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Learn More</h4>
-      <ul>
-        <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
-        <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
-        <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Us</h4>
-      <p>Dallas Office<br>
-        <a href="tel:+19729937300">(972) 993-7300</a><br>
-        <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
-        2626 Cole Ave Ste 370<br>Dallas, TX 75204
+      <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
+        Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
       </p>
     </div>
-    <div class="footer-col">
-      <h4>Currently Accepting Followers</h4>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER (verbatim) ══════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
-    <div class="footer-bottom-links">
-      <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
-      <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
-      <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+        <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+      </div>
     </div>
-  </div>
-  <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
-    <p style="font-size:1.1rem; color:rgba(255,255,255,0.4); line-height:1.8; margin:0;">
-      <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
-      <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
-      TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
-      APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
-      Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
-    </p>
-  </div>
-</footer>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size:0.92rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
 
+  <script>
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
+      menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+    }
+  </script>
 </body>
 </html>

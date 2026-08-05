@@ -30,174 +30,368 @@
     }
   </script>
   <style>
+    /* ============================================================
+       DESIGN TOKENS — lifted from dallas-apartments-new.html so this
+       page sits in the same visual system. Spacing is a fixed scale,
+       not ad-hoc steps.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --green-ink: #4C6B22;   /* the green, darkened until it is legible on white */
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+
+      /* spacing scale */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      /* layered, colour-tinted elevation system (base -> elevated -> floating) */
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+      --sh-star:  0 2px 6px rgba(174,205,129,0.22), 0 14px 32px rgba(15,19,56,0.16), 0 36px 80px rgba(15,19,56,0.16);
+    }
+
     * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', system-ui, sans-serif; color: #0F1338; margin: 0; font-size: 1.1rem; padding-top: 66px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
     h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
-    .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-    .check-icon { width: 22px; height: 22px; border-radius: 50%; background: #AECD81; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #0F1338; font-weight: 900; font-size: 0.7rem; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
 
-    .nav-link {
-      color: #0F1338; font-weight: 600; font-size: 1.1rem;
-      text-decoration: none; transition: color 0.2s ease;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
     }
-    .nav-link:hover { color: #9DAAF2; }
 
+    /* ---------------- NAV (system) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-link[aria-current="page"] { color: #6b78c4; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+    .nav-brand { display: inline-flex; align-items: center; min-height: 44px; border-radius: 8px; transition: opacity 0.2s ease; }
+    .nav-brand:hover { opacity: 0.82; }
+    .nav-brand:focus-visible { outline: 3px solid var(--lav); outline-offset: 4px; }
+    .nav-brand:active { opacity: 0.65; }
+
+    /* ---------------- BUTTONS ---------------- */
     .btn-primary {
-      background-color: #0d6efd; color: #fff; font-weight: 800; border-radius: 999px;
-      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
       border: none; cursor: pointer; display: inline-block; text-decoration: none;
     }
-    .btn-primary:hover { background-color: #0b5ed7; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
 
-    .btn-coral {
-      background-color: #0d6efd; color: #fff; font-weight: 800; border-radius: 999px;
-      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    .btn-coral { /* kept as the sibling pages define it (same blue pill) */
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
       border: none; cursor: pointer; display: inline-block; text-decoration: none;
     }
-    .btn-coral:hover { background-color: #0b5ed7; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
-    .btn-coral:active { transform: translateY(0); }
-    .btn-coral:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    /* Mobile nav CTA — declared after .btn-coral so its display wins */
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+
+    /* inline text links on light surfaces — every state accounted for */
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
+    .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
+    .link-quiet:hover { color: #fff; }
+    .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .link-quiet:active { opacity: 0.75; }
 
     .section-badge {
-      display: inline-block; background: rgba(157,170,242,0.12); color: #9DAAF2;
-      font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-      border-radius: 20px; padding: 4px 14px;
+      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      border-radius: 20px; padding: 5px 14px;
     }
+    .section-badge--dark { background: rgba(157,170,242,0.18); color: var(--lav); }
 
-    /* Reward tier cards */
-    .reward-group {
-      background: #fff;
-      border: 1px solid rgba(15,19,56,0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(15,19,56,0.08), 0 1px 4px rgba(15,19,56,0.05);
-    }
-    .reward-group-header {
-      padding: 22px 24px 18px;
-    }
-    .reward-tier {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 24px;
-      border-top: 1px solid rgba(15,19,56,0.07);
-      gap: 16px;
-    }
-    .reward-amount {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.9rem;
-      color: #AECD81;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      flex-shrink: 0;
-    }
-    .reward-amount.top-tier {
-      color: #AECD81;
-      font-size: 2.2rem;
-    }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; color: var(--navy); font-weight: 900; font-size: 0.7rem; }
 
-    /* Feature list items */
+    /* ---------------- HERO (light lavender-white field) ----------------
+       Near-white base + low-opacity lavender/green radial washes + faint
+       grain. Text is dark navy; every hero surface is tuned for a light
+       field rather than inverted-on-navy.
+       ------------------------------------------------------------------ */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 32px 20px 50px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
+    }
+    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+    .hero-layout { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+    .hero h1 { color: var(--navy); font-size: clamp(2.4rem, 11vw, 4rem); line-height: 1.05; margin: 0 0 20px; }
+    .hero-checks { display: flex; flex-direction: column; gap: 4px; }
+    .hero-checks span { color: var(--ink-soft); line-height: 1.6; font-size: 1.0625rem; }
+    .hero-checks .accent { color: var(--green-ink); font-weight: 800; }
+
+    /* Hero photo — light-field treatment: lavender hairline, layered
+       lavender-tinted shadow, gradient scrim + blend colour layer. */
+    .hero-figure { position: relative; width: 300px; max-width: 100%; margin: 0 auto; }
+    .hero-photo {
+      position: relative; border-radius: 22px; overflow: hidden;
+      border: 1px solid rgba(157,170,242,0.7);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 2px 6px rgba(15,19,56,0.06),
+        0 14px 30px rgba(90,104,190,0.20),
+        0 34px 70px rgba(48,58,140,0.20);
+    }
+    .hero-photo img { width: 100%; display: block; }
+    .hero-photo::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: linear-gradient(to top, rgba(15,19,56,0.26), rgba(15,19,56,0) 55%);
+    }
+    .hero-photo::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+      background: linear-gradient(200deg, rgba(157,170,242,0.20), rgba(174,205,129,0.10));
+      mix-blend-mode: multiply;
+    }
+    .hero-badge {
+      position: absolute; bottom: -18px; left: -10px; background: var(--green);
+      border-radius: 16px; padding: 14px 20px; z-index: 4;
+      box-shadow: 0 2px 6px rgba(76,107,34,0.24), 0 12px 28px rgba(76,107,34,0.26), 0 28px 60px rgba(15,19,56,0.14);
+    }
+    .hero-badge .eyebrow { margin: 0 0 2px; color: rgba(15,19,56,0.68); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; }
+    .hero-badge .word { margin: 0; color: var(--navy); font-family: 'DM Serif Display', Georgia, serif; font-size: 1.55rem; letter-spacing: -0.03em; line-height: 1.1; }
+
+    /* ---------------- SECTION SHELL ---------------- */
+    .sec { padding: var(--s6) 20px; }
+    @media (min-width: 700px) { .sec { padding: var(--s7) 24px; } }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .wrap-narrow { max-width: 760px; margin: 0 auto; }
+    .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.75rem); line-height: 1.14; margin: 0 0 var(--s2); }
+    .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
+    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
+
+    /* ---------------- "HOW IS THIS POSSIBLE" SPLIT ---------------- */
+    .split { display: grid; grid-template-columns: 1fr; gap: var(--s5); align-items: center; }
+    /* Image moves left on desktop, sits below the text on mobile — same as before. */
+    @media (min-width: 860px) {
+      .split { grid-template-columns: 0.92fr 1.08fr; gap: 56px; }
+      .split-copy { order: 2; }
+      .split-figure { order: 1; }
+    }
+    .split-figure {
+      border-radius: 20px; overflow: hidden; background: #fff;
+      border: 1px solid rgba(15,19,56,0.08);
+      box-shadow: var(--sh-elev);
+      max-width: 460px; margin: 0 auto; width: 100%;
+    }
+    .split-figure img { width: 100%; display: block; }
+
+    /* ---------------- FEATURE CARDS ---------------- */
+    .feat-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 700px) { .feat-grid { gap: 16px; } }
     .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(15,19,56,0.07);
+      display: flex; align-items: flex-start; gap: 18px;
+      background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px;
+      padding: 20px 20px; box-shadow: var(--sh-base);
+      transition: transform 0.2s cubic-bezier(.34,1.3,.64,1), box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .feature-item:last-child { border-bottom: none; }
+    .feature-item:hover { transform: translateY(-2px); box-shadow: var(--sh-elev); border-color: rgba(157,170,242,0.55); }
     .feature-icon {
       width: 48px; height: 48px; border-radius: 14px;
-      background: rgba(174,205,129,0.15);
+      background: rgba(174,205,129,0.22);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: #AECD81; font-size: 1.2rem;
+      flex-shrink: 0; color: var(--green-ink); font-size: 1.15rem;
+    }
+    .feature-item h3 { font-size: 1.15rem; margin: 0 0 6px; line-height: 1.28; color: var(--navy); }
+    .feature-item p { color: var(--ink-mute); margin: 0; line-height: 1.72; font-size: 1rem; }
+    @media (min-width: 700px) { .feature-item { padding: 24px 24px; } }
+
+    /* ============================================================
+       REWARD TIERS — cards, not a table. Header band + label/amount
+       rows. Nothing scrolls sideways at 390px and the amount stays
+       the loudest thing on the card.
+       ============================================================ */
+    .tier-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 760px) { .tier-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+
+    .tier-card {
+      background: #fff; border: 1px solid rgba(15,19,56,0.09); border-radius: 20px; overflow: hidden;
+      box-shadow: var(--sh-elev);
+    }
+    .tier-card--lead { box-shadow: var(--sh-star); border-color: rgba(76,107,34,0.22); }
+    .tier-head { padding: 18px 20px 16px; background: var(--navy-2); position: relative; }
+    .tier-card--lead .tier-head { background: linear-gradient(150deg, #182050 0%, var(--navy) 62%); }
+    .tier-head::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(to right, rgba(157,170,242,0.7), rgba(157,170,242,0.15));
+    }
+    .tier-card--lead .tier-head::after { background: linear-gradient(to right, rgba(174,205,129,0.9), rgba(157,170,242,0.9)); }
+    .tier-eyebrow { margin: 0 0 4px; color: rgba(255,255,255,0.62); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; }
+    .tier-band { margin: 0; color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; letter-spacing: -0.02em; line-height: 1.2; }
+
+    .tier-rows { list-style: none; margin: 0; padding: 0; }
+    .tier-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 16px 20px;
+      /* fixed row height so the two cards line up side by side even though the
+         lead amount is set larger */
+      min-height: 78px;
+    }
+    .tier-row + .tier-row { border-top: 1px solid rgba(15,19,56,0.08); }
+    .tier-row__label { min-width: 0; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .tier-amt {
+      font-family: 'DM Serif Display', Georgia, serif; color: var(--green-ink);
+      font-size: 2rem; line-height: 1; letter-spacing: -0.03em; flex-shrink: 0;
+    }
+    .tier-amt--top { font-size: 2.5rem; }
+    .tier-note { margin: var(--s4) 0 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+    @media (min-width: 700px) {
+      .tier-head { padding: 22px 24px 18px; }
+      .tier-row { padding: 18px 24px; min-height: 84px; }
+      .tier-band { font-size: 1.65rem; }
     }
 
-    /* Footer */
-    .site-footer { background: #0F1338; color: #fff; padding: 48px 24px 32px; }
+    /* ---------------- FINAL CTA ---------------- */
+    .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
+    @media (min-width: 700px) { .cta-sec { padding: var(--s7) 24px; } }
+    .cta-bg { position: absolute; inset: 0; z-index: 0; }
+    .cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%); }
+    .cta-bg .veil { position: absolute; inset: 0; background: rgba(15,19,56,0.9); }
+    .cta-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 760px; max-width: 130%; height: 100%; background: radial-gradient(ellipse at center top, rgba(157,170,242,0.16) 0%, transparent 62%); pointer-events: none; z-index: 1; }
+    .cta-btn { min-height: 56px; padding: 16px 38px; font-size: 1.05rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-    .footer-col h4 { font-size: 1.1rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
-    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul a { color: #fff; font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
-    .footer-col ul a:hover { color: #9daaf2; }
-    .footer-col p { font-size: 1.1rem; line-height: 1.7; margin: 0; }
-    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: #9daaf2; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
     .social-icons { display: flex; gap: 12px; margin-top: 4px; }
-    .social-icon { width: 44px; height: 44px; border-radius: 50%; background: #9DAAF2; color: #0F1338; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: background 0.2s, transform 0.15s; }
-    .social-icon:hover { background: #b8c3f7; transform: scale(1.1); }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
     .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 1.1rem; color: #fff; margin: 0; }
-    .footer-bottom-links { display: flex; gap: 20px; }
-    .footer-bottom-links a { font-size: 1.1rem; color: #fff; text-decoration: none; }
-    .footer-bottom-links a:hover { color: #9daaf2; }
+    .footer-bottom p { font-size: 1rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 1rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    nav button:active { opacity: 0.65; }
+
+    /* ============================================================
+       BREAKPOINTS — mobile is the design; desktop adapts.
+       ============================================================ */
+    @media (min-width: 1000px) {
+      .hero { padding: 68px 24px 76px; }
+      .hero-layout { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
+      .hero h1 { font-size: clamp(3rem, 4.6vw, 4.2rem); }
+      .hero-figure { width: 340px; margin: 0; justify-self: end; }
+      .hero-checks span { font-size: 1.1rem; }
+    }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
-
-    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
   <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" onclick="toggleMobileMenu()" aria-label="Open menu">&#9776;</button>
-        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
-          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="h-10 object-contain" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" />
-          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.1rem; align-items:center; gap:1px;">
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="nav-brand flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
             Apartment<span style="color:#9DAAF2;">Agents</span>
           </span>
         </a>
       </div>
-      <a href="#cta" class="md:hidden btn-coral px-4 py-4 text-sm font-bold" style="text-decoration:none; border-radius:999px;">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       <div class="hidden md:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
-        <a href="rewards.html" class="nav-link" style="color:#9DAAF2;">$250 Move or Cash</a>
-        <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link">Connect Utilities</a>
-        <a href="tel:+19729937300" class="nav-link" style="color:#0F1338;">(972) 993-7300</a>
-        <a href="#cta" class="btn-primary px-5 py-4 text-sm" style="text-decoration:none; border-radius:999px;">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+        <a href="rewards.html" class="nav-link" aria-current="page">Up to $250 Cash Back</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
-      <a href="how-it-works.html" class="nav-link" onclick="toggleMobileMenu()">How It Works</a>
-      <a href="rewards.html" class="nav-link" style="color:#9DAAF2;" onclick="toggleMobileMenu()">$250 Move or Cash</a>
-      <a href="https://apartmentagents.com/dallas-apartments/connect-dallas/" class="nav-link" onclick="toggleMobileMenu()">Connect Utilities</a>
-      <a href="tel:+19729937300" class="nav-link" style="color:#0F1338;" onclick="toggleMobileMenu()">(972) 993-7300</a>
-      <a href="#cta" class="btn-primary px-5 py-4 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px;" onclick="toggleMobileMenu()">Get Started <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; width:0.525em; height:1.05em; vertical-align:-0.2em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" aria-current="page" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section style="background: #0F1338; padding: 72px 24px 88px; position: relative; overflow: hidden;">
-    <!-- Background glow accents -->
-    <div style="position:absolute; top:-120px; right:10%; width:560px; height:560px; background: radial-gradient(circle, rgba(157,170,242,0.1) 0%, transparent 65%); pointer-events:none;"></div>
-    <div style="position:absolute; bottom:-80px; left:-60px; width:400px; height:400px; background: radial-gradient(circle, rgba(245,115,108,0.07) 0%, transparent 65%); pointer-events:none;"></div>
-
-    <div class="max-w-5xl mx-auto" style="position:relative;">
-      <div style="display:flex; align-items:center; gap:56px; flex-wrap:wrap; justify-content:center;">
+  <!-- ══════════════════════════════ HERO ══════════════════════════════
+       Copy unchanged; light lavender-white field replaces the navy slab. -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-layout">
 
         <!-- Text column -->
-        <div style="flex:1; min-width:280px; max-width:500px;">
-          <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); color:#fff; line-height:1.05; margin:0 0 28px; letter-spacing:-0.03em;">
-            Rent Smarter
-          </h1>
-          <div style="display:flex; flex-direction:column; gap:4px;">
-            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">Your dream apartment, found faster and easier</span></div>
-            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">You get the best rates and move-in specials</span></div>
-            <div class="check-item"><div class="check-icon">✓</div><span style="color:rgba(255,255,255,0.85); line-height:1.6; font-size:1.1rem;">Get rewarded with up to <span style="color:#AECD81; font-weight:700;">$250</span> for your move or extra cash on us!</span></div>
+        <div>
+          <h1>Rent Smarter</h1>
+          <div class="hero-checks">
+            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Your dream apartment, found faster and easier</span></div>
+            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>You get the best rates and move-in specials</span></div>
+            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Get rewarded with up to <span class="accent">$250</span> for your move or extra cash on us!</span></div>
           </div>
         </div>
 
         <!-- Photo with badge overlay -->
-        <div style="flex-shrink:0; position:relative; width:300px;">
-          <img src="images/happy_customer.png" alt="Happy couple celebrating in their new apartment" style="width:100%; display:block; border-radius:20px; box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.3);" />
+        <div class="hero-figure">
+          <div class="hero-photo">
+            <img src="images/happy_customer.png" alt="Happy couple celebrating in their new apartment" />
+          </div>
           <!-- Floating reward badge -->
-          <div style="position:absolute; bottom:-18px; left:-18px; background:#AECD81; border-radius:16px; padding:16px 22px; box-shadow: 0 8px 32px rgba(174,205,129,0.5), 0 2px 8px rgba(174,205,129,0.3);">
-            <p style="margin:0 0 2px; color:rgba(15,19,56,0.65); font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Best Offer</p>
-            <p style="margin:0; color:#0F1338; font-family:'DM Serif Display',Georgia,serif; font-size:1.6rem; letter-spacing:-0.03em; line-height:1.1;">Guaranteed</p>
+          <div class="hero-badge">
+            <p class="eyebrow">Best Offer</p>
+            <p class="word">Guaranteed</p>
           </div>
         </div>
 
@@ -205,21 +399,21 @@
     </div>
   </section>
 
-  <!-- SECTION 2: HOW IS THIS POSSIBLE? -->
-  <section style="background: #fff; padding: 88px 24px;">
-    <div class="max-w-5xl mx-auto">
-      <div style="display:flex; align-items:center; gap:56px; flex-wrap:wrap; justify-content:center;">
+  <!-- ══════════════ SECTION 2: HOW IS THIS POSSIBLE? ══════════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap">
+      <div class="split">
 
         <!-- Text -->
-        <div style="flex:1; min-width:260px; max-width:480px;">
-          <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 28px; line-height: 1.15;">How is this possible?</h2>
-          <p style="color: #4a4a6a; line-height: 1.8; margin: 0; font-size: 1.1rem;">
+        <div class="split-copy">
+          <h2>How is this possible?</h2>
+          <p class="lede" style="margin-bottom:0;">
             When you find your new apartment through us and list Apartment Agents as your referral source, the property pays us a referral fee from its advertising budget. Instead of keeping the entire commission like most apartment locators, we use a portion of it to give you a free move or cash back.          </p>
         </div>
 
         <!-- Image (moves left on desktop, below text on mobile) -->
-        <div class="md:order-first" style="flex-shrink:0; width:380px; max-width:100%;">
-          <img src="images/Why-You-Rented-Here.png" alt="Guest card and rental application showing Apartment Agents as the referral source" style="width:100%; display:block; border-radius:16px; box-shadow: 0 8px 32px rgba(15,19,56,0.12), 0 2px 8px rgba(15,19,56,0.07);" />
+        <div class="split-figure">
+          <img src="images/Why-You-Rented-Here.png" alt="Guest card and rental application showing Apartment Agents as the referral source" />
         </div>
 
       </div>
@@ -227,139 +421,136 @@
   </section>
 
   <!-- DIVIDER -->
-  <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.1) 20%, rgba(15,19,56,0.1) 80%, transparent); margin: 0 24px;"></div>
+  <div class="rule"></div>
 
-  <!-- SECTION 3: MORE REWARD, MORE CHOICE -->
-  <section style="background: #fff; padding: 88px 24px;">
-    <div class="max-w-3xl mx-auto">
+  <!-- ══════════ SECTION 3: MORE REWARD, MORE CHOICE ══════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap-narrow">
 
-      <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 48px; line-height: 1.15; max-width: 580px;">More reward. More choice. More peace of mind.</h2>
-      <div>
+      <h2 style="max-width:580px; margin-bottom:var(--s5);">More reward. More choice. More peace of mind.</h2>
+      <div class="feat-grid">
         <div class="feature-item">
           <div class="feature-icon">
-            <i class="fas fa-dollar-sign"></i>
+            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
           </div>
           <div>
-            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">Up to $250 move or cash</p>
-            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">Get up to $250 toward your movers or as extra cash, the best offer in the industry.</p>
+            <h3>Up to $250 move or cash</h3>
+            <p>Get up to $250 toward your movers or as extra cash, the best offer in the industry.</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon">
-            <i class="fas fa-clipboard-list"></i>
+            <i class="fas fa-clipboard-list" aria-hidden="true"></i>
           </div>
           <div>
-            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">Compare quotes from reputable DFW movers</p>
-            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">We'll help you get quotes from vetted DFW moving companies so you can choose who moves your valuables instead of being locked into a single option.</p>
+            <h3>Compare quotes from reputable DFW movers</h3>
+            <p>We'll help you get quotes from vetted DFW moving companies so you can choose who moves your valuables instead of being locked into a single option.</p>
           </div>
         </div>
 
         <div class="feature-item">
           <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
           </div>
           <div>
-            <p style="font-weight: 700; font-size: 1.1rem; margin: 0 0 6px; color: #0F1338;">We'll match or beat any competitor's offer</p>
-            <p style="color: #5a5a7a; margin: 0; line-height: 1.75; font-size: 1.1rem;">You're getting the best free move or cash back in the industry. If you find a better offer, we'll match or beat it, guaranteed.</p>
+            <h3>We'll match or beat any competitor's offer</h3>
+            <p>You're getting the best free move or cash back in the industry. If you find a better offer, we'll match or beat it, guaranteed.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4: QUALIFICATION TIERS -->
-  <section style="background: rgba(157,170,242,0.07); padding: 88px 24px;">
-    <div class="max-w-3xl mx-auto">
+  <!-- ══════════════ SECTION 4: QUALIFICATION TIERS ══════════════ -->
+  <section class="sec" style="background:var(--paper-2);">
+    <div class="wrap-narrow">
 
-      <h2 style="font-size: clamp(1.85rem, 4.5vw, 3rem); margin: 0 0 16px; line-height: 1.15;">See How Much You Qualify For</h2>
-      <p style="color: #5a5a7a; line-height: 1.8; margin: 0 0 48px; font-size: 1.1rem; max-width: 560px;">
+      <h2>See How Much You Qualify For</h2>
+      <p class="lede" style="max-width:560px;">
         Your reward is based on two things: your monthly rent and the referral fee paid by the apartment community.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="tier-grid">
 
         <!-- GROUP 1: $1,250+ -->
-        <div class="reward-group">
-          <div class="reward-group-header" style="background: #0F1338;">
-            <p style="margin: 0 0 6px; color: rgba(255,255,255,0.6); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">Monthly Rent</p>
-            <p style="margin: 0; color: #fff; font-family: 'DM Serif Display', serif; font-size: 1.65rem; letter-spacing: -0.02em; line-height: 1.2;">$1,250 or More</p>
+        <div class="tier-card tier-card--lead">
+          <div class="tier-head">
+            <p class="tier-eyebrow">Monthly Rent</p>
+            <p class="tier-band">$1,250 or More</p>
           </div>
-          <div class="reward-tier">
-            <div style="flex: 1;">
-              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Full Referral Fee</p>
-            </div>
-            <div class="reward-amount top-tier">$250</div>
-          </div>
-          <div class="reward-tier">
-            <div style="flex: 1;">
-              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee</p>
-            </div>
-            <div class="reward-amount">$150</div>
-          </div>
+          <ul class="tier-rows">
+            <li class="tier-row">
+              <span class="tier-row__label">Full Referral Fee</span>
+              <span class="tier-amt tier-amt--top">$250</span>
+            </li>
+            <li class="tier-row">
+              <span class="tier-row__label">Reduced Fee</span>
+              <span class="tier-amt">$150</span>
+            </li>
+          </ul>
         </div>
 
         <!-- GROUP 2: Under $1,250 -->
-        <div class="reward-group">
-          <div class="reward-group-header" style="background: #1A2240;">
-            <p style="margin: 0 0 6px; color: rgba(255,255,255,0.6); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">Monthly Rent</p>
-            <p style="margin: 0; color: #fff; font-family: 'DM Serif Display', serif; font-size: 1.65rem; letter-spacing: -0.02em; line-height: 1.2;">Under $1,250</p>
+        <div class="tier-card">
+          <div class="tier-head">
+            <p class="tier-eyebrow">Monthly Rent</p>
+            <p class="tier-band">Under $1,250</p>
           </div>
-          <div class="reward-tier">
-            <div style="flex: 1;">
-              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Full Referral Fee</p>
-            </div>
-            <div class="reward-amount">$150</div>
-          </div>
-          <div class="reward-tier">
-            <div style="flex: 1;">
-              <p style="margin: 0; font-weight: 700; font-size: 1rem; color: #7a7a7a;">Reduced Fee</p>
-            </div>
-            <div class="reward-amount">$100</div>
-          </div>
+          <ul class="tier-rows">
+            <li class="tier-row">
+              <span class="tier-row__label">Full Referral Fee</span>
+              <span class="tier-amt">$150</span>
+            </li>
+            <li class="tier-row">
+              <span class="tier-row__label">Reduced Fee</span>
+              <span class="tier-amt">$100</span>
+            </li>
+          </ul>
         </div>
 
       </div>
 
-      <p style="margin: 36px 0 0; color: #7a7a7a; font-size: 1rem; line-height: 1.75;">
-        Not sure what referral fee the communities you're interested in pay? Your agent can let you know when we match you with apartments. See <a href="https://apartmentagents.com/rebate-terms/" style="color:#0d6efd; font-weight:600; text-decoration:underline;">reward terms</a> for full details.
+      <p class="tier-note">
+        Not sure what referral fee the communities you're interested in pay? Your agent can let you know when we match you with apartments. See <a href="https://apartmentagents.com/rebate-terms/" class="inline-link">reward terms</a> for full details.
       </p>
     </div>
   </section>
 
-  <!-- BOTTOM CTA -->
-  <section id="cta" style="padding: 96px 24px; position: relative; overflow: hidden;">
+  <!-- ══════════════════════════ BOTTOM CTA ══════════════════════════ -->
+  <span id="cta" aria-hidden="true"></span>
+  <section class="cta-sec" id="signup">
     <!-- Skyline background -->
-    <div style="position:absolute; inset:0; z-index:0;">
-      <img src="dallas-skyline.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:grayscale(100%);" />
-      <div style="position:absolute; inset:0; background:rgba(15,19,56,0.88);"></div>
+    <div class="cta-bg" aria-hidden="true">
+      <img src="dallas-skyline.png" alt="" loading="lazy" />
+      <div class="veil"></div>
     </div>
     <!-- Radial glow -->
-    <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:700px; height:100%; background:radial-gradient(ellipse at center top, rgba(157,170,242,0.1) 0%, transparent 65%); pointer-events:none; z-index:1;"></div>
-    <div class="max-w-2xl mx-auto text-center" style="position:relative; z-index:2;">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto; text-align:center;">
 
-      <h2 style="font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.1rem, 5.5vw, 3.5rem); color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 22px;">
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); letter-spacing:-0.03em; line-height:1.1; margin:0 0 14px;">
         Save more on your next apartment
       </h2>
-      <p style="font-size: 1.15rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin: 0 0 44px; max-width: 480px; margin-left: auto; margin-right: auto;">
+      <p style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.7; margin:0 auto 30px; max-width:480px;">
         It takes less than two minutes to start your search.
       </p>
-      <a href="index.html#contact-form" class="btn-coral" style="padding: 18px 44px; font-size: 1.15rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
+      <a href="index.html#contact-form" class="btn-primary cta-btn">
         Get Started
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-col">
         <h4>Menu</h4>
         <ul>
-          <li><a href="https://apartmentagents.com/dallas-apartments/search/">Start Your Search</a></li>
-          <li><a href="https://apartmentagents.com/dallas-apartments/how-it-works/">How it Works</a></li>
-          <li><a href="rewards.html">$250 Move or Cash</a></li>
-          <li><a href="https://apartmentagents.com/dallas-apartments/connect-dallas/">Connect Utilities</a></li>
+          <li><a href="#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -381,12 +572,8 @@
       <div class="footer-col">
         <h4>Currently Accepting Followers</h4>
         <div class="social-icons">
-          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
     </div>
@@ -399,7 +586,7 @@
       </div>
     </div>
     <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
-      <p style="font-size: 1.1rem; color:#fff; line-height:1.8; margin:0;">
+      <p style="font-size:1rem; color:#fff; line-height:1.8; margin:0;">
         <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
         <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
         TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
@@ -411,8 +598,10 @@
 
   <script>
     function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
       menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
     }
   </script>
 </body>

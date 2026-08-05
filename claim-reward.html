@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claim Your Reward | Apartment Agents</title>
+  <meta name="description" content="Just leased through Apartment Agents? Report your lease and we'll get your reward started." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — inherited verbatim from dallas-apartments-new.html
+       so this page sits in the same system. Do not fork the palette.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+
+      /* spacing scale */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      /* layered, colour-tinted elevation system (base -> elevated -> floating) */
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------------- NAV (verbatim system from sibling pages) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-link[aria-current="page"] { color: #6b78c4; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn-primary {
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    .btn-coral { /* kept as the sibling pages define it (same blue pill) */
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
+    .section-badge {
+      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      border-radius: 20px; padding: 5px 14px;
+    }
+
+    /* ---------------- HERO (compact, light lavender-white field) ----------------
+       Same treatment as the Dallas hero, shortened: this is a post-lease page,
+       so the hero is one headline and one line of reassurance, nothing more.
+       -------------------------------------------------------------------------- */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 28px 20px 30px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .hero h1 { color: var(--navy); font-size: clamp(2.1rem, 9vw, 3.4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.6; margin: 0; max-width: 34em; }
+
+    /* ---------------- FORM SHELL ---------------- */
+    .form-sec { padding: 28px 20px var(--s6); background: #fff; }
+    @media (min-width: 700px) { .form-sec { padding: 40px 24px var(--s7); } }
+    .wrap-narrow { max-width: 760px; margin: 0 auto; }
+
+    .form-card {
+      background: #fff; border-radius: 22px; padding: 20px 16px 18px;
+      border: 1px solid rgba(157,170,242,0.75);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 1px 2px rgba(15,19,56,0.06),
+        0 10px 24px rgba(90,104,190,0.18),
+        0 30px 64px rgba(48,58,140,0.20);
+      position: relative;
+    }
+    @media (min-width: 700px) { .form-card { padding: 30px 30px 26px; } }
+    .form-card.is-sent .form-body { display: none; }
+    .form-card.is-sent .form-thanks { display: block; }
+
+    .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
+    .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 6px; color: var(--navy); }
+    @media (min-width: 700px) { .form-card__title { font-size: 1.6rem; } }
+    .form-card__intro { margin: 0 0 20px; color: var(--ink-mute); font-size: 1rem; line-height: 1.65; }
+
+    /* ---------------- FIELDSETS ---------------- */
+    .fs { border: none; margin: 0 0 22px; padding: 0; }
+    .fs:last-of-type { margin-bottom: 18px; }
+    .fs > legend {
+      font-family: 'DM Serif Display', Georgia, serif; font-size: 1.2rem; color: var(--navy);
+      letter-spacing: -0.02em; padding: 0; margin: 0 0 4px; float: left; width: 100%;
+    }
+    @media (min-width: 700px) { .fs > legend { font-size: 1.3rem; } }
+    .fs-rule { clear: both; height: 2px; width: 44px; background: var(--lav); border-radius: 2px; margin: 0 0 16px; }
+    .fs-note {
+      clear: both;
+      background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav);
+      border-radius: 12px; padding: 12px 14px; margin: 0 0 16px;
+      color: var(--ink-mute); font-size: 0.94rem; line-height: 1.6;
+    }
+
+    /* ---------------- FIELDS ---------------- */
+    .grid2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+    @media (min-width: 620px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+    .span2 { grid-column: 1 / -1; }
+
+    .fg { margin-bottom: 16px; }
+    .fg > label, .fg-label {
+      display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy);
+      line-height: 1.4; margin: 0 0 6px;
+    }
+    .req { color: #C24F48; font-weight: 700; margin-left: 2px; }
+    .fg-hint { display: block; font-weight: 500; color: var(--ink-mute); font-size: 0.88rem; margin-top: 2px; }
+
+    .fg input[type="text"], .fg input[type="tel"], .fg input[type="email"], .fg input[type="date"], .fg select {
+      width: 100%; min-height: 52px; font-size: 16px; font-family: 'DM Sans', sans-serif;
+      padding: 13px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
+      background: #fbfbff; color: var(--navy); line-height: 1.4; -webkit-appearance: none; appearance: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+    .fg input::placeholder { color: #8b8fae; }
+    .fg input:hover, .fg select:hover { border-color: rgba(15,19,56,0.3); }
+    .fg input:focus, .fg select:focus { outline: none; border-color: var(--lav); background: #fff; box-shadow: 0 0 0 4px rgba(157,170,242,0.28); }
+    .fg input:focus-visible, .fg select:focus-visible { outline: none; }
+    .fg input.is-bad, .fg select.is-bad { border-color: var(--coral); background: #fff7f7; }
+    /* date inputs on iOS collapse without an explicit height */
+    .fg input[type="date"] { min-height: 52px; }
+
+    .fg select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%235A5A7A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1.5 7 7.5 13 1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px;
+    }
+    /* an unchosen select should read as a prompt, not as an answer */
+    .fg select.is-placeholder { color: #8b8fae; }
+
+    /* ---------------- RADIO GROUPS ---------------- */
+    .radio-set { border: none; margin: 0 0 12px; padding: 0; }
+    .radio-set > legend { padding: 0; }
+    .radio-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .radio-pill {
+      flex: 1 1 0; min-width: 120px; min-height: 48px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 11px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
+      background: #fbfbff; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--navy);
+      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .radio-pill:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
+    .radio-pill:active { background: #f3f4ff; }
+    .radio-pill input { width: 20px; height: 20px; accent-color: #0d6efd; margin: 0; flex-shrink: 0; }
+    .radio-pill:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
+    .radio-pill:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
+
+    /* ---------------- AGREEMENT CHECKBOX ---------------- */
+    .check-row {
+      display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+      padding: 14px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
+      background: #fbfbff; min-height: 48px;
+      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .check-row:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
+    .check-row:active { background: #f3f4ff; }
+    .check-row input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 2px 0 0; flex-shrink: 0; }
+    .check-row:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
+    .check-row:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
+    .check-row.is-bad { border-color: var(--coral); background: #fff7f7; }
+    .check-row span { font-size: 0.97rem; line-height: 1.6; color: var(--navy); font-weight: 500; }
+
+    /* ---------------- SUBMIT ---------------- */
+    .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    @media (min-width: 700px) { .form-submit { width: fit-content; min-width: 280px; margin: 0 auto; padding: 15px 36px; } }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 12px 0 0; text-align: center; }
+    .form-error { display: none; color: #B33F38; font-size: 0.94rem; font-weight: 600; margin: 0 0 12px; text-align: center; }
+    .form-error.show { display: block; }
+
+    /* ---------------- SUCCESS PANEL ---------------- */
+    .form-thanks { display: none; text-align: center; padding: 14px 4px 8px; }
+    .thanks-ico {
+      width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: var(--navy);
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 16px;
+      box-shadow: 0 2px 6px rgba(174,205,129,0.35), 0 12px 28px rgba(15,19,56,0.12);
+    }
+    .form-thanks h2 { font-size: 1.5rem; margin: 0 0 10px; color: var(--navy); }
+    .form-thanks p { color: var(--ink-mute); font-size: 1rem; line-height: 1.7; margin: 0 auto; max-width: 34em; }
+
+    /* ---------------- WHAT HAPPENS NEXT ---------------- */
+    .next-sec { padding: var(--s5) 20px var(--s6); background: var(--paper-2); border-top: 1px solid rgba(15,19,56,0.06); }
+    @media (min-width: 700px) { .next-sec { padding: var(--s6) 24px var(--s7); } }
+    .next-sec h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.15; margin: 12px 0 22px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step + .step { margin-top: 14px; }
+    .step-num {
+      width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 1.3rem; flex-shrink: 0;
+      background: var(--lav); color: var(--navy);
+      box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30);
+    }
+    .step-card {
+      flex: 1; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px;
+      padding: 16px 18px; box-shadow: var(--sh-base);
+    }
+    .step-card p { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+    .reassure {
+      margin-top: var(--s3); background: #fff; border: 1px solid rgba(157,170,242,0.35);
+      border-left: 4px solid var(--lav); border-radius: 16px; padding: 18px 20px;
+      box-shadow: var(--sh-base);
+    }
+    .reassure p { margin: 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.72; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.95rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 0.95rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    nav button:active { opacity: 0.65; }
+
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    @media (min-width: 700px) {
+      .hero { padding: 52px 24px 52px; }
+      .hero h1 { font-size: clamp(2.6rem, 5vw, 3.4rem); }
+      .hero-sub { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════
+       Copied from dallas-apartments-new.html. Only two changes: this page's
+       nav item carries aria-current, and the "Get My Free Matches" links point
+       at the Dallas page's #signup anchor because that section doesn't exist here.
+       ═══════════════════════════════════════════════════════════════════ -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="dallas-apartments-new.html#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="claim-reward.html" class="nav-link" aria-current="page">Claim Your Reward</a>
+        <a href="dallas-apartments-new.html#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" aria-current="page" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="dallas-apartments-new.html#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">You signed the lease</p>
+      <h1>Claim Your Reward</h1>
+      <p class="hero-sub">Congratulations on the new place. Report your lease below and we&rsquo;ll get your reward started.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 2 · THE FORM ══════════════════════════ -->
+  <section class="form-sec" id="report">
+    <div class="wrap-narrow">
+      <div class="form-card" id="claimCard">
+
+        <div class="form-body">
+          <p class="form-card__eyebrow">One form</p>
+          <h2 class="form-card__title">Tell us about your lease</h2>
+          <p class="form-card__intro">Fill in what you know. Starred fields are required.</p>
+
+          <!-- GHL ENDPOINT GOES HERE ────────────────────────────────────────────
+               This form is not wired to a backend yet. When the GHL form is built,
+               replace the client-side handler with the real post:
+                 <form action="https://<GHL_FORM_ENDPOINT>" method="POST"> ... </form>
+               Field `name` attributes below are already snake_case and should be
+               mapped 1:1 to the GHL custom fields. Keep the success panel below as
+               the redirect/thank-you target if GHL is embedded rather than posted to.
+               ──────────────────────────────────────────────────────────────────── -->
+          <form id="claimForm" novalidate onsubmit="return aaClaimSubmit(event)">
+
+            <!-- ─────────── ABOUT YOU ─────────── -->
+            <fieldset class="fs">
+              <legend>About you</legend>
+              <div class="fs-rule"></div>
+
+              <div class="grid2">
+                <div class="fg">
+                  <label for="first_name">First name <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="first_name" name="first_name" autocomplete="given-name" required aria-required="true" />
+                </div>
+                <div class="fg">
+                  <label for="last_name">Last name <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="last_name" name="last_name" autocomplete="family-name" required aria-required="true" />
+                </div>
+                <div class="fg">
+                  <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                  <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" required aria-required="true" />
+                </div>
+                <div class="fg">
+                  <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input type="email" id="email" name="email" inputmode="email" autocomplete="email" required aria-required="true" />
+                </div>
+                <div class="fg span2">
+                  <label for="agent_name">Apartment Agents agent name <span class="req" aria-hidden="true">*</span></label>
+                  <select id="agent_name" name="agent_name" required aria-required="true">
+                    <option value="" selected disabled>Choose your agent</option>
+                    <option value="Jeff Anderson">Jeff Anderson</option>
+                    <option value="Paige Prestwood">Paige Prestwood</option>
+                    <option value="Cindy Little">Cindy Little</option>
+                    <option value="Sara Dahlen">Sara Dahlen</option>
+                    <option value="Tania Ponomarenko">Tania Ponomarenko</option>
+                    <option value="Alex Clemovitz">Alex Clemovitz</option>
+                    <option value="John Cameron">John Cameron</option>
+                    <option value="Not sure">Not sure</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- ─────────── ABOUT YOUR NEW APARTMENT ─────────── -->
+            <fieldset class="fs">
+              <legend>About your new apartment</legend>
+              <div class="fs-rule"></div>
+              <p class="fs-note">If you&rsquo;re not sure about a field here, it&rsquo;s fine to leave it blank.</p>
+
+              <div class="grid2">
+                <div class="fg span2">
+                  <label for="property_name">Property name</label>
+                  <input type="text" id="property_name" name="property_name" autocomplete="organization" />
+                </div>
+                <div class="fg span2">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" autocomplete="street-address" />
+                </div>
+                <div class="fg">
+                  <label for="apartment_number">Apartment number</label>
+                  <input type="text" id="apartment_number" name="apartment_number" autocomplete="address-line2" />
+                </div>
+                <div class="fg">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" autocomplete="address-level2" />
+                </div>
+                <div class="fg">
+                  <label for="zip_code">Zip code</label>
+                  <input type="text" id="zip_code" name="zip_code" inputmode="numeric" autocomplete="postal-code" maxlength="10" />
+                </div>
+                <div class="fg">
+                  <label for="move_in_date">Move-in date</label>
+                  <input type="date" id="move_in_date" name="move_in_date" />
+                </div>
+                <div class="fg">
+                  <label for="monthly_rent">Monthly rent amount</label>
+                  <input type="text" id="monthly_rent" name="monthly_rent" inputmode="numeric" placeholder="1,450" />
+                </div>
+                <div class="fg">
+                  <label for="apartment_size">Apartment size</label>
+                  <select id="apartment_size" name="apartment_size">
+                    <option value="" selected disabled>Choose a size</option>
+                    <option value="Studio">Studio</option>
+                    <option value="1 Bedroom">1 Bedroom</option>
+                    <option value="2 Bedroom">2 Bedroom</option>
+                    <option value="3 Bedroom">3 Bedroom</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label for="lease_months">How many months is your lease?</label>
+                  <input type="text" id="lease_months" name="lease_months" inputmode="numeric" placeholder="12" maxlength="3" />
+                </div>
+                <div class="fg">
+                  <label for="leasing_agent">Property leasing agent&rsquo;s name</label>
+                  <input type="text" id="leasing_agent" name="leasing_agent" autocomplete="off" />
+                </div>
+
+                <div class="span2">
+                  <fieldset class="radio-set">
+                    <legend class="fg-label">Did you list Apartment Agents on the guest card?</legend>
+                    <div class="radio-row">
+                      <label class="radio-pill"><input type="radio" name="guest_card" value="Yes" /><span>Yes</span></label>
+                      <label class="radio-pill"><input type="radio" name="guest_card" value="No" /><span>No</span></label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="span2">
+                  <fieldset class="radio-set">
+                    <legend class="fg-label">Did you list Apartment Agents on the application?</legend>
+                    <div class="radio-row">
+                      <label class="radio-pill"><input type="radio" name="application" value="Yes" /><span>Yes</span></label>
+                      <label class="radio-pill"><input type="radio" name="application" value="No" /><span>No</span></label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- ─────────── HOW YOU'D LIKE YOUR REWARD ─────────── -->
+            <fieldset class="fs">
+              <legend>How you&rsquo;d like your reward</legend>
+              <div class="fs-rule"></div>
+
+              <div class="grid2">
+                <div class="fg span2">
+                  <label for="reward_method">How would you like to receive your reward?</label>
+                  <select id="reward_method" name="reward_method">
+                    <option value="" selected disabled>Choose one</option>
+                    <option value="Zelle">Zelle</option>
+                    <option value="Venmo">Venmo</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Amazon gift card">Amazon gift card</option>
+                    <option value="Give it to my agent">Give it to my agent</option>
+                  </select>
+                </div>
+                <div class="fg span2">
+                  <label for="reward_account">Phone number, username, or email tied to that account</label>
+                  <input type="text" id="reward_account" name="reward_account" autocomplete="off" />
+                </div>
+                <div class="span2" style="margin-bottom:16px;">
+                  <label class="check-row" id="termsRow">
+                    <input type="checkbox" id="terms_agree" name="terms_agree" value="Yes" required aria-required="true" />
+                    <span><span class="req" aria-hidden="true" style="margin:0 4px 0 0;">*</span>I have read and agree to the <a href="https://apartmentagents.com/rebate-terms/" class="inline-link" target="_blank" rel="noopener">Reward Terms</a>.</span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <p class="form-error" id="formError" role="alert">Please fill in the starred fields above.</p>
+
+            <button type="submit" class="btn-primary form-submit">
+              Report My Lease
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+            <p class="form-micro">One reward per apartment. Your agent confirms the details from here.</p>
+          </form>
+        </div>
+
+        <!-- CLIENT-SIDE SUCCESS STATE — stays as the thank-you view once GHL is wired in. -->
+        <div class="form-thanks" role="status" aria-live="polite">
+          <div class="thanks-ico" aria-hidden="true"><i class="fas fa-check"></i></div>
+          <h2>Got it. Your lease is reported.</h2>
+          <p>Your agent takes it from here and will be in touch if anything is missing. Enjoy the new place.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 3 · WHAT HAPPENS NEXT ══════════════════════════ -->
+  <section class="next-sec">
+    <div class="wrap-narrow">
+      <div class="section-badge">What happens next</div>
+      <h2>Three things, in this order.</h2>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-card">
+          <p>We confirm the lease with the community.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-card">
+          <p>The community pays our referral fee.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-card">
+          <p>We send your reward the way you chose.</p>
+        </div>
+      </div>
+
+      <div class="reassure">
+        <p>The exact amount depends on your rent and the referral fee the community pays. Your agent confirms it once we hear back from them. <a href="rewards.html" class="inline-link">See the amounts</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="dallas-apartments-new.html#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html" aria-current="page">Claim Your Reward</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+        <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size:0.92rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
+      menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+    }
+
+    /* Selects show their placeholder in muted grey until a real choice is made. */
+    (function () {
+      var sels = document.querySelectorAll('.fg select');
+      function mark(s) { s.classList.toggle('is-placeholder', !s.value); }
+      Array.prototype.forEach.call(sels, function (s) {
+        mark(s);
+        s.addEventListener('change', function () { mark(s); });
+      });
+    })();
+
+    /* Placeholder submit handler. Replace with the live GHL post before launch —
+       see the "GHL ENDPOINT GOES HERE" comment above the form. */
+    function aaClaimSubmit(e) {
+      e.preventDefault();
+      var form = document.getElementById('claimForm');
+      var err = document.getElementById('formError');
+      var bad = null;
+
+      // reset previous error styling
+      Array.prototype.forEach.call(form.querySelectorAll('.is-bad'), function (el) { el.classList.remove('is-bad'); });
+
+      Array.prototype.forEach.call(form.querySelectorAll('input[required], select[required]'), function (el) {
+        var empty = (el.type === 'checkbox') ? !el.checked : !String(el.value).trim();
+        if (!empty) return;
+        var target = (el.type === 'checkbox') ? document.getElementById('termsRow') : el;
+        target.classList.add('is-bad');
+        if (!bad) bad = el;
+      });
+
+      if (bad) {
+        err.classList.add('show');
+        bad.focus({ preventScroll: false });
+        return false;
+      }
+
+      err.classList.remove('show');
+      document.getElementById('claimCard').classList.add('is-sent');
+      window.scrollTo({ top: document.getElementById('claimCard').offsetTop - 90, behavior: 'smooth' });
+      return false;
+    }
+  </script>
+</body>
+</html>
