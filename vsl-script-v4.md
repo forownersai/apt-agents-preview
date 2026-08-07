@@ -1,7 +1,7 @@
 # VSL Script v4 — Apartment Agents (Dallas) ✅ RECOMMENDED
 _2026-08-05. Full-thread synthesis: John's inputs + both Hormozi ingests + the brain guardrails. Supersedes v3 as the shoot candidate; v1 (2:50), v2 (8:00), v3 (3:41) kept for reference._
 
-**Runtime:** ~4:00 · ~590 spoken words · **Evergreen** — changes only if the reward changes. No deal number.
+**Runtime:** ~4:05 · ~610 spoken words · **Evergreen** — changes only if the reward changes. No deal number.
 **Only placeholder:** `[NAME]` in Beat 6.
 
 ## What v4 fixes that v3 missed
@@ -23,16 +23,16 @@ _On camera. Cold. No overlay. Must work muted, so caption this beat word for wor
 
 ## BEAT 2 — PROMISE (0:12–0:36)
 
-> There's a reason that happens, and I'm going to show it to you in their own words. Give me a few minutes and you'll know how the big apartment sites really work, how to see the places they don't show you, and how to get paid up to two hundred and fifty dollars for a lease you were going to sign anyway.
+> There's a reason that happens, and I'm going to show it to you in their own words. Then I'll show you how to see the places they don't show you, and how to get paid up to two hundred and fifty dollars for a lease you were going to sign anyway.
 
 ## BEAT 3 — PAIN (0:36–0:58)
 
-> Because right now, the search is all on you. Twenty open tabs. Calls that go to voicemail. A great listing that's gone by the time anyone calls you back, if they ever call back. And meanwhile somebody you know landed a great place with a killer deal, and it wasn't luck. They had help.
+> Right now the search is all on you. Twenty open tabs. Calls that go to voicemail. The good listing that's gone before anyone calls you back. And meanwhile somebody you know landed a killer deal on a great place, and it wasn't luck. They had help.
 
 ## BEAT 4 — PROOF / THE TWIST (0:58–1:44)
 _Calm delivery. The graphics do the accusing. She stays on camera under the overlays._
 
-> Here's the part nobody tells you. Those websites are free for you because you're not the customer. The apartments are. They pay for placement, and the ones that pay the most get seen the most.
+> Here's the part nobody tells you. Those websites are free for you because you're not the customer. The apartments are. They pay for placement.
 
 **OVERLAY →** `apartments-com-hero.png` (hold 3s, URL visible)
 
@@ -44,29 +44,29 @@ _Calm delivery. The graphics do the accusing. She stays on camera under the over
 
 **OVERLAY →** `apartments-com-tiers-full.png`, punch in on **"Placement above Gold listings"** (hold 3s)
 
-> Placement above Gold listings. It's a paid ladder, and your attention is what's being sold. And plenty of apartments don't advertise there at all. Whole communities you will never see, no matter how long you scroll.
+> Placement above Gold listings. It's a paid ladder, and your attention is what's being sold. And plenty of apartments don't advertise there at all. Whole communities you will never see.
 
 ## BEAT 5 — THE HIDDEN COST (1:44–2:06)
 
-> And even the listings you can see only tell you so much. The photos won't tell you that management changed hands in March, or that maintenance takes two weeks, or that the walls are thin, or what that street sounds like at two in the morning.
+> And even the listings you can see only tell you so much. The photos won't tell you that management just changed hands, or maintenance takes two weeks, or the walls are thin, or what that street sounds like at two in the morning.
 >
-> People find that out after they sign a twelve month lease.
+> You find that out after you sign a twelve month lease.
 
 ## BEAT 6 — WHO WE ARE (2:06–2:26)
 _The credibility beat v3 didn't have._
 
-> I'm [NAME], and this is what my team at Apartment Agents does all day. We're a licensed Texas brokerage, we've helped more than two hundred thousand DFW renters since two thousand three, and we hold a four point nine on Google. This business only works if people send their friends.
+> I'm [NAME] with Apartment Agents. We're a licensed Texas brokerage. We've helped more than two hundred thousand DFW renters since two thousand three, and we hold a four point nine on Google, because this business only works if people send their friends.
 
 ## BEAT 7 — THE PLAN (2:26–2:56)
 **OVERLAY →** Apartment List Builder screenshot, results view. Hold through the beat.
 
-> So here's how it works. You tell us where you want to be, your budget, your move-in date, and what matters most to you. Then your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, and sends you the ones that fit, with our top picks up front.
+> Here's how it works. You tell us where you want to be, your budget, your move-in date, and what matters most to you. Then your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, and sends you the ones that fit, with our top picks up front.
 >
 > Including what the listings won't say. Which buildings stay quiet. Which offices actually answer. Which places are running real specials right now.
 
 ## BEAT 8 — THE STACK (2:56–3:16)
 
-> You tour your favorites on your own schedule. No agent tagging along, no back and forth. If you want moving quotes, pick the companies and the quotes come to us, so the movers never get your phone number. And we'll get your utilities and internet set up before you move in.
+> You tour your favorites on your own schedule. No agent tagging along. If you want moving quotes, pick the companies and the quotes come to us, so the movers never get your phone number. And we'll get your utilities and internet set up before you move in.
 
 ## BEAT 9 — THE MONEY (3:16–3:38)
 **OVERLAY →** "Up to $250 cash back" title card
@@ -76,13 +76,13 @@ _The credibility beat v3 didn't have._
 ## BEAT 10 — THE TWO OBJECTIONS (3:38–4:12)
 _No title cards. One continuous thought, conversational._
 
-> Now, the two questions everyone asks me. First, what's the catch. There isn't one. The property pays us for bringing them a good resident, and that money is in their budget whether you use us or not. Using us just means some of it comes back to you.
+> Two questions everyone asks me. First, what's the catch. There isn't one. The property pays us for bringing them a good resident, and that money is in their budget whether you use us or not. Using us just means some of it comes back to you.
 >
-> Second, am I just going to send you wherever pays me the most. Honest answer, we only work with communities that pay us. But we don't get paid unless you actually sign, so sending you somewhere wrong earns us nothing. And half our business is repeat customers and referrals. One bad match costs us far more than one bigger fee ever could.
+> Second, am I just going to send you wherever pays me the most. Honest answer, we only work with communities that pay us. But we don't get paid unless you actually sign, so sending you somewhere wrong earns us nothing. And half our business is repeat and referral. One bad match costs us far more than one bigger fee.
 
 ## BEAT 11 — CTA (4:12–4:30)
 
-> So here's what to do. Fill out the form below. It costs you nothing, and a licensed Dallas expert goes to work for you right away.
+> Fill out the form below. It costs you nothing, and a licensed Dallas expert goes to work for you right away.
 >
 > One thing worth knowing. The specials we're seeing this week won't all be there next week. Pricing in Dallas moves every day, and the best floor plans go first. Fill out the form, and let's go find your place.
 
