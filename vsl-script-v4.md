@@ -1,8 +1,9 @@
 # VSL Script v4 — Apartment Agents (Dallas) ✅ RECOMMENDED
 _2026-08-05. Full-thread synthesis: John's inputs + both Hormozi ingests + the brain guardrails. Supersedes v3 as the shoot candidate; v1 (2:50), v2 (8:00), v3 (3:41) kept for reference._
 
-**Runtime:** ~4:05 · ~610 spoken words · **Evergreen** — changes only if the reward changes. No deal number.
+**Runtime:** ~4:10 · 639 spoken words (4:15 at 150wpm, 4:05 if she's quick) · **Evergreen** — changes only if the reward changes. No deal number.
 **Only placeholder:** `[NAME]` in Beat 6.
+**If John wants it under 4:00:** cut Beat 3 entirely (the pain beat, 44 words). The hook already implies the pain, and everything else is load-bearing. That gets it to ~3:57.
 
 ## What v4 fixes that v3 missed
 Scored against Hormozi's 5 Ps (promise, pain, proof, plan, picture), v3 had a hole and three soft spots:
