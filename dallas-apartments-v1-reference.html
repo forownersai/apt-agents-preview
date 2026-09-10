@@ -248,68 +248,108 @@
     .move-card--lead .move-ico { background: var(--green); color: var(--navy); }
     .move-amount { font-family: 'DM Serif Display', Georgia, serif; color: var(--green); font-size: 2.1rem; line-height: 1; letter-spacing: -0.03em; display: block; margin-bottom: 4px; }
 
-    /* ---------------- SAMPLE SHORTLIST ---------------- */
-    .example-banner {
+    /* ---------------- SHOW DON'T TELL — Agent Center list replica ----------------
+       Faithful static recreation of the real client list at ac.apartmentagents.com/l/…
+       Tokens and metrics copied from the product's own CSS. Scoped under .sdt. */
+    .sdt-note {
       display: flex; align-items: flex-start; gap: 12px;
       background: rgba(255,214,123,0.18); border: 1.5px dashed rgba(196,142,26,0.55);
-      border-radius: 14px; padding: 14px 16px; margin-bottom: var(--s4);
+      border-radius: 14px; padding: 14px 16px; margin: 0 auto var(--s4); max-width: 540px;
     }
-    .example-banner i { color: #a9791a; margin-top: 3px; flex-shrink: 0; }
-    .example-banner p { margin: 0; font-size: 0.96rem; line-height: 1.6; color: #6b5410; }
-    .example-banner strong { color: #4d3c08; }
+    .sdt-note i { color: #a9791a; margin-top: 3px; flex-shrink: 0; }
+    .sdt-note p { margin: 0; font-size: 0.96rem; line-height: 1.6; color: #6b5410; }
+    .sdt-note strong { color: #4d3c08; }
 
-    .brief-line { background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 14px; padding: 14px 16px; margin-bottom: var(--s4); font-size: 0.96rem; color: var(--ink-mute); line-height: 1.6; }
-    .brief-line strong { color: var(--navy); }
-
-    .rec-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
-    .rec {
-      background: #fff; border-radius: 20px; overflow: hidden; position: relative;
-      border: 1px solid rgba(15,19,56,0.09); box-shadow: var(--sh-base);
+    .sdt {
+      --surface: #FFFFFF; --surface-2: #F5F6FC; --s-ink: #0F1338; --s-muted: #4C5279; --s-faint: #888DAD;
+      --s-brand: #0F1338; --brand-soft: #E7E9F8; --s-accent: #9DAAF2; --accent-ink: #4E5BB8; --accent-soft: #ECEEFC;
+      --down: #1C7A54; --down-soft: #DBEFE3; --rose: #E11D48; --rose-ink: #BE123C; --rose-soft: #FFF1F2;
+      --hairline: #E3E4F0; --hairline-2: #EDEEF7; --r: 18px; --r-sm: 12px;
+      max-width: 540px; margin: 0 auto; text-align: left; color: var(--s-ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
-    /* Only these three get chrome — Star strongest. */
-    .rec--star { border: 2px solid var(--green); box-shadow: var(--sh-star); }
-    .rec--under { border: 1.5px solid rgba(157,170,242,0.6); box-shadow: var(--sh-elev); }
-    .rec--wild { border: 1.5px solid rgba(255,214,123,0.9); box-shadow: var(--sh-elev); }
-
-    .rec-photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #e9ebf6; }
-    .rec-photo > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* colour treatment + gradient overlay (never a raw photo) */
-    .rec-photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(157,170,242,0.35), rgba(15,19,56,0.10)); mix-blend-mode: multiply; pointer-events: none; z-index: 1; }
-    .rec-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,19,56,0.62) 0%, rgba(15,19,56,0.12) 42%, transparent 68%); pointer-events: none; z-index: 2; }
-    .rec-ribbon {
-      position: absolute; top: 12px; left: 12px; z-index: 4;
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase;
-      border-radius: 999px; padding: 6px 12px;
-    }
-    .rib-star  { background: var(--green); color: var(--navy); box-shadow: 0 6px 18px rgba(174,205,129,0.5); }
-    .rib-under { background: var(--lav);   color: var(--navy); box-shadow: 0 6px 18px rgba(157,170,242,0.45); }
-    .rib-wild  { background: var(--yellow);color: #5c440a;     box-shadow: 0 6px 18px rgba(255,214,123,0.5); }
-    .rec-example-tag {
-      position: absolute; top: 12px; right: 12px; z-index: 4;
-      background: rgba(15,19,56,0.82); color: rgba(255,255,255,0.92);
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 6px; padding: 5px 9px; border: 1px solid rgba(255,255,255,0.22);
-    }
-    .rec-photo-foot { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 4; }
-    .rec-photo-foot h3 { color: #fff; font-size: 1.28rem; margin: 0; line-height: 1.2; text-shadow: 0 2px 12px rgba(4,7,26,0.6); }
-    .rec-photo-foot .hood { color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; }
-
-    .rec-body { padding: 18px 18px 16px; }
-    .rec-specs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .rec-spec { background: rgba(15,19,56,0.05); border-radius: 8px; padding: 4px 9px; font-size: 0.83rem; font-weight: 600; color: var(--ink-soft); }
-    .rec-value { font-size: 1rem; line-height: 1.65; margin: 0 0 12px; color: var(--navy); }
-    .rec-value .net { font-weight: 800; color: #3f6b12; background: rgba(174,205,129,0.28); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
-    .rec--wild .rec-value .net { color: #7a5a0a; background: rgba(255,214,123,0.4); }
-    .rec--under .rec-value .net { color: #3f6b12; background: rgba(174,205,129,0.28); }
-    .rec-value .ask { color: #8b8fae; text-decoration: line-through; text-decoration-thickness: 1.5px; }
-    .rec-why { font-size: 0.95rem; line-height: 1.72; color: var(--ink-mute); margin: 0 0 14px; border-left: 3px solid rgba(157,170,242,0.5); padding-left: 12px; }
-    .rec--star .rec-why { border-left-color: var(--green); }
-    .rec--wild .rec-why { border-left-color: var(--yellow); }
-    .rec-why b { color: var(--navy); font-weight: 700; }
-    .rec-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(15,19,56,0.08); padding-top: 12px; }
-    .rec-checked { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #3f6b12; background: rgba(174,205,129,0.2); border-radius: 999px; padding: 6px 11px; }
-    .rec-fees { font-size: 0.85rem; color: #74748f; font-weight: 600; }
+    .sdt .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; letter-spacing: -0.02em; }
+    .sdt-lede { margin: 0 4px 16px; }
+    .sdt-lede h3 { font-size: 23px; line-height: 1.15; margin: 0 0 4px; font-weight: 600; color: var(--s-ink); }
+    .sdt-lede p { margin: 0; color: var(--s-muted); font-size: 14px; }
+    .sdt-lede .agent { color: var(--s-brand); font-weight: 600; }
+    .sdt-sect { display: flex; align-items: center; gap: 12px; margin: 32px 2px 10px; }
+    .sdt-sect span { font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 800; padding: 5px 12px; border-radius: 999px; background: var(--cc-soft); color: var(--cc); border: 1px solid var(--cc); white-space: nowrap; }
+    .sdt-sect::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
+    .sdt-sect.rest span { background: transparent; border: none; padding: 0; color: var(--s-faint); letter-spacing: 0.14em; font-weight: 700; }
+    .sdt-blurb { font-size: 22px; line-height: 1.25; margin: 0 2px 14px; font-weight: 600; color: var(--s-ink); }
+    .sdt-cat-top   { --cc: #1C7A54; --cc-soft: #DBEFE3; }
+    .sdt-cat-out   { --cc: #B0472B; --cc-soft: #F6E0D7; }
+    .sdt-cat-great { --cc: #7A45C2; --cc-soft: #EDE3FA; }
+    .sdt-cat-more  { --cc: #888DAD; --cc-soft: #E9EAF2; }
+    .sdt-card { position: relative; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r); box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 10px 26px -14px rgba(15,19,56,0.22); overflow: hidden; margin-bottom: 18px; }
+    .sdt-pnote { display: flex; align-items: center; gap: 13px; padding: 13px 16px 14px; background: var(--surface); border-left: 4px solid var(--cc, var(--s-accent)); border-bottom: 1px solid var(--hairline); }
+    .sdt-pnote img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: center top; flex: 0 0 auto; }
+    .sdt-pnote p { margin: 0; font-size: 14.5px; color: var(--s-ink); line-height: 1.5; }
+    .sdt-from { font-weight: 700; color: var(--cc, var(--accent-ink)); margin-right: 5px; }
+    .sdt-hero { position: relative; aspect-ratio: 16 / 9; background: #e9ebf6; overflow: hidden; }
+    .sdt-hero > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sdt-toppick { position: absolute; top: 11px; left: 11px; z-index: 5; display: inline-flex; align-items: center; gap: 4px; background: var(--cc-soft); color: var(--cc); border: 1px solid var(--cc); font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .sdt-fav { position: absolute; right: 12px; top: 12px; z-index: 5; width: 40px; height: 40px; border-radius: 999px; border: 0; background: rgba(255,255,255,0.88); backdrop-filter: blur(6px); display: grid; place-items: center; cursor: pointer; transition: transform 0.18s; color: #3a4066; font-size: 17px; }
+    .sdt-fav:hover { transform: scale(1.06); }
+    .sdt-fav:active { transform: scale(0.94); }
+    .sdt-fav:focus-visible { outline: 2px solid var(--s-accent); outline-offset: 2px; }
+    .sdt-fav.on { color: var(--rose); }
+    .sdt-count { position: absolute; left: 12px; bottom: 12px; z-index: 5; background: rgba(15,19,56,0.72); color: #fff; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 4px 11px; }
+    .sdt-dots { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; gap: 6px; justify-content: center; pointer-events: none; z-index: 4; }
+    .sdt-dots i { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.55); }
+    .sdt-dots i.on { width: 18px; background: #fff; }
+    .sdt-head { padding: 16px 16px 4px; }
+    .sdt-pname { font-size: 21px; font-weight: 600; margin: 0 0 10px; line-height: 1.2; color: var(--s-ink); }
+    .sdt-favbtn { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); color: var(--s-ink); border: 1px solid var(--hairline); border-radius: 999px; padding: 9px 16px; font-size: 14px; font-weight: 700; cursor: pointer; transition: border-color 0.15s, background 0.15s, transform 0.1s; margin: 0 0 12px; }
+    .sdt-favbtn i { color: var(--rose); font-size: 15px; }
+    .sdt-favbtn:hover { border-color: var(--rose); background: var(--rose-soft); }
+    .sdt-favbtn:active { transform: scale(0.97); }
+    .sdt-favbtn:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+    .sdt-favbtn.on { color: var(--rose-ink); border-color: var(--rose); background: var(--rose-soft); }
+    .sdt-contact { margin: 0 0 6px; font-size: 14px; color: var(--s-ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-weight: 600; }
+    .sdt-contact i { color: var(--s-muted); font-size: 13px; }
+    .sdt-contact a { color: var(--s-brand); text-decoration: none; font-weight: 700; }
+    .sdt-contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .sdt-contact a:focus-visible, .sdt-addr a:focus-visible { outline: 2px solid var(--s-accent); outline-offset: 2px; border-radius: 4px; }
+    .sdt-addr { margin: 0; color: var(--s-muted); font-size: 13.5px; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+    .sdt-addr a { color: var(--s-brand); font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .sdt-addr a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .sdt-fees { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 2px; }
+    .sdt-fee { font-size: 12px; color: var(--s-muted); background: var(--surface-2); border: 1px solid var(--hairline); padding: 4px 10px; border-radius: 999px; }
+    .sdt-fee b { color: var(--s-ink); font-weight: 600; }
+    .sdt-desc { color: var(--s-muted); font-size: 14.5px; line-height: 1.62; margin: 10px 0 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .sdt-desc.open { display: block; }
+    .sdt-more { background: none; border: 0; color: var(--s-brand); font-weight: 600; font-size: 13.5px; cursor: pointer; padding: 6px 0 2px; margin-top: 2px; font-family: inherit; }
+    .sdt-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .sdt-more:focus-visible { outline: 2px solid var(--s-accent); outline-offset: 2px; border-radius: 4px; }
+    .sdt-special { display: flex; gap: 10px; align-items: flex-start; width: fit-content; max-width: calc(100% - 32px); margin: 14px 16px 2px; padding: 11px 13px; background: var(--accent-soft); border: 1px solid rgba(157,170,242,0.3); border-radius: var(--r-sm); }
+    .sdt-special i { flex: 0 0 auto; margin-top: 2px; color: var(--accent-ink); font-size: 14px; }
+    .sdt-special p { margin: 0; font-size: 13.5px; color: var(--s-ink); line-height: 1.45; }
+    .sdt-special b { color: var(--accent-ink); font-weight: 700; }
+    .sdt-selhead { display: flex; justify-content: space-between; align-items: center; padding: 16px 16px 10px; }
+    .sdt-selhead .t { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--s-faint); }
+    .sdt-selhead .n { font-size: 13px; font-weight: 600; color: var(--s-muted); }
+    .sdt-plans { list-style: none; margin: 0; padding: 0; }
+    .sdt-plan { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--hairline-2); }
+    .sdt-plan:first-child { border-top: 1px solid var(--hairline); }
+    .sdt-chk { margin-top: 2px; width: 22px; height: 22px; border-radius: 7px; background: var(--s-accent); position: relative; flex: 0 0 auto; }
+    .sdt-chk::after { content: ""; position: absolute; left: 7px; top: 3px; width: 6px; height: 11px; border: solid #0F1338; border-width: 0 2.4px 2.4px 0; transform: rotate(42deg); }
+    .sdt-prow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; }
+    .sdt-price { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--s-ink); display: flex; align-items: baseline; gap: 8px; }
+    .sdt-price i { font-style: normal; font-size: 12px; font-weight: 500; color: var(--s-faint); }
+    .sdt-avail { font-size: 12px; font-weight: 600; color: var(--s-muted); white-space: nowrap; }
+    .sdt-avail.now { color: var(--down); display: inline-flex; align-items: center; gap: 5px; }
+    .sdt-avail.now::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--down); }
+    .sdt-meta { margin: 5px 0 0; font-size: 12.5px; color: var(--s-muted); display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+    .sdt-meta .sep { color: var(--s-faint); }
+    .sdt-meta .tag { color: var(--s-brand); font-weight: 600; background: var(--brand-soft); padding: 1px 7px; border-radius: 999px; font-size: 11.5px; }
+    .sdt-meta .u { color: var(--s-faint); }
+    .sdt-foot { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-top: 1px solid var(--hairline); background: var(--surface-2); flex-wrap: wrap; }
+    .sdt-foot .v { display: inline-flex; align-items: center; gap: 7px; color: var(--s-brand); font-weight: 700; font-size: 13.5px; }
+    .sdt-foot .sep { width: 3px; height: 3px; border-radius: 999px; background: var(--s-faint); opacity: 0.6; }
+    .sdt-foot .m { font-size: 12.5px; color: var(--s-faint); font-weight: 500; }
+    .sdt-tail { text-align: center; color: var(--s-faint); font-size: 12.5px; margin: 14px 0 0; }
 
     /* ---------------- STEPS ---------------- */
     .step { display: flex; gap: 18px; align-items: flex-start; }
@@ -404,9 +444,6 @@
       }
       .trust-item { padding: 0 30px; }
       .trust-item + .trust-item { border-left: 1px solid rgba(255,255,255,0.14); }
-      .rec-grid { grid-template-columns: 1.22fr 1fr 1fr; gap: 24px; align-items: start; }
-      .rec--star { transform: translateY(-10px); }
-      .rec--star .rec-photo-foot h3 { font-size: 1.45rem; }
       .move-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .move-card--lead { grid-column: 1 / -1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center; padding: 28px 30px; }
       .move-card--lead .move-lead-head { display: flex; align-items: flex-start; gap: 18px; }
@@ -629,113 +666,223 @@
     </div>
   </section>
 
-  <!-- ═══════════ 4 · WHAT OUR RECOMMENDATIONS ACTUALLY LOOK LIKE ═══════════ -->
-  <section class="sec" style="background:var(--paper-2);">
+  <!-- ═══════════ 4 · WHAT OUR RECOMMENDATIONS ACTUALLY LOOK LIKE ═══════════
+       Faithful recreation of a REAL list from the Agent Center
+       (ac.apartmentagents.com/l/3cffa723…) — layout, styling and data mirrored
+       from the live product. -->
+  <section class="sec" style="background:#F3F4FB;">
     <div class="wrap">
       <div class="section-badge">Show, don't tell</div>
       <h2>What our recommendations actually look like</h2>
-      <p class="lede" style="max-width:640px;">Most services hand you forty listings and call it a search. You get three decisions, each with the reason we picked it and the price we verified today.</p>
+      <p class="lede" style="max-width:640px;">Most services hand you forty links and call it a search. Here's a real list from our team, shown the way it lands on your phone. Your agent's picks, their honest notes on each one, current specials, and real unit-level pricing.</p>
 
-      <!-- ── EXAMPLE MARKER: these cards are illustrative, not live inventory ── -->
-      <div class="example-banner">
+      <!-- ── REAL LIST MARKER ── -->
+      <div class="sdt-note">
         <i class="fas fa-circle-info" aria-hidden="true"></i>
-        <p><strong>This is an example, not current availability.</strong> The three cards below are a sample shortlist built to show the format &mdash; the property names, prices and units are illustrative. Your real shortlist is built from live Dallas inventory and priced the day it's sent.</p>
+        <p><strong>This is a real list our team built, not a mockup.</strong> Every price, unit, special and fee was live when it was sent. Pricing moves daily, so read it as the format, not today's inventory &mdash; yours is built from scratch around your budget, areas and move date.</p>
       </div>
 
-      <div class="brief-line">
-        <strong>Sample brief:</strong> 1 bedroom &middot; up to $1,700/mo &middot; Uptown, Victory Park or Turtle Creek &middot; in-unit washer/dryer &middot; moving October 1
-      </div>
+      <div class="sdt">
 
-      <div class="rec-grid">
+        <div class="sdt-lede">
+          <h3 class="serif">4 places, handpicked for you.</h3>
+          <p>Curated for <span class="agent">you</span> &middot; prices refreshed daily &middot; tap the heart on places you like.</p>
+        </div>
 
-        <!-- STAR — strongest treatment -->
-        <article class="rec rec--star">
-          <div class="rec-photo">
-            <img src="images/energy-efficient-apartment.png" alt="Example listing photo: high-floor apartment kitchen with floor-to-ceiling windows over the city" loading="lazy" />
-            <span class="rec-ribbon rib-star"><i class="fas fa-star" aria-hidden="true"></i> Top Pick</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Uptown &middot; McKinney Ave</span>
-              <h3>The Wren</h3>
+        <!-- ── TOP PICKS ── -->
+        <div class="sdt-cat-top">
+          <div class="sdt-sect"><span>Top Picks</span></div>
+          <h4 class="sdt-blurb serif">The places I think you'll like most</h4>
+          <article class="sdt-card">
+            <div class="sdt-pnote">
+              <img src="images/list-demo/agent-emily.jpg" alt="Your Apartment Agents expert" loading="lazy" />
+              <p><span class="sdt-from">Note from Emily:</span> I think you'll love this place. Lots of restaurants, bars, and entertainment outside your door, and they're offering 10 WEEKS FREE!</p>
             </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">1 bed / 1 bath</span>
-              <span class="rec-spec">742 sq ft</span>
-              <span class="rec-spec">11th floor, corner</span>
+            <div class="sdt-hero">
+              <img src="images/list-demo/presidium.jpg" alt="Presidium Frisco Square kitchen with island and stainless appliances" loading="lazy" />
+              <span class="sdt-toppick">&#9733; Top Pick</span>
+              <button class="sdt-fav" type="button" aria-label="Add to favorites" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              <span class="sdt-count">1 / 12</span>
+              <div class="sdt-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
-            <p class="rec-value">Asking <span class="ask">$1,880</span>, but 6 weeks free on a 13-month lease brings it to <span class="net">$1,680/mo</span> &mdash; $20 under your ceiling for the nicest unit on this list.</p>
-            <p class="rec-why">Corner unit on the 11th floor, floor-to-ceiling windows facing the Katy Trail so the light lasts all afternoon. Full-size washer/dryer in the unit and <b>garage parking is included</b> instead of the usual $75/mo. It's a lease-up, which is exactly why the concession is this deep &mdash; it won't be by winter.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$75 app &middot; $200 admin</span>
+            <div class="sdt-head">
+              <h5 class="sdt-pname serif">Presidium Frisco Square</h5>
+              <button class="sdt-favbtn" type="button" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> Add to favorites</button>
+              <p class="sdt-contact"><i class="fas fa-phone" aria-hidden="true"></i> 4695645754 <a href="#signup">Website <span aria-hidden="true">&#8599;</span></a></p>
+              <p class="sdt-addr">5750 Cotton Gin Rd, Frisco, TX, 75034 <a href="#signup">Map <span aria-hidden="true">&#8599;</span></a></p>
+              <div class="sdt-fees"><span class="sdt-fee">App fee <b>$50</b></span><span class="sdt-fee">Admin fee <b>$150</b></span></div>
+              <p class="sdt-desc">Opened in 2024. Interiors feature luxury wood-style plank flooring, designer quartz countertops with tile backsplash and LED under-cabinet lighting, energy-efficient stainless steel appliances, in-home washer and dryer, smart home technology including keyless entry and Wi-Fi-enabled smart thermostats, built-in desks for work-from-home convenience, walk-in closets, dual vanity in primary bathroom suite, and 14-foot ceilings on the first floor.</p>
+              <button class="sdt-more" type="button">Read more</button>
             </div>
-          </div>
-        </article>
+            <div class="sdt-special"><i class="fas fa-tag" aria-hidden="true"></i><p><b>Special:</b> Up to 10 WEEKS FREE!</p></div>
+            <div class="sdt-selhead"><span class="t">Selected floor plans</span><span class="n">2 selected</span></div>
+            <ul class="sdt-plans">
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,295 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">Studio &middot; 1 ba <span class="sep">&bull;</span> 540 sq ft <span class="sep">&bull;</span> <span class="tag">E1.1</span> <span class="u">#3132</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,595 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 720 sq ft <span class="sep">&bull;</span> <span class="tag">A1.1</span> <span class="u">#2142</span></p>
+              </div></li>
+            </ul>
+            <div class="sdt-foot"><span class="v"><i class="fas fa-plus" aria-hidden="true"></i> View all floor plans</span><i class="sep"></i><span class="m">39 available</span><i class="sep"></i><span class="m">Updated 12h ago</span></div>
+          </article>
+        </div>
 
-        <!-- UNDER BUDGET -->
-        <article class="rec rec--under">
-          <div class="rec-photo">
-            <img src="images/amenity-kitchen.jpg" alt="Example listing photo: bright open-concept apartment kitchen with island and pendant lighting" loading="lazy" />
-            <span class="rec-ribbon rib-under"><i class="fas fa-arrow-trend-down" aria-hidden="true"></i> Under Budget</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Victory Park &middot; Design District edge</span>
-              <h3>Verano Flats</h3>
+        <!-- ── OUTSIDE-THE-BOX ── -->
+        <div class="sdt-cat-out">
+          <div class="sdt-sect"><span>Outside-the-Box</span></div>
+          <h4 class="sdt-blurb serif">Slightly outside your search criteria or budget, but packed with extras</h4>
+          <article class="sdt-card">
+            <div class="sdt-pnote">
+              <img src="images/list-demo/agent-emily.jpg" alt="" loading="lazy" />
+              <p><span class="sdt-from">Note from Emily:</span> This one is on the border of Frisco, but the prices are amazing for what you get. Their two-bedrooms are in your price range if you want extra space or to use it as an office.</p>
             </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">1 bed / 1 bath</span>
-              <span class="rec-spec">688 sq ft</span>
-              <span class="rec-spec">4th floor</span>
+            <div class="sdt-hero">
+              <img src="images/list-demo/grove.jpg" alt="The Grove kitchen with island and barn door" loading="lazy" />
+              <button class="sdt-fav" type="button" aria-label="Add to favorites" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              <span class="sdt-count">1 / 12</span>
+              <div class="sdt-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
-            <p class="rec-value">Asking <span class="ask">$1,545</span>; one month free on a 12-month lease nets out to <span class="net">$1,416/mo</span> &mdash; that's $284 a month back under your budget.</p>
-            <p class="rec-why">Quieter block on the Design District side, a five-minute walk to the DART green line. Rooftop pool and a real gym, not a closet with two treadmills. <b>The trade is the view</b> &mdash; you're looking at the parking structure, not the skyline. We're showing it because $284/month is worth knowing about.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$60 app &middot; $150 admin</span>
+            <div class="sdt-head">
+              <h5 class="sdt-pname serif">The Grove</h5>
+              <button class="sdt-favbtn" type="button" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> Add to favorites</button>
+              <p class="sdt-contact"><i class="fas fa-phone" aria-hidden="true"></i> 4696543182 <a href="#signup">Website <span aria-hidden="true">&#8599;</span></a></p>
+              <p class="sdt-addr">12005 US-380, Aubrey, TX, 76227 <a href="#signup">Map <span aria-hidden="true">&#8599;</span></a></p>
+              <div class="sdt-fees"><span class="sdt-fee">App fee <b>$50</b></span><span class="sdt-fee">Admin fee <b>$100</b></span></div>
+              <p class="sdt-desc">Opened in 2025. Interiors feature wood-style flooring, quartz countertops, full-size washer and dryer connections, digitally programmable thermostats, oval garden soaking tubs, USB charging stations, LED lighting, and prewiring for wall-mounted TVs in living and bedroom areas.</p>
+              <button class="sdt-more" type="button">Read more</button>
             </div>
-          </div>
-        </article>
+            <div class="sdt-selhead"><span class="t">Selected floor plans</span><span class="n">3 selected</span></div>
+            <ul class="sdt-plans">
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,085 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 700 sq ft <span class="sep">&bull;</span> <span class="tag">A2TP</span> <span class="u">#4051</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,235 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 840 sq ft <span class="sep">&bull;</span> <span class="tag">A4TP</span> <span class="u">#1027</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,555 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">2 bd &middot; 2 ba <span class="sep">&bull;</span> 1,180 sq ft <span class="sep">&bull;</span> <span class="tag">B1TP</span> <span class="u">#3057</span></p>
+              </div></li>
+            </ul>
+            <div class="sdt-foot"><span class="v"><i class="fas fa-plus" aria-hidden="true"></i> View all floor plans</span><i class="sep"></i><span class="m">33 available</span><i class="sep"></i><span class="m">Updated 13h ago</span></div>
+          </article>
+        </div>
 
-        <!-- WILDCARD -->
-        <article class="rec rec--wild">
-          <div class="rec-photo">
-            <img src="Dallas-Luxury-Apartment-Loft.jpg" alt="Example listing photo: high-floor luxury Dallas apartment loft interior" loading="lazy" />
-            <span class="rec-ribbon rib-wild"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Wildcard</span>
-            <span class="rec-example-tag">Example</span>
-            <div class="rec-photo-foot">
-              <span class="hood">Turtle Creek</span>
-              <h3>Cascade on the Creek</h3>
+        <!-- ── OTHER GREAT MATCHES ── -->
+        <div class="sdt-cat-great">
+          <div class="sdt-sect"><span>Other Great Matches</span></div>
+          <h4 class="sdt-blurb serif">Excellent communities that were close to making the top picks</h4>
+          <article class="sdt-card">
+            <div class="sdt-pnote">
+              <img src="images/list-demo/agent-emily.jpg" alt="" loading="lazy" />
+              <p><span class="sdt-from">Note from Emily:</span> Brand new, and they're offering 12 WEEKS FREE!</p>
             </div>
-          </div>
-          <div class="rec-body">
-            <div class="rec-specs">
-              <span class="rec-spec">2 bed / 2 bath</span>
-              <span class="rec-spec">1,204 sq ft</span>
-              <span class="rec-spec">24th floor</span>
+            <div class="sdt-hero">
+              <img src="images/list-demo/wentworth.jpg" alt="The Wentworth at Lexington Ranch interior" loading="lazy" />
+              <button class="sdt-fav" type="button" aria-label="Add to favorites" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              <span class="sdt-count">1 / 12</span>
+              <div class="sdt-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
-            <p class="rec-value">Asking <span class="ask">$2,455</span>; 8 weeks free on a 15-month lease works out to <span class="net">$2,153/mo</span> &mdash; $453 over budget, and we're showing it anyway.</p>
-            <p class="rec-why">Top-floor corner: two-story wall of glass, a loft above the living room and a wraparound terrace over Turtle Creek. Two full baths and a den big enough to actually work in. <b>Over your number, on purpose</b> &mdash; if a roommate or a work-from-home setup is on the table the math changes fast, and this is the one people regret not touring.</p>
-            <div class="rec-foot">
-              <span class="rec-checked"><i class="fas fa-circle-check" aria-hidden="true"></i> Checked today</span>
-              <span class="rec-fees">$85 app &middot; $275 admin</span>
+            <div class="sdt-head">
+              <h5 class="sdt-pname serif">The Wentworth at Lexington Ranch</h5>
+              <button class="sdt-favbtn" type="button" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> Add to favorites</button>
+              <p class="sdt-contact"><i class="fas fa-phone" aria-hidden="true"></i> 8664016812 <a href="#signup">Website <span aria-hidden="true">&#8599;</span></a></p>
+              <p class="sdt-addr">12200 San Jacinto Way, Frisco, TX, 75035 <a href="#signup">Map <span aria-hidden="true">&#8599;</span></a></p>
+              <div class="sdt-fees"><span class="sdt-fee">App fee <b>$75</b></span><span class="sdt-fee">Admin fee <b>$150</b></span></div>
+              <p class="sdt-desc">Opened in 2026. Interiors feature quartz or granite countertops, stainless steel appliances with side-by-side refrigerators, island kitchens, hardwood-style flooring, walk-in closets, double vanities, high ceilings, and an in-unit washer and dryer.</p>
+              <button class="sdt-more" type="button">Read more</button>
             </div>
-          </div>
-        </article>
+            <div class="sdt-special"><i class="fas fa-tag" aria-hidden="true"></i><p><b>Special:</b> Up to 12 WEEKS FREE!</p></div>
+            <div class="sdt-selhead"><span class="t">Selected floor plans</span><span class="n">2 selected</span></div>
+            <ul class="sdt-plans">
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,260 <i>/mo</i></span><span class="sdt-avail">Avail Nov 17</span></div>
+                <p class="sdt-meta">Studio &middot; 1 ba <span class="sep">&bull;</span> 585 sq ft <span class="sep">&bull;</span> <span class="tag">S2</span> <span class="u">#8104</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,535 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 737 sq ft <span class="sep">&bull;</span> <span class="tag">A1</span> <span class="u">#3311</span></p>
+              </div></li>
+            </ul>
+            <div class="sdt-foot"><span class="v"><i class="fas fa-plus" aria-hidden="true"></i> View all floor plans</span><i class="sep"></i><span class="m">290 available</span><i class="sep"></i><span class="m">Updated 12h ago</span></div>
+          </article>
+        </div>
 
+        <!-- ── MORE OPTIONS ── -->
+        <div class="sdt-cat-more">
+          <div class="sdt-sect rest"><span>More Options</span></div>
+          <h4 class="sdt-blurb serif">Additional communities that could still be a great fit</h4>
+          <article class="sdt-card">
+            <div class="sdt-hero">
+              <img src="images/list-demo/railhead.jpg" alt="Jefferson Railhead interior" loading="lazy" />
+              <button class="sdt-fav" type="button" aria-label="Add to favorites" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              <span class="sdt-count">1 / 12</span>
+              <div class="sdt-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="sdt-head">
+              <h5 class="sdt-pname serif">Jefferson Railhead</h5>
+              <button class="sdt-favbtn" type="button" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> Add to favorites</button>
+              <p class="sdt-contact"><i class="fas fa-phone" aria-hidden="true"></i> 9452959227 <a href="#signup">Website <span aria-hidden="true">&#8599;</span></a></p>
+              <p class="sdt-addr">10221 Whistle Stop Ln, Frisco, TX, 75033 <a href="#signup">Map <span aria-hidden="true">&#8599;</span></a></p>
+              <div class="sdt-fees"><span class="sdt-fee">App fee <b>$75</b></span><span class="sdt-fee">Admin fee <b>$150</b></span></div>
+              <p class="sdt-desc">Opened in 2024. Interiors feature wood-style flooring, granite countertops, stainless steel appliances, in-unit washer and dryer, smart-home features including keyless entry and smart thermostats, high ceilings, island kitchens with island sinks, and walk-in laundry.</p>
+              <button class="sdt-more" type="button">Read more</button>
+            </div>
+            <div class="sdt-special"><i class="fas fa-tag" aria-hidden="true"></i><p><b>Special:</b> Up to 10 WEEKS FREE!</p></div>
+            <div class="sdt-selhead"><span class="t">Selected floor plans</span><span class="n">3 selected</span></div>
+            <ul class="sdt-plans">
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,204 <i>/mo</i></span><span class="sdt-avail now">Available now</span></div>
+                <p class="sdt-meta">Studio &middot; 1 ba <span class="sep">&bull;</span> 570 sq ft <span class="sep">&bull;</span> <span class="tag">E1</span> <span class="u">#2165</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,360 <i>/mo</i></span><span class="sdt-avail">Avail Nov 10</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 675 sq ft <span class="sep">&bull;</span> <span class="tag">A1B</span> <span class="u">#2112</span></p>
+              </div></li>
+              <li class="sdt-plan"><span class="sdt-chk" aria-hidden="true"></span><div>
+                <div class="sdt-prow"><span class="sdt-price">$1,410 <i>/mo</i></span><span class="sdt-avail">Avail Dec 6</span></div>
+                <p class="sdt-meta">1 bd &middot; 1 ba <span class="sep">&bull;</span> 705 sq ft <span class="sep">&bull;</span> <span class="tag">A1C</span> <span class="u">#2127</span></p>
+              </div></li>
+            </ul>
+            <div class="sdt-foot"><span class="v"><i class="fas fa-plus" aria-hidden="true"></i> View all floor plans</span><i class="sep"></i><span class="m">46 available</span><i class="sep"></i><span class="m">Updated 12h ago</span></div>
+          </article>
+        </div>
+
+        <p class="sdt-tail">Prices update daily &middot; questions? Reply to your agent anytime.</p>
       </div>
 
       <p style="text-align:center; margin:var(--s5) 0 0;">
         <a href="#signup" class="btn-primary" style="padding:16px 34px; font-size:1.05rem; min-height:52px; display:inline-flex; align-items:center; gap:10px;">
-          Get My Free Shortlist
+          Get My Free Matches
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </p>
     </div>
   </section>
+  <script>
+    /* Show-don't-tell replica: heart toggles + read-more, purely cosmetic */
+    document.querySelectorAll('.sdt-fav, .sdt-favbtn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var on = b.getAttribute('aria-pressed') !== 'true';
+        b.setAttribute('aria-pressed', String(on));
+        b.classList.toggle('on', on);
+        var ic = b.querySelector('i');
+        if (ic && b.classList.contains('sdt-fav')) ic.className = on ? 'fas fa-heart' : 'fa-regular fa-heart';
+      });
+    });
+    document.querySelectorAll('.sdt-more').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = b.parentElement.querySelector('.sdt-desc');
+        var open = d.classList.toggle('open');
+        b.textContent = open ? 'Read less' : 'Read more';
+      });
+    });
+  </script>
 
   <!-- ══════════════════════════ 5 · HOW IT WORKS ══════════════════════════ -->
   <section class="sec" style="background:#fff;">
