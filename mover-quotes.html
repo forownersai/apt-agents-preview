@@ -201,6 +201,20 @@
     .mover-site { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.92rem; }
     .mover-site i { font-size: 0.72rem; }
 
+    /* Larger variant: bigger photo + one short description line. The checkbox,
+       photo and text are all <label for> the same input, so the row still toggles
+       anywhere except the website link (which sits under the text, outside a label). */
+    .mover-row--lg { align-items: flex-start; gap: 12px; padding: 12px 14px 10px 12px; }
+    .mover-row--lg .mover-check { display: flex; align-items: center; min-height: 60px; cursor: pointer; }
+    .mover-row--lg .mover-check input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 0; }
+    .mover-row--lg .mover-thumb { width: 76px; height: 60px; border-radius: 10px; cursor: pointer; }
+    @media (min-width: 620px) { .mover-row--lg .mover-thumb { width: 96px; height: 72px; } }
+    .mover-info { flex: 1; min-width: 0; }
+    .mover-info label { display: block; cursor: pointer; }
+    .mover-info .mover-name { white-space: normal; }
+    .mover-desc { display: block; font-size: 0.9rem; line-height: 1.45; color: var(--ink-mute); margin-top: 2px; }
+    .mover-row--lg .mover-site { min-height: 36px; }
+
     /* ---------------- FIELDS ---------------- */
     .grid2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
     @media (min-width: 620px) { .grid2 { grid-template-columns: 1fr 1fr; } }
@@ -410,6 +424,21 @@
                     <span class="mover-name">AB Moving</span>
                   </label>
                   <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                </div>
+
+                <!-- LARGER VARIANT (for comparison with the compact row above) -->
+                <div class="mover-row mover-row--lg">
+                  <label class="mover-check" for="ab_moving_quote_lg">
+                    <input type="checkbox" id="ab_moving_quote_lg" name="AB_Moving_quote" value="Yes" />
+                  </label>
+                  <label for="ab_moving_quote_lg"><img class="mover-thumb" src="images/ab-moving.png" alt="" loading="lazy" /></label>
+                  <div class="mover-info">
+                    <label for="ab_moving_quote_lg">
+                      <span class="mover-name">AB Moving</span>
+                      <span class="mover-desc">Family-owned, serving DFW for 29+ years. Local and interstate moves.</span>
+                    </label>
+                    <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                  </div>
                 </div>
               </div>
             </fieldset>
