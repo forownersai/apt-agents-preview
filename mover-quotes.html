@@ -193,9 +193,6 @@
     .mover-row:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
     .mover-row:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
     .mover-row:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
-    .mover-pick { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; cursor: pointer; min-height: 44px; }
-    .mover-pick:active { opacity: 0.8; }
-    .mover-pick input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 0; flex-shrink: 0; }
     .mover-thumb { width: 56px; height: 42px; border-radius: 8px; object-fit: cover; object-position: 28% 50%; flex-shrink: 0; box-shadow: 0 1px 2px rgba(15,19,56,0.10), 0 4px 10px rgba(15,19,56,0.08); }
     .mover-name { font-weight: 700; font-size: 1rem; color: var(--navy); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .mover-site { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.92rem; }
@@ -212,8 +209,13 @@
     .mover-info { flex: 1; min-width: 0; }
     .mover-info label { display: block; cursor: pointer; }
     .mover-info .mover-name { white-space: normal; }
-    .mover-desc { display: block; font-size: 0.9rem; line-height: 1.45; color: var(--ink-mute); margin-top: 2px; }
-    .mover-row--lg .mover-site { min-height: 36px; }
+    .mover-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .mover-head .mover-name { flex: 1; min-width: 0; cursor: pointer; }
+    /* the arrow icon costs the name its one line on phones; the link text alone is enough there */
+    @media (max-width: 619px) { .mover-head { gap: 8px; } .mover-head .mover-site i { display: none; } }
+    @media (max-width: 379px) { .mover-row--lg { gap: 10px; padding-left: 10px; padding-right: 12px; } .mover-row--lg .mover-thumb { width: 64px; height: 50px; } .mover-row--lg .mover-check { min-height: 50px; } }
+    .mover-desc { display: block; cursor: pointer; font-size: 0.9rem; line-height: 1.45; color: var(--ink-mute); margin-top: 2px; }
+    .mover-row--lg .mover-site { min-height: 0; padding: 4px 0; margin: -4px 0; }
 
     /* ---------------- FIELDS ---------------- */
     .grid2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
@@ -417,27 +419,17 @@
               <div class="fs-rule"></div>
 
               <div class="movers">
-                <div class="mover-row">
-                  <label class="mover-pick" for="ab_moving_quote">
-                    <input type="checkbox" id="ab_moving_quote" name="AB_Moving_quote" value="Yes" />
-                    <img class="mover-thumb" src="images/ab-moving.png" alt="" loading="lazy" />
-                    <span class="mover-name">AB Moving</span>
-                  </label>
-                  <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                </div>
-
-                <!-- LARGER VARIANT (for comparison with the compact row above) -->
                 <div class="mover-row mover-row--lg">
                   <label class="mover-check" for="ab_moving_quote_lg">
                     <input type="checkbox" id="ab_moving_quote_lg" name="AB_Moving_quote" value="Yes" />
                   </label>
                   <label for="ab_moving_quote_lg"><img class="mover-thumb" src="images/ab-moving.png" alt="" loading="lazy" /></label>
                   <div class="mover-info">
-                    <label for="ab_moving_quote_lg">
-                      <span class="mover-name">AB Moving</span>
-                      <span class="mover-desc">Family-owned, serving DFW for 29+ years. Local and interstate moves.</span>
-                    </label>
-                    <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    <div class="mover-head">
+                      <label for="ab_moving_quote_lg" class="mover-name">AB Moving</label>
+                      <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </div>
+                    <label for="ab_moving_quote_lg" class="mover-desc">Family-owned, serving DFW for 29+ years. Local and interstate moves.</label>
                   </div>
                 </div>
               </div>
