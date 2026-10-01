@@ -397,21 +397,22 @@
           <h2 class="form-card__title">Tell us about your move</h2>
           <p class="form-card__intro">Pick your movers, fill in the details, and the quotes come to you. Starred fields are required.</p>
 
-          <!-- GHL ENDPOINT GOES HERE ────────────────────────────────────────────
-               This form is not wired to a backend yet. When the GHL form is built,
-               replace the client-side handler with the real post:
-                 <form action="https://<GHL_FORM_ENDPOINT>" method="POST"> ... </form>
-               Field `name` attributes below are snake_case and map 1:1 to the live
-               WordPress form (Elementor field IDs on apartmentagents.com/mover-quotes):
-                 first_name, last_name, client_quote_email, move_in_date,
-                 starting_* / final_* (address, apartment_number, city, zip_code,
-                 property_type, apt_size, house_size, storage_size, pod_size,
-                 rental_truck, floor, stories, truck_distance, elevator),
-                 other_stops, packing_help, special_items[], AB_Moving_quote.
-               Fields hidden by the property-type logic are DISABLED, so they never
-               post — same behaviour as the live page.
+          <!-- SUBMISSION ─────────────────────────────────────────────────────────
+               Posts JSON to the agent center: QUOTE_ENDPOINT in the script below
+               (Apartment-List-Builder: web/app/api/mover-quotes/route.ts). The
+               endpoint saves to the mover_quote_requests table and ties the request
+               to a client in OUR database by email, then phone. NOT sent to GHL.
+               Fields hidden by the property-type logic are DISABLED, so they are
+               left out of the payload — same behaviour as the live page.
+               Allowed origins live in the route's ALLOWED_ORIGINS — add the final
+               site domain there if it changes.
                ──────────────────────────────────────────────────────────────────── -->
           <form id="quoteForm" novalidate onsubmit="return aaQuoteSubmit(event)">
+            <!-- Spam trap: hidden from people; bots that fill it are silently dropped by the endpoint. -->
+            <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+              <label for="company_website">Company website</label>
+              <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" />
+            </div>
 
             <!-- ─────────── CHOOSE YOUR MOVERS ─────────── -->
             <fieldset class="fs">
@@ -452,6 +453,10 @@
                 <div class="fg">
                   <label for="client_quote_email">Email where your quotes will be sent to <span class="req" aria-hidden="true">*</span></label>
                   <input type="email" id="client_quote_email" name="client_quote_email" placeholder="Email address" inputmode="email" autocomplete="email" required aria-required="true" />
+                </div>
+                <div class="fg">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Phone number" inputmode="tel" autocomplete="tel" />
                 </div>
                 <div class="fg">
                   <label for="move_in_date">Estimated move date</label>
@@ -717,7 +722,7 @@
               </fieldset>
             </fieldset>
 
-            <p class="form-error" id="formError" role="alert">Please fill in the starred fields highlighted below.</p>
+            <p class="form-error" id="formError" role="alert"></p>
 
             <button type="submit" class="btn-primary form-submit">
               Get Your Quotes
@@ -844,10 +849,53 @@
       });
     });
 
+    var QUOTE_ENDPOINT = 'https://ac.apartmentagents.com/api/mover-quotes';
+    var MSG_MISSING = 'Please fill in the starred fields highlighted below.';
+    var MSG_FAILED = 'Sorry, that didn’t go through. Please try again, or call us at (972) 993-7300.';
+
+    function val(id) {
+      var el = document.getElementById(id);
+      return el && !el.disabled ? String(el.value || '').trim() : '';
+    }
+    function checked(name) {
+      return Array.prototype.map.call(document.querySelectorAll('#quoteForm input[name="' + name + '"]:checked:not(:disabled)'), function (el) { return el.value; });
+    }
+    function locationOf(prefix) {
+      var keys = ['address', 'apartment_number', 'city', 'zip_code', 'property_type', 'truck_distance',
+                  'apt_size', 'house_size', 'storage_size', 'pod_size', 'rental_truck', 'floor', 'stories'];
+      var out = {};
+      keys.forEach(function (k) { var v = val(prefix + '_' + k); if (v) out[k] = v; });
+      var elev = checked(prefix + '_elevator')[0];
+      if (elev) out.elevator = elev;
+      return out;
+    }
+    function payload() {
+      var movers = Array.prototype.map.call(document.querySelectorAll('#quoteForm .mover-row input[type="checkbox"]:checked'), function (el) {
+        var row = el.closest('.mover-row');
+        var name = row && row.querySelector('.mover-name');
+        return name ? name.textContent.trim() : el.value;
+      });
+      return {
+        first_name: val('first_name'),
+        last_name: val('last_name'),
+        email: val('client_quote_email'),
+        phone: val('phone'),
+        move_date: val('move_in_date'),
+        movers: movers,
+        starting: locationOf('starting'),
+        final: locationOf('final'),
+        other_stops: checked('other_stops')[0] || '',
+        packing_help: checked('packing_help')[0] || '',
+        special_items: checked('special_items[]'),
+        company_website: val('company_website')
+      };
+    }
+
     function aaQuoteSubmit(e) {
       e.preventDefault();
       var form = document.getElementById('quoteForm');
       var err = document.getElementById('formError');
+      var btn = form.querySelector('button[type="submit"]');
       var bad = null;
 
       // reset previous error styling
@@ -862,14 +910,33 @@
       });
 
       if (bad) {
+        err.textContent = MSG_MISSING;
         err.classList.add('show');
         bad.focus({ preventScroll: false });
         return false;
       }
 
       err.classList.remove('show');
-      document.getElementById('quoteCard').classList.add('is-sent');
-      window.scrollTo({ top: document.getElementById('quoteCard').offsetTop - 90, behavior: 'smooth' });
+      btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
+      btn.style.opacity = '0.7';
+
+      fetch(QUOTE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload())
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('quoteCard').classList.add('is-sent');
+        window.scrollTo({ top: document.getElementById('quoteCard').offsetTop - 90, behavior: 'smooth' });
+      }).catch(function () {
+        err.textContent = MSG_FAILED;
+        err.classList.add('show');
+      }).then(function () {
+        btn.disabled = false;
+        btn.removeAttribute('aria-busy');
+        btn.style.opacity = '';
+      });
       return false;
     }
   </script>
