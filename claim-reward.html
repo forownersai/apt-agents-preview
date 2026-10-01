@@ -190,6 +190,25 @@
     .span2 { grid-column: 1 / -1; }
 
     .fg { margin-bottom: 16px; }
+
+    /* ---------------- PROPERTY TYPE-AHEAD ---------------- */
+    .prop-wrap { position: relative; }
+    .prop-list {
+      position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 30; margin: 0; padding: 6px; list-style: none;
+      background: #fff; border: 1px solid rgba(157,170,242,0.75); border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(90,104,190,0.18), 0 2px 6px rgba(15,19,56,0.08);
+    }
+    .prop-opt {
+      display: block; width: 100%; text-align: left; min-height: 48px; padding: 8px 10px; border: 0; border-radius: 10px;
+      background: none; font: inherit; color: var(--navy); cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .prop-opt:hover, .prop-opt.is-active { background: var(--paper-2); }
+    .prop-opt:focus-visible { outline: 3px solid var(--lav); outline-offset: -3px; }
+    .prop-opt:active { background: #eef0fb; }
+    .prop-name { display: block; font-weight: 700; font-size: 0.97rem; line-height: 1.35; }
+    .prop-addr { display: block; font-size: 0.86rem; color: var(--ink-mute); line-height: 1.35; }
+    .prop-none { padding: 10px; font-size: 0.9rem; color: var(--ink-mute); }
     .fg > label, .fg-label {
       display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy);
       line-height: 1.4; margin: 0 0 6px;
@@ -438,9 +457,15 @@
               <p class="fs-note">If you&rsquo;re not sure about a field here, it&rsquo;s fine to leave it blank.</p>
 
               <div class="grid2">
-                <div class="fg span2">
+                <div class="fg span2 prop-ac">
                   <label for="property_name">Property name</label>
-                  <input type="text" id="property_name" name="property_name" autocomplete="organization" />
+                  <div class="prop-wrap">
+                    <input type="text" id="property_name" name="property_name" autocomplete="off" placeholder="Start typing the community name"
+                           role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="propList" />
+                    <input type="hidden" id="property_id" name="property_id" />
+                    <ul class="prop-list" id="propList" role="listbox" hidden></ul>
+                  </div>
+                  <span class="fg-hint" id="propHint">Pick your community and we&rsquo;ll fill in the address. Then just add your apartment number.</span>
                 </div>
                 <div class="fg span2">
                   <label for="address">Address</label>
@@ -651,6 +676,91 @@
       menu.classList.toggle('hidden');
       if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
     }
+
+    /* Property type-ahead: suggests communities from the agent center as the
+       renter types, and fills the address we have on file. If the lookup is
+       down, the field is simply a text box. */
+    (function () {
+      var ENDPOINT = 'https://ac.apartmentagents.com/api/site/properties';
+      var input = document.getElementById('property_name');
+      var list = document.getElementById('propList');
+      var idField = document.getElementById('property_id');
+      if (!input || !list) return;
+      var items = [], active = -1, timer = null, lastQ = '';
+
+      function close() { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; }
+      function highlight(i) {
+        active = i;
+        Array.prototype.forEach.call(list.querySelectorAll('.prop-opt'), function (b, j) { b.classList.toggle('is-active', j === i); });
+        if (i >= 0) input.setAttribute('aria-activedescendant', 'propOpt' + i); else input.removeAttribute('aria-activedescendant');
+      }
+      function setField(id, v) { var el = document.getElementById(id); if (el && v) { el.value = v; el.classList.remove('is-bad'); } }
+      function pick(p) {
+        input.value = p.name;
+        idField.value = p.id;
+        setField('address', p.address);
+        setField('city', p.city);
+        setField('zip_code', p.zip);
+        close();
+        var apt = document.getElementById('apartment_number');
+        if (apt) apt.focus();
+      }
+      function render() {
+        list.innerHTML = '';
+        if (!items.length) {
+          var none = document.createElement('li');
+          none.className = 'prop-none';
+          none.textContent = 'No match on file. Just type the name and address below.';
+          list.appendChild(none);
+        }
+        items.forEach(function (p, i) {
+          var li = document.createElement('li');
+          li.setAttribute('role', 'option');
+          li.id = 'propOpt' + i;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'prop-opt';
+          b.tabIndex = -1;
+          var n = document.createElement('span'); n.className = 'prop-name'; n.textContent = p.name;
+          var a = document.createElement('span'); a.className = 'prop-addr';
+          a.textContent = [p.address, p.city, p.zip].filter(Boolean).join(', ');
+          b.appendChild(n); b.appendChild(a);
+          b.addEventListener('mousedown', function (e) { e.preventDefault(); });
+          b.addEventListener('click', function () { pick(p); });
+          li.appendChild(b);
+          list.appendChild(li);
+        });
+        list.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+        active = -1;
+      }
+      function search(q) {
+        lastQ = q;
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ q: q }) })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (j) {
+            if (lastQ !== q || !j || !j.ok) return;
+            items = j.properties || [];
+            if (document.activeElement === input) render();
+          })
+          .catch(function () { /* lookup unavailable: plain text field */ });
+      }
+      input.addEventListener('input', function () {
+        idField.value = '';
+        clearTimeout(timer);
+        var q = input.value.trim();
+        if (q.length < 2) { close(); return; }
+        timer = setTimeout(function () { search(q); }, 200);
+      });
+      input.addEventListener('keydown', function (e) {
+        if (list.hidden || !items.length) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); highlight((active + 1) % items.length); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); highlight(active <= 0 ? items.length - 1 : active - 1); }
+        else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); pick(items[active]); }
+        else if (e.key === 'Escape') { close(); }
+      });
+      input.addEventListener('blur', function () { setTimeout(close, 150); });
+    })();
 
     /* Selects show their placeholder in muted grey until a real choice is made. */
     (function () {
