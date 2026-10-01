@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Moving Quotes | Apartment Agents</title>
-  <meta name="description" content="Get clean moving quotes emailed to your inbox. Choose the moving companies you want quotes from and complete one form." />
+  <meta name="description" content="Pick the moving companies you want quotes from, compare them in one place, choose the best one. Free for Apartment Agents clients." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -85,12 +85,13 @@
     /* ---------------- BUTTONS ---------------- */
     .btn-primary {
       background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
-      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease, opacity 0.2s ease;
       border: none; cursor: pointer; display: inline-block; text-decoration: none;
     }
     .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
     .btn-primary:active { transform: translateY(0) scale(0.985); }
     .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+    .btn-primary:disabled { opacity: 0.72; cursor: progress; transform: none; box-shadow: none; }
 
     .btn-coral { /* kept as the sibling pages define it (same blue pill) */
       background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
@@ -138,7 +139,6 @@
     .hero h1 { color: var(--navy); font-size: clamp(2.1rem, 9vw, 3.4rem); line-height: 1.06; margin: 0 0 12px; }
     .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
     .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.6; margin: 0; max-width: 34em; }
-    .hero-sub + .hero-sub { margin-top: 10px; color: var(--ink-mute); }
 
     /* ---------------- FORM SHELL ---------------- */
     .form-sec { padding: 28px 20px var(--s6); background: #fff; }
@@ -156,158 +156,113 @@
       position: relative;
     }
     @media (min-width: 700px) { .form-card { padding: 30px 30px 26px; } }
-    .form-card.is-sent .form-body { display: none; }
-    .form-card.is-sent .form-thanks { display: block; }
 
     .form-card__eyebrow { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 4px; }
     .form-card__title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin: 0 0 6px; color: var(--navy); }
     @media (min-width: 700px) { .form-card__title { font-size: 1.6rem; } }
     .form-card__intro { margin: 0 0 20px; color: var(--ink-mute); font-size: 1rem; line-height: 1.65; }
 
-    /* ---------------- FIELDSETS ---------------- */
-    .fs { border: none; margin: 0 0 22px; padding: 0; }
-    .fs:last-of-type { margin-bottom: 18px; }
-    .fs > legend {
-      font-family: 'DM Serif Display', Georgia, serif; font-size: 1.2rem; color: var(--navy);
-      letter-spacing: -0.02em; padding: 0; margin: 0 0 4px; float: left; width: 100%;
-    }
-    @media (min-width: 700px) { .fs > legend { font-size: 1.3rem; } }
-    .fs-rule { clear: both; height: 2px; width: 44px; background: var(--lav); border-radius: 2px; margin: 0 0 16px; }
-    .fs-note {
-      clear: both;
-      background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav);
-      border-radius: 12px; padding: 12px 14px; margin: 0 0 16px;
-      color: var(--ink-mute); font-size: 0.94rem; line-height: 1.6;
-    }
+    /* The card body and the three result panels swap places; only one shows at a time. */
+    .form-body { display: block; }
+    .form-body.is-off { display: none; }
+    .form-panel { display: none; }
+    .form-panel.is-on { display: block; }
+    .form-panel:focus { outline: none; }
 
-    /* ---------------- MOVER ROWS (one line per company) ----------------
-       Checkbox + thumbnail + name share one <label>, so the whole row toggles.
-       The website link sits outside the label so tapping it never toggles. */
-    .movers { display: flex; flex-direction: column; gap: 8px; }
-    .mover-row {
-      display: flex; align-items: center; gap: 12px; min-height: 60px;
-      padding: 8px 14px 8px 12px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
-      background: #fbfbff;
-      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
-    }
-    .mover-row:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
-    .mover-row:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
-    .mover-row:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
-    .mover-thumb { width: 56px; height: 42px; border-radius: 8px; object-fit: cover; object-position: 28% 50%; flex-shrink: 0; box-shadow: 0 1px 2px rgba(15,19,56,0.10), 0 4px 10px rgba(15,19,56,0.08); }
-    .mover-name { font-weight: 700; font-size: 1rem; color: var(--navy); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .mover-site { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.92rem; }
-    .mover-site i { font-size: 0.72rem; }
-
-    /* Larger variant: bigger photo + one short description line. The checkbox,
-       photo and text are all <label for> the same input, so the row still toggles
-       anywhere except the website link (which sits under the text, outside a label). */
-    .mover-row--lg { align-items: flex-start; gap: 12px; padding: 12px 14px 10px 12px; }
-    .mover-row--lg .mover-check { display: flex; align-items: center; min-height: 60px; cursor: pointer; }
-    .mover-row--lg .mover-check input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 0; }
-    .mover-row--lg .mover-thumb { width: 76px; height: 60px; border-radius: 10px; cursor: pointer; }
-    @media (min-width: 620px) { .mover-row--lg .mover-thumb { width: 96px; height: 72px; } }
-    .mover-info { flex: 1; min-width: 0; }
-    .mover-info label { display: block; cursor: pointer; }
-    .mover-info .mover-name { white-space: normal; }
-    .mover-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .mover-head .mover-name { flex: 1; min-width: 0; cursor: pointer; }
-    /* the arrow icon costs the name its one line on phones; the link text alone is enough there */
-    @media (max-width: 619px) { .mover-head { gap: 8px; } .mover-head .mover-site i { display: none; } }
-    @media (max-width: 379px) { .mover-row--lg { gap: 10px; padding-left: 10px; padding-right: 12px; } .mover-row--lg .mover-thumb { width: 64px; height: 50px; } .mover-row--lg .mover-check { min-height: 50px; } }
-    .mover-desc { display: block; cursor: pointer; font-size: 0.9rem; line-height: 1.45; color: var(--ink-mute); margin-top: 2px; }
-    .mover-row--lg .mover-site { min-height: 0; padding: 4px 0; margin: -4px 0; }
-
-    /* ---------------- FIELDS ---------------- */
-    .grid2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
-    @media (min-width: 620px) { .grid2 { grid-template-columns: 1fr 1fr; } }
-    .span2 { grid-column: 1 / -1; }
-
-    .fg { margin-bottom: 16px; }
-    .fg > label, .fg-label {
+    /* ---------------- THE ONE FIELD ---------------- */
+    .fg { margin-bottom: 14px; }
+    .fg > label {
       display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy);
       line-height: 1.4; margin: 0 0 6px;
     }
     .req { color: #C24F48; font-weight: 700; margin-left: 2px; }
-    .fg-hint { display: block; font-weight: 500; color: var(--ink-mute); font-size: 0.88rem; margin-top: 2px; }
 
-    .fg input[type="text"], .fg input[type="tel"], .fg input[type="email"], .fg input[type="number"], .fg input[type="date"], .fg select {
+    .fg input[type="email"] {
       width: 100%; min-height: 52px; font-size: 16px; font-family: 'DM Sans', sans-serif;
       padding: 13px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
       background: #fbfbff; color: var(--navy); line-height: 1.4; -webkit-appearance: none; appearance: none;
       transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
     }
     .fg input::placeholder { color: #8b8fae; }
-    .fg input:hover, .fg select:hover { border-color: rgba(15,19,56,0.3); }
-    .fg input:focus, .fg select:focus { outline: none; border-color: var(--lav); background: #fff; box-shadow: 0 0 0 4px rgba(157,170,242,0.28); }
-    .fg input:focus-visible, .fg select:focus-visible { outline: none; }
-    .fg input.is-bad, .fg select.is-bad { border-color: var(--coral); background: #fff7f7; }
-    /* date inputs on iOS collapse without an explicit height */
-    .fg input[type="date"] { min-height: 52px; }
+    .fg input:hover { border-color: rgba(15,19,56,0.3); }
+    .fg input:focus { outline: none; border-color: var(--lav); background: #fff; box-shadow: 0 0 0 4px rgba(157,170,242,0.28); }
+    .fg input:focus-visible { outline: none; }
+    .fg input.is-bad { border-color: var(--coral); background: #fff7f7; }
+    .fg input.is-bad:focus { border-color: var(--coral); box-shadow: 0 0 0 4px rgba(245,115,108,0.22); }
 
-    .fg select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%235A5A7A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1.5 7 7.5 13 1.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px;
-    }
-    /* an unchosen select should read as a prompt, not as an answer */
-    .fg select.is-placeholder { color: #8b8fae; }
-
-    /* Conditional fields (driven by the Property type select) stay out of the
-       DOM flow until their property type is chosen — no flash on load. */
-    [data-cond] { display: none; }
-    [data-cond].is-on { display: block; }
-
-    /* ---------------- RADIO GROUPS ---------------- */
-    .radio-set { border: none; margin: 0 0 16px; padding: 0; }
-    .radio-set > legend { padding: 0; }
-    .radio-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .radio-pill {
-      flex: 1 1 0; min-width: 120px; min-height: 48px;
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 11px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
-      background: #fbfbff; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--navy);
-      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
-    }
-    .radio-pill:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
-    .radio-pill:active { background: #f3f4ff; }
-    .radio-pill input { width: 20px; height: 20px; accent-color: #0d6efd; margin: 0; flex-shrink: 0; }
-    .radio-pill:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
-    .radio-pill:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
-
-    /* ---------------- CHECKBOX ROWS ---------------- */
-    .check-row {
-      display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
-      padding: 14px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
-      background: #fbfbff; min-height: 48px;
-      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
-    }
-    .check-row:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
-    .check-row:active { background: #f3f4ff; }
-    .check-row input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 2px 0 0; flex-shrink: 0; }
-    .check-row:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
-    .check-row:has(input:focus-visible) { outline: 3px solid var(--lav); outline-offset: 2px; }
-    .check-row.is-bad { border-color: var(--coral); background: #fff7f7; }
-    .check-row span { font-size: 0.97rem; line-height: 1.6; color: var(--navy); font-weight: 500; }
-    .check-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 620px) { .check-grid { grid-template-columns: 1fr 1fr; } }
-    .check-grid .check-row { align-items: center; padding: 11px 14px; }
-    .check-grid .check-row input { margin: 0; }
-
-    /* ---------------- SUBMIT ---------------- */
+    /* Phones: field, then a full-width button. Wider: field and button share one row. */
+    .link-row { display: flex; flex-direction: column; }
     .form-submit { width: 100%; min-height: 56px; font-size: 1.05rem; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    @media (min-width: 700px) { .form-submit { width: fit-content; min-width: 280px; margin: 0 auto; padding: 15px 36px; } }
-    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 12px 0 0; text-align: center; }
-    .form-error { display: none; color: #B33F38; font-size: 0.94rem; font-weight: 600; margin: 0 0 12px; text-align: center; }
+    .form-submit svg { width: 0.5em; height: 1em; flex-shrink: 0; }
+    @media (min-width: 700px) {
+      .link-row { flex-direction: row; gap: 12px; align-items: flex-end; }
+      .link-row .fg { flex: 1; margin-bottom: 0; }
+      .link-row .form-submit { width: auto; min-height: 52px; padding: 13px 28px; flex-shrink: 0; white-space: nowrap; }
+    }
+    .form-error { display: none; color: #B33F38; font-size: 0.94rem; font-weight: 600; margin: 12px 0 0; text-align: center; }
     .form-error.show { display: block; }
+    .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 12px 0 0; text-align: center; }
 
-    /* ---------------- SUCCESS PANEL ---------------- */
-    .form-thanks { display: none; text-align: center; padding: 14px 4px 8px; }
-    .thanks-ico {
+    /* ---------------- RESULT PANELS ---------------- */
+    .form-panel { text-align: center; padding: 14px 4px 8px; }
+    .panel-ico {
       width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: var(--navy);
       display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 16px;
       box-shadow: 0 2px 6px rgba(174,205,129,0.35), 0 12px 28px rgba(15,19,56,0.12);
     }
-    .form-thanks h2 { font-size: 1.5rem; margin: 0 0 10px; color: var(--navy); }
-    .form-thanks p { color: var(--ink-mute); font-size: 1rem; line-height: 1.7; margin: 0 auto; max-width: 34em; }
+    .panel-ico svg { width: 28px; height: 28px; } /* inline, so the icon is there the instant the panel is (no webfont wait) */
+    .panel-ico--lav { background: var(--lav); box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 12px 28px rgba(15,19,56,0.12); }
+    .panel-ico--sun { background: var(--yellow); box-shadow: 0 2px 6px rgba(255,214,123,0.40), 0 12px 28px rgba(15,19,56,0.12); }
+    .form-panel h2 { font-size: 1.5rem; margin: 0 0 10px; color: var(--navy); }
+    .form-panel p { color: var(--ink-mute); font-size: 1rem; line-height: 1.7; margin: 0 auto; max-width: 34em; }
+    .form-panel p strong { color: var(--navy); font-weight: 700; overflow-wrap: anywhere; }
+    .panel-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 13px 28px; font-size: 1.02rem; margin: 20px auto 0;
+    }
+    .panel-cta svg { width: 0.5em; height: 1em; flex-shrink: 0; }
+    .panel-alt { margin: 6px 0 0; }
+    /* a quiet text button under the CTA; same voice as .inline-link, every state covered */
+    .link-quiet {
+      background: none; border: none; padding: 0 6px; min-height: 44px; cursor: pointer;
+      font-family: inherit; font-size: 0.95rem; font-weight: 600; color: #0b5ed7;
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .link-quiet:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .link-quiet:focus-visible { outline: 3px solid var(--lav); outline-offset: 2px; border-radius: 6px; }
+    .link-quiet:active { opacity: 0.7; }
+
+    /* ---------------- HOW IT WORKS (step system from claim-reward.html) ---------------- */
+    .how-sec { padding: var(--s5) 20px var(--s6); background: var(--paper-2); border-top: 1px solid rgba(15,19,56,0.06); }
+    @media (min-width: 700px) { .how-sec { padding: var(--s6) 24px var(--s7); } }
+    .section-badge {
+      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      border-radius: 20px; padding: 5px 14px;
+    }
+    .how-sec h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.15; margin: 12px 0 22px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step + .step { margin-top: 14px; }
+    .step-num {
+      width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 1.3rem; flex-shrink: 0;
+      background: var(--lav); color: var(--navy);
+      box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30);
+    }
+    .step-card {
+      flex: 1; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px;
+      padding: 16px 18px; box-shadow: var(--sh-base);
+    }
+    .step-card h3 { font-size: 1.15rem; line-height: 1.25; margin: 0 0 6px; color: var(--navy); }
+    .step-card p { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+    @media (min-width: 700px) {
+      .step { gap: 20px; }
+      .step + .step { margin-top: 16px; }
+      .step-num { width: 52px; height: 52px; font-size: 1.45rem; }
+      .step-card { padding: 20px 24px; }
+      .step-card h3 { font-size: 1.25rem; }
+    }
 
     /* ---------------- FOOTER (system) ---------------- */
     .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
@@ -381,363 +336,112 @@
   <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
   <section class="hero">
     <div class="hero-inner">
-      <p class="hero-kicker">Moving quotes</p>
+      <p class="hero-kicker">For Apartment Agents clients</p>
       <h1>Get Moving Quotes</h1>
-      <p class="hero-sub">Get clean quotes emailed to your inbox.</p>
-      <p class="hero-sub">Choose the moving companies you would like to receive quotes from below and complete the form.</p>
+      <p class="hero-sub">Pick the moving companies you want quotes from, compare them in one place, choose the best one. Free for our clients.</p>
     </div>
   </section>
 
-  <!-- ══════════════════════════ 2 · MOVERS + FORM ══════════════════════════ -->
+  <!-- ══════════════════════════ 2 · STEP 1: YOUR EMAIL ══════════════════════════ -->
   <section class="form-sec" id="quotes">
     <div class="wrap-narrow">
-      <div class="form-card" id="quoteCard">
-        <div class="form-body">
-          <p class="form-card__eyebrow">One form</p>
-          <h2 class="form-card__title">Tell us about your move</h2>
-          <p class="form-card__intro">Pick your movers, fill in the details, and the quotes come to you. Starred fields are required.</p>
+      <div class="form-card" id="linkCard">
+
+        <div class="form-body" id="linkBody">
+          <p class="form-card__eyebrow">Step 1</p>
+          <h2 class="form-card__title">Enter the email you used with us</h2>
+          <p class="form-card__intro">We match it to your file and send you a private link to your form.</p>
 
           <!-- SUBMISSION ─────────────────────────────────────────────────────────
-               Posts JSON to the agent center: QUOTE_ENDPOINT in the script below
-               (Apartment-List-Builder: web/app/api/mover-quotes/route.ts). The
-               endpoint saves to the mover_quote_requests table and ties the request
-               to a client in OUR database by email, then phone. NOT sent to GHL.
-               Fields hidden by the property-type logic are DISABLED, so they are
-               left out of the payload — same behaviour as the live page.
-               Allowed origins live in the route's ALLOWED_ORIGINS — add the final
-               site domain there if it changes.
+               Posts JSON { email, company_website } to the agent center:
+               LINK_ENDPOINT in the script below
+               (Apartment-List-Builder: web/app/api/mover-quotes/link/route.ts).
+               The endpoint answers { ok, result } where result is one of
+               sent | not_client | rate_limited | failed, and the handler swaps the
+               card body for the matching panel. Allowed origins live in the
+               route's cors allow-list — add the final site domain there if it changes.
                ──────────────────────────────────────────────────────────────────── -->
-          <form id="quoteForm" novalidate onsubmit="return aaQuoteSubmit(event)">
+          <form id="linkForm" novalidate onsubmit="return aaLinkSubmit(event)">
             <!-- Spam trap: hidden from people; bots that fill it are silently dropped by the endpoint. -->
             <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
               <label for="company_website">Company website</label>
               <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" />
             </div>
 
-            <!-- ─────────── CHOOSE YOUR MOVERS ─────────── -->
-            <fieldset class="fs">
-              <legend>Choose your movers</legend>
-              <div class="fs-rule"></div>
-
-              <div class="movers">
-                <div class="mover-row mover-row--lg">
-                  <label class="mover-check" for="ab_moving_quote_lg">
-                    <input type="checkbox" id="ab_moving_quote_lg" name="AB_Moving_quote" value="Yes" />
-                  </label>
-                  <label for="ab_moving_quote_lg"><img class="mover-thumb" src="images/ab-moving.png" alt="" loading="lazy" /></label>
-                  <div class="mover-info">
-                    <div class="mover-head">
-                      <label for="ab_moving_quote_lg" class="mover-name">AB Moving</label>
-                      <a href="https://www.abmoving.com/" class="inline-link mover-site" target="_blank" rel="noopener" aria-label="AB Moving website (opens in a new tab)">Website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                    <label for="ab_moving_quote_lg" class="mover-desc">Family-owned, serving DFW for 29+ years. Local and interstate moves.</label>
-                  </div>
-                </div>
+            <div class="link-row">
+              <div class="fg">
+                <label for="client_email">Your email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="client_email" name="email" placeholder="Email address" inputmode="email" autocomplete="email" required aria-required="true" aria-describedby="linkMicro" />
               </div>
-            </fieldset>
-
-            <!-- ─────────── YOUR INFORMATION ─────────── -->
-            <fieldset class="fs">
-              <legend>Your Information</legend>
-              <div class="fs-rule"></div>
-
-              <div class="grid2">
-                <div class="fg">
-                  <label for="first_name">First name <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="first_name" name="first_name" placeholder="First name" autocomplete="given-name" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="last_name">Last name <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="last_name" name="last_name" placeholder="Last name" autocomplete="family-name" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="client_quote_email">Email where your quotes will be sent to <span class="req" aria-hidden="true">*</span></label>
-                  <input type="email" id="client_quote_email" name="client_quote_email" placeholder="Email address" inputmode="email" autocomplete="email" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="phone">Phone</label>
-                  <input type="tel" id="phone" name="phone" placeholder="Phone number" inputmode="tel" autocomplete="tel" />
-                </div>
-                <div class="fg">
-                  <label for="move_in_date">Estimated move date</label>
-                  <input type="date" id="move_in_date" name="move_in_date" placeholder="YYYY-MM-DD" />
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- ─────────── STARTING LOCATION ─────────── -->
-            <fieldset class="fs" data-loc="starting">
-              <legend>Starting Location</legend>
-              <div class="fs-rule"></div>
-
-              <div class="grid2">
-                <div class="fg">
-                  <label for="starting_address">Street address <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="starting_address" name="starting_address" placeholder="Address" autocomplete="street-address" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="starting_apartment_number">Apartment number</label>
-                  <input type="text" id="starting_apartment_number" name="starting_apartment_number" placeholder="Apartment number" autocomplete="address-line2" />
-                </div>
-                <div class="fg">
-                  <label for="starting_city">City <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="starting_city" name="starting_city" placeholder="City" autocomplete="address-level2" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="starting_zip_code">Zip code <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="starting_zip_code" name="starting_zip_code" placeholder="Zip code" inputmode="numeric" autocomplete="postal-code" maxlength="10" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="starting_property_type">Property type <span class="req" aria-hidden="true">*</span></label>
-                  <select id="starting_property_type" name="starting_property_type" class="is-placeholder" data-prop-type required aria-required="true">
-                    <option value="" selected disabled>Select property type</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Storage">Storage</option>
-                    <option value="House">House</option>
-                    <option value="Office">Office</option>
-                    <option value="Pod">Pod</option>
-                    <option value="Rental Truck">Rental Truck</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Town-home">Town-home</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div class="fg">
-                  <label for="starting_truck_distance">Distance Truck Can Park From Door <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="starting_truck_distance" name="starting_truck_distance" placeholder="Enter Walk Distance in Feet (approximate)" inputmode="numeric" min="0" required aria-required="true" />
-                </div>
-
-                <!-- Conditional on Property type (same rules as the live page) -->
-                <div class="fg" data-cond="apt_size">
-                  <label for="starting_apt_size">Number of Bedrooms <span class="req" aria-hidden="true">*</span></label>
-                  <select id="starting_apt_size" name="starting_apt_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="1 Bedroom">1 Bedroom</option>
-                    <option value="2 Bedroom">2 Bedroom</option>
-                    <option value="3 Bedroom">3 Bedroom</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="house_size">
-                  <label for="starting_house_size">Size <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="starting_house_size" name="starting_house_size" placeholder="Enter Square Footage (approximate)" inputmode="numeric" required aria-required="true" />
-                </div>
-                <div class="fg" data-cond="storage_size">
-                  <label for="starting_storage_size">Storage Size <span class="req" aria-hidden="true">*</span></label>
-                  <select id="starting_storage_size" name="starting_storage_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="5x5 ft">5x5 ft</option>
-                    <option value="5x10 ft">5x10 ft</option>
-                    <option value="10x10 ft">10x10 ft</option>
-                    <option value="15x10 ft">15x10 ft</option>
-                    <option value="10x20 ft">10x20 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="pod_size">
-                  <label for="starting_pod_size">Pod Size <span class="req" aria-hidden="true">*</span></label>
-                  <select id="starting_pod_size" name="starting_pod_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="10 ft">10 ft</option>
-                    <option value="14 ft">14 ft</option>
-                    <option value="17 ft">17 ft</option>
-                    <option value="24 ft">24 ft</option>
-                    <option value="26 ft">26 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="rental_truck">
-                  <label for="starting_rental_truck">Rental Truck <span class="req" aria-hidden="true">*</span></label>
-                  <select id="starting_rental_truck" name="starting_rental_truck" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="10 ft">10 ft</option>
-                    <option value="14 ft">14 ft</option>
-                    <option value="17 ft">17 ft</option>
-                    <option value="24 ft">24 ft</option>
-                    <option value="26 ft">26 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="floor">
-                  <label for="starting_floor">Floor <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="starting_floor" name="starting_floor" placeholder="Enter the floor number (e.g. 3)" inputmode="numeric" min="1" required aria-required="true" />
-                </div>
-                <div class="fg" data-cond="stories">
-                  <label for="starting_stories">Stories <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="starting_stories" name="starting_stories" placeholder="Enter number of stories" inputmode="numeric" min="1" required aria-required="true" />
-                </div>
-                <fieldset class="radio-set" data-cond="elevator">
-                  <legend class="fg-label">Elevator Available</legend>
-                  <div class="radio-row">
-                    <label class="radio-pill"><input type="radio" name="starting_elevator" value="Yes" /> Yes</label>
-                    <label class="radio-pill"><input type="radio" name="starting_elevator" value="No" /> No</label>
-                  </div>
-                </fieldset>
-              </div>
-            </fieldset>
-
-            <!-- ─────────── FINAL LOCATION ─────────── -->
-            <fieldset class="fs" data-loc="final">
-              <legend>Final Location</legend>
-              <div class="fs-rule"></div>
-
-              <div class="grid2">
-                <div class="fg">
-                  <label for="final_address">Street address <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="final_address" name="final_address" placeholder="Address" autocomplete="off" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="final_apartment_number">Apartment number</label>
-                  <input type="text" id="final_apartment_number" name="final_apartment_number" placeholder="Apartment number" autocomplete="off" />
-                </div>
-                <div class="fg">
-                  <label for="final_city">City <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="final_city" name="final_city" placeholder="City" autocomplete="off" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="final_zip_code">Zip code <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="final_zip_code" name="final_zip_code" placeholder="Zip code" inputmode="numeric" autocomplete="off" maxlength="10" required aria-required="true" />
-                </div>
-                <div class="fg">
-                  <label for="final_property_type">Property type <span class="req" aria-hidden="true">*</span></label>
-                  <select id="final_property_type" name="final_property_type" class="is-placeholder" data-prop-type required aria-required="true">
-                    <option value="" selected disabled>Select property type</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Storage">Storage</option>
-                    <option value="House">House</option>
-                    <option value="Office">Office</option>
-                    <option value="Pod">Pod</option>
-                    <option value="Rental Truck">Rental Truck</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Town-home">Town-home</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div class="fg">
-                  <label for="final_truck_distance">Distance Truck Can Park From Door <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="final_truck_distance" name="final_truck_distance" placeholder="Enter Walk Distance in Feet (approximate)" inputmode="numeric" min="0" required aria-required="true" />
-                </div>
-
-                <!-- Conditional on Property type (same rules as the live page) -->
-                <div class="fg" data-cond="apt_size">
-                  <label for="final_apt_size">Number of Bedrooms <span class="req" aria-hidden="true">*</span></label>
-                  <select id="final_apt_size" name="final_apt_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="1 Bedroom">1 Bedroom</option>
-                    <option value="2 Bedroom">2 Bedroom</option>
-                    <option value="3 Bedroom">3 Bedroom</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="house_size">
-                  <label for="final_house_size">Size <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="final_house_size" name="final_house_size" placeholder="Enter Square Footage (approximate)" inputmode="numeric" required aria-required="true" />
-                </div>
-                <div class="fg" data-cond="storage_size">
-                  <label for="final_storage_size">Storage Size <span class="req" aria-hidden="true">*</span></label>
-                  <select id="final_storage_size" name="final_storage_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="5x5 ft">5x5 ft</option>
-                    <option value="5x10 ft">5x10 ft</option>
-                    <option value="10x10 ft">10x10 ft</option>
-                    <option value="15x10 ft">15x10 ft</option>
-                    <option value="10x20 ft">10x20 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="pod_size">
-                  <label for="final_pod_size">Pod Size <span class="req" aria-hidden="true">*</span></label>
-                  <select id="final_pod_size" name="final_pod_size" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="10 ft">10 ft</option>
-                    <option value="14 ft">14 ft</option>
-                    <option value="17 ft">17 ft</option>
-                    <option value="24 ft">24 ft</option>
-                    <option value="26 ft">26 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="rental_truck">
-                  <label for="final_rental_truck">Rental Truck <span class="req" aria-hidden="true">*</span></label>
-                  <select id="final_rental_truck" name="final_rental_truck" class="is-placeholder" required aria-required="true">
-                    <option value="" selected disabled>Please Select</option>
-                    <option value="10 ft">10 ft</option>
-                    <option value="14 ft">14 ft</option>
-                    <option value="17 ft">17 ft</option>
-                    <option value="24 ft">24 ft</option>
-                    <option value="26 ft">26 ft</option>
-                    <option value="Over">Over</option>
-                  </select>
-                </div>
-                <div class="fg" data-cond="floor">
-                  <label for="final_floor">Floor <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="final_floor" name="final_floor" placeholder="Enter the floor number (e.g. 3)" inputmode="numeric" min="1" required aria-required="true" />
-                </div>
-                <div class="fg" data-cond="stories">
-                  <label for="final_stories">Stories <span class="req" aria-hidden="true">*</span></label>
-                  <input type="number" id="final_stories" name="final_stories" placeholder="Enter number of stories" inputmode="numeric" min="1" required aria-required="true" />
-                </div>
-                <fieldset class="radio-set" data-cond="elevator">
-                  <legend class="fg-label">Elevator Available</legend>
-                  <div class="radio-row">
-                    <label class="radio-pill"><input type="radio" name="final_elevator" value="Yes" /> Yes</label>
-                    <label class="radio-pill"><input type="radio" name="final_elevator" value="No" /> No</label>
-                  </div>
-                </fieldset>
-              </div>
-            </fieldset>
-
-            <!-- ─────────── OTHER INFORMATION ─────────── -->
-            <fieldset class="fs">
-              <legend>Other Information</legend>
-              <div class="fs-rule"></div>
-
-              <div class="grid2">
-                <fieldset class="radio-set">
-                  <legend class="fg-label">Are you making any other stops?</legend>
-                  <div class="radio-row">
-                    <label class="radio-pill"><input type="radio" name="other_stops" value="Yes" /> Yes</label>
-                    <label class="radio-pill"><input type="radio" name="other_stops" value="No" /> No</label>
-                  </div>
-                </fieldset>
-                <fieldset class="radio-set">
-                  <legend class="fg-label">Do you need help packing?</legend>
-                  <div class="radio-row">
-                    <label class="radio-pill"><input type="radio" name="packing_help" value="Yes" /> Yes</label>
-                    <label class="radio-pill"><input type="radio" name="packing_help" value="No" /> No</label>
-                  </div>
-                </fieldset>
-              </div>
-
-              <fieldset class="radio-set" style="margin-bottom:0;">
-                <legend class="fg-label">Are you planning on moving any of the following items? <span class="fg-hint">Check all that apply</span></legend>
-                <div class="check-grid">
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="Piano" /><span>Piano</span></label>
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="Pool Table" /><span>Pool Table</span></label>
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="Safe (over 600 lbs)" /><span>Safe (over 600 lbs)</span></label>
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="Heavy Furniture (over 600 lbs)" /><span>Heavy Furniture (over 600 lbs)</span></label>
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="Artwork (over $2000)" /><span>Artwork (over $2000)</span></label>
-                  <label class="check-row"><input type="checkbox" name="special_items[]" value="None of the above" /><span>None of the above</span></label>
-                </div>
-              </fieldset>
-            </fieldset>
+              <button type="submit" class="btn-primary form-submit" id="linkSubmit">
+                <span class="form-submit__label">Email me my link</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
 
             <p class="form-error" id="formError" role="alert"></p>
-
-            <button type="submit" class="btn-primary form-submit">
-              Get Your Quotes
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-            <p class="form-micro">Your quotes are emailed to the address above.</p>
+            <p class="form-micro" id="linkMicro">We&rsquo;ll email you a link that opens your form with your details already filled in.</p>
           </form>
         </div>
 
-        <div class="form-thanks" role="status" aria-live="polite">
-          <div class="thanks-ico" aria-hidden="true"><i class="fas fa-check"></i></div>
-          <h2>Got it. Your quotes are on the way.</h2>
-          <p>We&rsquo;re sending your details to the movers you picked. Keep an eye on your inbox for their quotes.</p>
+        <!-- result: sent -->
+        <div class="form-panel" id="panel-sent" role="status" aria-live="polite" tabindex="-1">
+          <div class="panel-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <h2>Check your inbox</h2>
+          <p>We sent your link to <strong id="sentEmail"></strong>. It opens your form with your details filled in. The link works for 7 days.</p>
+          <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
         </div>
 
+        <!-- result: not_client -->
+        <div class="form-panel" id="panel-not-client" tabindex="-1">
+          <div class="panel-ico panel-ico--lav" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v10h13V10"></path><path d="M10 20v-6h4v6"></path></svg></div>
+          <h2>This service is for Apartment Agents clients</h2>
+          <p>We send moving quotes for clients we helped find an apartment. Not one yet? Our apartment search is free too.</p>
+          <a href="dallas-apartments-new.html#signup" class="btn-primary panel-cta">
+            Get My Free Matches
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
+        </div>
+
+        <!-- result: rate_limited -->
+        <div class="form-panel" id="panel-rate-limited" role="status" aria-live="polite" tabindex="-1">
+          <div class="panel-ico panel-ico--sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7.5 8.5 6 8.5-6"></path></svg></div>
+          <h2>We already sent your link</h2>
+          <p>Check your inbox and spam folder. You can request another in an hour.</p>
+          <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 3 · HOW IT WORKS ══════════════════════════ -->
+  <section class="how-sec">
+    <div class="wrap-narrow">
+      <div class="section-badge">After your link arrives</div>
+      <h2>How it works</h2>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-card">
+          <h3>Tell us about your move</h3>
+          <p>Your details are already filled in. Add the rest and pick the movers you want to hear from.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-card">
+          <h3>Movers send their quotes</h3>
+          <p>Each company you pick gets your move details, not your phone or email.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-card">
+          <h3>Compare and choose</h3>
+          <p>Quotes land on one page. Pick one and they contact you.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -805,137 +509,80 @@
       if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
     }
 
-    /* ── Property-type conditional fields ─────────────────────────────────
-       Mirrors the live page's showThisFieldIf rules (1-based option indexes
-       there, property-type values here). Applied to BOTH location blocks.
-       Hidden fields are disabled so they neither validate nor post. */
-    var SHOW_FOR = {
-      apt_size:     ['Apartment', 'Condo'],
-      house_size:   ['House', 'Office', 'Town-home', 'Other'],
-      storage_size: ['Storage'],
-      pod_size:     ['Pod'],
-      rental_truck: ['Rental Truck'],
-      floor:        ['Apartment', 'Storage', 'Office', 'Condo', 'Other'],
-      stories:      ['House', 'Town-home'],
-      elevator:     ['Apartment', 'Storage', 'Office', 'Condo', 'Other']
-    };
-
-    function applyConditions(block) {
-      var sel = block.querySelector('[data-prop-type]');
-      var type = sel ? sel.value : '';
-      Array.prototype.forEach.call(block.querySelectorAll('[data-cond]'), function (group) {
-        var on = (SHOW_FOR[group.getAttribute('data-cond')] || []).indexOf(type) > -1;
-        group.classList.toggle('is-on', on);
-        Array.prototype.forEach.call(group.querySelectorAll('input, select'), function (el) {
-          el.disabled = !on;
-          if (!on) el.classList.remove('is-bad');
-        });
-      });
-    }
-
-    function syncPlaceholder(sel) {
-      sel.classList.toggle('is-placeholder', !sel.value);
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      Array.prototype.forEach.call(document.querySelectorAll('[data-loc]'), function (block) {
-        applyConditions(block);
-        var sel = block.querySelector('[data-prop-type]');
-        if (sel) sel.addEventListener('change', function () { applyConditions(block); });
-      });
-      Array.prototype.forEach.call(document.querySelectorAll('#quoteForm select'), function (sel) {
-        syncPlaceholder(sel);
-        sel.addEventListener('change', function () { syncPlaceholder(sel); });
-      });
-    });
-
-    var QUOTE_ENDPOINT = 'https://ac.apartmentagents.com/api/mover-quotes';
-    var MSG_MISSING = 'Please fill in the starred fields highlighted below.';
+    /* ── Step 1: email → signed link ──────────────────────────────────────
+       POST { email, company_website } to the agent center. The answer is
+       { ok, result } with result = sent | not_client | rate_limited | failed.
+       sent / not_client / rate_limited swap the card body for a panel;
+       failed, a network error or a non-2xx keep the form and show one line. */
+    var LINK_ENDPOINT = 'https://ac.apartmentagents.com/api/mover-quotes/link';
+    var MSG_EMAIL = 'Please enter the email you used with us.';
     var MSG_FAILED = 'Sorry, that didn’t go through. Please try again, or call us at (972) 993-7300.';
+    var PANELS = { sent: 'panel-sent', not_client: 'panel-not-client', rate_limited: 'panel-rate-limited' };
 
-    function val(id) {
-      var el = document.getElementById(id);
-      return el && !el.disabled ? String(el.value || '').trim() : '';
-    }
-    function checked(name) {
-      return Array.prototype.map.call(document.querySelectorAll('#quoteForm input[name="' + name + '"]:checked:not(:disabled)'), function (el) { return el.value; });
-    }
-    function locationOf(prefix) {
-      var keys = ['address', 'apartment_number', 'city', 'zip_code', 'property_type', 'truck_distance',
-                  'apt_size', 'house_size', 'storage_size', 'pod_size', 'rental_truck', 'floor', 'stories'];
-      var out = {};
-      keys.forEach(function (k) { var v = val(prefix + '_' + k); if (v) out[k] = v; });
-      var elev = checked(prefix + '_elevator')[0];
-      if (elev) out.elevator = elev;
-      return out;
-    }
-    function payload() {
-      var movers = Array.prototype.map.call(document.querySelectorAll('#quoteForm .mover-row input[type="checkbox"]:checked'), function (el) {
-        var row = el.closest('.mover-row');
-        var name = row && row.querySelector('.mover-name');
-        return name ? name.textContent.trim() : el.value;
-      });
-      return {
-        first_name: val('first_name'),
-        last_name: val('last_name'),
-        email: val('client_quote_email'),
-        phone: val('phone'),
-        move_date: val('move_in_date'),
-        movers: movers,
-        starting: locationOf('starting'),
-        final: locationOf('final'),
-        other_stops: checked('other_stops')[0] || '',
-        packing_help: checked('packing_help')[0] || '',
-        special_items: checked('special_items[]'),
-        company_website: val('company_website')
-      };
+    function el(id) { return document.getElementById(id); }
+
+    function setBusy(on) {
+      var btn = el('linkSubmit');
+      var label = btn.querySelector('.form-submit__label');
+      btn.disabled = on;
+      if (on) btn.setAttribute('aria-busy', 'true'); else btn.removeAttribute('aria-busy');
+      label.textContent = on ? 'Sending…' : 'Email me my link';
     }
 
-    function aaQuoteSubmit(e) {
+    function showPanel(result) {
+      el('linkBody').classList.add('is-off');
+      Object.keys(PANELS).forEach(function (k) { el(PANELS[k]).classList.toggle('is-on', k === result); });
+      var panel = el(PANELS[result]);
+      window.scrollTo({ top: el('linkCard').offsetTop - 90, behavior: 'smooth' });
+      panel.focus({ preventScroll: true });
+    }
+
+    /* "Try a different email": bring the form back, empty, with the cursor in it. */
+    function aaLinkReset() {
+      Object.keys(PANELS).forEach(function (k) { el(PANELS[k]).classList.remove('is-on'); });
+      el('linkBody').classList.remove('is-off');
+      var input = el('client_email');
+      input.value = '';
+      input.classList.remove('is-bad');
+      el('formError').classList.remove('show');
+      input.focus();
+    }
+
+    function aaLinkSubmit(e) {
       e.preventDefault();
-      var form = document.getElementById('quoteForm');
-      var err = document.getElementById('formError');
-      var btn = form.querySelector('button[type="submit"]');
-      var bad = null;
+      var input = el('client_email');
+      var err = el('formError');
+      var email = String(input.value || '').trim();
 
-      // reset previous error styling
-      Array.prototype.forEach.call(form.querySelectorAll('.is-bad'), function (el) { el.classList.remove('is-bad'); });
-
-      Array.prototype.forEach.call(form.querySelectorAll('input[required]:not(:disabled), select[required]:not(:disabled)'), function (el) {
-        var empty = !String(el.value).trim();
-        if (el.type === 'email' && !empty) empty = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
-        if (!empty) return;
-        el.classList.add('is-bad');
-        if (!bad) bad = el;
-      });
-
-      if (bad) {
-        err.textContent = MSG_MISSING;
+      input.classList.remove('is-bad');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        input.classList.add('is-bad');
+        err.textContent = MSG_EMAIL;
         err.classList.add('show');
-        bad.focus({ preventScroll: false });
+        input.focus();
         return false;
       }
 
       err.classList.remove('show');
-      btn.disabled = true;
-      btn.setAttribute('aria-busy', 'true');
-      btn.style.opacity = '0.7';
+      setBusy(true);
 
-      fetch(QUOTE_ENDPOINT, {
+      fetch(LINK_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload())
+        body: JSON.stringify({ email: email, company_website: String(el('company_website').value || '') })
       }).then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        document.getElementById('quoteCard').classList.add('is-sent');
-        window.scrollTo({ top: document.getElementById('quoteCard').offsetTop - 90, behavior: 'smooth' });
+        return res.json();
+      }).then(function (data) {
+        var result = data && data.result;
+        if (!PANELS[result]) throw new Error('result ' + result);
+        if (result === 'sent') el('sentEmail').textContent = email;
+        showPanel(result);
       }).catch(function () {
         err.textContent = MSG_FAILED;
         err.classList.add('show');
       }).then(function () {
-        btn.disabled = false;
-        btn.removeAttribute('aria-busy');
-        btn.style.opacity = '';
+        setBusy(false);
       });
       return false;
     }
