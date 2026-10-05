@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- HOME PAGE (rebuilt 2026-10-05 from dallas-apartments-new.html, framed for Dallas-Fort Worth). When a second city launches,
+       the hero becomes a city picker and the shared sections below stay. Old home page backed up outside the site. -->
+  <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apartment Agents | Free DFW Apartment Experts + Up to $250 Cash Back</title>
-  <meta name="description" content="Licensed DFW apartment experts, free to you. We find the right apartment at the best price and pay you up to $250 cash back when you lease. Saving Dallas renters money since 2003." />
+  <title>Apartment Agents | Free Apartment Locating in Dallas&ndash;Fort Worth + Up to $250 Cash Back</title>
+  <meta name="description" content="The Dallas&ndash;Fort Worth apartment you actually want, without the search. Right matches, best prices, and up to $250 cash back. Free, licensed DFW apartment locators." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -30,8 +33,8 @@
   </script>
   <style>
     /* ============================================================
-       DESIGN TOKENS — inherited VERBATIM from dallas-apartments-new.html,
-       which is the canonical design system for the site.
+       DESIGN TOKENS — brand system inherited from rewards.html /
+       how-it-works.html. Spacing is a fixed scale, not ad-hoc steps.
        ============================================================ */
     :root {
       --navy:      #0F1338;
@@ -81,9 +84,6 @@
     .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
     .nav-link:active { color: #7b8ee8; }
     .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
-    /* mobile drawer links + the logo link get real 44px targets */
-    #mobile-menu .nav-link { display: flex; align-items: center; min-height: 44px; }
-    .nav-home { min-height: 44px; }
 
     /* ---------------- BUTTONS ---------------- */
     .btn-primary {
@@ -106,7 +106,7 @@
 
     /* Mobile nav CTA — declared after .btn-coral so its display wins */
     .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
-    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
     .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
 
     /* inline text links on light surfaces — every state accounted for */
@@ -135,8 +135,9 @@
     .check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; color: var(--navy); font-weight: 900; font-size: 0.7rem; }
 
     /* ---------------- HERO (light lavender-white field) ----------------
-       Same treatment as the Dallas page: near-white base + low-opacity
-       lavender/green radial washes + faint grain, dark navy text.
+       Near-white base + low-opacity lavender/green radial washes + faint
+       grain. Text flips to dark navy; every hero surface is re-tuned for
+       a light field rather than inverted-on-navy.
        ------------------------------------------------------------------ */
     .hero {
       background:
@@ -155,6 +156,7 @@
     }
     .hero-inner { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
     .hero h1 { color: var(--navy); font-size: clamp(2.5rem, 11vw, 4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero h1 .h1-beat { display: inline-block; margin-top: 0.14em; font-style: italic; color: #4A55B8; }
     .hero h1 em { font-style: normal; color: inherit; }
     .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
     .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
@@ -176,6 +178,8 @@
       border: 1px solid rgba(255,255,255,0.5);
       position: relative;
     }
+    /* On the light hero field a white card needs its own definition:
+       lavender hairline + inner highlight + layered lavender-tinted shadow. */
     .form-card--light {
       border: 1px solid rgba(157,170,242,0.75);
       box-shadow:
@@ -194,7 +198,8 @@
 
     /* ---------------- TRUST STRIP (light hero) ---------------- */
     .trust-strip {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      /* the award item carries the longest label ("Consumer's Choice Award Winners"), so it gets the widest column */
+      display: grid; grid-template-columns: 1.45fr 0.85fr 1fr; gap: 10px;
       margin-top: 16px; border-top: 1px solid rgba(15,19,56,0.12); padding-top: 14px;
     }
     .trust-item { text-align: center; }
@@ -202,7 +207,183 @@
     .trust-item .t-bot { color: #464a6d; font-size: 0.8rem; font-weight: 600; margin-top: 2px; display: block; line-height: 1.3; }
     @media (min-width: 700px) { .trust-item .t-bot { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78rem; } }
     .stars { color: var(--yellow); letter-spacing: 1px; }
+    /* gold on a light field needs a darker amber to stay legible */
     .trust-item .t-top.stars { color: #9a6c07; }
+
+    /* ---------------- HERO PHONE (flat device + depth planes) ----------------
+       The phone lies flat and does not move: it rides with the copy at 1x. The
+       page scroll scrubs the shortlist inside its screen (no idle motion, no loop),
+       opening on the Top Pick and reaching the second listing by the time the phone
+       leaves a desktop viewport, the third on a phone. Three planes still move at
+       their own rates for depth (copy and phone ride at 1x):
+         rear halo   0.70x  (lags 30%)   data-hp-rate="0.30"
+         chip A      1.12x  (leads 12%)  data-hp-rate="-0.12"
+         chip B      1.24x  (leads 24%)  data-hp-rate="-0.24"
+       Travel = rate x the hero runway (660px desktop, 440px single-column) so no
+       plane moves more than ~200px. The JS publishes --hp-p (0..1) on the section
+       and writes the plane and list transforms directly.
+       ----------------------------------------------------------------------- */
+    .hero { --hp-p: 0; }
+    .hero-cta { display: flex; flex-direction: column; align-items: stretch; margin: 0 0 18px; }
+    .hero-cta .form-micro { margin-top: 8px; text-align: center; }
+
+    .hp-stage {
+      --pw: 262px;                              /* phone width */
+      --ph: calc(var(--pw) * 2.06);             /* phone height (71.6 x 147.6 mm body ratio) */
+      --bz: 9px;                                /* bezel */
+      --rad: calc(var(--pw) * 0.17);            /* outer corner radius */
+      position: relative; width: var(--pw); height: var(--ph);
+      margin: 26px auto 44px;                   /* room for the contact shadow */
+    }
+    .hero .trust-strip { position: relative; z-index: 4; }   /* never under a plane */
+    .hp-plane { position: absolute; will-change: transform; }
+
+    /* rear plane: soft lavender wash + a thin ring that the phone occludes */
+    .hp-plane--halo { z-index: 1; left: calc(50% - var(--pw) * 0.66); top: calc(50% - var(--pw) * 0.66); width: calc(var(--pw) * 1.32); height: calc(var(--pw) * 1.32); pointer-events: none; }
+    .hp-halo-wash {
+      position: absolute; inset: -12%; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(157,170,242,0.64) 0%, rgba(157,170,242,0.34) 42%, rgba(157,170,242,0) 100%);
+    }
+    .hp-halo-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px solid rgba(157,170,242,0.62);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7);
+      transform: translate(6%, -10%);
+    }
+
+    /* mid plane: the device */
+    .hp-plane--phone { z-index: 2; inset: 0; }
+    .hp-contact {
+      position: absolute; left: 6%; right: 2%; bottom: -26px; height: 54px; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(15,19,56,0.42), rgba(15,19,56,0.14) 55%, rgba(15,19,56,0) 100%);
+      filter: blur(7px); pointer-events: none;
+    }
+    .hp-phone { position: absolute; inset: 0; border-radius: var(--rad); }
+    .hp-back, .hp-body { position: absolute; inset: 0; border-radius: var(--rad); }
+
+    /* flat pose: a 2px darker rim around the body reads as the device's side edge */
+    .hp-back  { inset: -2px; background: #181b35; box-shadow: 0 30px 60px -20px rgba(15,19,56,0.55); }
+    .hp-body {
+      background: linear-gradient(160deg, #2c3157 0%, #151833 38%, #0f1230 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.22),
+        inset 0 0 0 3px rgba(15,19,56,0.9),
+        0 2px 4px rgba(15,19,56,0.22),
+        0 18px 36px -8px rgba(15,19,56,0.38),
+        0 56px 90px -24px rgba(48,58,140,0.40);
+    }
+    .hp-btn { position: absolute; background: #2a2e52; border-radius: 2px; }
+    .hp-btn--mute  { left: -5px; top: 17%;  width: 3px; height: 5%; }
+    .hp-btn--up    { left: -5px; top: 24%;  width: 3px; height: 9%; }
+    .hp-btn--down  { left: -5px; top: 34.5%; width: 3px; height: 9%; }
+    .hp-btn--power {
+      right: -6px; top: 26%; width: 4px; height: 13%;
+      background: linear-gradient(90deg, #3a3f68 0%, #8890c2 60%, #b9bfe0 100%);
+      box-shadow: 0 0 0 0.5px rgba(15,19,56,0.35);
+    }
+
+    .hp-screen {
+      position: absolute; inset: var(--bz); overflow: hidden;
+      border-radius: calc(var(--rad) - var(--bz));
+      background: #f3f4fb;                       /* solid ground: the list's own page colour */
+    }
+    /* the list lives in its own viewport under an opaque 44px status ground, so the rest
+       frame opens on the TOP PICKS header and cards scroll under the time and island */
+    .hp-viewport { position: absolute; left: 0; right: 0; top: 44px; bottom: 0; overflow: hidden; }
+    .hp-list { position: absolute; left: 0; top: 10px; width: 100%; will-change: transform; }   /* 10px of ground above the TOP PICKS header at rest */
+    .hp-list img { display: block; width: 100%; height: auto; max-width: none; transition: opacity 0.55s cubic-bezier(0.23, 1, 0.32, 1); }
+    .js .hp-list:not(.is-loaded) img { opacity: 0; }   /* fade-in only when the script is running; without JS the list simply shows */
+    .hp-list.is-failed img { display: none; }
+    .hp-status {
+      position: absolute; left: 0; right: 0; top: 0; height: 44px; pointer-events: none;
+      background: #f3f4fb;
+      display: flex; align-items: flex-start; justify-content: space-between; padding: 9px 16px 0 20px;
+      color: var(--navy); font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: -0.01em; line-height: 1;
+    }
+    .hp-status svg { display: block; height: 10px; width: auto; }
+    .hp-status .hp-icons { display: flex; align-items: center; gap: 4px; }
+    .hp-island {
+      position: absolute; top: 8px; left: 50%; width: 32%; height: 20px; margin-left: -16%;
+      background: #0b0d1c; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .hp-island::after { content: ''; position: absolute; right: 8px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #2a3050, #05060f 70%); }
+    .hp-home { position: absolute; left: 50%; bottom: 6px; width: 36%; height: 4px; margin-left: -18%; border-radius: 999px; background: rgba(15,19,56,0.55); }
+    .hp-glare {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(112deg, rgba(255,255,255,0) 34%, rgba(255,255,255,0.22) 41%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 18%);
+    }
+
+    /* foreground chips: real list data only, in front of the phone */
+    .hp-chip {
+      z-index: 3; display: flex; align-items: center; gap: 10px;
+      background: #fff; border: 1px solid rgba(157,170,242,0.7); border-radius: 14px; padding: 9px 12px;
+      color: var(--navy); font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.2; white-space: nowrap;
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 1px 2px rgba(15,19,56,0.08),
+        0 10px 22px -6px rgba(15,19,56,0.28),
+        0 28px 48px -18px rgba(48,58,140,0.35);
+    }
+    .hp-chip { transition: opacity 0.35s ease-out; }
+    .hp-stage.is-past .hp-chip { opacity: 0; }   /* the chips carry the Top Pick's numbers, so they leave once that card has scrolled by */
+    .hp-chip--a { left: -34px; top: 54%; }
+    .hp-chip--b { right: -34px; bottom: -6px; }   /* straddles the bottom-right corner so it never sits on the property name at rest */
+    .hp-chip .hp-ico {
+      width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(174,205,129,0.32); color: #4C6B22; font-size: 0.85rem;
+    }
+    .hp-chip .hp-ico svg { width: 15px; height: 15px; display: block; }
+    .hp-chip .hp-thumb { width: 46px; height: 46px; border-radius: 10px; object-fit: cover; flex-shrink: 0; display: block; }
+    .hp-chip .hp-l1 { display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #4C6B22; margin: 0 0 3px; }
+    .hp-chip .hp-l2 { display: block; font-size: 0.92rem; font-weight: 700; margin: 0; }
+    .hp-chip .hp-price { display: block; font-size: 1.05rem; font-weight: 800; margin: 0 0 2px; }
+    .hp-chip .hp-price small { font-size: 0.72rem; font-weight: 600; color: #5c5c7d; margin-left: 2px; }
+    .hp-chip .hp-meta { display: block; font-size: 0.76rem; font-weight: 600; color: #5c5c7d; margin: 0; line-height: 1.35; }
+    .hp-chip .hp-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #5e9a2b; margin-right: 5px; vertical-align: 1px; }
+    .hp-chip .hp-avail { color: #3f6f0f; font-weight: 700; }
+
+    @media (min-width: 700px) {
+      .hero-cta { align-items: flex-start; }
+      .hero-cta .form-submit { margin-left: 0; margin-right: 0; }
+      .hero-cta .form-micro { align-self: flex-start; text-align: left; }
+      .hp-stage { --pw: 280px; margin: 32px auto 64px; }
+      .hp-chip--a { left: -56px; }
+      .hp-chip--b { right: -56px; }
+    }
+    @media (min-width: 1000px) {
+      .hero-cta { width: fit-content; }
+      .hp-stage {
+        --pw: 272px; --bz: 10px;
+        margin: 4px auto 0; justify-self: center;
+      }
+      .hp-plane--halo { left: calc(50% - var(--pw) * 0.72); top: calc(50% - var(--pw) * 0.72); width: calc(var(--pw) * 1.44); height: calc(var(--pw) * 1.44); }
+      .hp-chip--a { left: -92px; top: 41%; }
+      .hp-chip--b { right: -72px; bottom: 7%; }
+    }
+    @media (min-width: 1000px) and (max-width: 1279px) {
+      .hero { padding: 44px 24px 44px; }
+      .hero-inner { column-gap: 40px; }   /* keeps the three pills on one line at 1024 */
+    }
+    @media (min-width: 1280px) {
+      .hp-plane--halo { left: calc(50% - var(--pw) * 0.8); top: calc(50% - var(--pw) * 0.8); width: calc(var(--pw) * 1.6); height: calc(var(--pw) * 1.6); }
+    }
+    @media (min-width: 1280px) {
+      .hp-stage { --pw: 296px; margin-bottom: 28px; }
+      .trust-item { padding: 0 30px; }
+    }
+    @media (min-width: 1000px) {
+      .hero::after {
+        content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 56px; z-index: 3; pointer-events: none;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 100%);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hp-plane, .hp-list { transform: none !important; }
+      .hp-list img { transition: none; }
+    }
 
     /* ---------------- SECTION SHELL ---------------- */
     .sec { padding: var(--s6) 20px; }
@@ -213,53 +394,451 @@
     .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
     .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
 
-    /* ---------------- "WHAT'S THE CATCH" CALLOUT ---------------- */
-    .catch { margin-top: var(--s4); background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav); border-radius: 16px; padding: 20px 20px; }
-    .catch h3 { font-size: 1.15rem; margin: 0 0 8px; }
-    .catch p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+    /* ---------------- THREE STEPS: scroll-driven timeline ----------------
+       No cards. Three steps as oversized serif numerals + text on open space,
+       a track beside them that fills as the visitor scrolls (--st-p, 0..1,
+       published by the section script), and each numeral lighting up as the
+       fill reaches it. Entry reveals fire once. Transform/opacity only.
+       ---------------------------------------------------------------------- */
+    .steps { --st-p: 0; }
+    .steps-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    .steps-head .section-badge { margin-bottom: 4px; }
+    .steps-head h2 { margin-bottom: 12px; }
+    .steps-head .lede { margin-bottom: 20px; }
+    .steps-cta { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; font-size: 1.02rem; min-height: 52px; }
+    /* below the two-column layout the button lives after "So what's the catch?"; the head copy is hidden */
+    .steps-head .steps-cta { display: none; }
+    .steps-cta--end { margin-top: 32px; }
 
-    /* ---------------- THE DIFFERENCE (navy band) ---------------- */
-    .move-sec {
-      background:
-        radial-gradient(760px 460px at 12% 0%, rgba(174,205,129,0.16) 0%, transparent 60%),
-        radial-gradient(700px 500px at 95% 100%, rgba(157,170,242,0.16) 0%, transparent 62%),
-        var(--navy);
-      position: relative; overflow: hidden;
+    /* three columns: a narrow gutter that carries the track and the dots, the numeral, the copy */
+    .st-list { position: relative; margin: 0; padding: 0; list-style: none; --st-gut: 22px; --st-col: 44px; --st-dot: 12px; }
+    .st-track, .st-fill {
+      position: absolute; left: calc(var(--st-gut) / 2 - 1px); width: 2px; top: 14px; bottom: 14px; border-radius: 2px;
     }
-    .move-sec::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+    .st-track { background: rgba(15,19,56,0.10); }
+    .st-fill {
+      background: linear-gradient(180deg, var(--lav) 0%, #4A55B8 100%);
+      transform-origin: 50% 0; transform: scaleY(var(--st-p)); will-change: transform;
+    }
+    .st-step { position: relative; display: grid; grid-template-columns: var(--st-gut) var(--st-col) 1fr; column-gap: 14px; align-items: start; padding: 4px 0; }
+    .st-step .st-num { grid-column: 2; }   /* the dot is absolutely positioned, so pin the flow items to their columns */
+    .st-step .st-body { grid-column: 3; }
+    .st-step + .st-step { margin-top: 44px; }
+    .st-num {
+      position: relative; height: 1em; font-family: 'DM Serif Display', Georgia, serif; font-size: 2.6rem; line-height: 1;
+      letter-spacing: -0.03em; font-variant-numeric: tabular-nums; text-align: left; margin-top: -0.12em;
+    }
+    /* two stacked layers cross-fade so only opacity animates */
+    .st-num > span { position: absolute; inset: 0; display: block; transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1); }
+    .st-num .st-num--dim { color: rgba(15,19,56,0.16); }
+    .st-num .st-num--on  { color: var(--navy); opacity: 0; }
+    .st-step.is-on .st-num .st-num--on { opacity: 1; }
+    .st-step.is-on .st-num .st-num--dim { opacity: 0; }
+    .st-dot {
+      position: absolute; left: calc(var(--st-gut) / 2 - 6px); top: var(--st-dot); width: 12px; height: 12px; border-radius: 50%;
+      background: #fff; box-shadow: inset 0 0 0 2px rgba(15,19,56,0.14); transition: opacity 0.3s ease-out; opacity: 0;
+    }
+    .st-step.is-on .st-dot { opacity: 1; box-shadow: inset 0 0 0 4px var(--lav); }
+    .st-body h3 { font-size: 1.32rem; line-height: 1.22; margin: 0.2em 0 8px; letter-spacing: -0.02em; }
+    .st-body p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.72; max-width: 52ch; }
+    .st-body strong { color: var(--navy); }
+
+    /* the catch: quiet Q&A on a hairline, no coloured bar, no box */
+    .st-catch { margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(15,19,56,0.10); }
+    .st-catch h3 { font-size: 1.25rem; margin: 0 0 10px; letter-spacing: -0.02em; }
+    .st-catch p { margin: 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.75; max-width: 62ch; }
+    .st-catch p + p { margin-top: 12px; }
+
+    /* entry reveal: opacity + a 14px rise, once, staggered */
+    .st-in { opacity: 0; transform: translate3d(0, 14px, 0); transition: opacity 0.62s cubic-bezier(0.23, 1, 0.32, 1), transform 0.62s cubic-bezier(0.23, 1, 0.32, 1); }
+    .st-in.is-in { opacity: 1; transform: none; }
+    .st-in[data-st-delay="1"] { transition-delay: 0.07s; }
+    .st-in[data-st-delay="2"] { transition-delay: 0.14s; }
+    .st-in[data-st-delay="3"] { transition-delay: 0.21s; }
+
+    @media (min-width: 700px) {
+      .st-list { --st-col: 64px; --st-dot: 22px; }
+      .st-step { column-gap: 18px; }
+      .st-step + .st-step { margin-top: 56px; }
+      .st-num { font-size: 4rem; }
+      .st-body h3 { font-size: 1.5rem; }
+    }
+    @media (min-width: 1000px) {
+      .steps-grid { grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start; }
+      .steps-head { position: sticky; top: 96px; }
+      .steps-head .steps-cta { display: inline-flex; }
+      .steps-grid .steps-cta--end { display: none; }
+      .steps-head h2 { font-size: 3rem; line-height: 1.08; }
+      .st-step + .st-step { margin-top: 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .st-fill { transform: scaleY(1); }
+      .st-step .st-num--on, .st-step .st-dot { opacity: 1; }
+      .st-step .st-num--dim { opacity: 0; }
+      .st-in { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* MOVE-DEMO-CSS:START */
+    /* ---------------- THE MOVE: the moving-quotes demo (#move-demo) ----------------
+       Client side only. One rebuilt product panel (the real quote pages' q-* styles, ported and scoped here)
+       holds while the visitor scrolls: the mover list scrolls inside it and the picked movers tick one by one,
+       Get Your Quotes presses, quotes land on the comparison page with their prices hidden, then AB Moving is
+       chosen and confirmed. A three-step rail names each step, lights the active one and jumps the scroll.
+       Every control in the panel is real: checkboxes tick, Choose / Confirm / Cancel move the demo state.
+       Static by default: without JS or with reduced motion it is a plain walkthrough (each step's text, then its
+       screen in its final state), no pin. The section script adds .mx-live. Transform/opacity only.
+       overflow: clip, never hidden (hidden would break the sticky stage). */
+    #move-demo {
+      --mx-ease: cubic-bezier(0.23, 1, 0.32, 1); --mx-nav: 69px; --mx-soft: rgba(255,255,255,0.78);
+      --mx-span: 3.6;
+      position: relative; color: #fff; overflow: clip;
+      background:
+        radial-gradient(760px 460px at 12% 0%, rgba(174,205,129,0.14) 0%, rgba(174,205,129,0) 60%),
+        radial-gradient(700px 520px at 95% 100%, rgba(157,170,242,0.16) 0%, rgba(157,170,242,0) 62%),
+        var(--navy);
+    }
+    #move-demo::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay; z-index: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n2)' opacity='0.3'/%3E%3C/svg%3E");
     }
-    .move-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    .move-card {
-      background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px; padding: 22px 20px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 14px 34px rgba(4,7,26,0.28);
+    #move-demo .mx-head, #move-demo .mx-act, #move-demo .mx-coda { position: relative; z-index: 1; }
+    #move-demo .mx-head { max-width: 1120px; margin: 0 auto; padding: 64px 20px 28px; }
+    #move-demo .mx-head h2 { font-weight: 400; color: #fff; font-size: clamp(1.9rem, 7.6vw, 3.1rem); line-height: 1.08; letter-spacing: -0.03em; margin: 14px 0 12px; max-width: 17ch; text-wrap: balance; }
+    #move-demo .mx-lede { color: var(--mx-soft); font-size: 1.0625rem; line-height: 1.7; margin: 0; max-width: 46ch; text-wrap: balance; }
+    /* the promise under the lede: one short line, an icon that pops and pings twice when it scrolls in */
+    #move-demo .mx-promise {
+      display: flex; align-items: center; gap: 14px; max-width: 30rem; margin: 22px 0 0; padding: 14px 18px 14px 14px;
+      border-radius: 18px; background: rgba(174,205,129,0.10); border: 1px solid rgba(174,205,129,0.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 10px 26px rgba(4,7,26,0.30);
     }
-    .move-card h3 { color: #fff; font-size: 1.2rem; margin: 14px 0 8px; line-height: 1.25; }
-    .move-card p { color: rgba(255,255,255,0.74); font-size: 1rem; line-height: 1.7; margin: 0; }
-    .move-ico { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: rgba(174,205,129,0.18); color: var(--green); }
-    .move-card--lead { background: linear-gradient(160deg, rgba(174,205,129,0.20), rgba(174,205,129,0.06)); border-color: rgba(174,205,129,0.4); }
-    .move-card--lead .move-ico { background: var(--green); color: var(--navy); }
-    .move-amount { font-family: 'DM Serif Display', Georgia, serif; color: var(--green); font-size: 2.1rem; line-height: 1; letter-spacing: -0.03em; display: block; margin-bottom: 4px; }
+    #move-demo .mx-promise-ico {
+      position: relative; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--green); color: var(--navy); font-size: 1.15rem;
+      box-shadow: 0 2px 4px rgba(4,7,26,0.25), 0 8px 18px rgba(76,107,34,0.40);
+    }
+    #move-demo .mx-promise-ico::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--green); opacity: 0; pointer-events: none; }
+    #move-demo .mx-promise-txt { color: var(--mx-soft); font-size: 1rem; line-height: 1.5; }
+    #move-demo .mx-promise-txt strong { display: block; color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.45rem; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 2px; }
+    @media (prefers-reduced-motion: no-preference) {
+      #move-demo .mx-promise.is-in .mx-promise-ico { animation: mxPromisePop 0.6s var(--mx-ease) both; }
+      #move-demo .mx-promise.is-in .mx-promise-ico::after { animation: mxPromisePing 1.4s var(--mx-ease) 0.3s 2; }
+    }
+    @keyframes mxPromisePop { from { transform: scale(0.82); } 60% { transform: scale(1.08); } to { transform: scale(1); } }
+    @keyframes mxPromisePing { from { transform: scale(1); opacity: 0.75; } to { transform: scale(1.9); opacity: 0; } }
+    #move-demo .mx-vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-    /* ---------------- STEPS ---------------- */
-    .step { display: flex; gap: 18px; align-items: flex-start; }
-    .step + .step { margin-top: 18px; }
-    .step-num { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.45rem; flex-shrink: 0; background: var(--lav); color: var(--navy); box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30); }
-    .step-card { flex: 1; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px; padding: 20px 20px; box-shadow: var(--sh-base); }
-    .step-card h3 { font-size: 1.2rem; margin: 0 0 8px; line-height: 1.25; }
-    .step-card p { margin: 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.72; }
+    /* ---- the rail: static walkthrough look (no JS, reduced motion) ---- */
+    #move-demo .mx-stage { max-width: 1120px; margin: 0 auto; padding: 4px 20px 0; }
+    #move-demo .mx-grid { display: flex; flex-direction: column; max-width: 560px; margin: 0 auto; }
+    #move-demo .mx-rail, #move-demo .mx-panel, #move-demo .mx-view { display: contents; }
+    #move-demo .mx-step { list-style: none; margin: 0; scroll-margin-top: calc(var(--mx-nav) + 16px); }
+    #move-demo .mx-step:nth-child(1) { order: 1; } #move-demo .mx-screen--form { order: 2; }
+    #move-demo .mx-step:nth-child(2) { order: 3; } #move-demo .mx-screen--cmp { order: 4; }
+    #move-demo .mx-step:nth-child(3) { order: 5; } #move-demo .mx-screen--done { order: 6; }
+    #move-demo .mx-label { order: 0; margin: 0 0 28px; font-size: 0.84rem; line-height: 1.5; color: rgba(255,255,255,0.76); }
+    #move-demo .mx-label i { color: var(--lav); margin-right: 7px; }
+    #move-demo .mx-title { margin: 0; font-size: 1.32rem; line-height: 1.2; font-weight: 400; color: #fff; letter-spacing: -0.02em; }
+    #move-demo .mx-go {
+      display: flex; align-items: center; gap: 14px; width: 100%; min-height: 44px; margin: 0; padding: 2px 0;
+      background: none; border: 0; border-radius: 12px; color: inherit; font: inherit; letter-spacing: inherit; text-align: left;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+    }
+    #move-demo .mx-go:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; }
+    #move-demo .mx-mark {
+      position: relative; flex: none; width: 40px; height: 40px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; color: var(--lav); box-shadow: inset 0 0 0 1.5px rgba(157,170,242,0.7);
+      transition: transform 0.3s var(--mx-ease);
+    }
+    #move-demo .mx-mark::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--lav); opacity: 0; transition: opacity 0.3s var(--mx-ease); }
+    #move-demo .mx-mark i { position: relative; }
+    #move-demo .mx-go:active .mx-mark { transform: scale(0.92); }
+    #move-demo .mx-tt { transition: opacity 0.16s var(--mx-ease); }
+    #move-demo .mx-go:active .mx-tt { opacity: 0.66; }
+    @media (hover: hover) and (pointer: fine) { #move-demo .mx-go:hover .mx-mark { transform: scale(1.08); } }
+    #move-demo .mx-body { margin: 10px 0 22px; color: var(--mx-soft); font-size: 1rem; line-height: 1.7; max-width: 52ch; }
+    #move-demo .mx-seg { display: none; }
 
-    /* ---------------- PROOF ---------------- */
-    .proof-stats { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .proof-stat { background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px; padding: 18px 18px; box-shadow: var(--sh-base); display: flex; align-items: center; gap: 14px; }
-    .proof-stat .n { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.7rem; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
-    .proof-stat .l { font-size: 0.95rem; color: var(--ink-mute); line-height: 1.5; }
+    /* ---- the rebuilt quote pages (ported from Apartment-List-Builder web/app/q/quotes.css, scoped) ---- */
+    #move-demo .mx-screen {
+      color: var(--navy); font-size: 16px; line-height: 1.6; text-align: left;
+      background:
+        radial-gradient(520px 320px at 92% -8%, rgba(157,170,242,0.42) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(420px 300px at -10% 2%, rgba(157,170,242,0.26) 0%, rgba(157,170,242,0) 58%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 40%, #ffffff 100%);
+    }
+    #move-demo .mx-scroll { position: relative; }
+    #move-demo .q-bar { display: flex; align-items: center; height: 56px; padding: 0 16px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    #move-demo .q-bar img { display: block; height: 34px; width: auto; max-width: 136px; object-fit: contain; object-position: left center; }
+    #move-demo .q-page { padding: 20px 14px 26px; }
+    #move-demo .q-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.72rem; line-height: 1.08; letter-spacing: -0.03em; color: var(--navy); margin: 0 0 8px; }
+    #move-demo .q-sub { color: #5A5A7A; font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px; }
+    #move-demo .q-note { background: #f8f9ff; border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav); border-radius: 12px; padding: 11px 13px; margin: 0 0 14px; color: #4A4A6A; font-size: 0.92rem; line-height: 1.55; }
+    #move-demo .q-note:focus { outline: none; }
+    #move-demo .q-note:focus-visible { outline: 2px solid var(--lav); outline-offset: 2px; }
+    #move-demo .q-select-all { display: flex; align-items: center; margin: 0 0 12px; }
+
+    #move-demo .q-movers { display: flex; flex-direction: column; gap: 10px; }
+    #move-demo .q-mover {
+      display: flex; align-items: flex-start; gap: 10px; padding: 11px 12px 10px 11px; border-radius: 14px;
+      border: 1.5px solid rgba(15,19,56,0.16); background: #fbfbff;
+    }
+    #move-demo .q-mover:active { background: #f3f4ff; }
+    #move-demo .q-mover:hover { border-color: rgba(15,19,56,0.32); background: #fff; }
+    #move-demo .q-mover:has(input:checked) { border-color: var(--lav); background: #fff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22); }
+    #move-demo .q-mover:has(input:focus-visible) { outline: 3px solid #3b46a3; outline-offset: 2px; }
+    #move-demo .q-mover-check { display: flex; align-items: center; justify-content: center; min-height: 56px; min-width: 30px; margin: 0 -4px; cursor: pointer; }
+    #move-demo .q-mover-check input { width: 22px; height: 22px; accent-color: #0d6efd; margin: 0; cursor: pointer; }
+    #move-demo .q-mover-check input:checked { animation: mx-tick 0.36s var(--mx-ease); }
+    @keyframes mx-tick { from { transform: scale(0.72); } to { transform: none; } }
+    #move-demo .q-mover-logo { flex: none; cursor: pointer; }
+    #move-demo .q-mover-thumb { display: block; width: 72px; height: 56px; border-radius: 10px; object-fit: contain; padding: 4px; background: #fff; box-shadow: 0 1px 2px rgba(15,19,56,0.10), 0 4px 10px rgba(15,19,56,0.08); }
+    #move-demo .q-mover-info { flex: 1; min-width: 0; }
+    #move-demo .q-mover-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+    #move-demo .q-mover-name { font-weight: 700; font-size: 0.97rem; color: var(--navy); line-height: 1.3; cursor: pointer; flex: 1; min-width: 0; }
+    #move-demo .q-mover-desc { display: block; font-size: 0.86rem; line-height: 1.45; color: #5A5A7A; margin-top: 3px; cursor: pointer; }
+    #move-demo .q-link { color: #0b5ed7; font-weight: 600; font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4); white-space: nowrap; }
+    #move-demo .q-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    #move-demo .q-link:active { opacity: 0.7; }
+    #move-demo .q-link:focus-visible { outline: 3px solid #3b46a3; outline-offset: 3px; border-radius: 4px; }
+    #move-demo .q-mover-site { display: inline-block; padding: 12px 0 12px 10px; margin: -12px 0; }
+    #move-demo .q-cmp-site { display: inline-block; padding: 11px 10px 11px 0; margin: -11px 0; }
+    #move-demo button:disabled { cursor: default; }
+
+    #move-demo .q-btn {
+      position: relative; overflow: hidden; background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 13px 24px;
+      font-family: inherit; font-size: 0.98rem; line-height: 1.25; text-align: center;
+      transition: transform 0.16s var(--mx-ease);
+    }
+    #move-demo .q-btn::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: rgba(15,19,56,0.22); opacity: 0; transition: opacity 0.16s var(--mx-ease); pointer-events: none; }
+    @media (hover: hover) and (pointer: fine) { #move-demo .q-btn:hover::after { opacity: 0.45; } }
+    #move-demo .q-btn:active, #move-demo .q-btn.is-press { transform: scale(0.97); }
+    #move-demo .q-btn:active::after, #move-demo .q-btn.is-press::after { opacity: 1; }
+    #move-demo .q-btn:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+    #move-demo .q-btn--full { display: flex; width: 100%; min-height: 54px; margin-top: 18px; }
+    #move-demo .q-btn--ghost { background: #fff; color: var(--navy); border: 1.5px solid rgba(15,19,56,0.16); }
+        #move-demo .q-btn--ghost::after { background: rgba(157,170,242,0.22); }
+    #move-demo .q-select-all .q-btn { min-height: 44px; padding: 9px 20px; font-size: 0.92rem; }
+
+    #move-demo .q-quotes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    #move-demo .q-quote {
+      background: #fff; border: 1px solid rgba(15,19,56,0.10); border-radius: 18px; padding: 16px 16px 15px;
+      box-shadow: 0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05); display: flex; flex-direction: column; gap: 10px;
+      transition: opacity 0.45s var(--mx-ease), transform 0.55s var(--mx-ease);
+    }
+    #move-demo .q-quote--chosen, #move-demo .mx-chosen .q-quote.is-chosen { border-color: var(--lav); background: #fbfbff; box-shadow: 0 0 0 3px rgba(157,170,242,0.22), 0 10px 24px rgba(90,104,190,0.16); }
+    #move-demo .q-quote--waiting { background: #f8f9ff; border-style: dashed; box-shadow: none; }
+    #move-demo .q-quote-head { display: flex; align-items: center; gap: 12px; }
+    #move-demo .q-quote-logo { display: block; width: 56px; height: 42px; border-radius: 8px; object-fit: contain; padding: 4px; background: #fff; border: 1px solid rgba(15,19,56,0.08); flex: none; }
+    #move-demo .q-cmp-id { min-width: 0; }
+    #move-demo .q-quote-name { font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+    #move-demo .q-badge { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 20px; padding: 4px 10px; line-height: 1.4; }
+    #move-demo .q-badge--chosen { background: rgba(157,170,242,0.3); color: #3b46a3; }
+    #move-demo .q-badge--wait { background: rgba(255,214,123,0.4); color: #6b4b00; }
+    #move-demo .q-total { display: flex; align-items: center; gap: 8px; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.85rem; line-height: 1; color: var(--navy); min-height: 1.85rem; }
+    #move-demo .q-total small { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.8rem; font-weight: 600; color: #5A5A7A; }
+    #move-demo .q-quote-lines { display: grid; grid-template-columns: 1fr auto; gap: 5px 12px; font-size: 0.9rem; margin: 0; }
+    #move-demo .q-quote-lines dt { color: #5A5A7A; margin: 0; }
+    #move-demo .q-quote-lines dd { margin: 0; font-weight: 600; text-align: right; display: flex; align-items: center; justify-content: flex-end; }
+    #move-demo .q-quote-notes { font-size: 0.88rem; color: #5A5A7A; line-height: 1.5; margin: 0; }
+
+    /* a hidden price: blurred digit-shaped bars, never digits */
+    #move-demo .mx-price {
+      display: inline-block; width: 3.1em; height: 0.78em; border-radius: 0.2em; opacity: 0.42; filter: blur(3px);
+      background: repeating-linear-gradient(90deg, #0F1338 0 0.5em, rgba(15,19,56,0) 0.5em 0.66em);
+    }
+    #move-demo .q-total .mx-price { width: 2.6em; height: 0.74em; opacity: 0.36; filter: blur(5px); }
+    /* an eye-slash beside each blurred value says "hidden on purpose", not "still loading" (decorative: the hidden text speaks) */
+    #move-demo .q-total::before, #move-demo .q-quote-lines dd:has(.mx-price)::before {
+      content: "\f070"; content: "\f070" / ""; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; line-height: 1;
+      color: #7d82ad; margin-right: 6px; flex: none;
+    }
+    #move-demo .q-total::before { font-size: 0.95rem; margin-right: 0; }
+    #move-demo .q-quote.is-off { display: none; }
+    #move-demo .mx-chosen .q-quote.is-chosen { order: -1; }   /* the real page lists the chosen company first */
+
+    /* choose / confirm swap in one row of the same height, so nothing below moves */
+    #move-demo .mx-acts { display: grid; }
+    #move-demo .mx-choose { width: 100%; }
+    #move-demo .mx-confirm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    #move-demo .q-quote:not(.is-confirm) .mx-confirm, #move-demo .q-quote.is-confirm .mx-choose { display: none; }
+    #move-demo .q-quote.is-confirm .mx-confirm { animation: mx-pop 0.32s var(--mx-ease); }
+    @keyframes mx-pop { from { opacity: 0; transform: translate3d(0, 6px, 0); } to { opacity: 1; transform: none; } }
+
+    /* the chosen state (class on the comparison screen) */
+    #move-demo .mx-yours, #move-demo .mx-chosen-note { display: none; }
+    #move-demo .mx-chosen .mx-chosen-note { display: block; animation: mx-pop 0.4s var(--mx-ease); }
+    #move-demo .mx-chosen .q-quote.is-chosen .mx-yours { display: block; }
+    #move-demo .mx-chosen .mx-acts { display: none; }
+    #move-demo .mx-chosen .q-quote:not(.is-chosen) { opacity: 0.55; }
+
+    /* static walkthrough: each screen framed on its own */
+    #move-demo:not(.mx-live) .mx-screen {
+      border-radius: 22px; overflow: clip; margin: 4px 0 40px;
+      box-shadow: 0 0 0 1px rgba(157,170,242,0.55), 0 2px 6px rgba(2,4,18,0.3), 0 18px 40px -10px rgba(2,4,18,0.6), 0 44px 90px -30px rgba(48,58,140,0.5);
+    }
+
+    /* ---- live: the pinned demo (added by the section script; never under reduced motion) ---- */
+    #move-demo.mx-live .mx-act { height: calc(100vh * (1 + var(--mx-span))); height: calc(100svh * (1 + var(--mx-span))); }
+    #move-demo.mx-live .mx-stage {
+      position: sticky; top: 0; height: 100vh; height: 100svh; max-width: none; margin: 0;
+      padding: var(--mx-nav) 16px 0; overflow: clip; box-sizing: border-box;
+    }
+    #move-demo.mx-live .mx-grid { height: 100%; max-width: 520px; }
+    #move-demo.mx-live .mx-screen--done { display: none; }
+    #move-demo.mx-live .mx-step { order: 0; }
+
+    /* phone rail: three step buttons in a row, each with its own progress segment, then the active step's body */
+    #move-demo.mx-live .mx-rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 10px; flex: none; margin: 12px 0 0; padding: 0; }
+    #move-demo.mx-live .mx-step { display: contents; }
+    #move-demo.mx-live .mx-step > .mx-title, #move-demo.mx-live .mx-step > .mx-seg { grid-row: 1; }
+    #move-demo.mx-live .mx-step:nth-child(1) > * { grid-column: 1; }
+    #move-demo.mx-live .mx-step:nth-child(2) > * { grid-column: 2; }
+    #move-demo.mx-live .mx-step:nth-child(3) > * { grid-column: 3; }
+    #move-demo.mx-live .mx-step > .mx-body { grid-row: 2; grid-column: 1 / -1; align-self: center; }   /* shorter bodies sit centred in the shared cell */
+    #move-demo.mx-live .mx-title { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.88rem; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
+    #move-demo.mx-live .mx-go { gap: 8px; padding: 4px 0 10px; min-height: 48px; align-items: flex-end; color: #fff; opacity: 0.62; transition: opacity 0.3s var(--mx-ease); }
+    #move-demo.mx-live .mx-mark { display: none; }   /* phones: the title and its segment carry the state */
+    #move-demo.mx-live .mx-seg { display: block; align-self: end; position: relative; height: 2px; border-radius: 2px; background: rgba(255,255,255,0.16); overflow: hidden; pointer-events: none; }
+    #move-demo.mx-live .mx-seg i { position: absolute; inset: 0; background: var(--lav); transform-origin: 0 50%; transform: scaleX(var(--f, 0)); }
+    #move-demo.mx-live .mx-step.is-on .mx-go, #move-demo.mx-live .mx-step.is-past .mx-go { opacity: 1; }
+    #move-demo .mx-step.is-past .mx-mark::before { opacity: 0.24; }
+    #move-demo.mx-live .mx-step.is-on .mx-mark { color: var(--navy); }
+    #move-demo.mx-live .mx-step.is-on .mx-mark::before { opacity: 1; }
+    #move-demo.mx-live .mx-body {
+      margin: 10px 0 0; font-size: 0.9rem; line-height: 1.5;
+      opacity: 0; visibility: hidden; transform: translate3d(0, 6px, 0);
+      transition: opacity 0.2s var(--mx-ease), transform 0.45s var(--mx-ease), visibility 0s linear 0.2s;
+    }
+    #move-demo.mx-live .mx-step.is-on > .mx-body {
+      opacity: 1; visibility: visible; transform: none;
+      transition: opacity 0.32s var(--mx-ease) 0.1s, transform 0.5s var(--mx-ease) 0.1s, visibility 0s linear 0s;
+    }
+
+    /* the panel: one framed surface; the two screens cross-fade inside it, each list moved by transform */
+    #move-demo.mx-live .mx-panel {
+      display: block; position: relative; flex: 1 1 auto; min-height: 0; margin-top: 14px; border-radius: 22px; overflow: clip; background: #fff;
+      box-shadow: 0 0 0 1px rgba(157,170,242,0.55), 0 2px 6px rgba(2,4,18,0.3), 0 18px 40px -10px rgba(2,4,18,0.6), 0 44px 90px -30px rgba(48,58,140,0.5);
+    }
+    #move-demo.mx-live .mx-view { display: grid; position: absolute; inset: 0; }
+    #move-demo.mx-live .mx-screen {
+      grid-area: 1 / 1; min-height: 0; overflow: clip;
+      opacity: 0; visibility: hidden; transform: translate3d(0, 12px, 0) scale(0.985);
+      transition: opacity 0.3s var(--mx-ease), transform 0.55s var(--mx-ease), visibility 0s linear 0.3s;
+    }
+    #move-demo.mx-live .mx-screen.is-on { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--mx-ease) 0.08s, transform 0.6s var(--mx-ease) 0.08s, visibility 0s linear 0s; }
+    #move-demo.mx-live .mx-scroll { will-change: transform; }
+    #move-demo.mx-live .mx-screen--cmp .q-quote:not(.is-in) { opacity: 0; visibility: hidden; transform: translate3d(0, 18px, 0); transition: opacity 0.2s var(--mx-ease), transform 0.2s var(--mx-ease), visibility 0s linear 0.2s; }
+    #move-demo.mx-live .mx-label { order: 9; flex: none; margin: 10px 0 12px; text-align: center; font-size: 0.8rem; line-height: 1.45; text-wrap: balance; color: rgba(255,255,255,0.82); }
+    #move-demo.mx-snap *, #move-demo.mx-snap *::before, #move-demo.mx-snap *::after { transition: none !important; animation: none !important; }
+
+    @media (max-width: 374px) {
+      #move-demo.mx-live .mx-rail { column-gap: 6px; }
+      #move-demo.mx-live .mx-title { font-size: 0.8rem; }
+      #move-demo.mx-live .mx-go { gap: 6px; }
+      #move-demo.mx-live .mx-body { font-size: 0.85rem; }
+    }
+    /* phone panel: tighter quote cards (crew / time / rates as a 2 x 2 table) so two whole quotes fit side by side in view */
+    @media (min-width: 375px) and (max-width: 899px) {
+      #move-demo.mx-live .q-quote { padding: 14px 14px 13px; gap: 8px; }
+      #move-demo.mx-live .q-quote-lines { grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 3px 8px; font-size: 0.82rem; }
+      #move-demo.mx-live .q-quote-lines dd { justify-content: flex-start; text-align: left; white-space: nowrap; }
+      #move-demo.mx-live .q-quote .q-btn { min-height: 46px; padding-top: 11px; padding-bottom: 11px; }
+    }
+
+    /* ---- coda: the two extras, quieter than the demo ---- */
+    #move-demo .mx-coda { max-width: 1120px; margin: 0 auto; padding: 36px 20px 72px; display: grid; }
+    #move-demo .mx-coda__item { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; padding: 22px 0 6px; border-top: 1px solid rgba(255,255,255,0.12); }
+    #move-demo .mx-coda__ico { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: rgba(174,205,129,0.16); color: var(--green); font-size: 1.05rem; }
+    #move-demo .mx-coda h3 { font-weight: 400; color: #fff; font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.02em; margin: 6px 0 8px; }
+    #move-demo .mx-amt { color: var(--green); }
+    #move-demo .mx-coda p { color: var(--mx-soft); font-size: 0.98rem; line-height: 1.7; margin: 0 0 16px; max-width: 58ch; }
+    /* "Learn More": the link to the rewards page's reward table (moved here from the old FAQ answer) */
+    #move-demo .mx-link {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: -10px 0 8px;
+      color: var(--green); font-weight: 700; font-size: 0.98rem;
+      text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; text-decoration-color: rgba(174,205,129,0.45);
+    }
+    #move-demo .mx-link i { font-size: 0.85em; transition: transform 0.18s var(--mx-ease); }
+    @media (hover: hover) and (pointer: fine) {
+      #move-demo .mx-link:hover { color: #fff; text-decoration-color: currentColor; }
+      #move-demo .mx-link:hover i { transform: translateX(3px); }
+    }
+    #move-demo .mx-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    #move-demo .mx-link:active { opacity: 0.7; }
+
+    @media (min-width: 700px) {
+      #move-demo .mx-head { padding: 88px 24px 36px; }
+      #move-demo .mx-coda { grid-template-columns: 1fr 1fr; column-gap: 56px; padding: 56px 24px 96px; }
+      #move-demo .q-page { padding: 22px 20px 28px; }
+      #move-demo .q-mover-thumb { width: 84px; height: 64px; }
+    }
+
+    /* desktop: the rail is a column beside the panel; every step's text stays readable, the active one lit */
+    @media (min-width: 900px) {
+      #move-demo { --mx-span: 3.4; }
+      /* head and coda share the demo grid's left edge (380 + 72 + 540 = 992 wide, plus 24px gutters) */
+      #move-demo .mx-head, #move-demo .mx-coda { max-width: 1040px; }
+      /* the head uses the demo's own columns: copy over the rail, the No kickbacks promise over the panel,
+         its foot level with the lede */
+      #move-demo .mx-head { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 540px); column-gap: 72px; justify-content: center; align-items: end; }
+      #move-demo .mx-head > * { grid-column: 1; }
+      #move-demo .mx-head .section-badge { justify-self: start; }
+      #move-demo .mx-head .mx-promise { grid-column: 2; grid-row: 1 / span 3; align-self: end; margin: 0; max-width: none; gap: 18px; padding: 20px 26px 20px 20px; border-radius: 22px; }
+      #move-demo .mx-head .mx-promise-ico { width: 60px; height: 60px; font-size: 1.4rem; }
+      #move-demo .mx-head .mx-promise-txt { font-size: 1.0625rem; }
+      #move-demo .mx-head .mx-promise-txt strong { font-size: 1.85rem; margin-bottom: 4px; }
+      #move-demo:not(.mx-live) .mx-grid { display: grid; max-width: 1060px; grid-template-columns: minmax(280px, 380px) minmax(0, 540px); column-gap: 72px; justify-content: center; align-items: start; }
+      /* the real compare page goes two-up at this width: the quotes sit side by side */
+      #move-demo .q-quotes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      #move-demo .mx-screen--done .q-quotes { grid-template-columns: minmax(0, 1fr); }
+      #move-demo .q-quote .mx-acts { margin-top: auto; }
+      #move-demo .q-quote .q-btn { padding-left: 12px; padding-right: 12px; font-size: 0.92rem; }
+      #move-demo:not(.mx-live) .mx-label { grid-column: 1 / -1; }
+      #move-demo:not(.mx-live) .mx-step { grid-column: 1; padding-top: 12px; }
+      #move-demo:not(.mx-live) .mx-screen { grid-column: 2; }
+      #move-demo.mx-live .mx-stage { padding: calc(var(--mx-nav) + 24px) 24px 0; }
+      #move-demo.mx-live .mx-grid {
+        display: grid; max-width: 1060px; grid-template-columns: minmax(300px, 380px) minmax(0, 540px); grid-template-rows: minmax(0, 1fr) auto;
+        column-gap: 72px; justify-content: center;
+      }
+      #move-demo.mx-live .mx-rail { grid-column: 1; grid-row: 1 / 3; align-self: center; display: block; margin: 0 0 36px; }
+      #move-demo.mx-live .mx-step { display: block; position: relative; padding-bottom: 26px; }
+      #move-demo.mx-live .mx-step:last-child { padding-bottom: 0; }
+      #move-demo.mx-live .mx-step:nth-child(n) > * { grid-column: auto; }
+      #move-demo.mx-live .mx-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.42rem; font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; }
+      #move-demo.mx-live .mx-go { gap: 16px; padding: 2px 0; min-height: 48px; align-items: center; }
+      #move-demo.mx-live .mx-mark { display: flex; width: 40px; height: 40px; font-size: 0.95rem; }
+      #move-demo.mx-live .mx-seg { position: absolute; left: 19px; top: 54px; bottom: 6px; width: 2px; height: auto; }
+      #move-demo.mx-live .mx-seg i { transform-origin: 50% 0; transform: scaleY(var(--f, 0)); }
+      #move-demo.mx-live .mx-body {
+        margin: 6px 0 0 56px; font-size: 0.98rem; line-height: 1.62; visibility: visible; transform: none;
+        opacity: 0.66; transition: opacity 0.35s var(--mx-ease);   /* dimmed but still >= 4.5:1 on the navy */
+      }
+      #move-demo.mx-live .mx-step.is-on > .mx-body { opacity: 1; transition: opacity 0.35s var(--mx-ease); }
+      #move-demo.mx-live .mx-panel { grid-column: 2; grid-row: 1; margin: 0; }
+      #move-demo.mx-live .mx-label { grid-column: 2; grid-row: 2; margin: 12px 0 18px; font-size: 0.8rem; }
+      #move-demo .q-mover-thumb { width: 84px; height: 64px; }
+    }
+    @media (min-width: 900px) and (max-height: 820px) {
+      #move-demo.mx-live .mx-stage { padding-top: calc(var(--mx-nav) + 14px); }
+      #move-demo.mx-live .mx-step { padding-bottom: 18px; }
+      #move-demo.mx-live .mx-title { font-size: 1.3rem; }
+      #move-demo.mx-live .mx-body { font-size: 0.93rem; line-height: 1.55; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #move-demo .q-quote, #move-demo .mx-mark, #move-demo .q-btn { transition: none; }
+    }
+    /* MOVE-DEMO-CSS:END */
+
+    /* Sample-shortlist card CSS (.example-banner / .brief-line / .rec-*) lived
+       here and was removed with its section. See the marker comment in the body
+       for why, and what has to ship before it comes back. */
+
 
     /* ---------------- WALL OF REVIEWS (masonry) ----------------
-       CSS multi-column masonry: 1 column on mobile, 3 on desktop.
-       Cards never break across columns. */
+       CSS multi-column masonry, same pattern as index.html:
+       1 column on mobile, 3 on desktop. Cards never break across columns. */
     .reviews-wall { margin-top: 40px; column-count: 1; column-gap: 20px; }
     @media (min-width: 768px) { .reviews-wall { column-count: 2; column-gap: 22px; } }
     @media (min-width: 1000px) { .reviews-wall { column-count: 3; column-gap: 24px; } }
@@ -288,7 +867,7 @@
     .faq-btn:active { opacity: 0.8; }
     .faq-icon { width: 22px; height: 22px; flex-shrink: 0; transition: transform 0.3s cubic-bezier(.34,1.3,.64,1); color: var(--lav); }
     .faq-item.open .faq-icon { transform: rotate(180deg); }
-    .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.75; }
     .faq-item.open .faq-content { max-height: 600px; }
     .faq-content-inner { padding: 0 18px 18px; }
 
@@ -326,52 +905,6 @@
     .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
     nav button:active { opacity: 0.65; }
 
-    /* ===== Animated orbit stage (kept from the previous index.html) =====
-       The homepage's one signature visual. Illustrates step 2: the renter at
-       the centre, the things they asked for circling. Transform/opacity only;
-       reduced motion falls back to the static CSS arrangement below. */
-    .aa-hero-orbit { flex-shrink: 0; width: 460px; max-width: 100%; perspective: 1100px; }
-    .aa-hero-orbit .aa-orbit-stage { position: relative; width: 100%; height: 540px; --rx: 206px; --ry: 158px; }
-    .aa-hero-orbit .aa-model-wrap { position: absolute; left: 50%; margin-left: -38%; bottom: 0; width: 76%; z-index: 20; will-change: transform; }
-    .aa-hero-orbit .aa-model-img { position: relative; width: 100%; display: block; z-index: 2; }
-    .aa-hero-orbit .aa-model-shadow { position: absolute; left: 50%; bottom: -12px; width: 84%; height: 46px; margin-left: -42%; background: radial-gradient(ellipse at center, rgba(15,19,56,0.30) 0%, rgba(15,19,56,0) 68%); filter: blur(7px); z-index: 1; }
-    .aa-hero-orbit .aa-card { position: absolute; top: 46%; left: 50%; width: 148px; margin: 0; will-change: transform, opacity; }
-    .aa-hero-orbit .aa-card > img { width: 100%; height: 112px; object-fit: cover; border-radius: 14px; display: block; border: 2px solid #fff; box-shadow: 0 18px 40px rgba(15,19,56,0.18), 0 4px 12px rgba(15,19,56,0.12); }
-    .aa-hero-orbit .aa-card--pool > img { object-position: center 40%; }
-    .aa-hero-orbit .aa-card--kitchen > img { object-position: center 55%; }
-    .aa-hero-orbit .aa-card--laundry > img { object-position: center 72%; }
-    .aa-hero-orbit .aa-chip { position: absolute; left: -10px; bottom: -12px; background: rgba(38,43,84,0.92); color: #fff; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.92rem; line-height: 1; padding: 9px 14px; border-radius: 10px; white-space: nowrap; box-shadow: 0 6px 18px rgba(15,19,56,0.22); }
-    /* Static arrangement — also the no-JS / reduced-motion fallback. JS overwrites transform/opacity/z-index. */
-    .aa-hero-orbit .aa-card--pool    { transform: translate(-50%,-50%) translate(calc(var(--rx) * -0.940), calc(var(--ry) *  0.342)) scale(0.951) rotate(-3deg); opacity: 0.951; z-index: 30; }
-    .aa-hero-orbit .aa-card--gym     { transform: translate(-50%,-50%) translate(calc(var(--rx) * -0.616), calc(var(--ry) * -0.788)) scale(0.782) rotate(2deg);  opacity: 0.866; z-index: 10; }
-    .aa-hero-orbit .aa-card--kitchen { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.559), calc(var(--ry) * -0.829)) scale(0.776) rotate(-2deg); opacity: 0.863; z-index: 10; }
-    .aa-hero-orbit .aa-card--laundry { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.961), calc(var(--ry) *  0.276)) scale(0.941) rotate(3deg);  opacity: 0.946; z-index: 30; }
-    .aa-hero-orbit .aa-card--pet     { transform: translate(-50%,-50%) translate(calc(var(--rx) *  0.035), calc(var(--ry) *  0.999)) scale(1.050) rotate(-2deg); opacity: 1;     z-index: 30; }
-    /* Chips counter-rotate against their card's tilt so labels stay upright */
-    .aa-hero-orbit .aa-card--pool .aa-chip    { transform: rotate(3deg); }
-    .aa-hero-orbit .aa-card--gym .aa-chip     { transform: rotate(-2deg); }
-    .aa-hero-orbit .aa-card--kitchen .aa-chip { transform: rotate(2deg); }
-    .aa-hero-orbit .aa-card--laundry .aa-chip { transform: rotate(-3deg); }
-    .aa-hero-orbit .aa-card--pet .aa-chip     { transform: rotate(2deg); }
-    @media (max-width: 639px) {
-      /* Radius tuned so cards + chips stay fully inside a 350px column, and the
-         stage stays tall enough that the model image is not cropped at the top. */
-      .aa-hero-orbit .aa-orbit-stage { height: 400px; --rx: 120px; --ry: 108px; }
-      .aa-hero-orbit .aa-card { width: 102px; }
-      .aa-hero-orbit .aa-card > img { height: 78px; border-radius: 11px; }
-      .aa-hero-orbit .aa-chip { font-size: 0.72rem; padding: 7px 10px; left: -6px; bottom: -9px; border-radius: 8px; }
-    }
-    .orbit-wrap { display: flex; justify-content: center; margin-top: var(--s5); }
-
-    /* Why-trust-us body copy: one narrow column on mobile, two on wide screens so
-       the section doesn't leave half its width empty. */
-    .why-copy .lede { max-width: 660px; margin-bottom: var(--s3); }
-    .why-copy .lede:last-child { margin-bottom: var(--s5); }
-    @media (min-width: 1000px) {
-      .why-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; margin-bottom: var(--s5); }
-      .why-copy .lede, .why-copy .lede:last-child { margin-bottom: 0; max-width: none; }
-    }
-
     /* ============================================================
        BREAKPOINTS — mobile is the design; desktop adapts.
        ============================================================ */
@@ -379,13 +912,18 @@
       .hero { padding: 56px 24px 64px; }
       .form-card { padding: 26px 24px 22px; }
       .form-card__title { font-size: 1.5rem; }
-      .move-grid { grid-template-columns: 1fr 1fr; }
-      .proof-stats { grid-template-columns: repeat(3, 1fr); }
       .trust-item .t-top { font-size: 1.05rem; }
     }
     @media (min-width: 1000px) {
       .hero { padding: 68px 24px 64px; }
-      .hero-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+      /* two-row grid: copy + trust strip in column 1, the phone spans both rows in column 2, so
+         the strip sits under the copy and the hero fits a 768px-tall viewport. The DOM is unchanged:
+         .hero-layout becomes display: contents and its children join .hero-inner's grid. */
+      .hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; column-gap: 56px; align-items: center; }
+      .hero-layout { display: contents; }
+      .hero-copy { grid-column: 1; grid-row: 1; }
+      .hero .trust-strip { grid-column: 1; grid-row: 2; justify-self: start; }
+      .hp-stage { grid-column: 2; grid-row: 1 / 3; align-self: center; }
       .hero h1 { font-size: clamp(2.8rem, 4.4vw, 4rem); }
       .hero-sub { font-size: 1.15rem; }
       .trust-strip {
@@ -395,49 +933,50 @@
         border-radius: 16px; backdrop-filter: blur(4px);
         box-shadow: 0 1px 2px rgba(15,19,56,0.04), 0 8px 22px rgba(90,104,190,0.10);
       }
-      .trust-item { padding: 0 30px; }
+      .trust-item { padding: 0 18px; }
+      .trust-item .t-top, .trust-item .t-bot { white-space: nowrap; }
       .trust-item + .trust-item { border-left: 1px solid rgba(15,19,56,0.12); }
-      .move-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .move-card--lead { grid-column: 1 / -1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center; padding: 28px 30px; }
-      .move-card--lead .move-lead-head { display: flex; align-items: flex-start; gap: 18px; }
-      .move-card--lead .move-ico { margin-top: 4px; }
-      .move-card--lead h3 { margin: 0; }
-      /* Steps sit beside the orbit on desktop; stacked with the orbit last on mobile. */
-      .steps-layout { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 48px; align-items: center; }
-      .orbit-wrap { margin-top: 0; }
     }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
   </style>
+  <style>
+    /* home page hero: "Dallas-Fort Worth" stays on one line from 700px (the desktop size is capped a touch below the
+       Dallas page so "The Dallas-Fort Worth" fits the 590px column at every width); on phones the phrase may break after
+       the dash ("The Dallas- / Fort Worth") so "The" never sits alone. Lines are balanced so no word is left on its own. */
+    .h1-dfw { text-wrap: balance; }
+    .h1-dfw .dfw, .h1-dfw .nw { white-space: nowrap; }
+    @media (max-width: 699px) { .h1-dfw .dfw { white-space: normal; } }
+    @media (min-width: 1000px) { .hero h1.h1-dfw { font-size: clamp(2.8rem, 4.4vw, 3.8rem); } }
+  </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════ NAV ══════════════════════════════
-       Verbatim from dallas-apartments-new.html. No item is marked current:
-       this IS home, and the logo is the link back to it.
-       ═══════════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
   <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
-        <a href="index.html" class="nav-home flex items-center gap-2" style="text-decoration:none;">
+        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
           <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
             Apartment<span style="color:#9DAAF2;">Agents</span>
           </span>
         </a>
       </div>
-      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-      <div class="hidden md:flex items-center gap-6">
+      <a href="#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden min-[1100px]:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
         <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
         <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
       <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
       <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
       <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
@@ -445,19 +984,23 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════════ 1 · HERO ══════════════════════════
-       COMPANY-level promise, not a market-level one. The Dallas page owns
-       "The Dallas apartment you actually want. Without the search." — that
-       headline sells the city. This one sells the firm and the offer.
-       ═══════════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════ 1 · HERO + FORM ══════════════════════════ -->
   <section class="hero" id="signup">
     <div class="hero-inner">
       <div class="hero-layout">
 
-        <div>
+        <div class="hero-copy">
           <p class="hero-kicker">Save more with us</p>
-          <h1>We find your next apartment.<br>You keep up to $250.</h1>
-          <p class="hero-sub">Licensed apartment experts across the DFW Metroplex. Free to you, because the communities pay us.</p>
+          <h1 class="h1-dfw">The <em><span class="dfw">Dallas&ndash;<span class="nw">Fort Worth</span></span></em> apartment you actually want.<br><span class="h1-beat">Without the search.</span></h1>
+          <p class="hero-sub">Right matches. Best prices. Up to $250 cash back.</p>
+          <!-- CTA: no form here. Sends to the VSL + GHL form page (SIGNUP_URL below). -->
+          <div class="hero-cta">
+            <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
+              Get My Free Matches
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <p class="form-micro">No cost, no obligation, no spam.</p>
+          </div>
           <ul class="hero-pills">
             <li class="hero-pill"><i class="fas fa-check"></i>100% free service</li>
             <li class="hero-pill"><i class="fas fa-check"></i>Up to $250 cash back</li>
@@ -465,202 +1008,1026 @@
           </ul>
         </div>
 
-        <!-- CTA CARD — no form here. Sends to the VSL + GHL form page (SIGNUP_URL). -->
-        <div class="form-card form-card--light" id="heroCard">
-          <div class="form-body">
-            <p class="form-card__eyebrow">Free &middot; No obligation</p>
-            <h2 class="form-card__title" style="font-size:1.35rem;">Get your free apartment matches</h2>
-            <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and one of our licensed apartment experts goes to work for you right away.</p>
-            <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
-              Get My Free Matches
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-            <p class="form-micro">No cost, no obligation, no spam.</p>
+        <!-- PHONE: the live shortlist inside a CSS-built device, laid flat. The page scroll scrubs the
+             list through the first listings; the phone itself does not move.
+             Planes back to front: halo (0.70x) · phone + copy (1x) · chip A (1.12x) · chip B (1.24x).
+             Decorative: the same data is in the copy and the list itself. -->
+        <div class="hp-stage" id="heroPhone" aria-hidden="true">
+          <div class="hp-plane hp-plane--halo" data-hp-rate="0.30">
+            <span class="hp-halo-wash"></span>
+            <span class="hp-halo-ring"></span>
+          </div>
+
+          <div class="hp-plane hp-plane--phone">
+            <div class="hp-contact"></div>
+            <div class="hp-phone">
+                  <div class="hp-back"></div>
+                  <div class="hp-btn hp-btn--mute"></div>
+                  <div class="hp-btn hp-btn--up"></div>
+                  <div class="hp-btn hp-btn--down"></div>
+                  <div class="hp-btn hp-btn--power"></div>
+                  <div class="hp-body">
+                    <div class="hp-screen">
+                      <div class="hp-viewport">
+                        <div class="hp-list">
+                          <img src="images/hero-phone/list-3.webp" width="390" height="4283" alt="" decoding="async" fetchpriority="high">
+                        </div>
+                      </div>
+                      <div class="hp-status">
+                        <span class="hp-time">9:41</span>
+                        <span class="hp-icons">
+                          <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="0.8"/><rect x="5" y="5.5" width="3" height="6.5" rx="0.8"/><rect x="10" y="3" width="3" height="9" rx="0.8"/><rect x="15" y="0" width="3" height="12" rx="0.8"/></svg>
+                          <svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 11.6 5.9 9.2a3 3 0 0 1 4.2 0L8 11.6Zm-4-4.5L2.4 5.4a8 8 0 0 1 11.2 0L12 7.1a5.7 5.7 0 0 0-8 0ZM1.2 4 0 2.8a11.2 11.2 0 0 1 16 0L14.8 4a9 9 0 0 0-13.6 0Z"/></svg>
+                          <svg viewBox="0 0 26 12" fill="none" stroke="currentColor"><rect x="0.5" y="0.5" width="22" height="11" rx="3" stroke-opacity="0.45"/><rect x="2.5" y="2.5" width="18" height="7" rx="1.5" fill="currentColor" stroke="none"/><path d="M24 4v4" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                      </div>
+                      <div class="hp-island"></div>
+                      <div class="hp-glare"></div>
+                      <div class="hp-home"></div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+
+          <div class="hp-plane hp-chip hp-chip--a" data-hp-rate="-0.12">
+            <span class="hp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+            <span>
+              <span class="hp-l1">Special</span>
+              <span class="hp-l2">Up to 10 WEEKS FREE</span>
+            </span>
+          </div>
+          <div class="hp-plane hp-chip hp-chip--b" data-hp-rate="-0.24">
+            <img class="hp-thumb" src="images/hero-phone/presidium-thumb.webp" width="46" height="46" alt="" decoding="async">
+            <span>
+              <span class="hp-price">$1,295<small>/mo</small></span>
+              <span class="hp-meta hp-avail"><span class="hp-dot"></span>Available now</span>
+              <span class="hp-meta">Studio &middot; 1 ba &middot; 540 sq ft</span>
+            </span>
           </div>
         </div>
 
       </div>
 
-      <!-- Award + years + rating strip -->
+      <!-- Award + years + reviews strip -->
       <div class="trust-strip">
         <div class="trust-item">
           <div class="t-top">2026</div>
-          <span class="t-bot">Consumer's Choice</span>
+          <span class="t-bot">Consumer's Choice Award Winners</span>
         </div>
         <div class="trust-item">
           <div class="t-top">23 Years</div>
           <span class="t-bot">In DFW</span>
         </div>
         <div class="trust-item">
-          <!-- Live Google Business Profile data pulled 2026-08-02: 4.9 average. Count deliberately not shown. -->
+          <!-- Live Google Business Profile data pulled 2026-08-02: 4.9 average across 177 reviews. Re-check periodically. -->
           <div class="t-top stars">4.9 &#9733;</div>
           <span class="t-bot">Google Reviews</span>
         </div>
       </div>
     </div>
   </section>
+  <script>
+    /* Hero phone: the page scroll scrubs the shortlist inside the screen (no idle motion, no loop,
+       no tilt), plus the depth planes. Vanilla, rAF-driven, passive listeners, transform/opacity
+       only. Never throws. */
+    (function () {
+      try {
+        document.documentElement.className += ' js';
+        var sec = document.getElementById('signup');
+        var stage = document.getElementById('heroPhone');
+        if (!sec || !stage || !window.requestAnimationFrame) return;
+        var list = stage.querySelector('.hp-list');
+        var view = stage.querySelector('.hp-viewport');
+        var img = list && list.querySelector('img');
+        var planes = [].slice.call(stage.querySelectorAll('[data-hp-rate]')).map(function (el) {
+          return { el: el, rate: parseFloat(el.getAttribute('data-hp-rate')) || 0 };
+        });
+        var mq = function (q) { try { return window.matchMedia(q); } catch (e) { return { matches: false }; } };
+        var rm = mq('(prefers-reduced-motion: reduce)');
 
-  <!-- ══════════════════ 2 · WHAT MAKES US DIFFERENT ══════════════════
-       The offer, stated at company level. The Dallas page frames this as
-       "the most cash back in Dallas"; here it's "what this company does
-       that the others don't", which is the homepage's job.
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="sec move-sec" id="difference">
-    <div class="wrap" style="position:relative; z-index:2;">
-      <div class="section-badge section-badge--dark">What makes us different</div>
-      <h2 style="color:#fff;">Anyone can send you listings.</h2>
-      <p class="lede" style="color:rgba(255,255,255,0.72); max-width:640px;">Every locator does that part. These are the parts that put money back in your pocket and take work off your plate.</p>
+        var RATE = 2.4;   /* list px per page px (set in measure): 2.4 on desktop, 3.2 on phones where the phone leaves the viewport sooner */
+        var LERP = 0.12;  /* glide toward the target so wheel steps do not read as jumps */
+        var CARD1 = 1311; /* capture px from the top of the list to the bottom of the Top Pick card */
 
-      <div class="move-grid">
-        <div class="move-card move-card--lead">
-          <div class="move-lead-head">
-            <div class="move-ico"><i class="fas fa-sack-dollar"></i></div>
-            <h3><span class="move-amount">Up to $250</span>cash back, guaranteed highest</h3>
+        var maxY = 0, travel = 660, lastP = -1, startY = 0, pastAt = 0, wasPast = false;
+        var cur = 0, tgt = 0, running = false;
+
+        function measure() {
+          RATE = window.innerWidth < 1000 ? 3.2 : 2.4;
+          maxY = (img && view) ? Math.max(0, img.offsetHeight - view.offsetHeight) : 0;
+          pastAt = (img && view) ? CARD1 * (img.offsetWidth / 390) - view.offsetHeight * 0.55 : 1e9;
+          /* the list starts moving once the whole phone is in view, so the Top Pick is what the visitor
+             meets first; on desktop the phone is in view at scroll 0 and this is 0 */
+          var r = stage.getBoundingClientRect();
+          startY = Math.max(0, Math.round(r.top + window.scrollY + r.height - window.innerHeight));
+          /* single-column layouts stack the trust strip under the phone, so the planes get a shorter runway there */
+          travel = Math.min(sec.offsetHeight || 660, window.innerWidth < 1000 ? 440 : 660);
+        }
+
+        function progress() {
+          var p = travel > 0 ? Math.min(Math.max(window.scrollY / travel, 0), 1) : 0;
+          if (Math.abs(p - lastP) > 0.0005) {
+            lastP = p;
+            sec.style.setProperty('--hp-p', p.toFixed(4));
+            if (!rm.matches) {
+              for (var i = 0; i < planes.length; i++) {
+                planes[i].el.style.transform = 'translate3d(0,' + (planes[i].rate * p * travel).toFixed(2) + 'px,0)';
+              }
+            }
+          }
+        }
+
+        function frame() {
+          var busy = false;
+          progress();
+          if (!rm.matches && list && maxY > 0) {
+            tgt = Math.min(Math.max((window.scrollY - startY) * RATE, 0), maxY);
+            var d = tgt - cur;
+            if (Math.abs(d) > 0.05) { cur += d * LERP; busy = true; } else cur = tgt;
+            list.style.transform = 'translate3d(0,' + (-cur).toFixed(2) + 'px,0)';
+            var past = cur > pastAt;
+            if (past !== wasPast) { wasPast = past; stage.classList.toggle('is-past', past); }
+          }
+          if (busy) window.requestAnimationFrame(frame); else running = false;
+        }
+        function kick() { if (!running) { running = true; window.requestAnimationFrame(frame); } }
+
+        /* screen image: fade in over the solid ground; a failed load leaves the solid screen */
+        if (list && img) {
+          var loaded = function () {
+            if (img.naturalWidth > 0) { list.classList.add('is-loaded'); measure(); kick(); }
+            else if (img.complete) list.classList.add('is-failed');
+          };
+          if (img.complete) loaded(); else img.addEventListener('load', loaded);
+          img.addEventListener('error', function () { list.classList.add('is-failed'); });
+        }
+
+        window.addEventListener('scroll', kick, { passive: true });
+        window.addEventListener('resize', function () { measure(); lastP = -1; progress(); kick(); }, { passive: true });
+        if (rm.addEventListener) rm.addEventListener('change', function () {
+          if (rm.matches) { for (var i = 0; i < planes.length; i++) planes[i].el.style.transform = ''; if (list) list.style.transform = ''; }
+          else { lastP = -1; progress(); kick(); }
+        });
+
+        measure(); progress(); kick();
+      } catch (e) { /* the phone still renders as a static composition */ }
+    })();
+  </script>
+
+  <!-- ═══════════════ 2 · HOW IT WORKS — THE ONLY 3-STEP SECTION ═══════════════
+       This replaced the old "What you get" value stack. Stacking dollar values
+       against a free service reads as justification, not proof.
+       The standalone "How it works" section that used to sit further down the page
+       was MERGED into this one — there is exactly one 3-step process block on this
+       page, and it lives here.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec steps" id="how-it-works" style="background:#fff;">
+    <div class="wrap steps-grid">
+
+      <div class="steps-head">
+        <div class="section-badge st-in">Simple process</div>
+        <h2 class="st-in" data-st-delay="1">Three steps. That's the whole thing.</h2>
+        <p class="lede st-in" data-st-delay="2">No hidden fees, no contract, no obligation to tour anything you don't like.</p>
+        <a href="#signup" class="btn-primary steps-cta st-in" data-st-delay="3">
+          Get My Free Matches
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+
+      <div>
+        <ol class="st-list" id="stepsList">
+          <span class="st-track" aria-hidden="true"></span>
+          <span class="st-fill" aria-hidden="true"></span>
+
+          <li class="st-step st-in">
+            <div class="st-num" aria-hidden="true"><span class="st-num--dim">1</span><span class="st-num--on">1</span></div>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-body">
+              <h3>Tell us what you're looking for</h3>
+              <p>Where you want to live, your budget, your move-in date and your must-haves. A quick call or text, not a twenty-question form.</p>
+            </div>
+          </li>
+          <li class="st-step st-in" data-st-delay="1">
+            <div class="st-num" aria-hidden="true"><span class="st-num--dim">2</span><span class="st-num--on">2</span></div>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-body">
+              <h3>We send the right matches</h3>
+              <p>Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit, with our top picks up front.</p>
+            </div>
+          </li>
+          <li class="st-step st-in" data-st-delay="2">
+            <div class="st-num" aria-hidden="true"><span class="st-num--dim">3</span><span class="st-num--on">3</span></div>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-body">
+              <h3>Tour your favorites and get up to $250 on us</h3>
+              <p>Visit the apartments whenever it suits you: no agent tagging along, no schedules to coordinate. List <strong>Apartment Agents</strong> on your guest card and application as how you learned about their property, tell us where you leased, and we&rsquo;ll get your reward started.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="st-catch st-in">
+          <h3>So what's the catch?</h3>
+          <p>There isn't one, but there is a reason. Apartment communities set aside a marketing budget to fill their units, and they only pay us when someone we refer signs a lease. You get a great new apartment, the property gets a new resident, and your apartment expert gets paid for making the match. Everybody wins.</p>
+          <p>Using us never costs you a dollar more. What it gets you is people who track this market every day, who know which communities are running the best move-in specials right now and which ones fit what you're after, plus up to $250 to offset some of your moving costs. <a href="rewards.html" class="inline-link">Learn more</a>.</p>
+        </div>
+        <!-- Phones and tablets: the section's button sits here, after the catch. Desktop keeps it in the head column. -->
+        <a href="#signup" class="btn-primary steps-cta steps-cta--end st-in">
+          Get My Free Matches
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <script>
+    /* Three steps: the track fills with the page scroll and each numeral lights as the fill reaches it;
+       entry reveals fire once. rAF-driven, passive listeners, transform/opacity only. Never throws. */
+    (function () {
+      try {
+        var sec = document.getElementById('how-it-works');
+        var list = document.getElementById('stepsList');
+        if (!sec || !list || !window.requestAnimationFrame) return;
+        var steps = [].slice.call(list.querySelectorAll('.st-step'));
+        var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+        var top = 0, height = 1, marks = [], lastP = -1, running = false;
+
+        function measure() {
+          var r = list.getBoundingClientRect();
+          top = r.top + window.scrollY + 14; height = Math.max(1, r.height - 28);
+          marks = steps.map(function (el) { return el.getBoundingClientRect().top + window.scrollY + 26; });
+        }
+        function frame() {
+          running = false;
+          if (rm.matches) return;
+          var line = window.scrollY + window.innerHeight * 0.62;   /* the fill reaches a step when that step crosses 62% of the viewport */
+          var p = Math.min(Math.max((line - top) / height, 0), 1);
+          if (Math.abs(p - lastP) > 0.0005) { lastP = p; sec.style.setProperty('--st-p', p.toFixed(4)); }
+          for (var i = 0; i < steps.length; i++) {
+            var on = line >= marks[i];
+            if (on !== steps[i].classList.contains('is-on')) steps[i].classList.toggle('is-on', on);
+          }
+        }
+        function kick() { if (!running) { running = true; window.requestAnimationFrame(frame); } }
+
+        /* entry reveals, once, when 12% inside the viewport */
+        var ins = [].slice.call(sec.querySelectorAll('.st-in'));
+        if (rm.matches || !('IntersectionObserver' in window)) {
+          ins.forEach(function (el) { el.classList.add('is-in'); });
+        } else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+          }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+          ins.forEach(function (el) { io.observe(el); });
+        }
+
+        window.addEventListener('scroll', kick, { passive: true });
+        window.addEventListener('resize', function () { measure(); lastP = -1; kick(); }, { passive: true });
+        window.addEventListener('load', function () { measure(); lastP = -1; kick(); });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); lastP = -1; kick(); });
+        measure(); kick();
+      } catch (e) { /* the section still reads as a static list */ }
+    })();
+  </script>
+
+  <div class="rule"></div>
+
+  <!-- MOVE-DEMO:START -->
+  <section id="move-demo" aria-labelledby="mx-h">
+    <div class="mx-head">
+      <div class="section-badge section-badge--dark">The part nobody else does</div>
+      <h2 id="mx-h">Real moving quotes. None of the sales calls.</h2>
+      <p class="mx-lede" id="mx-lede">Here's how our moving quotes work, start to finish.</p>
+      <p class="mx-promise"><span class="mx-promise-ico" aria-hidden="true"><i class="fa-solid fa-handshake-slash"></i></span><span class="mx-promise-txt"><strong>No kickbacks.</strong> Movers don't pay us a cent, so nothing gets added to your quote.</span></p>
+    </div>
+
+    <div class="mx-act">
+      <div class="mx-stage">
+        <div class="mx-grid">
+          <ol class="mx-rail" aria-labelledby="mx-lede">
+          <li class="mx-step is-on">
+            <h3 class="mx-title"><button type="button" disabled class="mx-go"><span class="mx-mark" aria-hidden="true"><i class="fa-solid fa-list-check"></i></span><span class="mx-tt">Pick your movers</span></button></h3>
+            <span class="mx-seg" aria-hidden="true"><i></i></span>
+            <p class="mx-body">Choose the DFW moving companies you want quotes from. We fill in what we already know, like your new address from the lease you reported. Movers get the details of your move, never your phone number or email.</p>
+          </li>
+          <li class="mx-step">
+            <h3 class="mx-title"><button type="button" disabled class="mx-go"><span class="mx-mark" aria-hidden="true"><i class="fa-solid fa-inbox"></i></span><span class="mx-tt">Quotes come to you</span></button></h3>
+            <span class="mx-seg" aria-hidden="true"><i></i></span>
+            <p class="mx-body">We email you as each one lands. Compare them side by side on one page, lowest estimate first. Clean quotes, with no kickbacks, affiliate payments, or referral fees paid to us.</p>
+          </li>
+          <li class="mx-step">
+            <h3 class="mx-title"><button type="button" disabled class="mx-go"><span class="mx-mark" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span><span class="mx-tt">Choose your mover</span></button></h3>
+            <span class="mx-seg" aria-hidden="true"><i></i></span>
+            <p class="mx-body">Tap the one you want. Only then do they get your contact details, and they reach out to confirm and book your move. No sales calls.</p>
+          </li>
+          </ol>
+
+          <div class="mx-panel">
+            <div class="mx-view">
+              <div class="mx-screen mx-screen--form is-on">
+                <div class="mx-scroll">
+                  <div class="q-bar"><img src="brand_assets/apartment_agents_logo.png" alt="" width="150" height="38" decoding="async"></div>
+                  <div class="q-page">
+                    <p class="q-title">Get Moving Quotes</p>
+                    <p class="q-sub">Pick the moving companies you want to hear from, check the details we filled in, and compare their quotes in one place.</p>
+                    <div class="q-select-all"><button type="button" disabled class="q-btn q-btn--ghost mx-all">Select all</button></div>
+                    <div class="q-movers">
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m0"><input type="checkbox" id="mx-m0" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m0"><img class="q-mover-thumb" src="images/movers/ab-moving.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m0">AB Moving</label>
+                          <a class="q-link q-mover-site" href="https://www.abmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="AB Moving website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m0">Family-owned, serving DFW for 29+ years. Local and interstate moves.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m1"><input type="checkbox" id="mx-m1" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m1"><img class="q-mover-thumb" src="images/movers/einstein-moving-company.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m1">Einstein Moving Company</label>
+                          <a class="q-link q-mover-site" href="https://www.einsteinmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="Einstein Moving Company website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m1">Locally owned DFW movers since 2011, voted Best in DFW for moving services.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m2"><input type="checkbox" id="mx-m2" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m2"><img class="q-mover-thumb" src="images/movers/stonebriar-moving-services.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m2">Stonebriar Moving Services</label>
+                          <a class="q-link q-mover-site" href="https://stonebriarmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="Stonebriar Moving Services website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m2">Locally owned Frisco movers with 20+ years of local and long-distance moves.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m3"><input type="checkbox" id="mx-m3" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m3"><img class="q-mover-thumb" src="images/movers/oasis-moving.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m3">Oasis Moving</label>
+                          <a class="q-link q-mover-site" href="https://oasismovers.com/" target="_blank" rel="noopener noreferrer" aria-label="Oasis Moving website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m3">Family-owned Dallas movers for local and long-distance moves, with packing.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m4"><input type="checkbox" id="mx-m4" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m4"><img class="q-mover-thumb" src="images/movers/black-tie-moving.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m4">Black Tie Moving</label>
+                          <a class="q-link q-mover-site" href="https://www.blacktiemoving.com/dallas/" target="_blank" rel="noopener noreferrer" aria-label="Black Tie Moving website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m4">White-glove, concierge-style moving and storage. BBB A+ rated, est. 2012.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m5"><input type="checkbox" id="mx-m5"></label>
+                      <label class="q-mover-logo" for="mx-m5"><img class="q-mover-thumb" src="images/movers/mustang-moving.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m5">Mustang Moving</label>
+                          <a class="q-link q-mover-site" href="https://www.mustang-moving.com/" target="_blank" rel="noopener noreferrer" aria-label="Mustang Moving website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m5">Dallas–Fort Worth movers since 2012 with transparent pricing and 50,000+ customers.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m6"><input type="checkbox" id="mx-m6"></label>
+                      <label class="q-mover-logo" for="mx-m6"><img class="q-mover-thumb" src="images/movers/ameritex-movers.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m6">Ameritex Movers</label>
+                          <a class="q-link q-mover-site" href="https://www.ameritexmovers.com/" target="_blank" rel="noopener noreferrer" aria-label="Ameritex Movers website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m6">DFW residential and commercial movers since 2000, with packing and storage.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m7"><input type="checkbox" id="mx-m7"></label>
+                      <label class="q-mover-logo" for="mx-m7"><img class="q-mover-thumb" src="images/movers/3-men-movers.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m7">3 Men Movers</label>
+                          <a class="q-link q-mover-site" href="https://www.3menmovers.com/moving-service-areas/dallas/" target="_blank" rel="noopener noreferrer" aria-label="3 Men Movers website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m7">Texas movers with 40+ years of experience and a Dallas office.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m8"><input type="checkbox" id="mx-m8" data-pick checked></label>
+                      <label class="q-mover-logo" for="mx-m8"><img class="q-mover-thumb" src="images/movers/the-move-place.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m8">The Move Place</label>
+                          <a class="q-link q-mover-site" href="https://themoveplace.com/" target="_blank" rel="noopener noreferrer" aria-label="The Move Place website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m8">Local, licensed and insured Dallas movers since 2008, with packing and storage.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m9"><input type="checkbox" id="mx-m9"></label>
+                      <label class="q-mover-logo" for="mx-m9"><img class="q-mover-thumb" src="images/movers/apple-moving-dfw.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m9">Apple Moving DFW</label>
+                          <a class="q-link q-mover-site" href="https://applemovingdfw.com/" target="_blank" rel="noopener noreferrer" aria-label="Apple Moving DFW website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m9">Dallas movers since 1991 offering same-day moves, packing and storage.</label>
+                      </div>
+                    </div>
+                    <div class="q-mover">
+                      <label class="q-mover-check" for="mx-m10"><input type="checkbox" id="mx-m10"></label>
+                      <label class="q-mover-logo" for="mx-m10"><img class="q-mover-thumb" src="images/movers/moving-company-guys.webp" alt="" width="240" height="96" decoding="async"></label>
+                      <div class="q-mover-info">
+                        <div class="q-mover-head">
+                          <label class="q-mover-name" for="mx-m10">Moving Company Guys</label>
+                          <a class="q-link q-mover-site" href="https://movingcompanyguys.com/" target="_blank" rel="noopener noreferrer" aria-label="Moving Company Guys website (opens in a new tab)">Website</a>
+                        </div>
+                        <label class="q-mover-desc" for="mx-m10">Licensed DFW movers since 2013 with 15,000+ moves, written quotes and same-day service.</label>
+                      </div>
+                    </div>
+                    </div>
+                    <button type="button" disabled class="q-btn q-btn--full mx-send">Get Your Quotes</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mx-screen mx-screen--cmp">
+                <div class="mx-scroll">
+                  <div class="q-bar"><img src="brand_assets/apartment_agents_logo.png" alt="" width="150" height="38" decoding="async"></div>
+                  <div class="q-page">
+                    <p class="q-title">Your moving quotes</p>
+                    <p class="q-note mx-chosen-note" tabindex="-1">You chose AB Moving. They'll contact you to confirm the details.</p>
+                    <div class="q-quotes">
+                    <article class="q-quote" data-name="AB Moving" aria-label="AB Moving">
+                      <div class="mx-yours"><span class="q-badge q-badge--chosen">Your choice</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/ab-moving.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">AB Moving</div>
+                          <a class="q-link q-cmp-site" href="https://www.abmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="AB Moving website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <div class="q-total"><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span><small>estimated</small></div>
+                      <dl class="q-quote-lines">
+                        <dt>Hourly rate</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Trip charge</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Crew</dt><dd>3 movers</dd>
+                        <dt>Estimated time</dt><dd>3 hrs</dd>
+                      </dl>
+                      <div class="mx-acts">
+                        <button type="button" disabled class="q-btn mx-choose">Choose AB Moving</button>
+                        <div class="mx-confirm">
+                          <button type="button" disabled class="q-btn mx-yes">Confirm</button>
+                          <button type="button" disabled class="q-btn q-btn--ghost mx-no">Cancel</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="q-quote" data-name="The Move Place" aria-label="The Move Place">
+                      <div class="mx-yours"><span class="q-badge q-badge--chosen">Your choice</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/the-move-place.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">The Move Place</div>
+                          <a class="q-link q-cmp-site" href="https://themoveplace.com/" target="_blank" rel="noopener noreferrer" aria-label="The Move Place website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <div class="q-total"><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span><small>estimated</small></div>
+                      <dl class="q-quote-lines">
+                        <dt>Hourly rate</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Trip charge</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Crew</dt><dd>2 movers</dd>
+                        <dt>Estimated time</dt><dd>3 hrs</dd>
+                      </dl>
+                      <div class="mx-acts">
+                        <button type="button" disabled class="q-btn mx-choose">Choose The Move Place</button>
+                        <div class="mx-confirm">
+                          <button type="button" disabled class="q-btn mx-yes">Confirm</button>
+                          <button type="button" disabled class="q-btn q-btn--ghost mx-no">Cancel</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="q-quote" data-name="Oasis Moving" aria-label="Oasis Moving">
+                      <div class="mx-yours"><span class="q-badge q-badge--chosen">Your choice</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/oasis-moving.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">Oasis Moving</div>
+                          <a class="q-link q-cmp-site" href="https://oasismovers.com/" target="_blank" rel="noopener noreferrer" aria-label="Oasis Moving website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <div class="q-total"><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span><small>estimated</small></div>
+                      <dl class="q-quote-lines">
+                        <dt>Hourly rate</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Trip charge</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Crew</dt><dd>3 movers</dd>
+                        <dt>Estimated time</dt><dd>3 hrs</dd>
+                      </dl>
+                      <div class="mx-acts">
+                        <button type="button" disabled class="q-btn mx-choose">Choose Oasis Moving</button>
+                        <div class="mx-confirm">
+                          <button type="button" disabled class="q-btn mx-yes">Confirm</button>
+                          <button type="button" disabled class="q-btn q-btn--ghost mx-no">Cancel</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="q-quote" data-name="Einstein Moving Company" aria-label="Einstein Moving Company">
+                      <div class="mx-yours"><span class="q-badge q-badge--chosen">Your choice</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/einstein-moving-company.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">Einstein Moving Company</div>
+                          <a class="q-link q-cmp-site" href="https://www.einsteinmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="Einstein Moving Company website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <div class="q-total"><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span><small>estimated</small></div>
+                      <dl class="q-quote-lines">
+                        <dt>Hourly rate</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Trip charge</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Crew</dt><dd>3 movers</dd>
+                        <dt>Estimated time</dt><dd>2.5 hrs</dd>
+                      </dl>
+                      <div class="mx-acts">
+                        <button type="button" disabled class="q-btn mx-choose">Choose Einstein Moving Company</button>
+                        <div class="mx-confirm">
+                          <button type="button" disabled class="q-btn mx-yes">Confirm</button>
+                          <button type="button" disabled class="q-btn q-btn--ghost mx-no">Cancel</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="q-quote q-quote--waiting" aria-label="Stonebriar Moving Services">
+                      <div><span class="q-badge q-badge--wait">Waiting on quote</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/stonebriar-moving-services.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">Stonebriar Moving Services</div>
+                          <a class="q-link q-cmp-site" href="https://stonebriarmoving.com/" target="_blank" rel="noopener noreferrer" aria-label="Stonebriar Moving Services website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <p class="q-quote-notes">They have the details of your move. We will email you when their quote comes in.</p>
+                    </article>
+                    <article class="q-quote q-quote--waiting" aria-label="Black Tie Moving">
+                      <div><span class="q-badge q-badge--wait">Waiting on quote</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/black-tie-moving.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">Black Tie Moving</div>
+                          <a class="q-link q-cmp-site" href="https://www.blacktiemoving.com/dallas/" target="_blank" rel="noopener noreferrer" aria-label="Black Tie Moving website (opens in a new tab)">Website</a>
+                        </div>
+                      </div>
+                      <p class="q-quote-notes">They have the details of your move. We will email you when their quote comes in.</p>
+                    </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mx-screen mx-screen--done">
+                <div class="mx-scroll">
+                  <div class="q-bar"><img src="brand_assets/apartment_agents_logo.png" alt="" width="150" height="38" decoding="async"></div>
+                  <div class="q-page">
+                    <p class="q-title">Your moving quotes</p>
+                    <p class="q-note">You chose AB Moving. They'll contact you to confirm the details.</p>
+                    <div class="q-quotes">
+                      <div class="q-quote q-quote--chosen">
+                        <div><span class="q-badge q-badge--chosen">Your choice</span></div>
+                      <div class="q-quote-head">
+                        <img class="q-quote-logo" src="images/movers/ab-moving.webp" alt="" width="240" height="96" decoding="async">
+                        <div class="q-cmp-id">
+                          <div class="q-quote-name">AB Moving</div>
+                        </div>
+                      </div>
+                        <div class="q-total"><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span><small>estimated</small></div>
+                      <dl class="q-quote-lines">
+                        <dt>Hourly rate</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Trip charge</dt><dd><span class="mx-price" aria-hidden="true"></span><span class="mx-vh">Price hidden in this sample</span></dd>
+                        <dt>Crew</dt><dd>3 movers</dd>
+                        <dt>Estimated time</dt><dd>3 hrs</dd>
+                      </dl>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p>The highest cash back in Dallas. <strong style="color:#fff;">Find a locator offering more on the same apartment and we'll match it.</strong> Paid straight to you by Zelle, Venmo, PayPal or an Amazon gift card.</p>
+
+          <p class="mx-label"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>Sample quote screens, with prices hidden.</p>
         </div>
-        <div class="move-card">
-          <div class="move-ico"><i class="fas fa-clipboard-list"></i></div>
-          <h3>Mover quotes, gathered for you</h3>
-          <p>Pick the moving companies you want quotes from and we'll take it from there. We don't take a cut from any of them. No referral links, no kickback baked into your price. A quote is just a quote, and you book whoever you want, direct.</p>
+      </div>
+    </div>
+
+    <div class="mx-coda">
+      <div class="mx-coda__item">
+        <span class="mx-coda__ico" aria-hidden="true"><i class="fa-solid fa-sack-dollar"></i></span>
+        <div>
+          <h3><span class="mx-amt">Up to $250</span> extra cash on us</h3>
+          <p>The highest cash back in Dallas. Find a locator offering more on the same apartment and we'll match it. Paid straight to you by Zelle, Venmo, PayPal, or an Amazon gift card.</p>
+          <a class="mx-link" href="rewards.html">Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
-        <div class="move-card">
-          <div class="move-ico"><i class="fas fa-shield-halved"></i></div>
-          <h3>And none of the sales calls</h3>
-          <p>The movers send their quotes to us, not to you. They never get your phone number or email, so you compare real numbers in peace instead of fielding calls and texts from five companies all week.</p>
-        </div>
-        <div class="move-card">
-          <div class="move-ico"><i class="fas fa-bolt"></i></div>
+      </div>
+      <div class="mx-coda__item">
+        <span class="mx-coda__ico" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
+        <div>
           <h3>Utilities handled for you</h3>
           <p>Our Connect Team compares rates on electricity, internet and renters insurance, then has it all set up and switched on for your move-in date. One conversation instead of calling around to five companies yourself, and it costs you nothing.</p>
         </div>
       </div>
     </div>
   </section>
+  <!-- MOVE-DEMO:END -->
+  <!-- MOVE-DEMO-JS:START -->
+  <script>
+    /* THE MOVE demo. Scroll drives the panel's state; taps also work and nothing submits anywhere.
+       Live (.mx-live) only without reduced motion and on screens tall enough to hold the pinned panel
+       (phone landscape gets the static walkthrough). One rAF loop, woken by a passive scroll listener,
+       paused while the section is off screen. State is computed from the scroll position on every
+       frame, so a mid-page reload lands on the right screen.
+       The visitor's taps carry through the story: the movers they tick are the ones that answer on the
+       comparison page (sample quotes for the four sample movers, Waiting on quote for any other pick),
+       and once they tap Choose / Confirm / Cancel the choice is theirs until they go back to the mover list. */
+    (function () {
+      var sec = document.getElementById('move-demo');
+      if (!sec) return;
+      try {
+        var q = function (s, r) { return (r || sec).querySelector(s); };
+        var qa = function (s, r) { return Array.prototype.slice.call((r || sec).querySelectorAll(s)); };
+        var act = q('.mx-act'), stage = q('.mx-stage'), view = q('.mx-view');
+        var formScr = q('.mx-screen--form'), cmpScr = q('.mx-screen--cmp');
+        var formList = q('.mx-scroll', formScr), cmpList = q('.mx-scroll', cmpScr);
+        var steps = qa('.mx-step'), gos = steps.map(function (li) { return q('.mx-go', li); });
+        var rows = qa('.q-mover', formScr);
+        var boxes = rows.map(function (r) { return q('input', r); });
+        var pick = boxes.map(function (b) { return b.hasAttribute('data-pick'); });
+        var names = rows.map(function (r) { return q('.q-mover-name', r).textContent.trim(); });
+        var sendBtn = q('.mx-send', formScr), allBtn = q('.mx-all', formScr);
+        var quoteBox = q('.q-quotes', cmpScr);
+        var quotes = qa('.q-quote:not(.q-quote--waiting)', cmpScr);
+        var waits = qa('.q-quote--waiting', cmpScr);
+        var note = q('.mx-chosen-note', cmpScr);
+        var noteTpl = note.textContent, firstName = quotes[0].getAttribute('data-name');
+        var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+        var short = window.matchMedia ? window.matchMedia('(max-height: 540px)') : null;
 
-  <!-- ══════════════════════ 3 · THREE STEPS (condensed) ══════════════════════
-       Deliberately short. The full walkthrough lives on how-it-works.html and
-       the long version with the "what's the catch" callout lives on the Dallas
-       page, so this block links out rather than repeating either.
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="sec" id="how-it-works" style="background:var(--paper-2); overflow:hidden;">
-    <div class="wrap">
-      <div class="steps-layout">
+        // every mover row maps to a card; a mover with no sample card gets a Waiting on quote card (made when the demo
+        // goes live), shown only if the visitor picks that mover
+        var cardOf = [], tpl = waits[waits.length - 1], extrasMade = false;
+        qa('.q-quote', cmpScr).forEach(function (c) { var i = names.indexOf(c.getAttribute('aria-label')); if (i >= 0) cardOf[i] = c; });
+        var cards = quotes.concat(waits);
+        function makeExtras() {
+          if (extrasMade) return;
+          extrasMade = true;
+          rows.forEach(function (row, i) {
+          if (cardOf[i]) return;
+          var c = tpl.cloneNode(true), site = q('.q-mover-site', row), link = q('.q-cmp-site', c);
+          c.setAttribute('aria-label', names[i]); c.classList.add('mx-extra', 'is-off');
+          q('.q-quote-name', c).textContent = names[i];
+          q('.q-quote-logo', c).setAttribute('src', q('.q-mover-thumb', row).getAttribute('src'));
+          link.setAttribute('href', site.getAttribute('href')); link.setAttribute('aria-label', site.getAttribute('aria-label'));
+          quoteBox.appendChild(c); cardOf[i] = c; waits.push(c);
+          });
+          cards = quotes.concat(waits);
+        }
 
-        <div>
-          <div class="section-badge">Simple process</div>
-          <h2>Three steps, start to keys.</h2>
-          <p class="lede" style="margin-bottom:var(--s4);">No fees, no contract, no obligation to tour anything you don't like.</p>
+        // step boundaries in act progress, and the beats inside each step (local progress 0..1)
+        var B1 = 0.39, B2 = 0.735;
+        var ARR = [0, 0.2, 0.38, 0.56], WAIT = 0.72, GLIDE = 0.08, TAIL = 0.86;   // step 2: arrivals, waiting cards, then back to the pick
+        var LAND = [0.004, B1 + 0.12 * (B2 - B1), B2 + 0.06 * (1 - B2)];        // where a rail tap lands
+        var live = false, M = null, cur = { s1: 0, s2: 0 }, snap = true, raf = 0, onScreen = true, lastP = -1;
+        var ov = { checks: {}, user: null };
 
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-card">
-              <h3>Tell us what you're looking for</h3>
-              <p>Where you want to live, your budget, your move-in date and your must-haves.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-card">
-              <h3>We send the right matches</h3>
-              <p>Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit, with our top picks up front.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-card">
-              <h3>Tour your favorites and get up to $250 on us</h3>
-              <p>Visit them on your own schedule, list <strong>Apartment Agents</strong> on your guest card and application as how you learned about their property, then tell us where you leased.</p>
-            </div>
-          </div>
+        function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+        function smooth(t) { return t * t * (3 - 2 * t); }
+        function setCls(el, c, on) { if (el.classList.contains(c) !== on) el.classList.toggle(c, on); }
+        function picked(i) { return i in ov.checks ? ov.checks[i] : pick[i]; }
 
-          <p style="margin:var(--s4) 0 0;">
-            <a href="how-it-works.html" class="review-link">
-              See the full walkthrough
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </p>
-        </div>
+        // which cards are on the comparison page: the visitor's picks when live (the sample set if they cleared them all)
+        function applyPicks() {
+          var any = names.some(function (n, i) { return picked(i); });
+          names.forEach(function (n, i) {
+            var c = cardOf[i];
+            if (c) setCls(c, 'is-off', live ? !(any ? picked(i) : pick[i]) : c.classList.contains('mx-extra'));
+          });
+        }
 
-        <!-- Orbit: kept from the old homepage. On mobile it falls below the copy
-             so the steps lead; on desktop it takes the second column. -->
-        <div class="orbit-wrap">
-          <div class="aa-hero-orbit">
-            <div class="aa-orbit-stage" id="aaOrbitStage">
-              <div class="aa-model-wrap" id="aaModelWrap">
-                <div class="aa-model-shadow" aria-hidden="true"></div>
-                <img class="aa-model-img" src="images/hero-model.png" alt="Renter reviewing her apartment matches on her phone" loading="lazy" />
-              </div>
-              <div class="aa-card aa-card--pool" data-base="160" data-tilt="-3">
-                <img src="images/amenity-pool.jpg" alt="" loading="lazy" />
-                <span class="aa-chip">Great Pool</span>
-              </div>
-              <div class="aa-card aa-card--gym" data-base="232" data-tilt="2">
-                <img src="images/amenity-gym.jpg" alt="" loading="lazy" />
-                <span class="aa-chip">Nice Gym</span>
-              </div>
-              <div class="aa-card aa-card--kitchen" data-base="304" data-tilt="-2">
-                <img src="images/amenity-kitchen.jpg" alt="" loading="lazy" />
-                <span class="aa-chip">Open Concept</span>
-              </div>
-              <div class="aa-card aa-card--laundry" data-base="16" data-tilt="3">
-                <img src="images/amenity-laundry.jpg" alt="" loading="lazy" />
-                <span class="aa-chip">W/D Included</span>
-              </div>
-              <div class="aa-card aa-card--pet" data-base="88" data-tilt="-2">
-                <img src="images/amenity-pet.jpg" alt="" loading="lazy" />
-                <span class="aa-chip">Pet Friendly</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        function measure() {
+          if (!live) return;
+          applyPicks();
+          var had = cmpScr.classList.contains('mx-chosen');
+          if (had) cmpScr.classList.remove('mx-chosen');
+          var c2 = cards.map(function (c) { return { top: c.offsetTop, bot: c.offsetTop + c.offsetHeight }; });
+          var h2 = cmpList.offsetHeight;
+          if (had) cmpScr.classList.add('mx-chosen');
+          var vh1 = formScr.clientHeight, vh2 = cmpScr.clientHeight, h1 = formList.offsetHeight;
+          var max2 = Math.max(0, h2 - vh2);
+          var show = function (k) { return clamp(c2[k].bot + 16 - vh2, 0, max2); };
+          // step 2 keyframes: a card lands, then the list rises to bring it fully into view (never scrolls ahead of a card)
+          var arr = cards.map(function () { return 9; }), kf = [[0, 0]], prev = 0, j = 0, wl = [];
+          quotes.forEach(function (c, k) {
+            if (c.classList.contains('is-off') || j >= ARR.length) return;
+            var a = ARR[j++]; arr[k] = a;
+            kf.push([a, prev]); prev = Math.max(prev, show(k)); kf.push([a + GLIDE, prev]);
+          });
+          waits.forEach(function (c, i) { if (!c.classList.contains('is-off')) { arr[quotes.length + i] = WAIT; wl.push(quotes.length + i); } });
+          if (wl.length) { kf.push([WAIT, prev]); prev = Math.max(prev, show(wl[Math.min(1, wl.length - 1)])); kf.push([WAIT + GLIDE, prev]); }
+          kf.push([TAIL, prev]);
+          var first = form1stTick();
+          M = {
+            T: Math.max(1, act.offsetHeight - stage.offsetHeight),
+            vh1: vh1, vh2: vh2, max1: Math.max(0, h1 - vh1), max2: max2, c2: c2, kf: kf, arr: arr,
+            ticks: boxes.map(function (b) { return b.offsetTop + b.offsetHeight / 2; })
+          };
+          M.t0 = first >= 0 ? M.ticks[first] - 6 : 0;
+        }
+        function form1stTick() { for (var i = 0; i < pick.length; i++) if (pick[i]) return i; return -1; }
 
+        function along(kf, t) {
+          for (var i = 1; i < kf.length; i++) {
+            if (t <= kf[i][0]) {
+              var a = kf[i - 1], b = kf[i], span = b[0] - a[0];
+              return span <= 0 ? b[1] : a[1] + (b[1] - a[1]) * smooth(clamp((t - a[0]) / span, 0, 1));
+            }
+          }
+          return kf[kf.length - 1][1];
+        }
+        // where the list rests to show card k with its buttons
+        function restOn(k) { var c = M.c2[k]; return clamp(Math.min(c.bot + 16 - M.vh2, c.top - 14), 0, M.max2); }
+        // the card the story chooses: the visitor's, else the first quote on the page
+        function target() {
+          if (ov.user && ov.user.confirm >= 0) return ov.user.confirm;
+          if (ov.user && ov.user.chosen >= 0) return ov.user.chosen;
+          for (var k = 0; k < quotes.length; k++) if (!quotes[k].classList.contains('is-off')) return k;
+          return -1;
+        }
+
+        // the story at act progress p
+        function derive(p) {
+          var d = { si: p < B1 ? 0 : p < B2 ? 1 : 2 };
+          var q1 = clamp(p / B1, 0, 1), q2 = clamp((p - B1) / (B2 - B1), 0, 1), q3 = clamp((p - B2) / (1 - B2), 0, 1);
+          d.f = [q1, q2, q3];
+          d.s1 = M.max1 * clamp((q1 - 0.04) / 0.8, 0, 1);
+          d.go = q1 >= 0.88 && p < B1;
+          d.screen = p < B1 ? 0 : 1;
+          d.inn = M.arr.map(function (a) { return p >= B1 && q2 >= a; });
+          d.tg = target();
+          var scripted = !ov.user && d.tg >= 0 && p >= B2;
+          d.confirm = scripted && q3 >= 0.22 && q3 < 0.52 ? d.tg : -1;
+          d.chosen = scripted && q3 >= 0.52 ? d.tg : -1;
+          d.pressChoose = scripted && q3 >= 0.14 && q3 < 0.22;
+          d.pressYes = scripted && q3 >= 0.44 && q3 < 0.52;
+          if (ov.user) { d.confirm = ov.user.confirm; d.chosen = ov.user.chosen; }
+          if (d.chosen >= 0 && !d.inn[d.chosen]) d.chosen = -1;      // a choice shows only while its card is on the page
+          var rest = d.tg >= 0 ? restOn(d.tg) : along(M.kf, TAIL);
+          if (d.chosen >= 0) d.s2 = 0;                                  // chosen: the note and the chosen card lead the page
+          else if (p >= B2 || q2 >= 0.98) d.s2 = rest;
+          else if (q2 <= TAIL) d.s2 = along(M.kf, q2);
+          else { var from = along(M.kf, TAIL); d.s2 = from + (rest - from) * smooth(clamp((q2 - TAIL) / (0.98 - TAIL), 0, 1)); }
+          return d;
+        }
+        function staticState() {
+          var u = ov.user || { confirm: -1, chosen: -1 };
+          return { si: -1, f: [1, 1, 1], go: false, screen: -1, inn: cards.map(function () { return true; }), tg: -1, confirm: u.confirm, chosen: u.chosen, pressChoose: false, pressYes: false };
+        }
+
+        // a control the panel just hid (screen switched, card not in yet, button swapped away)
+        function hiddenNow(el) {
+          var scr = el.closest('.mx-screen'), card = el.closest('.q-quote');
+          return (scr && !scr.classList.contains('is-on')) || (card && !card.classList.contains('is-in')) || !el.getClientRects().length;
+        }
+
+        function render(d) {
+          steps.forEach(function (li, i) {
+            setCls(li, 'is-on', i === d.si);
+            setCls(li, 'is-past', d.si > i);
+            if (i === d.si) gos[i].setAttribute('aria-current', 'step'); else gos[i].removeAttribute('aria-current');
+            var f = d.si < 0 ? 0 : i < d.si ? 1 : i === d.si ? d.f[i] : 0;
+            if (Math.abs((li._f || 0) - f) > 0.002 || (f === 0) !== ((li._f || 0) === 0)) { li._f = f; li.style.setProperty('--f', f.toFixed(4)); }
+          });
+          if (d.screen >= 0) { setCls(formScr, 'is-on', d.screen === 0); setCls(cmpScr, 'is-on', d.screen === 1); }
+          setCls(sendBtn, 'is-press', d.go);
+          cards.forEach(function (c, k) { setCls(c, 'is-in', !!d.inn[k]); });
+          quotes.forEach(function (c, k) {
+            setCls(c, 'is-confirm', k === d.confirm);
+            setCls(c, 'is-chosen', k === d.chosen);
+            setCls(q('.mx-choose', c), 'is-press', d.pressChoose && k === d.tg);
+            setCls(q('.mx-yes', c), 'is-press', d.pressYes && k === d.tg);
+          });
+          setCls(cmpScr, 'mx-chosen', d.chosen >= 0);
+          if (d.chosen >= 0) {
+            var t = noteTpl.replace(firstName, quotes[d.chosen].getAttribute('data-name'));
+            if (note.textContent !== t) note.textContent = t;
+          }
+          // keep a keyboard user's place on the rail when the control they were on leaves the panel
+          var ae = document.activeElement;
+          if (live && ae && view.contains(ae) && hiddenNow(ae)) gos[Math.max(0, d.si)].focus({ preventScroll: true });
+        }
+
+        function nowP() { return clamp(-act.getBoundingClientRect().top / M.T, 0, 1); }
+        function frame() {
+          raf = 0;
+          if (!live || !M) return;
+          // read the act's position every frame: content above it (images, other sections) may still shift
+          var p = nowP();
+          if (lastP >= 0 && Math.abs(p - lastP) > 0.08) snap = true;   // a jump (reload, anchor): no catch-up glide
+          lastP = p;
+          if (p < B1 && ov.user) ov.user = null;                       // back on the mover list: a new request, the story leads again
+          var d = derive(p), k = snap ? 1 : 0.22;
+          if (snap) sec.classList.add('mx-snap');
+          cur.s1 += (d.s1 - cur.s1) * k; if (Math.abs(d.s1 - cur.s1) < 0.4) cur.s1 = d.s1;
+          cur.s2 += (d.s2 - cur.s2) * k; if (Math.abs(d.s2 - cur.s2) < 0.4) cur.s2 = d.s2;
+          // a picked mover ticks as its row rises past the tick line; the line starts just above the first pick and
+          // settles at 62% of the panel, so on tall panels the top rows still tick one by one
+          var L = M.vh1 * 0.62, line = Math.min(L, M.t0) + (L - Math.min(L, M.t0)) * smooth(clamp((d.f[0] - 0.03) / 0.16, 0, 1));
+          var ticks = pick.map(function (pk, i) { return pk && (p >= B1 || (d.f[0] > 0.03 && M.ticks[i] - cur.s1 < line)); });
+          boxes.forEach(function (b, i) { var want = i in ov.checks ? ov.checks[i] : ticks[i]; if (b.checked !== want) b.checked = want; });
+          render(d);
+          formList.style.transform = 'translate3d(0,' + (-cur.s1).toFixed(1) + 'px,0)';
+          cmpList.style.transform = 'translate3d(0,' + (-cur.s2).toFixed(1) + 'px,0)';
+          if (snap) { snap = false; requestAnimationFrame(function () { requestAnimationFrame(function () { sec.classList.remove('mx-snap'); }); }); }
+          if (cur.s1 !== d.s1 || cur.s2 !== d.s2) kick();
+        }
+        function kick() { if (!raf && live && onScreen) raf = requestAnimationFrame(frame); }
+
+        function setLive(on) {
+          live = on;
+          sec.classList.toggle('mx-live', on);
+          if (on) { makeExtras(); snap = true; lastP = -1; measure(); kick(); return; }
+          formList.style.transform = ''; cmpList.style.transform = '';
+          boxes.forEach(function (b, i) { b.checked = picked(i); });
+          formScr.classList.remove('is-on'); cmpScr.classList.remove('is-on');
+          applyPicks();
+          render(staticState());
+        }
+        function wantLive() { return !(rm && rm.matches) && !(short && short.matches); }
+
+        function scrollToP(p, smoothly) {
+          window.scrollTo({ top: Math.round(act.getBoundingClientRect().top + window.pageYOffset + p * M.T), behavior: smoothly ? 'smooth' : 'instant' });
+        }
+        function goStep(i) {
+          if (live && M) { scrollToP(LAND[i], true); return; }
+          steps[i].scrollIntoView({ behavior: rm && rm.matches ? 'auto' : 'smooth', block: 'start' });
+        }
+        // the visitor's own Choose / Confirm / Cancel: theirs from here on (until they go back to the mover list)
+        function setUser(confirm, chosen) {
+          ov.user = { confirm: confirm, chosen: chosen };
+          if (live && M) { render(derive(nowP())); kick(); } else render(staticState());
+        }
+        function picksChanged() { if (live) { measure(); lastP = -1; kick(); } }
+
+        sec.addEventListener('click', function (e) {
+          var b = e.target.closest ? e.target.closest('button') : null;
+          if (!b || !sec.contains(b)) return;
+          var card = b.closest('.q-quote'), k = card ? quotes.indexOf(card) : -1;
+          if (b.classList.contains('mx-go')) goStep(gos.indexOf(b));
+          else if (b === allBtn) { boxes.forEach(function (x, i) { ov.checks[i] = true; x.checked = true; }); picksChanged(); }
+          else if (b === sendBtn) goStep(1);
+          else if (k >= 0 && b.classList.contains('mx-choose')) { setUser(k, -1); q('.mx-yes', card).focus({ preventScroll: true }); }
+          else if (k >= 0 && b.classList.contains('mx-yes')) { setUser(-1, k); note.focus({ preventScroll: true }); }
+          else if (k >= 0 && b.classList.contains('mx-no')) { setUser(-1, -1); q('.mx-choose', card).focus({ preventScroll: true }); }
+        });
+        sec.addEventListener('change', function (e) {
+          var i = boxes.indexOf(e.target);
+          if (i >= 0) { ov.checks[i] = e.target.checked; picksChanged(); }
+        });
+
+        // keyboard: a focused control inside the panel is brought into view by moving the page, not the panel
+        // (not for focus that follows a tap: the visitor is already looking at what they tapped)
+        var ptrAt = 0;
+        sec.addEventListener('pointerdown', function () { ptrAt = Date.now(); }, { passive: true });
+        sec.addEventListener('focusin', function (e) {
+          if (!live || !M || Date.now() - ptrAt < 1000) return;
+          var el = e.target, scr = el.closest ? el.closest('.mx-screen') : null;
+          if (!scr) return;
+          var vr = view.getBoundingClientRect(), r = el.getBoundingClientRect();
+          if (r.top >= vr.top + 4 && r.bottom <= vr.bottom - 4 && vr.top >= 0 && vr.bottom <= window.innerHeight + 1) return;
+          var p = null;
+          if (scr === formScr) {
+            var row = el.closest('.q-mover'), i = row ? rows.indexOf(row) : -1;
+            var s = el === allBtn ? 0 : el === sendBtn ? M.max1 : i >= 0 ? clamp(M.ticks[i] - M.vh1 * 0.45, 0, M.max1) : null;
+            if (s !== null) p = B1 * (M.max1 ? 0.04 + 0.8 * s / M.max1 : 0.04);
+            if (el === sendBtn) p = B1 * 0.86;
+          } else if (scr === cmpScr) {
+            var k = cards.indexOf(el.closest('.q-quote'));
+            if (k >= 0 && M.arr[k] <= 1) p = B1 + (B2 - B1) * Math.min(M.arr[k] + GLIDE + 0.02, TAIL);
+          }
+          if (p !== null) { scrollToP(p, false); snap = true; lastP = -1; kick(); }
+        });
+
+        window.addEventListener('scroll', kick, { passive: true });
+        window.addEventListener('resize', function () { measure(); lastP = -1; kick(); });
+        window.addEventListener('load', function () { measure(); lastP = -1; kick(); });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); kick(); });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; kick(); }, { rootMargin: '200px 0px' }).observe(sec);
+        }
+        var onMq = function () { if (wantLive() !== live) setLive(wantLive()); };
+        [rm, short].forEach(function (m) { if (!m) return; if (m.addEventListener) m.addEventListener('change', onMq); else if (m.addListener) m.addListener(onMq); });
+        // the buttons ship disabled so a no-JS page has no dead controls; the script switches them on
+        qa('button[disabled]').forEach(function (b) { b.disabled = false; });
+        setLive(wantLive());
+      } catch (err) { /* the section still reads as a static walkthrough */ if (window.console) console.error(err); }
+    })();
+    /* the No kickbacks promise: its icon pops and pings twice the first time it is mostly on screen */
+    (function () {
+      var p = document.querySelector('#move-demo .mx-promise');
+      if (!p || !('IntersectionObserver' in window)) return;
+      var o = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { p.classList.add('is-in'); o.disconnect(); }
+      }, { threshold: 0.7 });
+      o.observe(p);
+    })();
+  </script>
+  <!-- MOVE-DEMO-JS:END -->
+
+  <!-- ═══════════════════ REMOVED · SAMPLE SHORTLIST SECTION ═══════════════════
+       The "What our recommendations actually look like" cards (Top Pick / Under
+       Budget / Wildcard, each stamped EXAMPLE) sat here, along with the example
+       banner and sample-brief line. Removed on purpose: hand-built fake listings
+       with invented names and prices are a liability while the real product isn't
+       live, and the EXAMPLE chips were doing a lot of apologising.
+
+       BRING IT BACK when Apartment List Builder ships — then these cards can be
+       generated from real Dallas inventory with real verified pricing instead of
+       illustrative copy. The supporting CSS (.example-banner, .brief-line, .rec-*)
+       was removed from the <style> block at the same time; see the note there.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+
+    <!-- ═══════════ 4 · OBJECTIONS / STRAIGHT ANSWERS (must precede reviews) ═══════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap-narrow">
+      <div class="section-badge">Straight answers</div>
+      <h2>The questions everyone asks.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">Short versions, no fine-print games.</p>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>I can find an apartment myself. Why use you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          You can, and plenty of people do. The difference is what it costs you. The rent is identical either way. Communities don't give you a better price for going direct, so doing it alone means the same apartment, at the same price, minus up to $250. You'd also be doing the part that takes the longest: mindlessly scrolling listing sites, navigating fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you. Which buildings get noise complaints from residents or the bars next door. Which ones have maintenance problems. What a block actually feels like at night. And after all that, you're still chasing down mover quotes and setting up your utilities yourself.
+        </div></div>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Is it really free? What's the catch?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          There's no catch, but there is a reason. Communities set aside a marketing budget to fill their units and pay us a referral fee only when someone we refer signs a lease. You never pay us anything, and your rent isn't a dollar higher for using us.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Do you just send me wherever pays you the most?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Straight answer: we only work with communities that pay a referral fee. That's what makes this free for you. But we're not paid unless you actually sign a lease, so sending you somewhere that doesn't fit what you asked for gets us nothing. A large share of our business comes from repeat clients and referrals, so a bad recommendation costs us far more than a bigger fee is ever worth.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>If I'm applying with a roommate or partner, does everyone need to list you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes, and this one trips people up. A community can only pay one locator per lease. If one applicant lists Apartment Agents and another lists a different company or referral source, it can cancel the referral out entirely and the reward disappears for everyone on the lease.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Can I still use you if I've already started looking?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes, and most people have already started looking by the time they find us. The main thing that gets in the way is if you've already toured or listed someone else as your referral source at a community. Tell us where you've been and we'll sort out quickly what still works.
+        </div></div>
+      </div>
+
     </div>
   </section>
-
-  <!-- ══════════════════════════ 4 · WHY TRUST US ══════════════════════════
-       The homepage-only section: who the company is. The Dallas page carries
-       the same headline over its review wall, but the story copy below is
-       unique to this page so the two don't read as one document.
-       ═══════════════════════════════════════════════════════════════════ -->
-  <section class="sec" id="why-us" style="background:#fff;">
-    <div class="wrap">
-      <div class="section-badge">Why trust us</div>
-      <h2>Saving Dallas renters money since 2003.</h2>
-      <div class="why-copy">
-        <p class="lede">We're a licensed Texas brokerage that focuses 100% on apartment rentals, not home sales. There's no side of this business chasing a bigger commission somewhere else, so every bit of our expertise goes into getting you the right place at the right price.</p>
-        <p class="lede">Twenty-three years in one market adds up to the kind of thing a listing site can't tell you. Which buildings get noise complaints. Which ones have maintenance problems. What a block actually feels like at night. That's what your expert brings to the search, on top of the pricing.</p>
-      </div>
-
-      <div class="proof-stats">
-        <div class="proof-stat">
-          <div><div class="n">23</div><div class="l">years finding apartments in DFW</div></div>
-        </div>
-        <div class="proof-stat">
-          <div><div class="n">200,000+</div><div class="l">DFW renters helped</div></div>
-        </div>
-        <div class="proof-stat">
-          <!-- Badge art on file is the 2025 seal; swap in the 2026 artwork when it arrives, then simplify the caption. -->
-          <img src="dallas-central-2025.png" alt="Consumer's Choice Award, Dallas Central" style="height:76px; width:auto; flex-shrink:0;" loading="lazy" />
-          <div><div class="l" style="font-weight:700; color:var(--navy); font-size:1rem;">Consumer's Choice Award</div><div class="l">Dallas Central &middot; 2025 &amp; 2026</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="rule"></div>
 
   <!-- ══════════════════════════ 5 · WALL OF REVIEWS ══════════════════════════
-       Every card below is a REAL published Google review, carried over verbatim
-       from the previous index.html. Do not edit, reword, shorten or invent one.
-       New reviews come from the live Google Business profile only.
-       ═══════════════════════════════════════════════════════════════════════ -->
+       Every card below is a REAL published Google review, copied verbatim from
+       index.html. Do not edit, reword, shorten or invent one. New reviews come
+       from the live Google Business profile only.
+       ═══════════════════════════════════════════════════════════════════════════ -->
   <section class="sec" id="reviews" style="background:var(--paper-2);">
     <div class="wrap">
-      <div class="section-badge">In their own words</div>
-      <h2>What renters say about their agent.</h2>
-      <p class="lede" style="max-width:620px; margin-bottom:0;">Real reviews from our Google profile. Names are how the reviewers left them.</p>
+      <div class="section-badge">Why trust us</div>
+      <h2 style="text-wrap:balance">Saving <span style="white-space:nowrap">Dallas&ndash;Fort Worth</span> renters money since 2003.</h2>
+      <p class="lede" style="max-width:620px;">We're a licensed Texas brokerage that focuses 100% on apartment rentals, not home sales, so every bit of our expertise goes into getting you the right place at the right price.</p>
 
       <div class="reviews-wall">
 
@@ -905,76 +2272,25 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════ 6 · SHORT FAQ ══════════════════════════
-       Three of the six objections, the ones that are about the COMPANY rather
-       than the market. Answers are trimmed versions so this page and the Dallas
-       page aren't serving the same text. The other three live on the Dallas page.
-       ═══════════════════════════════════════════════════════════════════ -->
-  <section class="sec" style="background:#fff;">
-    <div class="wrap-narrow">
-      <div class="section-badge">Straight answers</div>
-      <h2>The questions everyone asks.</h2>
-      <p class="lede" style="margin-bottom:var(--s4);">Short versions, no fine-print games.</p>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>I can find an apartment myself. Why use you?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          You can, and plenty of people do. The rent is identical either way, because communities don't give you a better price for going direct. So doing it alone means the same apartment, at the same price, minus up to $250. You'd also be doing the slow part yourself: scrolling listing sites, sorting out the fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you.
-        </div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>Is it really free? What's the catch?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          There's no catch, but there is a reason. Communities set aside a marketing budget to fill their units and pay us a referral fee only when someone we refer signs a lease. You never pay us anything, and your rent isn't a dollar higher for using us.
-        </div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          <span>Do you just send me wherever pays you the most?</span>
-          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </button>
-        <div class="faq-content"><div class="faq-content-inner">
-          Straight answer: we only work with communities that pay a referral fee, and that's what makes this free for you. But we're not paid unless you actually sign a lease, so sending you somewhere that doesn't fit what you asked for earns us nothing. A large share of our business comes from repeat clients and referrals, so a bad recommendation costs us far more than a bigger fee is ever worth.
-        </div></div>
-      </div>
-
-      <p style="margin:var(--s4) 0 0; color:var(--ink-mute); font-size:1rem;">
-        Wondering about roommates on the same lease, when the money actually lands, or whether you can still use us after you've started looking? Those are answered on our <a href="dallas-apartments-new.html" class="inline-link">Dallas apartments page</a>.
-      </p>
-    </div>
-  </section>
 
   <!-- ══════════════════════════ 7 · FINAL CTA ══════════════════════════ -->
   <section class="cta-sec" id="signup-bottom">
     <div class="cta-bg" aria-hidden="true">
-      <img src="images/dallas-skyline-square.png" alt="" loading="lazy" />
+      <img src="dallas-skyline.png" alt="" loading="lazy" />
       <div class="veil"></div>
     </div>
     <div class="cta-glow" aria-hidden="true"></div>
     <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
-      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center;">Let's find your next apartment.</h2>
-      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Free to you. Up to $250 back when you lease.</p>
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center; text-wrap:balance;">The apartment you actually want.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
 
-      <div class="form-card" id="bottomCard">
-        <div class="form-body">
-          <p class="form-card__eyebrow">Free &middot; No obligation</p>
-          <h3 class="form-card__title">Get your free apartment matches</h3>
-          <p style="margin:0 0 18px; color:#5A5A7A; font-size:1rem; line-height:1.65;">Answer a few quick questions and one of our licensed apartment experts goes to work for you right away.</p>
-          <a href="SIGNUP_URL" class="btn-primary form-submit" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
-            Get My Free Matches
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-          <p class="form-micro">No cost, no obligation, no spam.</p>
-        </div>
-      </div>
+      <!-- Bottom CTA: button only (the card copy was removed 2026-10-04 at John's request). Links out to SIGNUP_URL. -->
+      <p style="text-align:center; margin:0;">
+        <a href="SIGNUP_URL" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 36px; font-size:1.05rem; min-height:56px;">
+          Get My Free Matches
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </p>
 
       <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
         Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
@@ -1053,76 +2369,6 @@
       });
       if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
     }
-
-    /* ===== Orbit animation =====
-       Angle is driven by the section's progress through the viewport
-       (getBoundingClientRect), so it turns as you scroll past it.
-       Transform/opacity only. Reduced motion falls back to the static CSS. */
-    (function () {
-      var stage = document.getElementById('aaOrbitStage');
-      if (!stage) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var section = document.getElementById('how-it-works');
-      var modelWrap = document.getElementById('aaModelWrap');
-      var meta = Array.prototype.slice.call(stage.querySelectorAll('.aa-card')).map(function (el, i) {
-        return {
-          el: el,
-          base: (parseFloat(el.getAttribute('data-base')) || 0) * Math.PI / 180,
-          tilt: parseFloat(el.getAttribute('data-tilt')) || 0,
-          phase: i * 1.7
-        };
-      });
-
-      var rx = 206, ry = 158, floatAmp = 0;
-      function readVars() {
-        var cs = getComputedStyle(stage);
-        rx = parseFloat(cs.getPropertyValue('--rx')) || stage.clientWidth * 0.45;
-        ry = parseFloat(cs.getPropertyValue('--ry')) || stage.clientHeight * 0.29;
-        floatAmp = 0;
-      }
-      readVars();
-      window.addEventListener('resize', readVars);
-
-      // Desktop-only cursor tilt (eased in the rAF loop)
-      var tiltOn = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)');
-      var tiltTX = 0, tiltTY = 0, tiltCX = 0, tiltCY = 0;
-      window.addEventListener('mousemove', function (e) {
-        if (!tiltOn.matches) { tiltTX = 0; tiltTY = 0; return; }
-        var nx = e.clientX / window.innerWidth - 0.5;
-        var ny = e.clientY / window.innerHeight - 0.5;
-        tiltTY = Math.max(-4, Math.min(4, nx * 8));
-        tiltTX = Math.max(-4, Math.min(4, -ny * 8));
-      }, { passive: true });
-
-      var SPEED = 0.005; // radians of orbit per px the section travels through the viewport
-      function frame(now) {
-        var rect = section.getBoundingClientRect();
-        var vh = window.innerHeight || 1;
-        if (rect.bottom > -200 && rect.top < vh + 200) {
-          var travel = vh - rect.top;
-          var t = now / 1000;
-          tiltCX += (tiltTX - tiltCX) * 0.06;
-          tiltCY += (tiltTY - tiltCY) * 0.06;
-          stage.style.transform = 'rotateX(' + tiltCX.toFixed(3) + 'deg) rotateY(' + tiltCY.toFixed(3) + 'deg)';
-          var p = Math.max(0, Math.min(1, travel / (vh + rect.height)));
-          modelWrap.style.transform = 'translate3d(0,' + ((p - 0.5) * 24).toFixed(1) + 'px,0)';
-          var a0 = Math.max(0, travel) * SPEED;
-          for (var i = 0; i < meta.length; i++) {
-            var m = meta[i];
-            var a = m.base + a0;
-            var d = Math.sin(a);
-            var x = Math.cos(a) * rx;
-            var y = d * ry + Math.sin(t * 1.1 + m.phase) * floatAmp;
-            var s = 0.9 + 0.15 * d;
-            m.el.style.transform = 'translate(-50%,-50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + s.toFixed(3) + ') rotate(' + m.tilt + 'deg)';
-            m.el.style.opacity = (0.925 + 0.075 * d).toFixed(3);
-            m.el.style.zIndex = d >= 0 ? 30 : 10;
-          }
-        }
-        requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    })();
   </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 Apartment Agents is a Texas based apartment locating service that helps renters in Dallas–Fort Worth find their best apartment options and the best deals available. The service is free to renters and is positioned as “better than free” because clients typically save more money using Apartment Agents than they would searching on their own.
 
-The brand should present as expert, deal-focused, and renter-first: a team that knows the market, finds the best pricing and specials, and helps cover up to $200 of their moving costs by paying up to $200 of their move with a moving company of their choice or giving them extra cash on top of any discounts the property offers so renters come out ahead.
+The brand should present as expert, deal-focused, and renter-first: a team that knows the market, finds the best pricing and specials, and gives renters up to $250 extra cash on us after they lease, on top of any specials the property offers, so renters come out ahead.
 
 ---
 
@@ -10,14 +10,14 @@ The brand should present as expert, deal-focused, and renter-first: a team that 
 
 ## **Brand promise**
 
-Apartment Agents is the better‑than‑free way to find your next apartment: matching you with your best options, securing the best deals, and giving you up to a $200 free move or extra cash after you lease.
+Apartment Agents is the better‑than‑free way to find your next apartment: matching you with your best options, securing the best deals, and giving you up to $250 extra cash on us after you lease.
 
 ## **Value proposition**
 
 * Match renters with their best apartment options based on budget, location, timing, and preferences.  
 * We’re local experts who match you with your best options and properties with the best deals.  
 * Deliver a free service that often saves renters more than they could save alone.  
-* Add up to a $200 free move or extra cash on top of property specials.
+* Add up to $250 extra cash on us on top of property specials.
 
 ## **Brand pillars**
 
@@ -26,9 +26,9 @@ Apartment Agents is the better‑than‑free way to find your next apartment: ma
 2. Best deals on those options  
    Full visibility into property specials, concessions, and incentives so renters don’t leave money on the table.  
 3. Better than free  
-   The service is free to renters, and they typically save more by finding the best deals and providing up to a $200 free move or cash bonus on top of any lease concessions the properties offer.  
-4. You choose the mover, we pay  
-   Renters pick the moving company they actually want; Apartment Agents covers up to $200 of the move and also offers exclusive moving discounts.  
+   The service is free to renters, and they typically save more by finding the best deals and getting up to $250 extra cash on us on top of any lease concessions the properties offer.  
+4. We handle the move  
+   Renters compare quotes from trusted DFW movers side by side, choose one, and that mover reaches out to confirm and book the move.  
 5. Fast, expert guidance  
    Local apartment specialists who know the inventory, pricing patterns, and how to find the best deal.
 
@@ -61,34 +61,31 @@ Apartment Agents is the better‑than‑free way to find your next apartment: ma
 * Matching renters with their best apartment options.  
 * Getting them the best deals (price \+ specials).  
 * Being better than free because renters save more with you.  
-* Free move or extra cash up to $200 after they lease.  
-* Freedom to choose the moving company; you cover up to $200.  
-* Additional exclusive moving discounts and services.
+* Up to $250 extra cash on us after they lease, paid by Zelle, Venmo, PayPal, or an Amazon gift card.  
+* Compare mover quotes side by side; the mover they choose reaches out to confirm and book.
 
 ## **Sample positioning statement**
 
-Apartment Agents is a free apartment locating service that’s better than free. We match you with your best apartment options, secure the best deals available, and then add up to a $200 free move or extra cash, while letting you choose the moving company you want to use.
+Apartment Agents is a free apartment locating service that’s better than free. We match you with your best apartment options, secure the best deals available, and then add up to $250 extra cash on us after you lease.
 
 ## **Sample elevator pitch**
 
-Apartment Agents helps renters in Dallas–Fort Worth find their best apartment options and the best deals. Our service is free and typically saves you more than you could save alone by surfacing all the property specials and pricing advantages. After you lease through us, you get up to a $200 free move or extra cash. You pick the mover, we pay up to $200 of the cost, and you also get access to exclusive moving discounts.
+Apartment Agents helps renters in Dallas–Fort Worth find their best apartment options and the best deals. Our service is free and typically saves you more than you could save alone by surfacing all the property specials and pricing advantages. After you lease through us, you get up to $250 extra cash on us. And when it is time to move, you can compare quotes from trusted DFW movers, and the one you choose reaches out to book it with you.
 
 ## **Headline ideas**
 
 * “Better than free apartment locating.”  
 * “We match you with the best options and the best deals.”  
 * “Find your best apartment and keep more money in your pocket.”  
-* “Free locator service, best pricing, and up to a $200 move.”  
-* “You pick the mover. We pay up to $200.”
+* “Free locator service, best pricing, and up to $250 extra cash on us.”
 
 ## **Supporting message themes**
 
 * Get matched to the best options, not a random list.  
 * See every special and incentive you qualify for.  
 * Save more with a free locator that is better than free.  
-* Get up to a $200 free move or extra cash.  
-* Choose your own moving company and we pay $200 of your move.  
-* Access exclusive moving discounts and partner offers.
+* Get up to $250 extra cash on us.  
+* Compare mover quotes side by side, and the mover you choose books it with you.
 
 ---
 
@@ -161,25 +158,25 @@ This needs to be consistent and extremely clear across web, email, and sales scr
 * The service is free to renters.  
 * It is “better than free” because renters save more when they use it.  
 * After they lease through Apartment Agents:  
-  * They can choose up to a $200 free move or extra cash.  
-  * They choose the moving company; Apartment Agents covers up to $200 of the move cost.  
-  * They also get access to exclusive moving discounts and services.
+  * They get up to $250 extra cash on us, paid by Zelle, Venmo, PayPal, or an Amazon gift card.  
+  * The reward is extra cash only. Never call it a "free move" or money "for your move."  
+  * They can compare quotes from trusted DFW movers, choose one, and that mover reaches out to confirm and book the move. We never book it ourselves, and movers never get the renter's number until the renter chooses.
 
 ## **Sample copy blocks**
 
 Short benefit line:
 
-Free apartment locating that’s better than free — get your best options, the best deals, and up to a $200 free move or extra cash.
+Free apartment locating that’s better than free: get your best options, the best deals, and up to $250 extra cash on us.
 
 How it works (3 steps):
 
 1. Tell us your budget, timing, and must‑haves.  
 2. We match you with your best apartment options and the best available deals.  
-3. Lease through us and get up to a $200 free move or extra cash, plus exclusive moving discounts.
+3. Lease through us and get up to $250 extra cash on us.
 
-Mover choice emphasis:
+Moving help:
 
-Unlike most locator companies that lock you into one moving company, Apartment Agents lets you choose the mover you actually want. We cover up to $200 of the cost and still give you access to additional moving discounts.
+When it is time to move, compare quotes from trusted DFW movers side by side, and the one you choose reaches out to book it with you.
 
 ## **Content guidelines**
 
@@ -188,9 +185,8 @@ Unlike most locator companies that lock you into one moving company, Apartment A
 * “Free apartment locating that’s better than free.”  
 * “We match you with your best apartment options.”  
 * “Get the best deals and all the specials.”  
-* “Up to a $200 free move or extra cash.”  
-* “You pick the moving company; we pay up to $200.”  
-* “Exclusive moving discounts and services.”
+* “Up to $250 extra cash on us.”  
+* “Compare mover quotes side by side. No sales calls.”
 
 ## **Avoid**
 

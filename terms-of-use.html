@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use | Apartment Agents</title>
+  <meta name="description" content="The terms that govern use of the Apartment Agents website and our free apartment locating service." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — inherited verbatim from dallas-apartments-new.html
+       so this page sits in the same system. Do not fork the palette.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+      --chg:       #C8102E;   /* review-only: marks text that differs from the live page */
+
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------------- NAV (verbatim system from sibling pages) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-link[aria-current="page"] { color: #6b78c4; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn-primary {
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    .btn-coral {
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+
+    .inline-link, .legal a {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover, .legal a:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible, .legal a:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active, .legal a:active { opacity: 0.7; }
+
+    /* ---------------- HERO (compact, same field as the sibling pages) ---------------- */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 28px 20px 30px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .hero h1 { color: var(--navy); font-size: clamp(2.1rem, 9vw, 3.4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.6; margin: 0; max-width: 34em; }
+    @media (min-width: 700px) {
+      .hero { padding: 52px 24px 52px; }
+      .hero h1 { font-size: clamp(2.6rem, 5vw, 3.4rem); }
+      .hero-sub { font-size: 1.15rem; }
+    }
+
+    /* ---------------- REVIEW BAR (delete before publishing) ---------------- */
+    .review-bar { background: var(--yellow); color: var(--navy); padding: 12px 20px; border-bottom: 1px solid rgba(15,19,56,0.08); }
+    .review-bar-inner { max-width: 760px; margin: 0 auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .review-bar p { margin: 0; font-size: 0.92rem; line-height: 1.5; font-weight: 500; }
+    .review-bar strong { font-weight: 800; }
+    .review-bar button {
+      font-family: inherit; font-size: 0.86rem; font-weight: 700; color: var(--navy); background: #fff;
+      border: 1.5px solid rgba(15,19,56,0.25); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer;
+      transition: background-color 0.18s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
+    }
+    .review-bar button:hover { background: #fffaf0; transform: translateY(-1px); }
+    .review-bar button:active { transform: translateY(0) scale(0.985); }
+    .review-bar button:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+    /* Change markup: red = new or changed, red strikethrough = removed. */
+    .chg { color: var(--chg); }
+    del.chg { text-decoration: line-through; text-decoration-thickness: 1.5px; opacity: 0.8; }
+    .chg-note { color: var(--chg); font-style: italic; font-size: 0.95rem; }
+    body.hide-chg .chg { color: inherit; }
+    body.hide-chg del.chg, body.hide-chg .chg-note { display: none; }
+
+    /* ---------------- LEGAL BODY ---------------- */
+    .legal-sec { padding: 28px 20px var(--s6); background: #fff; }
+    @media (min-width: 700px) { .legal-sec { padding: 40px 24px var(--s7); } }
+    .legal { max-width: 760px; margin: 0 auto; }
+    .legal h2 { font-size: 1.45rem; line-height: 1.2; color: var(--navy); margin: 40px 0 10px; scroll-margin-top: 90px; }
+    .legal h2:first-of-type { margin-top: 28px; }
+    .legal h3 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0; color: var(--navy); margin: 22px 0 6px; }
+    .legal p, .legal li, .legal dd { overflow-wrap: anywhere; }
+    .legal a { word-break: break-word; }
+    .legal p { margin: 0 0 14px; color: var(--ink-soft); font-size: 1rem; line-height: 1.7; }
+    .legal ul, .legal ol { margin: 0 0 14px; padding-left: 22px; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+    .legal ul { list-style: disc; }
+    .legal ol { list-style: decimal; }
+    .legal ol[type="a"] { list-style: lower-alpha; }
+    .toc ol { list-style: decimal; }
+    .legal li { margin-bottom: 7px; }
+    .legal li::marker { color: var(--ink-mute); }
+    .legal dl { margin: 0 0 14px; }
+    .legal dt { font-weight: 700; color: var(--navy); font-size: 1rem; }
+    .legal dd { margin: 0 0 10px; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+    .legal .caps { text-transform: none; }
+    .legal .h-rule { height: 2px; width: 44px; background: var(--lav); border-radius: 2px; margin: 0 0 16px; }
+
+    .toc {
+      background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav);
+      border-radius: 16px; padding: 18px 20px 10px; margin: 0 0 8px; box-shadow: var(--sh-base);
+    }
+    .toc-title { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: #5f6cbb; margin: 0 0 8px; }
+    .toc ol { padding-left: 20px; margin: 0; font-size: 0.95rem; }
+    .toc li { margin-bottom: 4px; break-inside: avoid; }
+    .toc a { font-weight: 600; text-decoration-color: rgba(11,94,215,0.25); }
+    @media (min-width: 620px) { .toc ol { columns: 2; column-gap: 28px; } }
+
+    .callout {
+      background: var(--paper-2); border: 1px solid rgba(157,170,242,0.35); border-left: 4px solid var(--lav);
+      border-radius: 12px; padding: 12px 14px; margin: 0 0 16px; color: var(--ink-mute); font-size: 0.95rem; line-height: 1.6;
+    }
+    .callout p { margin: 0; color: inherit; font-size: inherit; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.95rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 0.95rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    nav button:active { opacity: 0.65; }
+
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════
+       Copied from dallas-apartments-new.html. Legal pages are not nav items,
+       so nothing carries aria-current here.
+       ═══════════════════════════════════════════════════════════════════ -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="dallas-apartments-new.html#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden min-[1100px]:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="dallas-apartments-new.html#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="dallas-apartments-new.html#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ REVIEW BAR — delete this block, every class="chg", every <del class="chg">
+       and every .chg-note before publishing. It exists only so John can compare. ══════════ -->
+  <div class="review-bar" id="reviewBar">
+    <div class="review-bar-inner">
+      <p><strong>Review copy.</strong> Red text is new or changed versus the live apartmentagents.com/terms-of-use page. Red strikethrough is text that comes out. Bracketed red notes explain removed sections. Delete this bar and the red markup before publishing.</p>
+      <button type="button" onclick="toggleChg()" id="chgBtn">Preview without markup</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">Legal</p>
+      <h1>Terms of Use</h1>
+      <p class="hero-sub">Last updated: <span class="chg">September 29, 2026</span> <del class="chg">June 07, 2022</del></p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 2 · BODY ══════════════════════════ -->
+  <section class="legal-sec">
+    <div class="legal">
+
+      <p>Please read these Terms of Use carefully before using Our Service.</p>
+
+      <div class="toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol>
+          <li><a href="#definitions">Interpretation and Definitions</a></li>
+          <li><a href="#acknowledgment">Acknowledgment</a></li>
+          <li><a href="#services">Our Services and How We Are Paid</a></li>
+          <li><a href="#pricing">Pricing, Availability and Property Information</a></li>
+          <li><a href="#materials">Use of Information and Materials on our Site</a></li>
+          <li><a href="#communications">Notice and Electronic Communications</a></li>
+          <li><a href="#sms">SMS / Text Messaging Program Terms</a></li>
+          <li><a href="#vendors">Third-Party Vendors and Tenant Services</a></li>
+          <li><a href="#promotions">Promotions and Rewards</a></li>
+          <li><a href="#fair-housing">Fair Housing and Equal Opportunity</a></li>
+          <li><a href="#ip">Intellectual Property</a></li>
+          <li><a href="#feedback">Your Feedback and Reviews</a></li>
+          <li><a href="#accuracy">Accuracy of Information You Provide</a></li>
+          <li><a href="#links">Links to Other Websites</a></li>
+          <li><a href="#termination">Termination</a></li>
+          <li><a href="#liability">Limitation of Liability</a></li>
+          <li><a href="#as-is">"AS IS" and "AS AVAILABLE" Disclaimer</a></li>
+          <li><a href="#indemnification">Indemnification</a></li>
+          <li><a href="#law">Jurisdiction and Governing Law</a></li>
+          <li><a href="#disputes">Disputes Resolution</a></li>
+          <li><a href="#international">International Law and U.S. Legal Compliance</a></li>
+          <li><a href="#severability">Severability, Waiver and Translation</a></li>
+          <li><a href="#accessibility">Website Accessibility</a></li>
+          <li><a href="#trec">Required TREC Notices</a></li>
+          <li><a href="#changes">Changes to These Terms</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ol>
+      </div>
+
+      <!-- ─────────── 1 ─────────── -->
+      <h2 id="definitions">1. Interpretation and Definitions</h2>
+      <h3>Interpretation</h3>
+      <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+      <h3>Definitions</h3>
+      <p>For the purposes of these Terms<span class="chg"> of Use</span><del class="chg"> and Conditions</del>:</p>
+      <dl>
+        <dt>Affiliate</dt>
+        <dd>means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</dd>
+        <dt class="chg">Agent</dt>
+        <dd class="chg">means a real estate agent or broker licensed by the Texas Real Estate Commission who is sponsored by, or independently contracted with, the Company to provide apartment locating services.</dd>
+        <dt>Country</dt>
+        <dd>refers to: Texas, United States</dd>
+        <dt>Company</dt>
+        <dd>(referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to JLC Real Estate, Inc DBA Apartment Agents, 2626 COLE AVE STE 370 DALLAS, TX 75204<span class="chg">, a real estate brokerage licensed by the Texas Real Estate Commission (TREC Broker #505184)</span>.</dd>
+        <dt>Device</dt>
+        <dd>means any device that can access the Service such as a computer, a cellphone or a digital tablet.</dd>
+        <dt>Feedback</dt>
+        <dd>means feedback, innovations or suggestions sent by You regarding the attributes, performance or features of our Service.</dd>
+        <dt>Promotions</dt>
+        <dd>refer to contests, sweepstakes<span class="chg">, cash-back rewards, rebates</span> or other promotions offered through the Service.</dd>
+        <dt>Service</dt>
+        <dd>refers to the Website and information offered to tenants and prospective tenants regarding various rental properties and amenities, as well as certain events, policies, and financial, logistical and operational matters<span class="chg">, together with the apartment locating services provided by Our Agents</span>.</dd>
+        <dt>Properties</dt>
+        <dd>refer to third-party independently owned and operated rental communities.</dd>
+        <dt class="chg">Reward Terms</dt>
+        <dd class="chg">means the separate terms that govern any cash-back reward or rebate We offer, published at <a href="https://apartmentagents.com/rebate-terms/">apartmentagents.com/rebate-terms</a>, which are incorporated into these Terms by reference.</dd>
+        <dt>Terms<span class="chg"> of Use</span><del class="chg"> and Conditions</del></dt>
+        <dd>(also referred as "Terms"<span class="chg"> or "Terms and Conditions"</span>) mean these Terms<span class="chg"> of Use</span><del class="chg"> and Conditions</del> that form the entire agreement between You and the Company regarding the use of the Service.</dd>
+        <dt>Third-party Social Media Service</dt>
+        <dd>means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</dd>
+        <dt>Website</dt>
+        <dd>refers to Apartment Agents, accessible from www.apartmentagents.com</dd>
+        <dt>You</dt>
+        <dd>means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</dd>
+      </dl>
+
+      <!-- ─────────── 2 ─────────── -->
+      <h2 id="acknowledgment">2. Acknowledgment</h2>
+      <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
+      <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users, and others who access or use the Service.</p>
+      <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
+      <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
+      <p>Your access to and use of the Service is also conditioned on Your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your personal information when You use the Application or the Website and tells You about Your privacy rights and how the law protects You. Please read Our Privacy Policy carefully before using Our Service.</p>
+      <p class="chg">These Terms incorporate by reference Our <a href="privacy-policy.html">Privacy Policy</a>, Our <a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a>, Our <a href="https://apartmentagents.com/fair-housing/">Fair Housing statement</a>, Our <a href="accessibility-statement.html">Website Accessibility Statement</a>, and the Texas Real Estate Commission notices listed in Section 24.</p>
+
+      <!-- ─────────── 3 ─────────── -->
+      <h2 id="services">3. Our Services and How We Are Paid</h2>
+      <p class="chg-note">[Renamed from "Intended Use". The existing paragraphs are kept; the paragraphs in red are new and disclose the referral-fee model the way UMoveFree does.]</p>
+      <p>This Website provides information about apartment finding services and uses the information that you provide to put you in contact with our licensed real estate agents and/or brokers and potential apartment communities. Your submission of information does not automatically create a brokerage relationship with Us or any particular broker/agent. Our independently contracted agents and/or brokers are governed by the rules and regulations of the Texas Real Estate Commission.</p>
+      <p class="chg">Our apartment locating service is free to You. Participating Properties pay the Company a referral fee when a client We referred signs a lease and lists Apartment Agents and the Agent's name as the referral source on the Property's guest card and rental application. Any cash-back reward We offer is funded from that fee and is governed by Our Reward Terms. Referral fees vary by Property and can change without notice. Not every Property pays a referral fee, and We may recommend Properties that do not.</p>
+      <p>You understand the use of Apartment Agents Website and Services by you does not create a landlord-tenant relationship, nor does it constitute an offer to lease any Property. All leasing decisions are between you and each Property, completely exclusive of us.</p>
+      <p>You understand that any statements by Company and/or employees, agents and/or brokers, and affiliates are provided for informational purposes only. We do not accept any liability whatsoever for any harm that might result from any statements presented on the Website, including any descriptions of Services, Properties, or any third-party services or products posted on or offered through our Site.</p>
+      <p class="chg">We do not guarantee that any Property will approve Your application, offer a particular unit, rent, special, or lease term, or hold a unit for You. Screening, approval, pricing and leasing decisions are made solely by each Property under its own criteria.</p>
+
+      <!-- ─────────── 4 ─────────── -->
+      <h2 id="pricing">4. <span class="chg">Pricing, Availability and Property Information</span></h2>
+      <p class="chg">Rents, specials, fees, floor plans, availability, photos and other Property information shown on the Website or sent to You by an Agent come from a combination of sources: information supplied to Us directly by the Properties, licensed third-party data providers, and information We research and compile from publicly available sources, including Property websites and publicly advertised materials. This information changes frequently, often daily. We make reasonable efforts to keep it current, but We do not warrant its accuracy or completeness, and any reliance You place on it is at Your own risk. We do not claim ownership of publicly available information or of any Property's name, photographs, or marketing materials, which remain the property of their respective owners.</p>
+      <p class="chg">Unless stated otherwise, quoted rents are base rents and may not include mandatory fees, utilities, deposits, parking, pet charges, or other amounts the Property will disclose. Specials and concessions are set by the Property, may require a specific lease term or move-in date, and may end without notice. Only the Property can confirm the final price, availability and lease terms of a specific unit. We reserve the right to correct errors at any time without notice.</p>
+
+      <!-- ─────────── 5 ─────────── -->
+      <h2 id="materials">5. Use of Information and Materials on our Site</h2>
+      <p>The information contained on our Website is subject to change without notice. While We make every effort to ensure that the information on our Website is accurate, we make no representations or warranties as to the accuracy or reliability of any information provided. The Website is intended for personal and non-commercial use only. The Content provided on this Website is to be used for informational purposes only.</p>
+      <p>Apartment Agents grants you a limited, non-exclusive, non-transferable, non-sublicenseable license to view, use, and print individual pages of the Website for your personal, non-commercial use. Unless otherwise noted, the design of and all materials on this Website, including, but not limited to, text, slogans, graphics, images, icons, photographs, videos, and other materials, and the copyrights, trademarks, service marks, and other intellectual property are owned, controlled or licensed by Apartment Agents or other providers of such material. You may not reproduce (except as noted above), publish, transmit, distribute, display, modify, create derivative works of, sell or exploit the content in any way.</p>
+      <p>Any unauthorized use of our Website and systems including, but not limited to, unauthorized entry into our system, misuse of passwords, or misuse of any information posted on our Website, is strictly prohibited. This license does not include and strictly prohibits any resale or export of the Website or its content; or any use of data mining, robots, or similar data gathering and extraction tools.</p>
+      <p>All rights not expressly granted to you in these Terms of Service are reserved and retained by Apartment Agents and its licensors, suppliers, and content providers. Apartment Agents reserves the right to terminate this license and your access to the Website in the event you fail to comply with any of these Terms of Service or our Privacy Policy and reserves the right to pursue all legal remedies for any unauthorized use and commercial exploitation of our Websites content.</p>
+      <h3 class="chg">Prohibited uses</h3>
+      <p class="chg">In addition, You agree not to use the Website or the Service:</p>
+      <ol class="chg" type="a">
+        <li>for any unlawful purpose, or to solicit others to perform or participate in any unlawful act;</li>
+        <li>to violate any federal, state or local law or regulation, including fair housing laws;</li>
+        <li>to infringe the intellectual property rights of the Company or of others;</li>
+        <li>to harass, abuse, insult, harm, defame, intimidate or discriminate against anyone;</li>
+        <li>to submit false or misleading information, including on any lead form, in communications with an Agent, or in a reward claim;</li>
+        <li>to upload or transmit viruses or any other malicious code;</li>
+        <li>to collect or track the personal information of others;</li>
+        <li>to spam, phish, spider, crawl or scrape the Website or its content, or to use any automated means to access it;</li>
+        <li>to probe, scan or test the vulnerability of the Website, or to breach or circumvent its security or authentication measures; or</li>
+        <li>to interfere with the proper working of the Website or anyone else's use of it.</li>
+      </ol>
+      <p class="chg">We may terminate Your use of the Service for violating any of these prohibitions and may cooperate with law enforcement in investigating violations.</p>
+
+      <!-- ─────────── 6 ─────────── -->
+      <h2 id="communications">6. Notice and Electronic Communications</h2>
+      <p>When you visit this Website or send e-mails, text messages, and other communications from your desktop or mobile device to us, you are communicating with us electronically. You consent to receive <span class="chg">email and on-site</span> communications from Us and our independently contracted <span class="chg">licensed</span> real estate agents and/or brokers<del class="chg">, affiliates, service providers, and properties</del> <span class="chg">regarding your apartment search</span> electronically. <span class="chg">By submitting your contact information, you also agree that We and Your assigned Agent may contact you by telephone and email about your apartment search, whether or not you opt in to text messages.</span> <del class="chg">We will communicate with you in a variety of ways, such as by e-mail, text, Third-party Social Media Services, and by posting information on our Website.</del> You agree that all agreements, notices, disclosures, and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.</p>
+      <p class="chg">Text messages (SMS) are sent only to users who have opted in as described in Section 7, SMS / Text Messaging Program Terms.</p>
+      <p>You may opt out of <span class="chg">email</span><del class="chg">electronic and future</del> communications from Us, including special offers, or request the removal of your information from our database, by <span class="chg">using the unsubscribe link in any email or by</span> sending an email to: legal@apartmentagents.com. <span class="chg">To stop text messages, reply STOP to any message or text STOP to (972) 919-0155.</span></p>
+
+      <!-- ─────────── 7 ─────────── -->
+      <h2 id="sms">7. <span class="chg">SMS / Text Messaging Program Terms</span></h2>
+      <p class="chg-note">[New section. Required for A2P 10DLC campaign approval. The phone number is the current GHL number; confirm it after the port.]</p>
+      <ol class="chg">
+        <li><strong>Program name.</strong> Apartment Agents Apartment Search Notifications &amp; Marketing Alerts, operated by JLC Real Estate, Inc. DBA Apartment Agents ("Apartment Agents").</li>
+        <li><strong>Description of messages.</strong> If you opt in to service notifications, you may receive text messages from Apartment Agents and your assigned licensed Agent about your apartment search, including links to your personalized apartment list, tour scheduling confirmations and reminders, replies to your questions, property follow-ups, and lease-related updates. If you separately opt in to marketing messages, you may also receive recurring automated marketing messages such as apartment specials, new listings, promotions, and special offers. Messages may come from Our main business number or from the individual business line of Your assigned Agent. All of these numbers are operated by the Company through the same messaging platform and are part of this program.</li>
+        <li><strong>Consent.</strong> Consent to receive text messages is collected only through an unchecked checkbox on our website forms or by texting START to (972) 919-0155. Consent is not a condition of purchasing any goods or services or of receiving apartment locating services. Message frequency varies.</li>
+        <li><strong>Opt-out instructions.</strong> You can cancel the SMS service at any time by texting STOP to (972) 919-0155 or replying STOP to any message we send, from any of Our numbers. Replying STOP stops text messages from all of Our numbers, including Your Agent's line. After you send STOP, we will send one message confirming that you have been unsubscribed, and you will no longer receive text messages from us. You may also opt out by emailing legal@apartmentagents.com.</li>
+        <li><strong>Rejoining instructions.</strong> If you want to receive messages again, submit a form on our website as you did the first time, or text START or UNSTOP to (972) 919-0155, and we will resume sending messages to you.</li>
+        <li><strong>Help instructions.</strong> If you are experiencing issues with the messaging program, reply HELP to any message or text HELP to (972) 919-0155. You can also reach us at legal@apartmentagents.com or (972) 993-7300.</li>
+        <li><strong>Carrier liability.</strong> Carriers are not liable for delayed or undelivered messages.</li>
+        <li><strong>Message and data rates.</strong> Message and data rates may apply for any messages sent to you from us and to us from you. Message frequency varies. If you have questions about your text plan or data plan, contact your wireless provider.</li>
+        <li><strong>Privacy.</strong> Your mobile number and your SMS consent are handled as described in our <a href="privacy-policy.html">Privacy Policy</a>. We do not share your mobile information with third parties or affiliates for their marketing or promotional purposes.</li>
+        <li><strong>Compliance.</strong> Our text messaging program is operated in accordance with the Telephone Consumer Protection Act (TCPA), the CTIA Messaging Principles and Best Practices, and applicable carrier requirements. We send messages only to persons who have opted in, and we honor opt-out requests promptly.</li>
+      </ol>
+
+      <!-- ─────────── 8 ─────────── -->
+      <h2 id="vendors">8. <span class="chg">Third-Party Vendors and Tenant Services</span></h2>
+      <p class="chg-note">[New section, modeled on Smart City's "Third Party Links/Services". Covers the mover-quotes page and any future utility, insurance or furniture referrals.]</p>
+      <p class="chg">For Your convenience, We may refer You to, or provide links or quote forms for, independent third-party vendors ("Vendors") that offer services related to Your move, such as moving companies, utility connection, renters insurance, and furniture rental (collectively, "Tenant Services"). Vendors are independent businesses, not partners, affiliates or agents of the Company, even where a Vendor's service is presented alongside Our name or branding.</p>
+      <p class="chg">When You request a quote or service from a Vendor through the Website, We pass the information You submitted for that purpose to the Vendor so it can respond to You. Your use of a Tenant Service is governed by the Vendor's own terms and privacy policy, not these Terms. We may receive a referral fee from a Vendor. We are not responsible for any Vendor's services, pricing, conduct or content, and We make no warranty about them.</p>
+
+      <!-- ─────────── 9 ─────────── -->
+      <h2 id="promotions">9. Promotions<span class="chg"> and Rewards</span></h2>
+      <p>Any Promotions made available through the Service may be governed by rules that are separate from these Terms.</p>
+      <p>If You participate in any Promotions, please review the applicable rules as well as our Privacy policy. If the rules for a Promotion conflict with these Terms, the Promotion rules will apply.</p>
+      <p class="chg">Cash-back rewards and rebates are Promotions governed by Our <a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a>. Any rebate offer is subject to the Property's (principal's) consent and to the eligibility restrictions in the Reward Terms, including the requirement that You list Apartment Agents and Your Agent as the referral source when You visit and apply. If a Property does not pay Our referral fee for any reason, no reward is owed. We allow one reward per lease.</p>
+
+      <!-- ─────────── 10 ─────────── -->
+      <h2 id="fair-housing">10. <span class="chg">Fair Housing and Equal Opportunity</span></h2>
+      <p class="chg-note">[New section, from Smart City's legal page. Note: their HUD number contains a typo; the number below is HUD's correct line.]</p>
+      <p class="chg">All real estate and rental housing advertised or referred through the Service is subject to the federal Fair Housing Act, which makes it illegal to advertise any preference, limitation, or discrimination based on race, color, religion, sex, handicap, familial status, or national origin, or an intention to make any such preference, limitation, or discrimination. The Company and its Agents support equal housing opportunity and comply with the Fair Housing Act and applicable Texas law. All persons are hereby informed that all dwellings referred through the Service are available on an equal opportunity basis.</p>
+      <p class="chg">Property information on the Website may be supplied by third parties. If You suspect discrimination by a Property or a third-party site, please tell us immediately at legal@apartmentagents.com. Complaints alleging housing discrimination may also be filed with the U.S. Department of Housing and Urban Development (HUD) at 1-800-669-9777 (voice) or 1-800-877-8339 (TTY), or at <a href="https://www.hud.gov/" target="_blank" rel="noopener">hud.gov</a>. See also Our <a href="https://apartmentagents.com/fair-housing/">Fair Housing statement</a>.</p>
+
+      <!-- ─────────── 11 ─────────── -->
+      <h2 id="ip">11. Intellectual Property</h2>
+      <p>The Service and its original content (excluding Content provided by You or other users), features and functionality are and will remain the exclusive property of the Company and its licensors.</p>
+      <p>The Service is protected by copyright, trademark, and other laws of both the Country and foreign countries.</p>
+      <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of the Company.</p>
+      <h3 class="chg">Copyright infringement notices</h3>
+      <p class="chg">If You believe content on the Website infringes Your copyright, send a notice that meets the requirements of the Digital Millennium Copyright Act (17 U.S.C. &sect; 512) to Apartment Agents, Attn: Copyright Agent, 2626 Cole Ave Ste 370, Dallas, TX 75204, or to legal@apartmentagents.com. Include a description of the copyrighted work, the location of the material on the Website, Your contact information, a statement that You have a good-faith belief the use is not authorized, a statement under penalty of perjury that the notice is accurate and that You are the owner or authorized to act for the owner, and Your physical or electronic signature.</p>
+
+      <!-- ─────────── 12 ─────────── -->
+      <h2 id="feedback">12. Your Feedback<span class="chg"> and Reviews</span></h2>
+      <p>You assign all rights, title and interest in any Feedback You provide the Company. If for any reason such assignment is ineffective, You agree to grant the Company a non-exclusive, perpetual, irrevocable, royalty free, worldwide right and license to use, reproduce, disclose, sub-license, distribute, modify and exploit such Feedback without restriction.</p>
+      <p class="chg">If You submit a review, testimonial or other content to Us, or post one on a third-party review site and give Us permission to display it, You grant the Company a non-exclusive, perpetual, royalty-free license to display it on the Website and in Our marketing, with Your first name and last initial, and You represent that it is truthful and Your own. We may edit a submission for length or decline to display it.</p>
+
+      <!-- ─────────── 13 ─────────── -->
+      <h2 id="accuracy">13. <span class="chg">Accuracy of Information You Provide</span></h2>
+      <p class="chg">You represent and warrant that the information You provide to Us, including on lead forms, in communications with Your Agent, and in any reward claim, is true, accurate and complete, and that You will update it if it changes. Properties rely on this information when processing applications, and We rely on it when preparing Your matches and any reward.</p>
+
+      <!-- ─────────── 14 ─────────── -->
+      <h2 id="links">14. Links to Other Websites</h2>
+      <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by the Company.</p>
+      <p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+      <p>We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites or services that You visit.</p>
+
+      <!-- ─────────── 15 ─────────── -->
+      <h2 id="termination">15. Termination</h2>
+      <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.</p>
+      <p>Upon termination, Your right to use the Service will cease immediately.</p>
+
+      <!-- ─────────── 16 ─────────── -->
+      <h2 id="liability">16. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, in no event shall Company, our Directors, Officers, Employees, Affiliates, Agents and/or Brokers, or service providers suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose. This also includes any damage or harm that you may suffer from residing in any apartment community after utilizing any services we offer on the site, such liability is expressly denied.</p>
+      <p class="chg">Tenant Services and any other services provided by Vendors are provided by those independent Vendors and not by Us, and in no event will We be liable for any Tenant Service or for any act or omission of a Vendor.</p>
+
+      <!-- ─────────── 17 ─────────── -->
+      <h2 id="as-is">17. "AS IS" and "AS AVAILABLE" Disclaimer</h2>
+      <p>The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.</p>
+      <p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
+      <p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
+
+      <!-- ─────────── 18 ─────────── -->
+      <h2 id="indemnification">18. <span class="chg">Indemnification</span></h2>
+      <p class="chg-note">[New section. Both competitors have one; the current page does not.]</p>
+      <p class="chg">You agree to defend, indemnify and hold harmless the Company and its officers, directors, employees, Agents, contractors and licensors from and against any claims, liabilities, damages, losses and expenses, including reasonable attorneys' fees, arising out of or related to Your use of the Service, Your violation of these Terms, or Your violation of any law or of the rights of a third party, including any Property.</p>
+
+      <!-- ─────────── 19 ─────────── -->
+      <h2 id="law">19. Jurisdiction and Governing Law</h2>
+      <p>The Website is controlled and operated by Apartment Agents from its offices in Dallas, Texas. All matters relating to the Website and these Terms of Service and any dispute or claim arising therefrom or related thereto shall be governed by and construed in accordance with applicable federal law and the laws of the state of Texas without regard to any choice or conflict of law provisions or rules. By accessing or using this Website, you and we irrevocably consent to the exclusive jurisdiction and venue of the state or federal courts in the State of Texas and County of Dallas, for all disputes arising out of or relating to the Website, these Terms of Service, and any dispute of any sort that might arise between you and Apartment Agents that are heard in court. You waive any and all objections to the exercise of jurisdiction over you by such court and to the venue of such court.</p>
+
+      <!-- ─────────── 20 ─────────── -->
+      <h2 id="disputes">20. Disputes Resolution</h2>
+      <p>If You have any concerns or disputes about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
+      <p>No Class Actions. TO THE EXTENT ALLOWABLE BY LAW, YOU EXPRESSLY AGREE THAT YOU SHALL NOT, AND YOU HEREBY WAIVE ANY RIGHT TO, PURSUE CLAIMS OR DISPUTES AGAINST APARTMENT AGENTS ON A CLASS-WIDE BASIS (JOIN YOUR CLAIM WITH THE CLAIMS OF ANY OTHER PERSON OR ENTITY) OR ASSERT A CLAIM IN A REPRESENTATIVE CAPACITY IN ANY LAWSUIT, ARBITRATION OR OTHER PROCEEDING. No Trial by Jury. To the extent permitted by law, if a claim proceeds in court, we each also waive any right that we may have to trial by jury in any lawsuit or other proceeding.</p>
+
+      <!-- ─────────── 21 ─────────── -->
+      <h2 id="international">21. International Law and U.S. Legal Compliance</h2>
+      <p>This Website and its content are intended to comply with U.S. laws and regulations. If you are a non-U.S.-based user, be advised that other countries may have laws, regulatory requirements, and product safety requirements that are different than those in the U.S. Apartment Agents makes no representation that materials on this Website are appropriate or available for use outside of the United States.</p>
+      <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
+
+      <!-- ─────────── 22 ─────────── -->
+      <h2 id="severability">22. Severability, Waiver and Translation</h2>
+      <h3>Severability</h3>
+      <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
+      <h3>Waiver</h3>
+      <p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</p>
+      <h3>Translation Interpretation</h3>
+      <p>These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.</p>
+
+      <!-- ─────────── 23 ─────────── -->
+      <h2 id="accessibility">23. <span class="chg">Website Accessibility</span></h2>
+      <p class="chg">We are committed to making the Website usable by people with disabilities and work toward conformance with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. Our <a href="accessibility-statement.html">Website Accessibility Statement</a> describes Our efforts and how to report an accessibility problem.</p>
+
+      <!-- ─────────── 24 ─────────── -->
+      <h2 id="trec">24. <span class="chg">Required TREC Notices</span></h2>
+      <p class="chg-note">[New section, from Smart City. The live footer links both TREC notices to the same Consumer Protection PDF; the IABS link below is the correct form.]</p>
+      <p class="chg">The Company is a real estate brokerage licensed by the Texas Real Estate Commission (TREC Broker #505184). The following notices are required by TREC and are incorporated into these Terms by reference:</p>
+      <ul class="chg">
+        <li><a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/IABS%201-0_1.pdf" target="_blank" rel="noopener">Texas Real Estate Commission Information About Brokerage Services</a></li>
+        <li><a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener">Texas Real Estate Commission Consumer Protection Notice</a></li>
+      </ul>
+
+      <!-- ─────────── 25 ─────────── -->
+      <h2 id="changes">25. Changes to These Terms<del class="chg"> and Conditions</del></h2>
+      <p>Apartment Agents may terminate, change, suspend or discontinue any aspect of this Website, including the availability of any features of this Website, at any time and without notice. We reserve the right, at Our sole discretion, to modify or replace these Terms at any time and without notice. If a revision is material We will make reasonable efforts to provide notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
+      <p>By continuing to access this Website or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service.</p>
+
+      <!-- ─────────── 26 ─────────── -->
+      <h2 id="contact">26. Contact Us</h2>
+      <p>If you have any questions about these Terms<del class="chg"> and Conditions</del>, You can contact us:</p>
+      <p>Apartment Agents<br>Attn: Legal<br>
+        <span class="chg">2626 Cole Ave Ste 370<br>Dallas, TX 75204</span><br>
+        <del class="chg">5605 FM 423 STE 500 PMB #297, FRISCO TX 75036-8976</del><br>
+        Email: <a href="mailto:legal@apartmentagents.com">legal@apartmentagents.com</a><br>
+        <span class="chg">Phone: <a href="tel:+19729937300">(972) 993-7300</a></span></p>
+      <p class="chg-note">[The live page lists the Cole Ave address in the definitions and the Frisco PMB in Contact Us. One address must be used throughout, and for A2P it must match the IRS letter. Cole Ave is used here because it is the address on every new-site footer.]</p>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER (system) ══════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="dallas-apartments-new.html#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="terms-of-use.html">Terms of Use</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+        <a href="accessibility-statement.html">Accessibility</a>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size:0.92rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/IABS%201-0_1.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
+      menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+    }
+    /* Review-only: flips the red change markup off so the page can be seen as it will publish. */
+    function toggleChg() {
+      var on = document.body.classList.toggle('hide-chg');
+      document.getElementById('chgBtn').textContent = on ? 'Show changes in red' : 'Preview without markup';
+    }
+  </script>
+</body>
+</html>

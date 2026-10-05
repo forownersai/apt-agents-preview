@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
+
+/* ============================================================
+   Apartment Agents survey theme — matches the new-site system
+   (tokens from dallas-apartments-new.html). Pasted into the
+   survey's Custom CSS. Everything is scoped to #_builder-form
+   or .ghl-footer so nothing leaks.
+   ============================================================ */
+
+/* ---------- card ---------- */
+#_builder-form,
+.ghl-form-wrap { font-family: 'DM Sans', system-ui, -apple-system, sans-serif !important; color: #0F1338 !important; }
+.ghl-form-wrap { margin-bottom: 0 !important; }
+#_builder-form { padding: 26px 22px 22px !important; background: #ffffff !important; border: none !important; border-radius: 16px 16px 0 0 !important; }
+@media (max-width: 600px) { #_builder-form { padding: 16px 10px 12px !important; } }
+#_builder-form .ghl-question-set { margin-top: 0 !important; }
+#_builder-form .form-field-wrapper { margin-bottom: 14px !important; }
+
+/* ---------- question title + description ---------- */
+#_builder-form h1, #_builder-form h2, #_builder-form h3,
+#_builder-form h1 *, #_builder-form h2 *, #_builder-form h3 * {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  color: #0F1338 !important; font-weight: 400 !important;
+  letter-spacing: -0.02em !important; line-height: 1.12 !important;
+}
+#_builder-form h2, #_builder-form h2 * { font-size: clamp(1.55rem, 4.6vw, 2.05rem) !important; }
+#_builder-form h1, #_builder-form h1 * { font-size: clamp(1.7rem, 5vw, 2.3rem) !important; }
+#_builder-form h2 { margin: 0 0 8px !important; }
+#_builder-form .item-description p,
+#_builder-form .item-description p * {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 1rem !important; line-height: 1.6 !important; color: #4A4A6A !important;
+}
+#_builder-form .item-description p { margin: 0 0 14px !important; }
+#_builder-form .item-description p:empty { display: none !important; }
+
+/* ---------- choice pills (radio bubbles) ---------- */
+#_builder-form .option-radio-bubble { margin-bottom: 10px !important; width: 100% !important; }
+#_builder-form .standard-radio-container { margin-bottom: 0 !important; }
+#_builder-form .bubble-label {
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  display: grid !important; grid-template-columns: auto 1fr !important; align-items: center !important; column-gap: 12px !important;
+  min-height: 52px !important; padding: 13px 16px !important;
+  background: #fbfbff !important; border: 1.5px solid rgba(15,19,56,0.16) !important; border-radius: 14px !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important; font-size: 1rem !important; font-weight: 600 !important; color: #0F1338 !important;
+  line-height: 1.4 !important; cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+#_builder-form .bubble-label:hover { border-color: rgba(15,19,56,0.32) !important; background: #ffffff !important; }
+#_builder-form .bubble-label:active { background: #f3f4ff !important; }
+#_builder-form .bubble-radio:checked + .bubble-label,
+#_builder-form .bubble-label:has(input:checked) {
+  border-color: #9DAAF2 !important; background: #ffffff !important; color: #0F1338 !important;
+  box-shadow: 0 0 0 3px rgba(157,170,242,0.22) !important;
+}
+#_builder-form .bubble-label:has(input:focus-visible) { outline: 3px solid #9DAAF2 !important; outline-offset: 2px !important; }
+#_builder-form .bubble-radio,
+#_builder-form .standard-radio-container input[type=radio] {
+  width: 20px !important; height: 20px !important; margin: 0 !important; transform: none !important;
+  accent-color: #0d6efd !important; flex-shrink: 0 !important; background: transparent !important; cursor: pointer;
+}
+
+/* ---------- text / number / date / phone inputs ---------- */
+#_builder-form .form-builder--item input[type=text][class=form-control],
+#_builder-form .form-builder--item input[type=number],
+#_builder-form .form-builder--item .date-picker-custom-style,
+#_builder-form input[type=tel], #_builder-form input[type=email],
+#_builder-form textarea, #_builder-form .form-control {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 16px !important; font-weight: 500 !important; color: #0F1338 !important;
+  min-height: 52px !important; padding: 13px 16px !important;
+  background: #fbfbff !important; border: 1.5px solid rgba(15,19,56,0.16) !important; border-radius: 14px !important;
+  box-shadow: none !important; line-height: 1.4 !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease !important;
+}
+#_builder-form textarea { min-height: 120px !important; }
+#_builder-form input:hover, #_builder-form textarea:hover { border-color: rgba(15,19,56,0.3) !important; }
+#_builder-form input:focus, #_builder-form textarea:focus {
+  outline: none !important; border-color: #9DAAF2 !important; background: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(157,170,242,0.28) !important;
+}
+#_builder-form input::placeholder, #_builder-form textarea::placeholder { color: #8b8fae !important; font-weight: 400 !important; opacity: 1 !important; }
+#_builder-form .iti__flag-container, #_builder-form .iti__selected-flag { border-radius: 14px 0 0 14px !important; }
+
+/* field labels + the "Phone (optional)" style heading blocks */
+#_builder-form label.item-description,
+#_builder-form .heading-element .text-element p,
+#_builder-form .heading-element .text-element p * {
+  font-family: 'DM Sans', system-ui, sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important;
+  color: #0F1338 !important; line-height: 1.4 !important;
+}
+#_builder-form .heading-element .text-element p { margin: 0 0 6px !important; }
+#_builder-form .heading-element .text-element h2 { margin-bottom: 8px !important; }
+
+/* ---------- consent checkboxes (T & C) ---------- */
+#_builder-form .terms-and-conditions { gap: 12px !important; }
+#_builder-form .checkbox-container {
+  align-items: flex-start !important; gap: 12px !important; column-gap: 12px !important;
+  padding: 14px !important; background: #fbfbff !important;
+  border: 1.5px solid rgba(15,19,56,0.16) !important; border-radius: 14px !important;
+  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+#_builder-form .checkbox-container:hover { border-color: rgba(15,19,56,0.32) !important; background: #ffffff !important; }
+#_builder-form .checkbox-container:has(input:checked) { border-color: #9DAAF2 !important; background: #ffffff !important; box-shadow: 0 0 0 3px rgba(157,170,242,0.22) !important; }
+#_builder-form .checkbox-container:has(input:focus-visible) { outline: 3px solid #9DAAF2 !important; outline-offset: 2px !important; }
+#_builder-form .checkbox-container input[type=checkbox] { width: 22px !important; height: 22px !important; margin: 2px 0 0 !important; accent-color: #0d6efd !important; flex-shrink: 0 !important; cursor: pointer; }
+#_builder-form .checkbox-container label { margin-left: 0 !important; width: 100% !important; cursor: pointer; }
+#_builder-form .terms-text-container p,
+#_builder-form .terms-text-container p * {
+  font-family: 'DM Sans', system-ui, sans-serif !important; font-size: 0.93rem !important; font-weight: 500 !important;
+  line-height: 1.55 !important; color: #4A4A6A !important;
+}
+#_builder-form .terms-text-container strong { color: #0F1338 !important; font-weight: 700 !important; }
+#_builder-form .terms-text-container a { color: #0b5ed7 !important; font-weight: 600 !important; text-decoration: underline !important; text-underline-offset: 2px; }
+
+/* ---------- footer: quiet PREV, blue pill NEXT / SUBMIT ---------- */
+.ghl-footer, .ghl-footer.ghl-footer-preview {
+  position: static !important; background: transparent !important; box-shadow: none !important;
+  height: auto !important; padding: 2px 22px 6px !important; margin: 0 !important; border-radius: 0 0 16px 16px !important;
+}
+@media (max-width: 600px) { .ghl-footer, .ghl-footer.ghl-footer-preview { padding: 2px 10px 6px !important; } }
+.ghl-footer .ghl-footer-buttons {
+  position: static !important; display: flex !important; align-items: center !important; justify-content: space-between !important;
+  gap: 12px !important; height: auto !important; line-height: 1.2 !important; color: #5A5A7A !important;
+}
+.ghl-footer .ghl-btn-placeholder { visibility: hidden !important; min-width: 0 !important; padding: 0 !important; }
+.ghl-footer .ghl-btn, .ghl-footer .ghl-submit-btn {
+  height: auto !important; min-height: 48px !important; min-width: 0 !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important; font-size: 1rem !important; font-weight: 800 !important;
+  border-radius: 999px !important; transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease !important;
+}
+/* PREV: quiet text button */
+.ghl-footer .ghl-btn:not(.ghl-footer-next):not(.ghl-submit-btn) {
+  background: transparent !important; color: #5A5A7A !important; padding: 12px 16px 12px 10px !important; font-weight: 700 !important; opacity: 1 !important;
+}
+.ghl-footer .ghl-btn:not(.ghl-footer-next):not(.ghl-submit-btn):hover { color: #0F1338 !important; background: rgba(15,19,56,0.05) !important; }
+.ghl-footer .ghl-btn:not(.ghl-footer-next):not(.ghl-submit-btn) svg { stroke: currentColor !important; color: inherit !important; }
+/* NEXT / SUBMIT: the site's primary pill */
+.ghl-footer .ghl-footer-next, .ghl-footer .ghl-submit-btn {
+  background: #0d6efd !important; color: #ffffff !important; padding: 12px 24px 12px 28px !important; margin-left: auto !important;
+  box-shadow: 0 4px 16px rgba(13,110,253,0.25) !important; letter-spacing: 0.01em;
+}
+.ghl-footer .ghl-footer-next:hover, .ghl-footer .ghl-submit-btn:hover { background: #0b5ed7 !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,110,253,0.4) !important; }
+.ghl-footer .ghl-footer-next:active, .ghl-footer .ghl-submit-btn:active { transform: translateY(0) scale(0.985); }
+.ghl-footer .ghl-footer-next span, .ghl-footer .ghl-submit-btn span { color: #ffffff !important; }
+.ghl-footer .ghl-footer-next svg { stroke: #ffffff !important; color: #ffffff !important; margin-left: 6px !important; }
+/* on phones the widget drops the NEXT / SUBMIT word from the DOM; put it back */
+.ghl-footer .ghl-footer-next span, .ghl-footer .ghl-submit-btn span { display: inline !important; }
+.ghl-footer .ghl-footer-next:not(:has(span))::before { content: 'NEXT'; color: #fff; }
+/* SUBMIT keeps its word as a bare text node at every width, so it gets no ::before */
+.ghl-footer .ghl-footer-next:not(:has(span)) svg { margin-left: 8px !important; }
+/* step counter ("3 of 27") that sits in the footer on phones */
+.ghl-footer .ghl-footer-buttons > *:not(.ghl-footer-next):not(.ghl-submit-btn):not(.ghl-btn-placeholder),
+.ghl-footer .ghl-footer-buttons > *:not(.ghl-footer-next):not(.ghl-submit-btn):not(.ghl-btn-placeholder) * { color: #5A5A7A !important; font-family: 'DM Sans', system-ui, sans-serif !important; font-size: 0.9rem !important; font-weight: 600 !important; }
+.ghl-footer .ghl-footer-next *, .ghl-footer .ghl-submit-btn * { color: #ffffff !important; }
+
+/* ---------- progress bar ---------- */
+.survey-progress-bar-header, .survey-progress-bar-mobile, .mobile-progress-bar-overlay { background: rgba(157,170,242,0.25) !important; border-radius: 999px !important; height: 6px !important; }
+.survey-progress-fill-mobile, .mobile-progress-fill { background: #9DAAF2 !important; border-radius: 999px !important; }
+
+/* ---------- validation ---------- */
+#_builder-form .text-danger, #_builder-form .error-message, #_builder-form .invalid-feedback { font-family: 'DM Sans', system-ui, sans-serif !important; color: #B33F38 !important; font-weight: 600 !important; font-size: 0.9rem !important; }
+#_builder-form .is-invalid, #_builder-form input.error { border-color: #F5736C !important; background: #fff7f7 !important; }
+
+/* exit-slide buttons rendered from HTML blocks ("View Resources" etc.) */
+#_builder-form .text-element a.btn, #_builder-form .text-element a[class*="button"] { display: inline-block; background: #0d6efd !important; color: #fff !important; font-weight: 800 !important; border-radius: 999px !important; padding: 13px 24px !important; text-decoration: none !important; }
+
+/* ---------- date picker: room to open inside the iframe + site styling ---------- */
+/* the embed iframe is sized to the slide, so a slide with a date field reserves space for the calendar
+   and the calendar always opens downward (upward would be cut off at the top of the iframe) */
+#_builder-form .ghl-page-current:has(.vdpComponent) { padding-bottom: 380px !important; }
+#_builder-form .vdpOuterWrap.vdpFloating { top: calc(100% + 6px) !important; bottom: auto !important; }
+#_builder-form .vdpOuterWrap.vdpPositionTop .vdpInnerWrap { margin: 0 !important; }
+#_builder-form .vdpInnerWrap {
+  font-family: 'DM Sans', system-ui, sans-serif !important; color: #0F1338 !important;
+  border: 1px solid rgba(157,170,242,0.6) !important; border-radius: 16px !important;
+  box-shadow: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12) !important;
+  padding: 12px !important;
+}
+#_builder-form .vdpHeader { background: transparent !important; font-weight: 700 !important; color: #0F1338 !important; }
+#_builder-form .vdpHeadCell { color: #5A5A7A !important; font-weight: 600 !important; }
+#_builder-form .vdpCell.selectable .vdpCellContent { color: #0F1338 !important; font-weight: 600 !important; border-radius: 10px !important; }
+#_builder-form .vdpCell.selectable:hover .vdpCellContent { background: rgba(157,170,242,0.22) !important; }
+#_builder-form .vdpCell.selected .vdpCellContent { background: #0d6efd !important; color: #fff !important; }
+#_builder-form .vdpCell.today .vdpCellContent { color: #0b5ed7 !important; }
+#_builder-form .vdpCell.disabled .vdpCellContent, #_builder-form .vdpCell.outOfRange .vdpCellContent { color: #b9bccf !important; }
+/* day cells, nav arrows and the month/year pickers stay plain; only Cancel / Confirm become buttons */
+#_builder-form .vdpCellButton, #_builder-form .vdpNavButton, #_builder-form button.form-date-picker {
+  background: transparent !important; border: none !important; border-radius: 10px !important; min-height: 0 !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important; color: inherit !important; box-shadow: none !important;
+}
+#_builder-form .vdpNavButton { color: #5A5A7A !important; }
+#_builder-form .vdpNavButton:hover, #_builder-form button.form-date-picker:hover { background: rgba(157,170,242,0.22) !important; }
+#_builder-form button.form-date-picker { font-weight: 700 !important; color: #0F1338 !important; padding: 4px 8px !important; }
+#_builder-form .vdpInnerWrap button:not(.vdpCellButton):not(.vdpNavButton):not(.form-date-picker) {
+  font-family: 'DM Sans', system-ui, sans-serif !important; font-weight: 800 !important; font-size: 0.95rem !important;
+  border-radius: 999px !important; min-height: 44px !important; padding: 10px 18px !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+#_builder-form .vdpInnerWrap button:not(.vdpCellButton):not(.vdpNavButton):not(.form-date-picker):last-child {
+  background: #0d6efd !important; color: #fff !important; border: none !important; box-shadow: 0 4px 16px rgba(13,110,253,0.25) !important;
+}
+#_builder-form .vdpInnerWrap button:not(.vdpCellButton):not(.vdpNavButton):not(.form-date-picker):last-child:hover { background: #0b5ed7 !important; }
+#_builder-form .vdpInnerWrap button:not(.vdpCellButton):not(.vdpNavButton):not(.form-date-picker):not(:last-child) {
+  background: transparent !important; color: #5A5A7A !important; border: 1.5px solid rgba(15,19,56,0.16) !important;
+}
+#_builder-form .vdpInnerWrap button:not(.vdpCellButton):not(.vdpNavButton):not(.form-date-picker):not(:last-child):hover { background: rgba(15,19,56,0.05) !important; color: #0F1338 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  #_builder-form *, .ghl-footer * { transition-duration: .001ms !important; }
+}

@@ -4,8 +4,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Up to $250 Move or Cash | Apartment Agents Dallas</title>
-  <meta name="description" content="Get up to $250 toward your move or as cash when you lease through Apartment Agents. The best pricing, all the specials, plus a reward on us." />
+  <title>Up to $250 Cash Back | Apartment Agents Dallas</title>
+  <meta name="description" content="Lease through Apartment Agents and get up to $250 extra cash on us, plus the best pricing and all the specials." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -31,7 +31,7 @@
   </script>
   <style>
     /* ============================================================
-       DESIGN TOKENS — lifted from dallas-apartments-new.html so this
+       DESIGN TOKENS, lifted from dallas-apartments-new.html so this
        page sits in the same visual system. Spacing is a fixed scale,
        not ad-hoc steps.
        ============================================================ */
@@ -51,6 +51,11 @@
       --btn:       #0d6efd;
       --btn-hover: #0b5ed7;
 
+      /* the fixed site nav as it actually renders (12px + 44px bar + 12px + 1px rule) at
+         every width this page supports; body offset, hero height, the pinned stage and
+         the scroll script all read this one number */
+      --nav-h: 69px;
+
       /* spacing scale */
       --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
       --s5: 48px; --s6: 64px; --s7: 88px;
@@ -63,11 +68,11 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
     body {
       font-family: 'DM Sans', system-ui, sans-serif;
       color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
-      padding-top: 66px; background: #fff; overflow-x: hidden;
+      padding-top: var(--nav-h); background: #fff; overflow-x: hidden;
     }
     h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
     h1 { letter-spacing: -0.03em; }
@@ -109,12 +114,12 @@
     .btn-coral:active { transform: translateY(0) scale(0.985); }
     .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
 
-    /* Mobile nav CTA — declared after .btn-coral so its display wins */
+    /* Mobile nav CTA: declared after .btn-coral so its display wins */
     .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
-    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
     .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
 
-    /* inline text links on light surfaces — every state accounted for */
+    /* inline text links on light surfaces, every state accounted for */
     .inline-link {
       color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
       text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
@@ -124,170 +129,28 @@
     .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
     .inline-link:active { opacity: 0.7; }
 
-    .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
-    .link-quiet:hover { color: #fff; }
-    .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
-    .link-quiet:active { opacity: 0.75; }
-
-    .section-badge {
-      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
-      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
-      border-radius: 20px; padding: 5px 14px;
-    }
-    .section-badge--dark { background: rgba(157,170,242,0.18); color: var(--lav); }
-
     .check-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
     .check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; color: var(--navy); font-weight: 900; font-size: 0.7rem; }
 
-    /* ---------------- HERO (light lavender-white field) ----------------
-       Near-white base + low-opacity lavender/green radial washes + faint
-       grain. Text is dark navy; every hero surface is tuned for a light
-       field rather than inverted-on-navy.
-       ------------------------------------------------------------------ */
-    .hero {
-      background:
-        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
-        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
-        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
-        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
-      position: relative; overflow: hidden;
-      padding: 32px 20px 50px;
-      border-bottom: 1px solid rgba(15,19,56,0.06);
-    }
-    /* SVG grain for depth — never a flat colour field. Multiply so it reads on light. */
-    .hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-    }
-    .hero-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
-    .hero-layout { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-    .hero h1 { color: var(--navy); font-size: clamp(2.4rem, 11vw, 4rem); line-height: 1.05; margin: 0 0 20px; }
+    /* hero check list (used by the .rh hero below) */
     .hero-checks { display: flex; flex-direction: column; gap: 4px; }
-    .hero-checks span { color: var(--ink-soft); line-height: 1.6; font-size: 1.0625rem; }
+    .hero-checks span { color: var(--ink-soft); line-height: 1.6; font-size: 1.0625rem; text-wrap: pretty; }
     .hero-checks .accent { color: var(--green-ink); font-weight: 800; }
-
-    /* Hero photo — light-field treatment: lavender hairline, layered
-       lavender-tinted shadow, gradient scrim + blend colour layer. */
-    .hero-figure { position: relative; width: 300px; max-width: 100%; margin: 0 auto; }
-    .hero-photo {
-      position: relative; border-radius: 22px; overflow: hidden;
-      border: 1px solid rgba(157,170,242,0.7);
-      box-shadow:
-        inset 0 1px 0 #fff,
-        0 2px 6px rgba(15,19,56,0.06),
-        0 14px 30px rgba(90,104,190,0.20),
-        0 34px 70px rgba(48,58,140,0.20);
-    }
-    .hero-photo img { width: 100%; display: block; }
-    .hero-photo::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;
-      background: linear-gradient(to top, rgba(15,19,56,0.26), rgba(15,19,56,0) 55%);
-    }
-    .hero-photo::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
-      background: linear-gradient(200deg, rgba(157,170,242,0.20), rgba(174,205,129,0.10));
-      mix-blend-mode: multiply;
-    }
-    .hero-badge {
-      position: absolute; bottom: -18px; left: -10px; background: var(--green);
-      border-radius: 16px; padding: 14px 20px; z-index: 4;
-      box-shadow: 0 2px 6px rgba(76,107,34,0.24), 0 12px 28px rgba(76,107,34,0.26), 0 28px 60px rgba(15,19,56,0.14);
-    }
-    .hero-badge .eyebrow { margin: 0 0 2px; color: rgba(15,19,56,0.68); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; }
-    .hero-badge .word { margin: 0; color: var(--navy); font-family: 'DM Serif Display', Georgia, serif; font-size: 1.55rem; letter-spacing: -0.03em; line-height: 1.1; }
+    .hero-checks .nw { white-space: nowrap; }   /* never break "move-in" at its hyphen */
 
     /* ---------------- SECTION SHELL ---------------- */
     .sec { padding: var(--s6) 20px; }
     @media (min-width: 700px) { .sec { padding: var(--s7) 24px; } }
     .wrap { max-width: 1120px; margin: 0 auto; }
-    .wrap-narrow { max-width: 760px; margin: 0 auto; }
     .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.75rem); line-height: 1.14; margin: 0 0 var(--s2); }
-    .sec p.lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 var(--s5); }
     .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(15,19,56,0.10) 18%, rgba(15,19,56,0.10) 82%, transparent); margin: 0 20px; }
-
-    /* ---------------- "HOW IS THIS POSSIBLE" SPLIT ---------------- */
-    .split { display: grid; grid-template-columns: 1fr; gap: var(--s5); align-items: center; }
-    /* Image moves left on desktop, sits below the text on mobile — same as before. */
-    @media (min-width: 860px) {
-      .split { grid-template-columns: 0.92fr 1.08fr; gap: 56px; }
-      .split-copy { order: 2; }
-      .split-figure { order: 1; }
-    }
-    .split-figure {
-      border-radius: 20px; overflow: hidden; background: #fff;
-      border: 1px solid rgba(15,19,56,0.08);
-      box-shadow: var(--sh-elev);
-      max-width: 460px; margin: 0 auto; width: 100%;
-    }
-    .split-figure img { width: 100%; display: block; }
-
-    /* ---------------- FEATURE CARDS ---------------- */
-    .feat-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    @media (min-width: 700px) { .feat-grid { gap: 16px; } }
-    .feature-item {
-      display: flex; align-items: flex-start; gap: 18px;
-      background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 18px;
-      padding: 20px 20px; box-shadow: var(--sh-base);
-      transition: transform 0.2s cubic-bezier(.34,1.3,.64,1), box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-    .feature-item:hover { transform: translateY(-2px); box-shadow: var(--sh-elev); border-color: rgba(157,170,242,0.55); }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      background: rgba(174,205,129,0.22);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: var(--green-ink); font-size: 1.15rem;
-    }
-    .feature-item h3 { font-size: 1.15rem; margin: 0 0 6px; line-height: 1.28; color: var(--navy); }
-    .feature-item p { color: var(--ink-mute); margin: 0; line-height: 1.72; font-size: 1rem; }
-    @media (min-width: 700px) { .feature-item { padding: 24px 24px; } }
-
-    /* ============================================================
-       REWARD TIERS — cards, not a table. Header band + label/amount
-       rows. Nothing scrolls sideways at 390px and the amount stays
-       the loudest thing on the card.
-       ============================================================ */
-    .tier-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 760px) { .tier-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
-
-    .tier-card {
-      background: #fff; border: 1px solid rgba(15,19,56,0.09); border-radius: 20px; overflow: hidden;
-      box-shadow: var(--sh-elev);
-    }
-    .tier-card--lead { box-shadow: var(--sh-star); border-color: rgba(76,107,34,0.22); }
-    .tier-head { padding: 18px 20px 16px; background: var(--navy-2); position: relative; }
-    .tier-card--lead .tier-head { background: linear-gradient(150deg, #182050 0%, var(--navy) 62%); }
-    .tier-head::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
-      background: linear-gradient(to right, rgba(157,170,242,0.7), rgba(157,170,242,0.15));
-    }
-    .tier-card--lead .tier-head::after { background: linear-gradient(to right, rgba(174,205,129,0.9), rgba(157,170,242,0.9)); }
-    .tier-eyebrow { margin: 0 0 4px; color: rgba(255,255,255,0.62); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; }
-    .tier-band { margin: 0; color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; letter-spacing: -0.02em; line-height: 1.2; }
-
-    .tier-rows { list-style: none; margin: 0; padding: 0; }
-    .tier-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px;
-      padding: 16px 20px;
-      /* fixed row height so the two cards line up side by side even though the
-         lead amount is set larger */
-      min-height: 78px;
-    }
-    .tier-row + .tier-row { border-top: 1px solid rgba(15,19,56,0.08); }
-    .tier-row__label { min-width: 0; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
-    .tier-amt {
-      font-family: 'DM Serif Display', Georgia, serif; color: var(--green-ink);
-      font-size: 2rem; line-height: 1; letter-spacing: -0.03em; flex-shrink: 0;
-    }
-    .tier-amt--top { font-size: 2.5rem; }
-    .tier-note { margin: var(--s4) 0 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
-    @media (min-width: 700px) {
-      .tier-head { padding: 22px 24px 18px; }
-      .tier-row { padding: 18px 24px; min-height: 84px; }
-      .tier-band { font-size: 1.65rem; }
-    }
 
     /* ---------------- FINAL CTA ---------------- */
     .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
+    .link-quiet { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease, opacity 0.2s ease; }
+    .link-quiet:hover { color: #fff; }
+    .link-quiet:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .link-quiet:active { opacity: 0.75; }
     @media (min-width: 700px) { .cta-sec { padding: var(--s7) 24px; } }
     .cta-bg { position: absolute; inset: 0; z-index: 0; }
     .cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%); }
@@ -322,18 +185,929 @@
     nav button:active { opacity: 0.65; }
 
     /* ============================================================
-       BREAKPOINTS — mobile is the design; desktop adapts.
+       BREAKPOINTS: mobile is the design; desktop adapts.
        ============================================================ */
     @media (min-width: 1000px) {
-      .hero { padding: 68px 24px 76px; }
-      .hero-layout { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
-      .hero h1 { font-size: clamp(3rem, 4.6vw, 4.2rem); }
-      .hero-figure { width: 340px; margin: 0; justify-self: end; }
       .hero-checks span { font-size: 1.1rem; }
     }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
   </style>
+  <style>
+    /* ==================================================================
+       REWARDS, CANDIDATE A: "THE MONEY PATH"
+       The page system above is untouched (tokens, nav, buttons, footer).
+       Everything below is this page's own layer. Class selectors only,
+       because the Tailwind CDN injects its preflight after these rules.
+       Motion: transform / opacity only (clip-path for the route wipes),
+       one easing, gated behind html.js + prefers-reduced-motion.
+       ================================================================== */
+    :root {
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --hair: rgba(15,19,56,0.10);
+      --ink-pen: #4A55B8;            /* the indigo pen ink, the sibling's italic beat */
+      --lav-deep: #6b78c4;
+    }
+    ::selection { background: rgba(157,170,242,0.42); color: #0F1338; }
+
+    /* ---------------- HERO: the reward object ----------------
+       The reward is shown the way it is actually paid: ONE payment notification from
+       Apartment Agents, "up to $250". Which app it arrives in is the reader's choice,
+       so the app name on it is a small reel: Zelle at rest, then on a timer while the hero
+       is on screen it steps on to Venmo, PayPal, then Amazon, while the sender and the amount
+       never move. The
+       caption under it says the same thing in words.
+       Planes, back to front. A rate is px of drift per px of page scroll (positive
+       lags behind the page, negative runs ahead of it):
+         wash          +0.44  atmosphere, under the bottom feather
+         "up to $250"  +0.30  far numerals, their foot tucked behind the notification;
+                              they fade as they sink, gone before they could show under it
+         notification   0.00  subject
+         badge         -0.025 near plane, clipped over the notification's top left
+                              corner; it also grows 7% from its foot, so it reads as
+                              nearer without coming loose from the corner, well
+                              away from the amount
+       App names are plain text. No company logo or brand colour is drawn: the tile is
+       the page's own cash mark (the value stack's cash icon).
+       ----------------------------------------------------------- */
+    .rh {
+      --pay-ch: 92px;      /* the notification's height */
+      --pay-room: 46px;    /* room above the notification for the badge */
+      --pay-tile: 44px;    /* the cash tile */
+      --fan-f: 0.45;       /* the hero's scroll travel, as a share of a screen (x2) */
+      position: relative; overflow: hidden; isolation: isolate;
+      padding: 26px 20px 32px; min-height: calc(100vh - var(--nav-h));
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+    }
+    /* Stacking inside .rh (isolated), back to front: the wash (z 0); the feather (z 1),
+       which whitens the wash and the ground into the plain white the next section
+       starts on, so the hero never ends on a straight tone line; the grain (z 2), which
+       runs on unbroken into the next section's grain; then the far numerals (3), the
+       stack (4), the badge (5) and the copy (6). The stage and .rh-obj are deliberately
+       not stacking contexts, so those z-indexes all meet in this one context. */
+    .rh::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply; z-index: 2;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .rh::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 180px; pointer-events: none; z-index: 1;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 62%, #ffffff 100%);
+    }
+    .rh-inner { position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); }
+    .rh-copy { position: relative; z-index: 6; }
+    .rh .rh-h1 { color: var(--navy); font-size: clamp(2.75rem, 12.8vw, 3.6rem); line-height: 1.02; margin: 0 0 16px; letter-spacing: -0.03em; }
+    .rh .hero-checks .check-item { margin-bottom: 8px; }
+    .rh .hero-checks .check-item:last-child { margin-bottom: 0; }
+
+    @supports (height: 100svh) { .rh { min-height: calc(100svh - var(--nav-h)); } }
+    .rh-stage { position: relative; width: 100%; margin: 24px auto 0; }
+    .rh-obj { position: relative; width: 100%; max-width: 420px; margin: 0 auto; padding-top: var(--pay-room); }
+    .rh-plane { position: absolute; will-change: transform; }
+    .rh-wash {
+      left: -34%; right: -34%; top: -46%; bottom: 8%; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(closest-side at 62% 44%, rgba(157,170,242,0.44), rgba(157,170,242,0) 100%),
+        radial-gradient(closest-side at 30% 64%, rgba(174,205,129,0.30), rgba(174,205,129,0) 100%);
+    }
+    /* the far plane: "up to $250", sized to fit inside the column at every width (never
+       cropped by the screen edge), centred on the notification, its foot tucked behind
+       the notification's top edge so the notification occludes it */
+    .rh-far { left: 0; right: 0; bottom: calc(100% - var(--pay-room) - 30px); z-index: 3; text-align: center; }
+    .rh-num {
+      display: inline-block; text-align: left; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400;
+      font-size: clamp(128px, 45vw, 232px); line-height: 0.8; letter-spacing: -0.05em; white-space: nowrap;
+      color: rgba(107,120,196,0.21); user-select: none; padding-top: 0.06em;
+    }
+    .rh-upto { display: block; margin: 0 0 0.05em 0.04em; font-style: italic; font-size: 0.22em; line-height: 1; letter-spacing: -0.01em; color: rgba(107,120,196,0.34); }
+    /* the badge is clipped over the notification's top LEFT corner, above its cash tile,
+       so "Guaranteed" never sits on top of the amount. Its foot is anchored 6px into the
+       notification (whatever the badge's height at a breakpoint), which keeps it clear of
+       the app name on the notification's first line. */
+    .rh-near { left: -8px; bottom: calc(100% - var(--pay-room) - 6px); transform: rotate(-3deg); transform-origin: 30% 100%; z-index: 5; }
+
+    /* the notification: solid white, edge-lit, navy-tinted shadow */
+    .pay { position: relative; z-index: 4; }
+    .pay-card {
+      position: relative; height: var(--pay-ch); color: var(--navy);
+      display: grid; grid-template-columns: var(--pay-tile) minmax(0, 1fr) auto; grid-template-rows: auto auto auto;
+      column-gap: 12px; align-content: center; align-items: center; padding: 0 14px;
+      border-radius: 22px; border: 1px solid rgba(15,19,56,0.08); border-top-color: rgba(255,255,255,0.95);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfbfe 100%);
+      box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 -1px 0 rgba(255,255,255,0.75),
+        0 1px 2px rgba(15,19,56,0.07),
+        0 8px 18px -8px rgba(15,19,56,0.20),
+        0 22px 40px -22px rgba(48,58,140,0.36);
+    }
+    /* the cash tile: the page's own mark for the reward (the sack of cash the value
+       stack uses, in the amount chip's navy and green), never an app's icon */
+    .pay-app {
+      grid-column: 1; grid-row: 1 / 4; width: var(--pay-tile); height: var(--pay-tile); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; color: var(--green); background: var(--navy);
+      font-size: calc(var(--pay-tile) * 0.42); line-height: 1;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 1px 2px rgba(15,19,56,0.20), 0 6px 12px -6px rgba(15,19,56,0.45);
+    }
+    /* the app name is a one-line window onto a reel of the three names (the first
+       repeats at the end so the loop always steps forward). It is the notification's
+       news, so it is set in the pen indigo at a legible size, not as a grey caption. */
+    .pay-meta { grid-column: 2 / 4; grid-row: 1; margin-bottom: 2px; font-size: 0.98rem; line-height: 1.3; white-space: nowrap; }
+    .pay-name { display: inline-block; vertical-align: top; height: 1.3em; overflow: hidden; font-weight: 800; color: var(--ink-pen); letter-spacing: 0.01em; }
+    .pay-reel { display: block; transform: translate3d(0, calc(var(--app, 0) * -1.3em), 0); }
+    .pay-reel > span { display: block; height: 1.3em; }
+    .pay-from, .pay-line { grid-column: 2; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pay-from { grid-row: 2; font-weight: 700; font-size: 1.02rem; line-height: 1.3; letter-spacing: -0.005em; color: var(--navy); }
+    .pay-line { grid-row: 3; font-size: 0.95rem; line-height: 1.35; color: var(--ink-soft); }
+    .pay-amt {
+      grid-column: 3; grid-row: 2 / 4; align-self: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 6px 12px 7px; border-radius: 14px; background: var(--navy);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 1px 2px rgba(15,19,56,0.20), 0 6px 12px -6px rgba(15,19,56,0.45);
+    }
+    /* "up to" is part of the amount, not a footnote to it: legible size and ink */
+    .pay-upto { font-size: 0.8rem; font-weight: 600; line-height: 1.15; letter-spacing: 0.01em; color: #e4e8fd; white-space: nowrap; }
+    .pay-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; line-height: 1; letter-spacing: -0.02em; color: var(--green); font-variant-numeric: lining-nums; }
+    /* the caption is real text: it says how the reward is paid */
+    .pay-cap { position: relative; margin: 16px 0 0; text-align: center; font-size: 1.125rem; line-height: 1.5; font-weight: 500; color: var(--ink-soft); }
+    .pay-cap b { font-weight: 800; color: var(--navy); }
+
+    /* the near plane: the page's existing Best Offer badge, now a physical tag */
+    .rw-badge {
+      background: var(--green); border-radius: 16px; padding: 12px 18px 13px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.45),
+        0 2px 6px rgba(76,107,34,0.24),
+        0 12px 28px rgba(76,107,34,0.26),
+        0 28px 60px rgba(15,19,56,0.16);
+    }
+    .rw-badge .eyebrow { margin: 0 0 2px; color: rgba(15,19,56,0.70); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; line-height: 1.4; }
+    .rw-badge .word { margin: 0; color: var(--navy); font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; letter-spacing: -0.03em; line-height: 1.1; }
+
+    /* phones and portrait tablets: one column. The copy and the stage sit in auto rows
+       and the height the screen has to spare goes to the empty fr rows (1 part above the
+       copy, 2 between the copy and the stage, where the far numerals stand, and 1.2 under
+       the caption), so the reward sits in the lower half of the screen with air under it
+       instead of on the fold. */
+    @media (max-width: 999px) {
+      .rh { display: flex; flex-direction: column; }
+      .rh-inner { flex: 1 0 auto; width: 100%; grid-template-rows: minmax(0, 1fr) auto minmax(0, 2fr) auto minmax(0, 1.2fr); }
+      .rh-copy { grid-row: 2; }
+      .rh-stage { grid-row: 4; }
+    }
+    /* narrow phones: the notification may use 8px of each gutter, so "Apartment Agents"
+       and the amount keep one line each at 320 */
+    @media (max-width: 359px) {
+      .rh { --pay-tile: 40px; }
+      .rh-obj { width: calc(100% + 16px); max-width: none; margin: 0 -8px; }
+      .pay-card { column-gap: 10px; padding: 0 12px; }
+      .pay-from { font-size: 0.96rem; }
+      .pay-line { font-size: 0.9rem; }
+      .pay-amt { padding: 6px 10px 7px; }
+    }
+    /* short phones (Safari with its toolbars, SE class): the copy tightens and the
+       notification is a little smaller, so the copy, the notification, the badge and the
+       caption all share the first screen. The numerals step down so they stand in the
+       gap between the checks and the notification instead of running into the checks. */
+    @media (max-width: 699px) and (max-height: 760px) {
+      .rh { --pay-ch: 84px; --pay-room: 42px; --pay-tile: 40px; padding-top: 16px; padding-bottom: 24px; }
+      .rh-inner { grid-template-rows: minmax(0, 1fr) auto minmax(0, 2fr) auto minmax(0, 0.6fr); }
+      .rh .rh-h1 { font-size: clamp(2.4rem, 11.2vw, 3rem); margin-bottom: 10px; }
+      .rh .hero-checks .check-item { margin-bottom: 3px; }
+      .rh .hero-checks span { font-size: 1rem; line-height: 1.48; }
+      .rh .hero-checks .check-icon { margin-top: 1px; }
+      .rh-stage { margin-top: 14px; }
+      .rh-num { font-size: clamp(112px, 34vw, 170px); }
+      .pay-cap { margin-top: 12px; }
+    }
+    /* very short phones: there is no room left for the far numerals to stand clear of
+       the badge and the notification (only a fragment of them would show, without its
+       "up to"), so that plane is left out and the wash and the badge carry the depth */
+    @media (max-width: 699px) and (max-height: 600px) {
+      .rh-far { display: none; }
+    }
+    /* tall phones (Pro Max class): the notification grows with the screen, so the extra
+       height does not open a gap between the copy and the reward */
+    @media (max-width: 699px) and (min-height: 880px) {
+      .rh { --pay-ch: 102px; --pay-room: 52px; --pay-tile: 48px; }
+      .pay-card { padding: 0 16px; }
+      .pay-app { border-radius: 13px; }
+      .pay-meta { font-size: 1.02rem; }
+      .pay-from { font-size: 1.1rem; }
+      .pay-line { font-size: 1rem; }
+      .pay-amt { padding: 7px 13px 8px; }
+      .pay-upto { font-size: 0.84rem; }
+      .pay-num { font-size: 1.65rem; }
+      .rw-badge .word { font-size: 1.6rem; }
+    }
+    @media (min-width: 700px) {
+      .rh { --pay-ch: 104px; --pay-room: 54px; --pay-tile: 50px; padding: 44px 32px 48px; }
+      .rh-stage { margin-top: 32px; }
+      .rh-obj { max-width: 500px; }
+      .pay-card { column-gap: 14px; padding: 0 18px; border-radius: 22px; }
+      .pay-app { border-radius: 14px; }
+      .pay-meta { font-size: 1.04rem; }
+      .pay-from { font-size: 1.14rem; }
+      .pay-line { font-size: 1.04rem; }
+      .pay-amt { padding: 7px 14px 8px; }
+      .pay-upto { font-size: 0.86rem; }
+      .pay-num { font-size: 1.75rem; }
+      .pay-cap { font-size: 1.125rem; margin-top: 18px; }
+      .rh-num { font-size: clamp(200px, 34vw, 300px); }
+      .rh-near { left: -14px; }
+      .rw-badge { padding: 14px 20px; }
+      .rw-badge .word { font-size: 1.6rem; }
+    }
+    /* portrait tablets: the copy and the notification are set larger, so the taller
+       screen is composed rather than stretched */
+    @media (min-width: 700px) and (max-width: 999px) and (min-height: 900px) {
+      .rh { --pay-ch: 118px; --pay-room: 60px; --pay-tile: 58px; padding-top: 56px; }
+      .rh .rh-h1 { font-size: clamp(3.6rem, 8.6vw, 5rem); margin-bottom: 22px; }
+      .rh .hero-checks span { font-size: 1.2rem; }
+      .rh-obj { max-width: 580px; }
+      .pay-card { padding: 0 22px; column-gap: 16px; }
+      .pay-app { border-radius: 16px; }
+      .pay-meta { font-size: 1.08rem; }
+      .pay-from { font-size: 1.28rem; }
+      .pay-line { font-size: 1.12rem; }
+      .pay-amt { padding: 8px 16px 9px; border-radius: 16px; }
+      .pay-upto { font-size: 0.92rem; }
+      .pay-num { font-size: 2rem; }
+      .pay-cap { font-size: 1.22rem; margin-top: 20px; }
+      .rh-num { font-size: clamp(220px, 34vw, 330px); }
+      .rw-badge { padding: 15px 22px 16px; }
+      .rw-badge .word { font-size: 1.75rem; }
+    }
+    /* desktop is art-directed, not the phone scaled up: two columns, the notification
+       beside the copy, the numerals standing behind it. The hero holds the whole first
+       screen. The room above the notification is the height the numerals stand up out of
+       it (1.13 of their size, less the 30px tucked behind it), so the whole object
+       (numerals, badge, notification, caption) is what is centred against the copy and
+       in the screen, rather than the notification alone with the numerals hanging above. */
+    @media (min-width: 1000px) {
+      .rh { --pay-ch: 106px; --far-fs: clamp(200px, 20vw, 300px); --pay-room: calc(var(--far-fs) * 1.13 - 30px); --pay-tile: 52px; --fan-f: 0.32; padding: 72px 32px 84px; display: flex; flex-direction: column; justify-content: center; }
+      .rh-inner { width: 100%; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); column-gap: 40px; align-items: center; }
+      .rh .rh-h1 { font-size: clamp(3.8rem, 5.6vw, 5.4rem); margin-bottom: 22px; }
+      .rh .hero-checks span { font-size: 1.12rem; }
+      .rh-stage { margin: 0; }
+      .rh-obj { max-width: 460px; }
+      .rh-num { font-size: var(--far-fs); color: rgba(107,120,196,0.19); }
+      .rh-wash { left: -20%; right: -26%; }
+      .rh-near { transform: rotate(-4deg); }
+    }
+    /* large desktop screens: the composition takes the nav's full 1240px content width
+       and every part steps up a size, so the hero is not a small island in the middle */
+    @media (min-width: 1600px) {
+      .rh { --pay-ch: 124px; --pay-tile: 62px; --far-fs: clamp(300px, 18vw, 360px); }
+      .rh-inner { max-width: 1240px; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); column-gap: 56px; }
+      .rh .rh-h1 { font-size: clamp(5.4rem, 5vw, 6rem); margin-bottom: 26px; }
+      .rh .hero-checks span { font-size: 1.25rem; }
+      .rh .hero-checks .check-icon { margin-top: 6px; }
+      .rh-obj { max-width: 560px; }
+      .pay-card { padding: 0 24px; column-gap: 18px; border-radius: 26px; }
+      .pay-app { border-radius: 16px; }
+      .pay-meta { font-size: 1.12rem; }
+      .pay-from { font-size: 1.36rem; }
+      .pay-line { font-size: 1.18rem; }
+      .pay-amt { padding: 9px 18px 10px; border-radius: 18px; }
+      .pay-upto { font-size: 0.98rem; }
+      .pay-num { font-size: 2.2rem; }
+      .pay-cap { font-size: 1.28rem; margin-top: 22px; }
+      .rh-near { left: -18px; }
+      .rw-badge { padding: 16px 24px 17px; }
+      .rw-badge .eyebrow { font-size: 0.8rem; }
+      .rw-badge .word { font-size: 1.95rem; }
+    }
+    /* small laptop windows and landscape tablets below 1000px (541 to 899 tall): one
+       column has no height to spare here, so the far numerals would stand behind the
+       h1 and the checks. Two columns, as on desktop: the numerals stand above the
+       notification inside their own column, sized to the screen's height, and the room
+       above the notification is the height they stand up out of it, so the whole object
+       is centred against the copy. */
+    @media (min-width: 700px) and (max-width: 999px) and (min-height: 541px) and (max-height: 899px) {
+      .rh { --pay-ch: 96px; --pay-tile: 46px; --far-fs: clamp(140px, min(20vw, 27vh), 200px); --pay-room: calc(var(--far-fs) * 1.13 - 30px); --fan-f: 0.3; padding: 32px 28px 40px; justify-content: center; }
+      .rh-inner { flex: 0 0 auto; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); grid-template-rows: auto; column-gap: 32px; align-items: center; }
+      .rh-copy, .rh-stage { grid-row: 1; }
+      .rh .rh-h1 { font-size: clamp(2.8rem, 6vw, 3.6rem); margin-bottom: 18px; }
+      .rh .hero-checks span { font-size: 1.04rem; }
+      .rh-stage { margin: 0; }
+      .rh-obj { max-width: 420px; }
+      .pay-card { column-gap: 12px; padding: 0 15px; }
+      .pay-app { border-radius: 12px; }
+      .pay-meta { font-size: 0.94rem; }
+      .pay-from { font-size: 1.02rem; }
+      .pay-line { font-size: 0.95rem; }
+      .pay-amt { padding: 6px 12px 7px; }
+      .pay-upto { font-size: 0.8rem; }
+      .pay-num { font-size: 1.55rem; }
+      .pay-cap { font-size: 1.05rem; margin-top: 16px; }
+      .rh-num { font-size: var(--far-fs); color: rgba(107,120,196,0.19); }
+      .rh-wash { left: -20%; right: -26%; }
+      .rh-near { left: -10px; }
+    }
+    /* phones on their side (and other wide, very short screens below 1000px): two
+       columns, as on desktop, with the notification sized down so the copy, the
+       notification and the badge share the first screen, centred in it. */
+    @media (min-width: 700px) and (max-width: 999px) and (max-height: 540px) {
+      .rh { --pay-ch: 70px; --pay-room: 38px; --pay-tile: 36px; --fan-f: 0.22; padding: 18px 28px 22px; justify-content: flex-start; }
+      .rh-inner { flex: 0 0 auto; min-height: calc(100vh - var(--nav-h) - 40px); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto; column-gap: 28px; align-items: center; }
+      .rh-copy, .rh-stage { grid-row: 1; }
+      .rh .rh-h1 { font-size: 3.1rem; margin-bottom: 12px; }
+      .rh .hero-checks .check-item { margin-bottom: 4px; }
+      .rh .hero-checks span { font-size: 1rem; line-height: 1.5; }
+      .rh-stage { margin: 0; }
+      .rh-obj { max-width: 380px; }
+      .pay-card { border-radius: 18px; padding: 0 14px; column-gap: 11px; }
+      .pay-app { border-radius: 10px; }
+      .pay-meta { font-size: 0.84rem; margin-bottom: 0; }
+      .pay-from { font-size: 0.98rem; }
+      .pay-line { font-size: 0.9rem; line-height: 1.25; }
+      .pay-amt { padding: 4px 10px 5px; border-radius: 12px; }
+      .pay-upto { font-size: 0.72rem; }
+      .pay-num { font-size: 1.3rem; }
+      .pay-cap { font-size: 1rem; margin-top: 10px; }
+      .rh-num { font-size: 120px; color: rgba(107,120,196,0.19); }
+      .rh-near { left: -10px; }
+      .rw-badge { padding: 9px 15px 10px; }
+      .rw-badge .eyebrow { font-size: 0.68rem; }
+      .rw-badge .word { font-size: 1.25rem; }
+    }
+    @supports (height: 100svh) {
+      @media (min-width: 700px) and (max-width: 999px) and (max-height: 540px) {
+        .rh-inner { min-height: calc(100svh - var(--nav-h) - 40px); }
+      }
+    }
+
+    /* motion layer: only with JS running and motion allowed, and only on screen. The
+       static composition (no JS, reduced motion, print) shows Zelle, and the caption
+       names all four. Here the script writes --app (0 Zelle, 1 Venmo, 2 PayPal, 3 Amazon,
+       4 the repeat of Zelle) on the stage every 2.2s while the hero is on screen, and the reel
+       steps to that name on a short timed ease, so the window is never left showing half
+       of one name and half of the next. */
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .js .pay-reel { transition: transform 0.55s var(--ease); will-change: transform; }
+    }
+
+    /* ---------------- THE MONEY PATH (the peak) ----------------
+       A pinned stage. "How is this possible?" arrives on the hero's own
+       ground, held a beat larger with nothing under it; the route fades in
+       beneath it as the stage settles, then draws itself under the scroll:
+       the property -> Apartment Agents -> you. One stream, two strands; at
+       Apartment Agents the lavender strand peels away and the green one
+       carries on to you. The paragraph's clauses light in sync. Without JS
+       or with reduced motion: no pin, the whole route drawn, every word at
+       full strength.
+       ----------------------------------------------------------- */
+    .mp { position: relative; background: #ffffff; --mp-travel: 135vh; }
+    @supports (height: 100svh) { .mp { --mp-travel: 135svh; } }
+    .mp-track { position: relative; }
+    /* the stage carries the hero's ground on: white paper, the same grain, a lavender
+       bloom where the kept strand peels off and a green one where the money lands.
+       Both edges are feathered so neither boundary is a straight line: the top fades to
+       the plain white the hero's own feather ends on (the grain runs on unbroken from the
+       hero), and the bottom fades blooms and grain together into the value stack's white ground. */
+    .mp-stage { position: relative; background:
+        linear-gradient(180deg, #ffffff 0, rgba(255,255,255,0) 140px),
+        linear-gradient(0deg, #ffffff 0, rgba(255,255,255,0) 160px),
+        radial-gradient(70% 44% at 100% 34%, rgba(157,170,242,0.16) 0%, rgba(157,170,242,0) 100%),
+        radial-gradient(64% 40% at 0% 72%, rgba(174,205,129,0.12) 0%, rgba(174,205,129,0) 100%),
+        #ffffff; }
+    .mp-stage::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+      -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 180px), transparent 100%);
+              mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 180px), transparent 100%);
+    }
+    .mp-inner { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 56px 20px 64px; }
+    .mp .mp-h {
+      position: relative; z-index: 2; color: var(--navy); font-size: clamp(2.2rem, 9.6vw, 2.6rem); line-height: 1.06;
+      letter-spacing: -0.03em; margin: 0 0 20px; transform-origin: 0 100%; text-wrap: balance;
+      width: fit-content; max-width: 100%;
+    }
+    .mp-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .mp-fig { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1 / 1; margin: 0; }
+    .mp-o { position: absolute; inset: 0; }
+    .mp-o--h { display: none; }
+    .mp-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+
+    .mp-node { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; z-index: 3; }
+    .mp-disc {
+      position: absolute; left: -28px; top: -28px; width: 56px; height: 56px; border-radius: 50%;
+      background: #fff; border: 1px solid rgba(157,170,242,0.85);
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(15,19,56,0.08), 0 8px 18px -6px rgba(15,19,56,0.22), 0 20px 36px -16px rgba(48,58,140,0.30);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mp-fill { position: absolute; inset: -1px; border-radius: 50%; background: var(--navy); }
+    .mp-node--y .mp-fill { background: var(--green); }
+    .mp-i { position: absolute; font-size: 1.2rem; line-height: 1; }
+    .mp-i--off { color: rgba(15,19,56,0.55); opacity: 0; }
+    .mp-i--on { color: #fff; }
+    .mp-node--y .mp-i--on { color: var(--navy); }
+    .mp-ring { position: absolute; inset: -9px; border-radius: 50%; border: 2px solid var(--lav); opacity: 0; pointer-events: none; }
+    .mp-node--y .mp-ring { border-color: var(--green); }
+    .mp-lab { position: absolute; left: 42px; top: 0; transform: translateY(-50%); white-space: nowrap; }
+    .mp-name { display: block; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; line-height: 1.15; color: var(--navy); letter-spacing: -0.02em; }
+    .mp-sub { display: block; margin-top: 4px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-ink); line-height: 1.3; }
+    .mp-node--p { --x: 13.24%; --y: 10.59%; }
+    .mp-node--a { --x: 13.24%; --y: 50%; }
+    .mp-node--y { --x: 13.24%; --y: 89.41%; }
+
+    .mp-tok { display: none; position: absolute; left: 0; top: 0; border-radius: 50%; pointer-events: none; will-change: transform, opacity; }
+    .mp-tok--l { width: 24px; height: 24px; background: var(--lav); z-index: 1;
+      box-shadow: 0 0 0 2px #fff, 0 2px 4px rgba(15,19,56,0.18), 0 8px 16px -4px rgba(48,58,140,0.35); }
+    .mp-tok--g { width: 18px; height: 18px; background: var(--green); z-index: 2;
+      box-shadow: 0 0 0 2px #fff, 0 2px 4px rgba(15,19,56,0.18), 0 8px 16px -4px rgba(76,107,34,0.40); }
+
+    .mp-copy { position: relative; isolation: isolate; margin: 0; max-width: 62ch; color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.7; }
+    /* the three terms the route names, in the weight that ties them to its labels */
+    .mp-copy .mp-k { font-weight: 700; color: var(--navy); }
+    .mp-cl { transition: opacity 0.5s var(--ease); }
+    /* the reading marker: a soft wash behind the whole height of the clause the money has
+       reached, one rounded piece per line, built by the script from the clause's own line
+       boxes. Nothing sits under the text, so it reads as a highlighter, never as a link.
+       Each line wipes in left to right (clip-path) after the one above it and the whole
+       clause fades out (opacity) when the money moves on; it leaves once the money lands.
+       The clause about what is kept is marked in the kept strand's lavender. */
+    .mp-hl { display: none; }
+
+    @media (min-width: 640px) and (max-width: 859px) {
+      .mp-inner { padding-left: 32px; padding-right: 32px; }
+      .mp .mp-h { font-size: 3rem; margin-bottom: 28px; }
+      .mp-body { grid-template-columns: 340px minmax(0, 1fr); gap: 40px; align-items: center; }
+      .mp-copy { font-size: 1.125rem; line-height: 1.75; }
+    }
+    /* portrait tablets: side by side, the route and paragraph filled under half the pinned
+       stage (463px in 958px at 768 x 1024), leaving a wide empty band above and below for
+       the whole hold. With that much height, the route stacks as it does on phones, drawn
+       larger, so the stage is full while it holds. */
+    @media (min-width: 640px) and (max-width: 859px) and (min-height: 1000px) {
+      .mp .mp-h { font-size: 3.25rem; margin-bottom: 32px; }
+      .mp-body { grid-template-columns: minmax(0, 1fr); gap: 36px; align-items: start; }
+      .mp-fig { max-width: min(460px, calc((100vh - var(--nav-h)) * 0.46)); }
+      .mp-name { font-size: 1.5rem; }
+      .mp-sub { font-size: 0.8rem; }
+      .mp-copy { font-size: 1.25rem; line-height: 1.75; max-width: 36rem; }
+    }
+    @supports (height: 100svh) {
+      @media (min-width: 640px) and (max-width: 859px) and (min-height: 1000px) { .mp-fig { max-width: min(460px, calc((100svh - var(--nav-h)) * 0.46)); } }
+    }
+    /* short phones (SE class, Safari with its toolbars): the stage is composed tighter so it still fits one screen */
+    @media (max-width: 639px) and (max-height: 760px) {
+      .mp .mp-h { font-size: clamp(1.8rem, 8.6vw, 2.05rem); margin-bottom: 14px; }
+      .mp-fig { max-width: min(340px, calc((100vh - var(--nav-h)) * 0.43)); }
+      .mp-body { gap: 14px; }
+      .mp-copy { font-size: 1rem; line-height: 1.6; }
+    }
+    @supports (height: 100svh) {
+      @media (max-width: 639px) and (max-height: 760px) { .mp-fig { max-width: min(340px, calc((100svh - var(--nav-h)) * 0.43)); } }
+    }
+    @media (min-width: 860px) {
+      .mp-inner { padding: 72px 24px 80px; text-align: center; }
+      .mp .mp-h { font-size: clamp(2.6rem, 4vw, 3.4rem); transform-origin: 50% 100%; margin: 0 auto 8px; }
+      .mp-body { gap: 18px; justify-items: center; }
+      .mp-fig { max-width: 1120px; aspect-ratio: 1000 / 300; }
+      .mp-o--v { display: none; }
+      .mp-o--h { display: block; }
+      .mp-disc { left: -31px; top: -31px; width: 62px; height: 62px; }
+      .mp-i { font-size: 1.25rem; }
+      .mp-lab { left: 0; top: -44px; transform: translate(-50%, -100%); text-align: center; }
+      .mp-node--p .mp-lab { transform: translate(-31px, -100%); text-align: left; }
+      .mp-node--y .mp-lab { transform: translate(calc(-100% + 31px), -100%); text-align: right; }
+      .mp-name { font-size: 1.62rem; }
+      .mp-sub { font-size: 0.8rem; }
+      .mp-node--p { --x: 8%;  --y: 56%; }
+      .mp-node--a { --x: 50%; --y: 56%; }
+      .mp-node--y { --x: 92%; --y: 56%; }
+      .mp-tok--l { width: 26px; height: 26px; }
+      .mp-tok--g { width: 18px; height: 18px; }
+      .mp-copy { font-size: 1.1875rem; line-height: 1.75; max-width: 47rem; margin: 0 auto; }
+    }
+
+    /* motion layer: only with JS running and motion allowed, and only on screen (a printout
+       gets the complete static composition, never a mid-scroll hidden state) */
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .js .mp-track { height: calc(100vh - var(--nav-h) + var(--mp-travel)); }
+      @supports (height: 100svh) { .js .mp-track { height: calc(100svh - var(--nav-h) + var(--mp-travel)); } }
+      .js .mp-stage { position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h)); display: flex; flex-direction: column; justify-content: center; }
+      @supports (height: 100svh) { .js .mp-stage { height: calc(100svh - var(--nav-h)); } }
+      .js .mp-inner { width: 100%; padding-top: 20px; padding-bottom: 24px; }
+      .js .mp--tall .mp-track { height: auto; }
+      .js .mp--tall .mp-stage { position: relative; top: auto; height: auto; display: block; }
+      /* the route and the paragraph arrive together on a timed fade once the heading has had
+         its beat. A fade scrubbed by the scroll could be left half drawn, in grey, wherever
+         the reader stopped; this one is always either waiting or complete. */
+      .js .mp-body { opacity: 0; transform: translate3d(0, 22px, 0); transition: opacity 0.6s var(--ease), transform 0.8s var(--ease); }
+      .js .mp-body.is-shown, .js .mp--tall .mp-body { opacity: 1; transform: none; }
+      .js .mp-tok { display: block; opacity: 0; }
+      /* unread clauses stay readable grey: 0.84 keeps the dimmest ink at about 5.2:1 even
+         over the stage's lavender bloom (measured on the render; lit text is about 8.3:1
+         and the marked clause about 6.9:1 on its wash), so the paragraph is never a ghost */
+      .js .mp-cl:not(.is-lit) { opacity: 0.84; }
+      .js .mp-hl { display: block; position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: -1; pointer-events: none; }
+      .js .mp-hl-r {
+        position: absolute; border-radius: 7px; background: rgba(174,205,129,0.34);
+        opacity: 0; clip-path: inset(0 100% 0 0 round 7px);
+        transition: opacity 0.35s var(--ease), clip-path 0s linear 0.35s;
+      }
+      .js .mp-hl-r--kept { background: rgba(157,170,242,0.28); }
+      .js .mp-hl-r.is-on {
+        opacity: 1; clip-path: inset(0 0 0 0 round 7px);
+        transition: opacity 0.25s var(--ease) var(--d, 0s), clip-path 0.7s var(--ease) var(--d, 0s);
+      }
+      .js .mp-node .mp-fill { opacity: 0; transform: scale(0.55); transition: opacity 0.4s var(--ease), transform 0.5s var(--ease); }
+      .js .mp-node .mp-i { transition: opacity 0.3s var(--ease); }
+      .js .mp-node .mp-i--off { opacity: 1; }
+      .js .mp-node .mp-i--on { opacity: 0; }
+      /* the three names are the map and stay at full strength; each node's small label
+         names what the money is at that point, so it arrives with the money instead of
+         waiting on the route in a grey that would fail contrast */
+      .js .mp-node .mp-sub { opacity: 0; transform: translate3d(0, 5px, 0); transition: opacity 0.4s var(--ease), transform 0.5s var(--ease); }
+      .js .mp-node.is-on .mp-fill { opacity: 1; transform: none; }
+      .js .mp-node.is-on .mp-i--off { opacity: 0; }
+      .js .mp-node.is-on .mp-i--on { opacity: 1; }
+      .js .mp-node.is-on .mp-sub { opacity: 1; transform: none; }
+      .js .mp-node.is-on .mp-ring { animation: mpPulse 0.9s var(--ease) 1; }
+    }
+    @keyframes mpPulse {
+      0% { opacity: 0.85; transform: scale(0.7); }
+      100% { opacity: 0; transform: scale(1.35); }
+    }
+
+    /* ---------------- MORE REWARD: the value stack ----------------
+       Everything the renter gets, as a pile of slabs, then the price on top.
+       Live (the stack script adds .vs--live once it has checked that every slab
+       fits the screen whole): each slab is sticky one step lower than the one
+       before it, so the top edges of earlier slabs stay in view as a pile while
+       the next one slides over them, and the slab underneath eases back (a small
+       scale-down and a faint navy veil). The navy total lands last, and then the
+       whole pile leaves together. Nothing is pinned: the pile builds inside the
+       content's own height, plus a short hold after each tall slab so its lower
+       lines are not covered the moment it lands. Covered slabs drop their own ground shadow as the next slab lands, so
+       the clip that hides a covered slab's lower part never cuts a shadow.
+       Static (no JS, reduced motion, screens too short to hold a slab): a ledger, not
+       a column of cards. The items are rows on hairlines; only the cash (green stock)
+       and the total (navy) stay cards. Print keeps the cards as a plain list.
+       One radius scale: 22 slab, 12 icon.
+       ----------------------------------------------------------- */
+    .vs { position: relative; isolation: isolate; background: #fff; --vs-t0: 16px; --vs-step: 12px; --vs-gap: 20px; }
+    /* the ground: two soft blooms behind the pile and the page grain, both feathered
+       out at the top and bottom so the section meets its neighbours without a seam */
+    .vs::before, .vs::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+    .vs::before {
+      background:
+        radial-gradient(64% 30% at 100% 38%, rgba(157,170,242,0.16) 0%, rgba(157,170,242,0) 100%),
+        radial-gradient(60% 28% at 0% 74%, rgba(174,205,129,0.14) 0%, rgba(174,205,129,0) 100%);
+    }
+    .vs::after {
+      opacity: 0.12; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+      -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+              mask-image: linear-gradient(180deg, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+    }
+    .vs .vs-h { font-size: clamp(2rem, 8.6vw, 3.4rem); line-height: 1.06; letter-spacing: -0.03em; margin: 0 0 var(--s2); color: var(--navy); }
+    /* one sentence per line; the last beat in the sibling page's indigo italic */
+    .vs-h .vs-l { display: block; }
+    .vs-h .vs-beat { margin-top: 0.06em; font-style: italic; color: var(--ink-pen); }
+    .vs .vs-lede { margin: 0 0 var(--s4); max-width: 34rem; color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.7; text-wrap: pretty; }
+
+    .vs-pile { position: relative; display: flex; flex-direction: column; gap: var(--vs-gap); }
+    .vs-slab {
+      position: relative; border-radius: 22px; padding: 22px 20px 24px; transform-origin: 50% 0;
+      background: #fff; border: 1px solid rgba(15,19,56,0.08);
+      /* a lip that catches light and a short shadow up onto the slab below (so each
+         stepped edge reads as a separate sheet); the layered drop is the shade below */
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 -1px 4px rgba(15,19,56,0.05),
+        0 1px 2px rgba(15,19,56,0.06);
+    }
+    /* the slab's ground shadow, on its own layer so the live pile can let it go as the
+       slab is covered (a covered slab's shadow would otherwise be cut by its clip) */
+    .vs-shade { position: absolute; inset: -1px; z-index: -1; border-radius: inherit; pointer-events: none;
+      box-shadow: 0 8px 20px -8px rgba(15,19,56,0.14), 0 26px 48px -24px rgba(48,58,140,0.24); }
+    .vs-veil { position: absolute; inset: -1px; z-index: 3; border-radius: inherit; background: var(--navy); opacity: 0; pointer-events: none; }
+    .vs-lift { display: none; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0;
+      box-shadow: 0 16px 34px -12px rgba(15,19,56,0.20), 0 40px 72px -30px rgba(48,58,140,0.30); }
+
+    .vs-top { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; }
+    .vs-ico {
+      flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--navy); background: rgba(157,170,242,0.22); box-shadow: inset 0 0 0 1px rgba(107,120,196,0.20);
+    }
+    .vs .vs-t { margin: 0; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: clamp(1.32rem, 5.9vw, 1.45rem); line-height: 1.18; letter-spacing: -0.02em; color: var(--navy); text-wrap: balance; }
+    /* a two-sentence title keeps each sentence whole, one per line */
+    .vs-t .vs-s { display: block; }
+    .vs .vs-d { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; text-wrap: pretty; }
+
+    /* 1 and 3: the extra promises sit under a hairline */
+    .vs .vs-bul { list-style: none; margin: 16px 0 0; padding: 16px 0 0; border-top: 1px solid var(--hair); display: grid; gap: 10px; }
+    .vs .vs-bul li { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 12px; align-items: start; margin: 0; color: var(--navy); font-size: 0.97rem; font-weight: 500; line-height: 1.5; }
+    .vs-tick { width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--green); color: var(--navy); font-size: 0.6rem; display: flex; align-items: center; justify-content: center; }
+    /* 3: what the mover quotes come without: a plain cross on lavender rather than a tick
+       (the slashed phone and handshake glyphs blurred into smudges at this size) */
+    .vs-tick--no { background: rgba(157,170,242,0.30); box-shadow: inset 0 0 0 1px rgba(107,120,196,0.26); font-size: 0.72rem; }
+
+    /* 2: the cash, on green stock (the body names the three apps; no app tiles are drawn) */
+    .vs-slab--cash { background: linear-gradient(180deg, #F7FBF1 0%, #F1F7E7 100%); border-color: rgba(76,107,34,0.16); }
+    .vs-slab--cash .vs-ico { background: var(--green); box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 2px rgba(76,107,34,0.22); }
+    .vs-t .vs-cash { color: var(--green-ink); white-space: nowrap; }
+
+    /* 4: the utilities on lavender stock */
+    .vs-slab--util { background: linear-gradient(180deg, #F7F8FF 0%, #F2F4FE 100%); border-color: rgba(107,120,196,0.16); }
+    .vs-slab--util .vs-ico { background: #fff; }
+
+    /* the total: navy stock, the label, a sum rule, then the price at the foot. No
+       icons are summed: a truck and a bolt over "$0" read as a move and utilities that
+       cost nothing, and the renter still pays the movers and the bills. Live, the
+       script may give the card a min-height so it covers the foot of the slab it lands
+       on (every slab further down is clipped above that); the spare height opens
+       between the label and the price, never as a bare band. */
+    .vs-slab.vs-total { padding: 0; background: none; border: 0; box-shadow: none; }
+    .vs-tcard {
+      position: relative; border-radius: 22px; border: 1px solid rgba(15,19,56,0.9);
+      display: flex; flex-direction: column;
+      padding: 24px 22px 22px; color: #fff; container-type: inline-size;
+      background:
+        radial-gradient(90% 70% at 100% 100%, rgba(174,205,129,0.14) 0%, rgba(174,205,129,0) 70%),
+        radial-gradient(80% 60% at 0% 0%, rgba(157,170,242,0.16) 0%, rgba(157,170,242,0) 70%),
+        var(--navy);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 -1px 4px rgba(15,19,56,0.08),
+        0 2px 6px rgba(15,19,56,0.18),
+        0 14px 32px -10px rgba(15,19,56,0.30),
+        0 34px 64px -30px rgba(48,58,140,0.34);
+    }
+    .vs .vs-tl { margin: 0; color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.32rem, 5.9vw, 1.45rem); line-height: 1.18; letter-spacing: -0.02em; }
+    /* the price is the stack's punchline, not the page's peak: about a quarter of the
+       card's width, and in white, because the page's green belongs to the reward ($250)
+       and $0 is the cost, not the cash */
+    .vs .vs-amt {
+      margin: auto 0 0; padding: 18px 0 0; position: relative;
+      font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 4.5rem; font-size: min(25cqw, 4.75rem); line-height: 0.8; letter-spacing: -0.04em;
+      color: #fff; font-variant-numeric: lining-nums;
+    }
+    .vs .vs-tcard .vs-tl { margin-bottom: 22px; }
+    /* the sum line: a double rule, as under a column of figures */
+    .vs .vs-amt::before {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+      border-top: 1px solid rgba(157,170,242,0.32); border-bottom: 1px solid rgba(157,170,242,0.32);
+    }
+
+    @media (min-width: 700px) {
+      .vs { --vs-t0: 24px; --vs-step: 12px; --vs-gap: 24px; }
+      .vs-grid { max-width: 640px; margin: 0 auto; }
+      .vs-slab { padding: 28px 30px 30px; }
+      .vs-top { gap: 14px; }
+      .vs-ico { width: 44px; height: 44px; font-size: 1.05rem; }
+      .vs-tcard { padding: 28px 30px 26px; }
+      .vs .vs-tl { font-size: 1.62rem; }
+      .vs .vs-t { font-size: 1.62rem; }
+      .vs .vs-d { font-size: 1.0625rem; }
+    }
+    /* desktop: the heading holds on the left while the pile builds on the right */
+    @media (min-width: 1024px) {
+      .vs { --vs-t0: 40px; --vs-step: 14px; --vs-gap: 28px; }
+      .vs-grid { max-width: 1120px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); column-gap: 64px; align-items: start; }
+      .vs .vs-h { font-size: clamp(2.8rem, 3.9vw, 3.6rem); margin-bottom: var(--s3); }
+      .vs .vs-lede { font-size: 1.125rem; margin-bottom: 0; max-width: 24rem; }
+      .vs-slab { padding: 30px 34px 32px; }
+      .vs-tcard { padding: 30px 34px 28px; }
+      .vs .vs-tl { font-size: 1.75rem; }
+      .vs .vs-t { font-size: 1.75rem; }
+      .vs .vs-bul li { font-size: 1rem; }
+    }
+
+    /* live: only on screen, only with motion allowed, only once the script has checked
+       the pile fits (it sets .vs--live). The script also writes three numbers:
+       --vs-mb, a bottom margin per slab that sets where its sticky hold ends (a sticky
+       box is held while its MARGIN box stays inside the pile), chosen so every slab lets
+       go at the moment the landed total does and the pile leaves as one piece;
+       --vs-mt, the next slab's top margin, which cancels that margin in the layout and
+       adds a short hold after a tall slab, so it stays whole for a beat before the next
+       one covers its lower lines; and --vs-tch, the total card's height. Print, the
+       ledger and reduced motion never read them. */
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .vs--live .vs-slab {
+        position: sticky; top: calc(var(--nav-h) + var(--vs-t0) + var(--i, 0) * var(--vs-step)); will-change: transform;
+        margin-top: var(--vs-mt, 0px); margin-bottom: var(--vs-mb, 0px);
+      }
+      .vs--live .vs-tcard { min-height: var(--vs-tch, 0px); }
+      .vs--live .vs-lift { display: block; }
+    }
+    /* desktop, every screen mode: the heading holds beside the list instead of leaving
+       the left column blank beside it (live, the script also centres it on the pile) */
+    @media screen and (min-width: 1024px) {
+      .vs-head { position: sticky; top: calc(var(--nav-h) + var(--vs-t0)); }
+    }
+
+    /* static: a ledger. No JS (html without .js) or the script chose the static list
+       (.vs--flat: reduced motion, or a screen too short to hold a slab whole). */
+    html:not(.js) .vs-pile, .vs--flat .vs-pile { gap: 0; }
+    html:not(.js) .vs-slab:not(.vs-slab--cash):not(.vs-total), .vs--flat .vs-slab:not(.vs-slab--cash):not(.vs-total) {
+      background: none; border: 0; border-top: 1px solid var(--hair); border-radius: 0; box-shadow: none; padding: 28px 0;
+    }
+    html:not(.js) .vs-slab:not(.vs-slab--cash):not(.vs-total) .vs-shade, .vs--flat .vs-slab:not(.vs-slab--cash):not(.vs-total) .vs-shade { display: none; }
+    html:not(.js) .vs-slab--cash, .vs--flat .vs-slab--cash { margin: 4px 0 28px; }
+    html:not(.js) .vs-slab--cash + .vs-slab:not(.vs-total), .vs--flat .vs-slab--cash + .vs-slab:not(.vs-total) { border-top-color: transparent; padding-top: 0; }
+    html:not(.js) .vs-total, .vs--flat .vs-total { margin-top: 4px; }
+    html:not(.js) .vs-slab--util .vs-ico, .vs--flat .vs-slab--util .vs-ico { background: rgba(157,170,242,0.22); }
+    html:not(.js) .vs .vs-bul, .vs--flat .vs-bul { border-top: 0; padding-top: 0; margin-top: 14px; }
+
+    @media print {
+      .vs-slab, .vs-head { position: relative !important; top: auto !important; transform: none !important; -webkit-clip-path: none !important; clip-path: none !important; }
+      .vs-slab.vs-total, .vs-head { min-height: 0 !important; }
+      .vs-veil, .vs-lift { display: none !important; }
+      .vs-shade { opacity: 1 !important; }
+    }
+
+    /* ---------------- QUALIFY: the rent x fee matrix ---------------- */
+    /* the paper tint and its blooms rise out of the value stack's white over the first
+       220px, so the two sections meet without a straight tone line */
+    .mx { background:
+        linear-gradient(180deg, #ffffff 0, rgba(255,255,255,0.72) 90px, rgba(255,255,255,0) 220px),
+        radial-gradient(700px 420px at 88% 8%, rgba(157,170,242,0.14) 0%, rgba(157,170,242,0) 64%),
+        radial-gradient(640px 420px at 6% 100%, rgba(174,205,129,0.12) 0%, rgba(174,205,129,0) 64%),
+        var(--paper-2); }
+    .mx-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .mx .mx-h { font-size: clamp(1.95rem, 8.2vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 14px; color: var(--navy); text-wrap: balance; }
+    .mx .mx-lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0; max-width: 34rem; }
+    .mx-sheet {
+      position: relative; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 22px; padding: 4px 4px 6px;
+      box-shadow: inset 0 1px 0 #fff, var(--sh-elev);
+    }
+    .mx-table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+    .mx-table .mx-col-r { width: 34%; }
+    .mx-table thead th {
+      padding: 16px 4px 12px; text-align: center; vertical-align: bottom;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.78rem; font-weight: 800; line-height: 1.3;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-pen);
+    }
+    .mx-table thead .mx-corner { text-align: left; padding-left: 14px; color: var(--ink-mute); }
+    .mx-table tbody th {
+      padding: 20px 6px 20px 14px; text-align: left; vertical-align: middle; border-top: 1px solid var(--hair);
+      font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.14rem; line-height: 1.2; letter-spacing: -0.01em; color: var(--navy);
+    }
+    .mx-table td { padding: 12px 5px; text-align: center; vertical-align: middle; border-top: 1px solid var(--hair); }
+    /* a static table: read across from your rent to your number. $250 is the loudest
+       figure (the top of the range, the number the page promises); the other three step
+       down in size and ink, centred on the same line as the rent they belong to. */
+    .mx-amt { display: inline-block; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; line-height: 1; letter-spacing: -0.03em; color: var(--ink-soft); font-variant-numeric: lining-nums tabular-nums; }
+    .mx-top .mx-amt { font-size: clamp(2.2rem, 10.4vw, 2.6rem); color: var(--navy); letter-spacing: -0.04em; }
+
+    .mx-note { margin: 22px 0 0; color: var(--ink-mute); font-size: 1rem; line-height: 1.75; }
+    /* "reward terms": a 44px tall touch target without moving the line, and a focus ring
+       that reaches 3:1 on this paper (the system lavender ring is about 2.2:1 here) */
+    .mx-note .inline-link { position: relative; }
+    .mx-note .inline-link::after { content: ''; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; margin-top: -22px; }
+    .mx-note .inline-link:focus-visible { outline-color: var(--ink-pen); }
+    @media (min-width: 700px) {
+      .mx-sheet { padding: 8px 10px 10px; border-radius: 26px; }
+      .mx-table thead th { font-size: 0.8rem; padding: 20px 10px 14px; letter-spacing: 0.1em; }
+      .mx-table thead .mx-corner { padding-left: 20px; }
+      .mx-table tbody th { font-size: 1.5rem; padding: 26px 10px 26px 20px; }
+      .mx-table td { padding: 16px 12px; }
+      .mx-amt { font-size: 2.2rem; }
+      .mx-top .mx-amt { font-size: 3.4rem; }
+    }
+    @media (min-width: 1000px) {
+      .mx-grid { grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); column-gap: 64px; align-items: center; }
+    }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .js .mx-sheet { opacity: 0; transform: translate3d(0, 18px, 0); }
+      .js .mx-sheet.is-in { opacity: 1; transform: none; transition: opacity 0.5s var(--ease), transform 0.6s var(--ease); }
+      .js .mx-cell { opacity: 0; transform: translate3d(0, 10px, 0); }
+      .js .mx-sheet.is-in .mx-cell { opacity: 1; transform: none; transition: opacity 0.5s var(--ease) calc(var(--i, 0) * 35ms), transform 0.5s var(--ease) calc(var(--i, 0) * 35ms); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rh-plane { will-change: auto; }
+    }
+
+    /* ---------------- SITE NAV + FOOTER FIT (CSS only) ----------------
+       The nav and footer markup is the site's and stays byte-identical. These rules
+       only tighten it where it breaks: the pill ran off a 320 screen and met the logo
+       at 360 to 375, and from 768 to 919 the links wrapped to two lines and ran into
+       the logo. At 390 and from 920 up nothing changes. */
+    @media (max-width: 389px) {
+      nav > div:first-child { padding-left: 14px; padding-right: 14px; }
+      nav .nav-logo { max-width: 128px; }
+      nav .nav-cta-mobile { padding-left: 12px; padding-right: 12px; }
+    }
+    @media (max-width: 359px) {
+      nav > div:first-child { padding-left: 8px; padding-right: 8px; }
+      nav > div:first-child > div:first-child { gap: 4px; }
+      nav .nav-logo { max-width: 112px; }
+      nav .nav-cta-mobile { font-size: 0.8rem; padding-left: 11px; padding-right: 11px; }
+    }
+    @media (min-width: 768px) and (max-width: 919px) {
+      nav > div:first-child { padding-left: 16px; padding-right: 16px; }
+      nav div.hidden.md\:flex { gap: 12px; }
+      nav .nav-logo { max-width: 120px; }
+      nav .nav-link { font-size: 0.9rem; white-space: nowrap; }
+      nav .nav-cta-desktop { padding-left: 12px; padding-right: 12px; }
+    }
+    /* footer: the phone and e-mail links fill their own line (28px tall, no overlap
+       with the next line) and the short "Blog" link is at least 44px wide */
+    .footer-col p a { position: relative; }
+    .footer-col p a::after { content: ''; position: absolute; left: -6px; right: -6px; top: 50%; height: 28px; margin-top: -14px; }
+    /* the two contact links sit on consecutive 28.8px lines, so each gets a full 44px
+       target by reaching away from the other: the phone up over the "Dallas Office"
+       line, the e-mail down over the street line (neither is a link), meeting at the
+       line boundary between them without overlapping */
+    .footer-col p a[href^="tel:"]::after { top: auto; bottom: -3px; height: 44px; margin-top: 0; }
+    .footer-col p a[href^="mailto:"]::after { top: -3px; height: 44px; margin-top: 0; }
+    .footer-col ul a { min-width: 44px; }
+
+    /* nav and footer states, CSS only (markup untouched):
+       - the current-page link (#6b78c4, about 4.1:1) and the menu's quiet phone link
+         (#7A7A7A, about 4.3:1, set inline so it needs !important) are darkened just past
+         4.5:1 on white, keeping their hues;
+       - focus rings on the white nav are the pen indigo (6.4:1) instead of lavender (2.2:1);
+       - the hamburger gets a hover, the TREC links get hover and active;
+       - inherited transitions are cut back to transform and opacity: colour, background
+         and shadow now change instantly instead of animating. */
+    .nav-link[aria-current="page"] { color: #5f6bb8; }
+    #mobile-menu a[href^="tel:"] { color: #6e6e6e !important; }
+    #mobile-menu a[href^="tel:"]:hover { color: var(--ink-pen) !important; }
+    .nav-link:focus-visible, .nav-brand:focus-visible { outline-color: var(--ink-pen); }
+    nav button[aria-controls="mobile-menu"]:focus-visible { outline: 3px solid var(--ink-pen) !important; outline-offset: 2px; }
+    nav button[aria-controls="mobile-menu"] { cursor: pointer; transition: opacity 0.15s ease; }
+    @media (hover: hover) and (pointer: fine) { nav button[aria-controls="mobile-menu"]:hover { color: var(--ink-pen); } }
+    .site-footer > div:last-child p a:hover { color: var(--lav) !important; }
+    .site-footer > div:last-child p a:active { opacity: 0.7; }
+    .nav-link, .footer-col ul a, .footer-col a, .footer-bottom-links a { transition: opacity 0.15s ease; }
+    .btn-primary, .btn-coral { transition: transform 0.15s var(--ease); }
+    .inline-link { transition: opacity 0.15s ease; }
+    .footer-col .social-icon { transition: transform 0.15s ease; }
+    /* touch screens: a tap must not leave the system's hover look stuck on (lifted pill,
+       recoloured link) after the finger is gone. Hover is undone where there is no
+       hover; the press states are restated after it so a tap still gives feedback. */
+    @media (hover: none) {
+      .btn-primary:hover, .btn-coral:hover { background-color: var(--btn); transform: none; box-shadow: none; }
+      .nav-link:hover { color: var(--navy); }
+      .nav-link[aria-current="page"]:hover { color: #5f6bb8; }
+      #mobile-menu a[href^="tel:"]:hover { color: #6e6e6e !important; }
+      .footer-col a:hover, .footer-bottom-links a:hover { color: #fff; }
+      .site-footer > div:last-child p a:hover { color: #fff !important; }
+      .social-icon:hover { background: var(--lav); transform: none; }
+      .inline-link:hover { color: #0b5ed7; text-decoration-color: rgba(11,94,215,0.4); }
+      .btn-primary:active, .btn-coral:active { transform: scale(0.985); }
+      .nav-link:active { color: #7b8ee8; }
+      .social-icon:active { transform: scale(0.96); }
+    }
+
+    /* print, from any scroll position: every section in its final, fully visible state.
+       Each motion layer is already screen-only, so a printout starts from the static
+       composition (the notification showing Zelle, the route fully drawn, the value stack a
+       list, the matrix shown); this block also clears whatever the scripts set inline at
+       the moment of printing, and keeps the dark grounds (the total, the close, the
+       footer) printing as designed so their white type never lands on white paper. */
+    @media print {
+      html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      /* the fixed site bar prints once, at the top, not over the top of every page */
+      nav { position: absolute !important; }
+      #mobile-menu { display: none !important; }
+      /* the screen grain is for light on glass; on paper it only tints the page */
+      .rh::before, .mp-stage::before, .vs::after { display: none !important; }
+
+      /* hero: one composed block, no extra screen height; the drifting planes at rest */
+      .rh { min-height: 0 !important; }
+      .rh-wash { transform: none !important; opacity: 1 !important; }
+      /* the far numerals stand in the screen's spare height, which paper does not
+         have: printed, they would sit on the check list, so they are left off */
+      .rh-far { display: none !important; }
+      .rh-near { transform: rotate(-3deg) !important; }
+      .pay-reel { transform: none !important; }
+
+      /* the money path: unpinned, fully drawn, every node lit, every clause at full ink */
+      .mp-track { height: auto !important; }
+      .mp-stage { position: relative !important; top: auto !important; height: auto !important; }
+      .mp .mp-h { transform: none !important; }
+      .mp-body { opacity: 1 !important; transform: none !important; }
+      .mp-s { -webkit-clip-path: none !important; clip-path: none !important; }
+      .mp-tok, .mp-hl, .mp-ring { display: none !important; }
+      .mp-cl { opacity: 1 !important; background-image: none !important; }
+      .mp-node .mp-fill, .mp-node .mp-sub { opacity: 1 !important; transform: none !important; }
+      .mp-node .mp-i--off { opacity: 0 !important; }
+      .mp-node .mp-i--on { opacity: 1 !important; }
+
+      /* the matrix, shown */
+      .mx-sheet, .mx-cell { opacity: 1 !important; transform: none !important; }
+
+      /* keep each object whole across a page break */
+      .pay, .rh-copy, .mp-fig, .mp-copy, .vs-head, .vs-slab, .mx-head, .mx-sheet, .mx-note, .cta-sec { break-inside: avoid; page-break-inside: avoid; }
+      .mp-h, .vs-h, .mx-h { break-after: avoid; page-break-after: avoid; }
+    }
+    @media print and (min-width: 1000px) {
+      .rh-near { transform: rotate(-4deg) !important; }
+    }
+
+  </style>
+  <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
@@ -341,7 +1115,7 @@
   <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
         <a href="index.html" class="nav-brand flex items-center gap-2" style="text-decoration:none;">
           <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
@@ -349,17 +1123,19 @@
           </span>
         </a>
       </div>
-      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-      <div class="hidden md:flex items-center gap-6">
+      <a href="#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden min-[1100px]:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="rewards.html" class="nav-link" aria-current="page">Up to $250 Cash Back</a>
+        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
         <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
         <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
       <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
       <a href="rewards.html" class="nav-link" style="padding:12px 0;" aria-current="page" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
       <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
@@ -368,176 +1144,480 @@
   </nav>
 
   <!-- ══════════════════════════════ HERO ══════════════════════════════
-       Copy unchanged; light lavender-white field replaces the navy slab. -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-layout">
+       The photo is gone: the reward itself is the subject, shown the way it
+       is paid. One payment notification from Apartment Agents, up to $250;
+       its app name steps from Zelle to Venmo to PayPal to Amazon.
+       The page's Best Offer badge is clipped over its top left corner as the
+       near plane, "up to $250" is set far behind, and a plain caption names
+       the three apps. The notification is decorative (aria-hidden); the
+       caption carries its meaning. -->
+  <section class="rh" id="rwHero">
+    <div class="rh-inner">
 
-        <!-- Text column -->
-        <div>
-          <h1>Rent Smarter</h1>
-          <div class="hero-checks">
-            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Your dream apartment, found faster and easier</span></div>
-            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>You get the best rates and move-in specials</span></div>
-            <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Get rewarded with up to <span class="accent">$250</span> for your move or extra cash on us!</span></div>
+      <div class="rh-copy">
+        <h1 class="rh-h1">Rent Smarter</h1>
+        <div class="hero-checks">
+          <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Your dream apartment, found faster and easier</span></div>
+          <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>You get the best rates and <span class="nw">move-in</span> specials</span></div>
+          <div class="check-item"><div class="check-icon" aria-hidden="true">&#10003;</div><span>Get rewarded with up to <span class="accent">$250</span> extra cash on us!</span></div>
+        </div>
+      </div>
+
+      <div class="rh-stage" id="rwStage">
+        <!-- atmosphere (rear) -->
+        <div class="rh-plane rh-wash" data-rate="0.44" aria-hidden="true"></div>
+        <!-- far plane -->
+        <div class="rh-plane rh-far" data-rate="0.30" data-fade="1" aria-hidden="true"><span class="rh-num"><span class="rh-upto">up to</span>$250</span></div>
+        <div class="rh-obj">
+          <!-- subject: the payment notification -->
+          <div class="pay">
+            <div class="pay-card" aria-hidden="true">
+              <span class="pay-app"><i class="fas fa-sack-dollar"></i></span>
+              <span class="pay-meta"><span class="pay-name"><span class="pay-reel"><span>Zelle</span><span>Venmo</span><span>PayPal</span><span>Amazon</span><span>Zelle</span></span></span></span>
+              <span class="pay-from">Apartment Agents</span>
+              <span class="pay-line">extra cash on us</span>
+              <span class="pay-amt"><span class="pay-upto">up to</span><span class="pay-num">$250</span></span>
+            </div>
+            <p class="pay-cap">Paid by <b>Zelle</b>, <b>Venmo</b>, <b>PayPal</b>, or an <b>Amazon gift card</b></p>
+          </div>
+          <!-- near plane: the existing badge -->
+          <div class="rh-plane rh-near" data-rate="-0.025" data-r0="-3" data-r1="-1" data-r0-wide="-4" data-r1-wide="-2" data-s1="1.07">
+            <div class="rw-badge">
+              <p class="eyebrow">Best Offer</p>
+              <p class="word">Guaranteed</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Photo with badge overlay -->
-        <div class="hero-figure">
-          <div class="hero-photo">
-            <img src="images/happy_customer.png" alt="Happy couple celebrating in their new apartment" />
-          </div>
-          <!-- Floating reward badge -->
-          <div class="hero-badge">
-            <p class="eyebrow">Best Offer</p>
-            <p class="word">Guaranteed</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ THE MONEY PATH: HOW IS THIS POSSIBLE? ══════════════
+       The peak. The heading lands alone, then the route draws under the
+       reader's scroll and the paragraph lights clause by clause. -->
+  <section class="mp" id="mpSec" aria-labelledby="mpHead">
+    <div class="mp-track" id="mpTrack">
+      <div class="mp-stage" id="mpStage">
+        <div class="mp-inner" id="mpInner">
+          <h2 class="mp-h" id="mpHead">How is this possible?</h2>
+          <div class="mp-body" id="mpBody">
+
+            <figure class="mp-fig" id="mpFig" role="img" aria-label="The money path: the property, advertising budget; to Apartment Agents, referral fee; to you, extra cash on us.">
+              <!-- phones: the route runs down -->
+              <div class="mp-o mp-o--v" aria-hidden="true">
+                <svg class="mp-svg" viewBox="0 0 340 340" focusable="false">
+                  <defs><linearGradient id="mpKgV0" gradientUnits="userSpaceOnUse" x1="53" y1="0" x2="336" y2="0"><stop offset="0" stop-color="#9DAAF2" stop-opacity="0.26"/><stop offset="0.42" stop-color="#9DAAF2" stop-opacity="0.26"/><stop offset="1" stop-color="#9DAAF2" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M37 36V304" fill="none" stroke="#AECD81" stroke-opacity="0.30" stroke-width="12"/>
+                  <path d="M53 36V170" fill="none" stroke="#9DAAF2" stroke-opacity="0.26" stroke-width="16"/>
+                  <path d="M53 170C53 240 140 254 336 256" fill="none" stroke="url(#mpKgV0)" stroke-width="16"/>
+                </svg>
+                <svg class="mp-svg mp-s" data-s="g" viewBox="0 0 340 340" focusable="false"><path d="M37 36V304" fill="none" stroke="#4C6B22" stroke-opacity="0.32" stroke-width="14"/><path d="M37 36V304" fill="none" stroke="#AECD81" stroke-width="12"/></svg>
+                <svg class="mp-svg mp-s" data-s="l" viewBox="0 0 340 340" focusable="false"><path d="M53 36V170" fill="none" stroke="#9DAAF2" stroke-width="16"/></svg>
+                <svg class="mp-svg mp-s" data-s="k" viewBox="0 0 340 340" focusable="false">
+                  <defs><linearGradient id="mpKgV1" gradientUnits="userSpaceOnUse" x1="53" y1="0" x2="336" y2="0"><stop offset="0" stop-color="#9DAAF2"/><stop offset="0.42" stop-color="#9DAAF2"/><stop offset="1" stop-color="#9DAAF2" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M53 170C53 240 140 254 336 256" fill="none" stroke="url(#mpKgV1)" stroke-width="16"/>
+                </svg>
+              </div>
+              <!-- desktop: the route runs across -->
+              <div class="mp-o mp-o--h" aria-hidden="true">
+                <svg class="mp-svg" viewBox="0 0 1000 300" focusable="false">
+                  <defs><linearGradient id="mpKgH0" gradientUnits="userSpaceOnUse" x1="500" y1="0" x2="810" y2="0"><stop offset="0" stop-color="#9DAAF2" stop-opacity="0.26"/><stop offset="0.25" stop-color="#9DAAF2" stop-opacity="0.26"/><stop offset="1" stop-color="#9DAAF2" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M80 156H920" fill="none" stroke="#AECD81" stroke-opacity="0.30" stroke-width="14"/>
+                  <path d="M80 176H500" fill="none" stroke="#9DAAF2" stroke-opacity="0.26" stroke-width="22"/>
+                  <path d="M500 176C600 176 640 272 810 278" fill="none" stroke="url(#mpKgH0)" stroke-width="22"/>
+                </svg>
+                <svg class="mp-svg mp-s" data-s="g" viewBox="0 0 1000 300" focusable="false"><path d="M80 156H920" fill="none" stroke="#4C6B22" stroke-opacity="0.30" stroke-width="16"/><path d="M80 156H920" fill="none" stroke="#AECD81" stroke-width="14"/></svg>
+                <svg class="mp-svg mp-s" data-s="l" viewBox="0 0 1000 300" focusable="false"><path d="M80 176H500" fill="none" stroke="#9DAAF2" stroke-width="22"/></svg>
+                <svg class="mp-svg mp-s" data-s="k" viewBox="0 0 1000 300" focusable="false">
+                  <defs><linearGradient id="mpKgH1" gradientUnits="userSpaceOnUse" x1="500" y1="0" x2="810" y2="0"><stop offset="0" stop-color="#9DAAF2"/><stop offset="0.22" stop-color="#9DAAF2"/><stop offset="1" stop-color="#9DAAF2" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M500 176C600 176 640 272 810 278" fill="none" stroke="url(#mpKgH1)" stroke-width="22"/>
+                </svg>
+              </div>
+
+              <span class="mp-tok mp-tok--l" id="mpTokL" aria-hidden="true"></span>
+              <span class="mp-tok mp-tok--g" id="mpTokG" aria-hidden="true"></span>
+
+              <div class="mp-node mp-node--p" aria-hidden="true">
+                <span class="mp-disc"><span class="mp-ring"></span><span class="mp-fill"></span><i class="fas fa-building mp-i mp-i--off"></i><i class="fas fa-building mp-i mp-i--on"></i></span>
+                <span class="mp-lab"><span class="mp-name">the property</span><span class="mp-sub">advertising budget</span></span>
+              </div>
+              <div class="mp-node mp-node--a" aria-hidden="true">
+                <span class="mp-disc"><span class="mp-ring"></span><span class="mp-fill"></span><i class="fas fa-handshake mp-i mp-i--off"></i><i class="fas fa-handshake mp-i mp-i--on"></i></span>
+                <span class="mp-lab"><span class="mp-name">Apartment Agents</span><span class="mp-sub">referral fee</span></span>
+              </div>
+              <div class="mp-node mp-node--y" aria-hidden="true">
+                <span class="mp-disc"><span class="mp-ring"></span><span class="mp-fill"></span><i class="fas fa-user mp-i mp-i--off"></i><i class="fas fa-user mp-i mp-i--on"></i></span>
+                <span class="mp-lab"><span class="mp-name">you</span><span class="mp-sub">extra cash on us</span></span>
+              </div>
+            </figure>
+
+            <p class="mp-copy" id="mpCopy"><span class="mp-cl">When you find your new apartment through us and list Apartment Agents as your referral source,</span> <span class="mp-cl">the property pays us a <span class="mp-k">referral fee</span> from its <span class="mp-k">advertising budget</span>.</span> <span class="mp-cl mp-cl--kept">Instead of keeping the entire commission like most apartment locators,</span> <span class="mp-cl">we use a portion of it to give you <span class="mp-k">extra cash on us</span>.</span></p>
+
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ SECTION 2: HOW IS THIS POSSIBLE? ══════════════ -->
-  <section class="sec" style="background:#fff;">
-    <div class="wrap">
-      <div class="split">
+  <!-- no divider here: the money path's stage fades to white and the value stack
+       starts on white, so a hairline would be the only straight line in the join -->
 
-        <!-- Text -->
-        <div class="split-copy">
-          <h2>How is this possible?</h2>
-          <p class="lede" style="margin-bottom:0;">
-            When you find your new apartment through us and list Apartment Agents as your referral source, the property pays us a referral fee from its advertising budget. Instead of keeping the entire commission like most apartment locators, we use a portion of it to give you a free move or cash back.          </p>
-        </div>
-
-        <!-- Image (moves left on desktop, below text on mobile) -->
-        <div class="split-figure">
-          <img src="images/Why-You-Rented-Here.png" alt="Guest card and rental application showing Apartment Agents as the referral source" />
-        </div>
-
+  <!-- ══════════ MORE REWARD. MORE VALUE. MORE PEACE OF MIND.: the value stack ══════════
+       Everything the renter gets lands on a growing pile as the reader scrolls,
+       then the price lands on top. A ledger without JS or with reduced motion. -->
+  <section class="sec vs" id="vsSec" aria-labelledby="vsHead">
+    <div class="wrap vs-grid">
+      <div class="vs-head" id="vsHeadCol">
+        <h2 class="vs-h" id="vsHead"><span class="vs-l">More reward.</span> <span class="vs-l">More value.</span> <span class="vs-l vs-beat">More peace of mind.</span></h2>
+        <p class="vs-lede">Here's everything you get when you find your apartment through us.</p>
       </div>
-    </div>
-  </section>
+      <div class="vs-pile" id="vsPile">
 
-  <!-- DIVIDER -->
-  <div class="rule"></div>
-
-  <!-- ══════════ SECTION 3: MORE REWARD, MORE CHOICE ══════════ -->
-  <section class="sec" style="background:#fff;">
-    <div class="wrap-narrow">
-
-      <h2 style="max-width:580px; margin-bottom:var(--s5);">More reward. More choice. More peace of mind.</h2>
-      <div class="feat-grid">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+        <div class="vs-slab vs-slab--match" style="--i:0">
+          <span class="vs-shade" aria-hidden="true"></span><span class="vs-lift" aria-hidden="true"></span>
+          <div class="vs-top">
+            <span class="vs-ico" aria-hidden="true"><i class="fas fa-list-check"></i></span>
+            <h3 class="vs-t">Your best matches</h3>
           </div>
-          <div>
-            <h3>Up to $250 move or cash</h3>
-            <p>Get up to $250 toward your movers or as extra cash, the best offer in the industry.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-clipboard-list" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3>Compare quotes from reputable DFW movers</h3>
-            <p>We'll help you get quotes from vetted DFW moving companies so you can choose who moves your valuables instead of being locked into a single option.</p>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3>We'll match or beat any competitor's offer</h3>
-            <p>You're getting the best free move or cash back in the industry. If you find a better offer, we'll match or beat it, guaranteed.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ SECTION 4: QUALIFICATION TIERS ══════════════ -->
-  <section class="sec" style="background:var(--paper-2);">
-    <div class="wrap-narrow">
-
-      <h2>See How Much You Qualify For</h2>
-      <p class="lede" style="max-width:560px;">
-        Your reward is based on two things: your monthly rent and the referral fee paid by the apartment community.
-      </p>
-
-      <div class="tier-grid">
-
-        <!-- GROUP 1: $1,250+ -->
-        <div class="tier-card tier-card--lead">
-          <div class="tier-head">
-            <p class="tier-eyebrow">Monthly Rent</p>
-            <p class="tier-band">$1,250 or More</p>
-          </div>
-          <ul class="tier-rows">
-            <li class="tier-row">
-              <span class="tier-row__label">Full Referral Fee</span>
-              <span class="tier-amt tier-amt--top">$250</span>
-            </li>
-            <li class="tier-row">
-              <span class="tier-row__label">Reduced Fee</span>
-              <span class="tier-amt">$150</span>
-            </li>
+          <p class="vs-d">Your licensed apartment expert scours the market for the best-priced floor plans and move-in specials, then sends you the ones that fit, with our top picks up front.</p>
+          <ul class="vs-bul">
+            <li><span class="vs-tick" aria-hidden="true"><i class="fas fa-check"></i></span><span>Every move-in special, concession, and promotion surfaced for you</span></li>
+            <li><span class="vs-tick" aria-hidden="true"><i class="fas fa-check"></i></span><span>Best-priced floor plans matched to your budget and preferences</span></li>
+            <li><span class="vs-tick" aria-hidden="true"><i class="fas fa-check"></i></span><span>Matched and delivered in as little as 24 hours</span></li>
           </ul>
+          <span class="vs-veil" aria-hidden="true"></span>
         </div>
 
-        <!-- GROUP 2: Under $1,250 -->
-        <div class="tier-card">
-          <div class="tier-head">
-            <p class="tier-eyebrow">Monthly Rent</p>
-            <p class="tier-band">Under $1,250</p>
+        <div class="vs-slab vs-slab--cash" style="--i:1">
+          <span class="vs-shade" aria-hidden="true"></span><span class="vs-lift" aria-hidden="true"></span>
+          <div class="vs-top">
+            <span class="vs-ico" aria-hidden="true"><i class="fas fa-sack-dollar"></i></span>
+            <h3 class="vs-t">Up to <span class="vs-cash">$250</span> extra cash on us</h3>
           </div>
-          <ul class="tier-rows">
-            <li class="tier-row">
-              <span class="tier-row__label">Full Referral Fee</span>
-              <span class="tier-amt">$150</span>
-            </li>
-            <li class="tier-row">
-              <span class="tier-row__label">Reduced Fee</span>
-              <span class="tier-amt">$100</span>
-            </li>
+          <p class="vs-d">Paid straight to you by Zelle, Venmo, PayPal, or an Amazon gift card after you lease. The best offer in the industry.</p>
+          <span class="vs-veil" aria-hidden="true"></span>
+        </div>
+
+        <div class="vs-slab vs-slab--move" style="--i:2">
+          <span class="vs-shade" aria-hidden="true"></span><span class="vs-lift" aria-hidden="true"></span>
+          <div class="vs-top">
+            <span class="vs-ico" aria-hidden="true"><i class="fas fa-truck"></i></span>
+            <h3 class="vs-t"><span class="vs-s">Compare mover quotes</span> <span class="vs-s">side by side.</span></h3>
+          </div>
+          <p class="vs-d">We'll get you quotes from vetted DFW moving companies so you can choose who moves your valuables. Pick the one you like, and they'll reach out to confirm and book your move.</p>
+          <ul class="vs-bul">
+            <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>No sales calls from movers</span></li>
+            <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>Clean quotes with no kickbacks, affiliate payments, or referral fees paid to us</span></li>
           </ul>
+          <span class="vs-veil" aria-hidden="true"></span>
+        </div>
+
+        <div class="vs-slab vs-slab--util" style="--i:3">
+          <span class="vs-shade" aria-hidden="true"></span><span class="vs-lift" aria-hidden="true"></span>
+          <div class="vs-top">
+            <span class="vs-ico" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+            <h3 class="vs-t">Utilities set up for free</h3>
+          </div>
+          <p class="vs-d">Our Connect Team shops the market for the best deals on electricity, internet, and renters insurance, then sets everything up for you at no charge.</p>
+          <span class="vs-veil" aria-hidden="true"></span>
+        </div>
+
+        <div class="vs-slab vs-slab--match-beat" style="--i:4">
+          <span class="vs-shade" aria-hidden="true"></span><span class="vs-lift" aria-hidden="true"></span>
+          <div class="vs-top">
+            <span class="vs-ico" aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+            <h3 class="vs-t">We'll match or beat any competitor's offer</h3>
+          </div>
+          <p class="vs-d">You're getting the best cash back in the industry. If you find a better offer, we'll match or beat it, guaranteed.</p>
+          <span class="vs-veil" aria-hidden="true"></span>
+        </div>
+
+        <div class="vs-slab vs-total" style="--i:5">
+          <div class="vs-tcard">
+            <span class="vs-lift" aria-hidden="true"></span>
+            <p class="vs-tl">Your cost for all of it</p>
+            <p class="vs-amt">$0</p>
+          </div>
         </div>
 
       </div>
+    </div>
+  </section>
+  <script>
+    /* The value stack. Self-contained: its own requestAnimationFrame loop, woken by a
+       passive scroll listener and idle while an IntersectionObserver says the section is
+       offscreen. CSS sticky holds each slab (one step lower than the one before), so
+       the pile itself never lags the finger. This script only:
+         1. decides whether the pile can be live: every slab must fit the screen whole
+            while it is held, or the section stays a static ledger (.vs--flat). The fit
+            is always measured on the card metrics (the ledger class is lifted for the
+            read), so switching between the two can never feed back into the decision;
+         2. makes the pile land and leave as one piece. A sticky slab is held while its
+            margin box stays inside the pile, so each slab gets a bottom margin (--vs-mb,
+            negative for a tall one) that ends its hold at the exact moment the landed
+            total's hold ends, and the next slab gets the opposite top margin (--vs-mt)
+            so the layout does not move. No slab is pushed off before the price lands,
+            and none slides up early to show its title above the total. The same top
+            margin carries a short hold after a slab whose foot sits low on the screen;
+            the total card is made tall enough (--vs-tch) to cover the slab it lands on;
+         3. on desktop, holds the heading at the middle of the finished pile;
+         4. per frame, eases each slab underneath back (scale, a faint navy veil) as
+            the next one covers it, lets a covered slab's ground shadow go, settles the
+            travelling slab's lift shadow, and clips a covered slab where it would show
+            below a shorter one on top of it.
+       Transform, opacity and clip-path only. Reduced motion, no JS, or any error: the
+       static ledger, with every inline style cleared. */
+    (function () {
+      var sec = document.getElementById('vsSec');
+      var pile = document.getElementById('vsPile');
+      var headCol = document.getElementById('vsHeadCol');
+      if (!sec || !pile || !headCol || !window.requestAnimationFrame || !pile.getBoundingClientRect) return;
+      var slabs = [];
+      for (var c = 0; c < pile.children.length; c++) if (pile.children[c].className.indexOf('vs-slab') > -1) slabs.push(pile.children[c]);
+      var N = slabs.length - 1;
+      if (N < 1) return;
+      var total = slabs[N];
+      var veils = slabs.map(function (s) { return s.querySelector('.vs-veil'); });
+      var lifts = slabs.map(function (s) { return s.querySelector('.vs-lift'); });
+      var shades = slabs.map(function (s) { return s.querySelector('.vs-shade'); });
+      var headH = headCol.querySelector('.vs-h'), headL = headCol.querySelector('.vs-lede');
+      var tcard = total.querySelector('.vs-tcard') || total;
+      var rm = { matches: false };
+      try { rm = window.matchMedia('(prefers-reduced-motion: reduce)'); } catch (e) {}
+      var clamp = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
+      var smooth = function (t) { return t * t * (3 - 2 * t); };
+      /* a covered slab runs this far under the one above it: past its corner radius, and
+         past a frame of fast fling (the clip is set a frame after the browser moves the
+         sticky slabs), yet well short of the shortest slab, so it can never peek below */
+      var R = 72;
+      /* a covered slab's ground shadow is gone after this much overlap, before the clip
+         above (which starts at R) could cut it into a hard line across the gutters */
+      var SH = 56;
+      var K = 0.022;       /* scale lost per slab on top */
+      var VEIL = 0.042;    /* veil gained per slab on top */
+      var S = { live: false, vis: true, h: [], rel: [], T: [], mb: [], hold: [], gap: 0, end: 0, last: null, w: [] };
+      var setVar = function (el, k, v) { if (v === '') el.style.removeProperty(k); else if (el.style.getPropertyValue(k) !== v) el.style.setProperty(k, v); };
+      /* the fit check reads the small viewport (browser toolbars shown), so a toolbar
+         sliding away mid-scroll can never flip the pile between live and static */
+      var probe = document.createElement('div');
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = 'position:absolute;left:0;top:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none;';
+      sec.appendChild(probe);
 
-      <p class="tier-note">
-        Not sure what referral fee the communities you're interested in pay? Your agent can let you know when we match you with apartments. See <a href="https://apartmentagents.com/rebate-terms/" class="inline-link">reward terms</a> for full details.
-      </p>
+      function clearInline() {
+        for (var i = 0; i <= N; i++) {
+          slabs[i].style.transform = ''; slabs[i].style.webkitClipPath = ''; slabs[i].style.clipPath = '';
+          setVar(slabs[i], '--vs-mt', ''); setVar(slabs[i], '--vs-mb', '');
+          if (veils[i]) veils[i].style.opacity = '';
+          if (lifts[i]) lifts[i].style.opacity = '';
+          if (shades[i]) shades[i].style.opacity = '';
+        }
+        setVar(tcard, '--vs-tch', '');
+        S.w = [];
+      }
+      function off() {
+        S.live = false;
+        sec.classList.remove('vs--live');
+        sec.classList.add('vs--flat');
+        headCol.style.minHeight = ''; headCol.style.top = '';
+        clearInline();
+      }
+
+      function measure() {
+        try {
+          if (rm.matches) { off(); return; }
+          var i;
+          /* read on the card metrics: lift the ledger class for the read (border-box
+             heights are untouched by sticky, margins, transforms and clips, so nothing the
+             live mode changes is read either; the card's own height is read bare) */
+          sec.classList.remove('vs--flat');
+          setVar(tcard, '--vs-tch', '');
+          for (i = 0; i <= N; i++) S.h[i] = slabs[i].offsetHeight;
+          var cardH = S.h[N];
+          var rs = getComputedStyle(document.documentElement), ss = getComputedStyle(sec);
+          var nav = parseFloat(rs.getPropertyValue('--nav-h')) || 69;
+          var t0 = parseFloat(ss.getPropertyValue('--vs-t0')) || 0, st = parseFloat(ss.getPropertyValue('--vs-step')) || 0;
+          var vh = probe.offsetHeight || window.innerHeight || document.documentElement.clientHeight;
+          /* the landed total covers the foot of the slab it lands on (every slab further
+             down is clipped well above that foot), with a few px to spare */
+          var cardE = Math.max(cardH, Math.ceil(t0 + (N - 1) * st + S.h[N - 1] + 6 - (t0 + N * st)));
+          /* every slab must be whole on screen while it is held, or part of it could be
+             covered before it was read: then the section stays a ledger */
+          for (i = 0; i <= N; i++) if (nav + t0 + i * st + (i < N ? S.h[i] : cardE) > vh - 8) { off(); return; }
+          sec.classList.add('vs--live');
+          setVar(tcard, '--vs-tch', cardE > cardH ? cardE + 'px' : '');
+          S.h[N] = total.offsetHeight;
+          S.gap = parseFloat(getComputedStyle(pile).rowGap) || 0;
+          for (i = 0; i <= N; i++) S.T[i] = parseFloat(getComputedStyle(slabs[i]).top) || (nav + t0 + i * st);
+          /* E: the landed total's foot. Every slab's hold ends when the pile's end passes
+             E, so the whole pile leaves together. The hold after a slab: how far its last
+             line sits below a reading line about a third of the way down the screen,
+             capped, so a tall slab stays whole for a beat before the next one covers it */
+          var E = S.T[N] + S.h[N];
+          var readLine = nav + 0.35 * (vh - nav);
+          var y = 0, reach = 0;
+          for (i = 0; i <= N; i++) {
+            S.rel[i] = y;
+            S.mb[i] = i < N ? Math.round(E - S.T[i] - S.h[i]) : 0;
+            S.hold[i] = i < N ? Math.round(clamp(S.T[i] + S.h[i] - 24 - readLine, 0, 0.24 * vh)) : 0;
+            y += S.h[i] + S.gap + S.hold[i];
+            if (i < N && S.T[i] + S.h[i] > reach) reach = S.T[i] + S.h[i];
+          }
+          for (i = 0; i <= N; i++) {
+            setVar(slabs[i], '--vs-mb', i < N && S.mb[i] ? S.mb[i] + 'px' : '');
+            setVar(slabs[i], '--vs-mt', i > 0 && (S.hold[i - 1] - S.mb[i - 1]) ? (S.hold[i - 1] - S.mb[i - 1]) + 'px' : '');
+          }
+          S.end = S.rel[N] + S.h[N];
+          /* two columns: the heading holds at the middle of the ground the pile covers
+             while it builds (from the first slab's top down to the lowest slab's foot),
+             and leaves exactly when the pile does */
+          var twoCol = Math.abs(headCol.getBoundingClientRect().left - pile.getBoundingClientRect().left) > 4;
+          var hm = '', ht = '';
+          if (twoCol && headH && headL) {
+            var vis = Math.max(reach, E) - S.T[0];
+            var hh = headL.getBoundingClientRect().bottom - headH.getBoundingClientRect().top;
+            var offY = Math.max(0, Math.round((vis - hh) / 2));
+            ht = (S.T[0] + offY) + 'px';
+            hm = Math.max(0, Math.round(S.T[N] + S.h[N] - S.T[0] - offY)) + 'px';
+          }
+          if (headCol.style.minHeight !== hm) headCol.style.minHeight = hm;
+          if (headCol.style.top !== ht) headCol.style.top = ht;
+          S.live = true; S.last = null;
+          kick();
+        } catch (e) { off(); }
+      }
+
+      function set(i, k, v) {
+        var w = S.w[i] || (S.w[i] = {});
+        if (w[k] === v) return false;
+        w[k] = v; return true;
+      }
+      function render() {
+        var pt = pile.getBoundingClientRect().top;
+        if (S.last !== null && Math.abs(pt - S.last) < 0.2) return;
+        S.last = pt;
+        var C = pt + S.end, tops = [], land = [0], i;
+        /* where the browser has each slab: its own place, held at its step, pushed by the
+           end of the pile once its margin box reaches it (all slabs at the same moment) */
+        for (i = 0; i <= N; i++) tops[i] = Math.min(Math.max(pt + S.rel[i], S.T[i]), C - S.h[i] - S.mb[i]);
+        /* land: 0 while slab i is still apart, 1 once it has slid over slab i-1 to its step */
+        for (i = 1; i <= N; i++) {
+          var from = S.T[i - 1] + S.h[i - 1] + S.gap;
+          land[i] = smooth(clamp((from - tops[i]) / Math.max(1, from - S.T[i]), 0, 1));
+        }
+        var depth = 0, minTop = Infinity;
+        for (i = N; i >= 0; i--) {
+          /* depth: how many slabs lie on this one; the deeper, the smaller and dimmer */
+          var s = 1 - K * depth;
+          if (set(i, 't', s.toFixed(4))) slabs[i].style.transform = s >= 0.9999 ? '' : 'scale(' + s.toFixed(4) + ')';
+          if (veils[i] && set(i, 'v', (VEIL * depth).toFixed(3))) veils[i].style.opacity = (VEIL * depth).toFixed(3);
+          /* the lift: a travelling slab floats, a landed one rests */
+          var lift = i === 0 ? clamp((tops[0] - S.T[0]) / 160, 0, 1) : 1 - land[i];
+          if (lifts[i] && set(i, 'l', lift.toFixed(3))) lifts[i].style.opacity = lift.toFixed(3);
+          var bottom = tops[i] + S.h[i] * s;
+          /* the ground shadow: let go over the first SH px of being covered */
+          if (shades[i]) {
+            var sh = minTop === Infinity ? 1 : 1 - smooth(clamp((bottom - minTop) / SH, 0, 1));
+            if (set(i, 'h', sh.toFixed(3))) shades[i].style.opacity = sh >= 0.999 ? '' : sh.toFixed(3);
+          }
+          /* clip: never let a covered slab show below the shorter ones on top of it */
+          var clip = 'none';
+          if (i < N) {
+            var line = minTop + R, b = S.h[i] - (line - tops[i]) / s;
+            if (line < bottom && b > 0) clip = 'inset(-90px -90px ' + b.toFixed(1) + 'px -90px)';
+          }
+          if (set(i, 'c', clip)) { slabs[i].style.webkitClipPath = clip === 'none' ? '' : clip; slabs[i].style.clipPath = clip === 'none' ? '' : clip; }
+          depth += land[i];
+          if (tops[i] < minTop) minTop = tops[i];
+        }
+      }
+
+      var running = false;
+      function frame() { running = false; if (S.live && S.vis) { try { render(); } catch (e) { off(); } } }
+      function kick() { if (!running) { running = true; window.requestAnimationFrame(frame); } }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (en) {
+          S.vis = en[en.length - 1].isIntersecting;
+          if (S.vis) { S.last = null; kick(); }
+        }, { rootMargin: '200px 0px 200px 0px' }).observe(sec);
+      }
+      var mq = 0;
+      function remeasure() { if (!mq) mq = window.requestAnimationFrame(function () { mq = 0; measure(); }); }
+      window.addEventListener('scroll', kick, { passive: true });
+      window.addEventListener('resize', remeasure, { passive: true });
+      window.addEventListener('load', remeasure);
+      window.addEventListener('pageshow', remeasure);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure, function () {});
+      if (window.ResizeObserver) new ResizeObserver(remeasure).observe(pile);
+      if (rm.addEventListener) rm.addEventListener('change', measure); else if (rm.addListener) rm.addListener(measure);
+      measure();
+    })();
+  </script>
+
+  <!-- ══════════════ SEE HOW MUCH YOU QUALIFY FOR: rent x fee ══════════════ -->
+  <section class="sec mx" aria-labelledby="mxHead">
+    <div class="wrap mx-grid">
+      <div class="mx-head">
+        <h2 class="mx-h" id="mxHead">See How Much You Qualify For</h2>
+        <p class="mx-lede">Your reward is based on two things: your monthly rent and the referral fee paid by the apartment community.</p>
+      </div>
+      <div>
+        <div class="mx-sheet" id="mxSheet">
+          <table class="mx-table" aria-labelledby="mxHead">
+            <colgroup><col class="mx-col-r" /><col /><col /></colgroup>
+            <thead>
+              <tr>
+                <th scope="col" class="mx-corner mx-cell" style="--i:0">Monthly Rent</th>
+                <th scope="col" class="mx-cell" style="--i:1">Full Referral Fee</th>
+                <th scope="col" class="mx-cell" style="--i:2">Reduced Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="mx-cell" style="--i:3">$1,250 or More</th>
+                <td class="mx-cell mx-top" style="--i:4"><span class="mx-amt">$250</span></td>
+                <td class="mx-cell" style="--i:5"><span class="mx-amt">$150</span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="mx-cell" style="--i:6">Under $1,250</th>
+                <td class="mx-cell" style="--i:7"><span class="mx-amt">$150</span></td>
+                <td class="mx-cell" style="--i:8"><span class="mx-amt">$100</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mx-note">
+          Not sure what referral fee the communities you're interested in pay? Your agent can let you know when we match you with apartments. See <a href="https://apartmentagents.com/rebate-terms/" class="inline-link">reward terms</a> for full details.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════ BOTTOM CTA ══════════════════════════ -->
   <span id="cta" aria-hidden="true"></span>
   <section class="cta-sec" id="signup">
-    <!-- Skyline background -->
     <div class="cta-bg" aria-hidden="true">
       <img src="dallas-skyline.png" alt="" loading="lazy" />
       <div class="veil"></div>
     </div>
-    <!-- Radial glow -->
     <div class="cta-glow" aria-hidden="true"></div>
-    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto; text-align:center;">
+    <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
+      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center; text-wrap:balance;">The apartment you actually want.</h2>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
 
-      <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); letter-spacing:-0.03em; line-height:1.1; margin:0 0 14px;">
-        Save more on your next apartment
-      </h2>
-      <p style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.7; margin:0 auto 30px; max-width:480px;">
-        It takes less than two minutes to start your search.
+      <!-- Bottom CTA: button only (the card copy was removed 2026-10-04 at John's request). Links out to SIGNUP_URL. -->
+      <p style="text-align:center; margin:0;">
+        <a href="SIGNUP_URL" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 36px; font-size:1.05rem; min-height:56px;">
+          Get My Free Matches
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
       </p>
-      <a href="index.html#contact-form" class="btn-primary cta-btn">
-        Get Started
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.5em; height:1em;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
+
+      <p style="text-align:center; margin:20px 0 0; font-size:0.95rem; color:rgba(255,255,255,0.78);">
+        Prefer to talk it through? <a href="tel:+19729937300" class="link-quiet">(972) 993-7300</a>
+      </p>
     </div>
   </section>
 
@@ -603,6 +1683,376 @@
       menu.classList.toggle('hidden');
       if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
     }
+  </script>
+  <script>
+    /* Rewards page motion. One requestAnimationFrame loop, woken by a passive scroll
+       listener, idle when nothing changes. Each scroll section publishes its own
+       progress (0..1) and is skipped while IntersectionObserver says it is offscreen.
+       Transform / opacity only, plus clip-path wipes on the route strands.
+       Never throws: on any error the html.js class is removed and every
+       inline style is cleared, so the page falls back to its complete static form. */
+    (function () {
+      var root = document.documentElement;
+      var clearAll = function () {};
+      function bail() {
+        root.className = (' ' + root.className + ' ').replace(' js ', ' ').trim();
+        try { clearAll(); } catch (e) {}
+      }
+      try {
+        if (!window.requestAnimationFrame || !document.querySelector) { bail(); return; }
+        var mm = function (q) { try { return window.matchMedia(q); } catch (e) { return { matches: false }; } };
+        var rm = mm('(prefers-reduced-motion: reduce)');
+        var routeWide = mm('(min-width: 860px)');
+        var heroWide = mm('(min-width: 1000px)');
+        /* the nav offset comes from the same --nav-h token the sticky stage uses */
+        var NAV = 69;
+        try { var navTok = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')); if (navTok > 0) NAV = navTok; } catch (e) {}
+        var hasIO = 'IntersectionObserver' in window;
+        var clamp = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
+        var seg = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+        var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+        var smooth = function (t) { return t * t * (3 - 2 * t); };
+        var lerp = function (a, b, t) { return a + (b - a) * t; };
+        var pct = function (v) { return (clamp(v, 0, 1) * 100).toFixed(3) + '%'; };
+
+        /* ---------------- hero planes ----------------
+           The wash, the far numerals and the badge drift at their own rates (data-rate:
+           px of drift per px of scroll; the badge also straightens, data-r0 to data-r1,
+           and grows a little from its foot, data-s1, so it reads as the near plane while
+           staying pinned to the notification's corner). The hero's travel is --fan-f of a
+           screen, x2, set per breakpoint.
+           The notification's app name steps Zelle, Venmo, PayPal, Amazon on a timer while the
+           hero is on screen, so a reader who has not scrolled yet sees all three. The
+           script writes the index to the stage as --app and the CSS eases the reel to it
+           (a timed step, so it never rests between two names). After Amazon the reel
+           steps on to a repeat of Zelle and then jumps back to the first one unseen. */
+        var hero = document.getElementById('rwHero');
+        var fanEl = document.getElementById('rwStage');
+        var reelEl = fanEl ? fanEl.querySelector('.pay-reel') : null;
+        var planes = [].slice.call(hero.querySelectorAll('[data-rate]')).map(function (el) {
+          var g = function (k) { var v = el.getAttribute(k); return v === null ? null : parseFloat(v); };
+          return { el: el, rate: g('data-rate') || 0, r0: g('data-r0'), r1: g('data-r1'), r0w: g('data-r0-wide'), r1w: g('data-r1-wide'), fade: g('data-fade'), s1: g('data-s1') };
+        });
+        var HR = { vis: true, fan: 380, travel: 760, last: -1 };
+        var REEL = { i: 0, on: false, t: 0, snap: 0, last: reelEl ? reelEl.children.length - 1 : 3 };
+        function reelStep() {
+          REEL.t = 0;
+          if (!REEL.on || !fanEl || !reelEl) return;
+          REEL.i = REEL.i >= REEL.last ? 1 : REEL.i + 1;
+          fanEl.style.setProperty('--app', String(REEL.i));
+          if (REEL.i === REEL.last) {
+            REEL.snap = setTimeout(function () {
+              REEL.snap = 0;
+              reelEl.style.transition = 'none';
+              REEL.i = 0; fanEl.style.setProperty('--app', '0');
+              void reelEl.offsetWidth;
+              reelEl.style.transition = '';
+            }, 700);
+          }
+          REEL.t = setTimeout(reelStep, 2200);
+        }
+        function reelRun(on) {
+          on = !!(on && !rm.matches && !document.hidden && reelEl);
+          if (on === REEL.on) return;
+          REEL.on = on;
+          if (REEL.t) { clearTimeout(REEL.t); REEL.t = 0; }
+          if (on) REEL.t = setTimeout(reelStep, REEL.i === 0 ? 1500 : 1200);
+        }
+        function heroMeasure() {
+          var f = 0.45;
+          try { var fv = parseFloat(getComputedStyle(hero).getPropertyValue('--fan-f')); if (fv > 0) f = fv; } catch (e) {}
+          /* the layout viewport, which a phone's collapsing toolbar does not resize */
+          HR.fan = Math.max(80, (root.clientHeight || window.innerHeight || 800) * f);
+          HR.travel = HR.fan * 2;
+          HR.last = -1;
+          reelRun(HR.vis);
+        }
+        function heroRender() {
+          var y = clamp(window.scrollY, 0, HR.travel);
+          if (Math.abs(y - HR.last) < 0.2) return;
+          HR.last = y;
+          var p = y / HR.travel;
+          var wide = heroWide.matches;
+          for (var i = 0; i < planes.length; i++) {
+            var pl = planes[i];
+            var r0 = (wide && pl.r0w !== null) ? pl.r0w : pl.r0;
+            var r1 = wide ? (pl.r1w !== null ? pl.r1w : r0) : (pl.r1 !== null ? pl.r1 : r0);
+            var t = 'translate3d(0,' + (pl.rate * y).toFixed(2) + 'px,0)';
+            if (r0 !== null) t += ' rotate(' + lerp(r0, r1, p).toFixed(3) + 'deg)';
+            if (pl.s1 !== null) t += ' scale(' + lerp(1, pl.s1, p).toFixed(4) + ')';
+            pl.el.style.transform = t;
+            /* the far numerals recede into the haze as they sink behind the notification,
+               and are gone before their foot could come out under it */
+            if (pl.fade) pl.el.style.opacity = (1 - smooth(seg(p, 0.1, 0.28))).toFixed(3);
+          }
+        }
+
+        /* ---------------- the money path ---------------- */
+        var sec = document.getElementById('mpSec');
+        var track = document.getElementById('mpTrack');
+        var stage = document.getElementById('mpStage');
+        var inner = document.getElementById('mpInner');
+        var head = document.getElementById('mpHead');
+        var body = document.getElementById('mpBody');
+        var fig = document.getElementById('mpFig');
+        var tokL = document.getElementById('mpTokL');
+        var tokG = document.getElementById('mpTokG');
+        var nodes = [].slice.call(fig.querySelectorAll('.mp-node'));
+        var clauses = [].slice.call(document.querySelectorAll('#mpCopy .mp-cl'));
+        /* the reading marker's layer: one rounded wash per line of each clause, sitting
+           behind the paragraph's text (CSS shows it only with motion allowed) */
+        var copy = document.getElementById('mpCopy');
+        var hl = document.createElement('span');
+        hl.className = 'mp-hl';
+        hl.setAttribute('aria-hidden', 'true');
+        copy.insertBefore(hl, copy.firstChild);
+        var hlR = [], hlKey = '';
+        var strands = { v: {}, h: {} };
+        [].slice.call(fig.querySelectorAll('.mp-o--v .mp-s')).forEach(function (s) { strands.v[s.getAttribute('data-s')] = s; });
+        [].slice.call(fig.querySelectorAll('.mp-o--h .mp-s')).forEach(function (s) { strands.h[s.getAttribute('data-s')] = s; });
+        /* geometry in each SVG's own units; must match the paths in the markup */
+        var GEO = {
+          v: { W: 340, H: 340, axis: 1, P: 36, A: 170, Y: 304, g: 37, l: 53, half: 8, kept: [53, 170, 53, 240, 140, 254, 336, 256] },
+          h: { W: 1000, H: 300, axis: 0, P: 80, A: 500, Y: 920, g: 156, l: 176, half: 11, kept: [500, 176, 600, 176, 640, 272, 810, 278] }
+        };
+        function bez(k, t) {
+          var u = 1 - t, a = u * u * u, b = 3 * u * u * t, c = 3 * u * t * t, d = t * t * t;
+          return [a * k[0] + b * k[2] + c * k[4] + d * k[6], a * k[1] + b * k[3] + c * k[5] + d * k[7]];
+        }
+        var M = { vis: false, pending: true, inited: false, tall: false, s0: 0, travel: 1, sh: 1, cur: 0, last: -2, lu: -9, S: 1.12, o: 'v', sc: 1, rl: 10, rg: 7, on: [], lit: [], curCl: -2, shown: null };
+
+        function mpMeasure() {
+          M.o = routeWide.matches ? 'h' : 'v';
+          M.sc = (fig.clientWidth || 1) / GEO[M.o].W;
+          M.rl = (tokL.offsetWidth || 24) / 2;
+          M.rg = (tokG.offsetWidth || 18) / 2;
+          sec.classList.remove('mp--tall');
+          body.style.transform = '';
+          var vh = window.innerHeight;
+          var need = inner.offsetHeight;
+          M.tall = need > stage.clientHeight + 1;   /* svh-based, so a collapsing URL bar cannot flip modes */
+          /* the held heading is set larger, but never wider than the column: its scaled
+             width stays inside the side gutters at every phone width */
+          var S0 = M.o === 'h' ? 1.2 : 1.12;
+          var hw = head.offsetWidth, aw = body.offsetWidth;
+          M.S = (hw > 0 && aw > 2) ? clamp((aw - 2) / hw, 1, S0) : S0;
+          M.sh = Math.max(1, stage.clientHeight);
+          if (M.tall) {
+            /* content taller than the screen (very small phones): no pin, no held scroll.
+               The route plays as the figure crosses the viewport instead. */
+            sec.classList.add('mp--tall');
+            var figTop = fig.getBoundingClientRect().top + window.scrollY;
+            M.s0 = figTop - vh * 0.78;
+            M.travel = Math.max(1, fig.offsetHeight + vh * 0.3);
+          } else {
+            M.s0 = track.getBoundingClientRect().top + window.scrollY - NAV;
+            M.travel = Math.max(1, track.offsetHeight - stage.offsetHeight);
+          }
+          M.last = -2; M.lu = -9;
+          hlBuild();
+        }
+
+        /* lays the marker's washes over the clauses' line boxes, measured against the
+           paragraph (the body's translate moves both alike). Rebuilt only when the lines
+           really moved, so a phone's toolbar resizing the viewport never replays the wipe;
+           a piece built for the clause that is already current lands without one. */
+        function hlBuild() {
+          var base = copy.getBoundingClientRect(), boxes = [], key = '';
+          for (var i = 0; i < clauses.length; i++) {
+            var rs = clauses[i].getClientRects(), set = [];
+            for (var j = 0; j < rs.length; j++) {
+              if (rs[j].width < 1) continue;
+              var b = [rs[j].left - base.left - 3, rs[j].top - base.top - 1, rs[j].width + 6, rs[j].height + 2];
+              set.push(b); key += b.map(function (v) { return Math.round(v); }).join(',') + ';';
+            }
+            boxes.push(set); key += '|';
+          }
+          if (key === hlKey) return;
+          hlKey = key;
+          while (hl.firstChild) hl.removeChild(hl.firstChild);
+          hlR = [];
+          var fresh = [];
+          for (var c = 0; c < boxes.length; c++) {
+            var els = [];
+            for (var k = 0; k < boxes[c].length; k++) {
+              var bx = boxes[c][k], el = document.createElement('span');
+              el.className = 'mp-hl-r' + (clauses[c].classList.contains('mp-cl--kept') ? ' mp-hl-r--kept' : '');
+              el.style.left = bx[0].toFixed(1) + 'px'; el.style.top = bx[1].toFixed(1) + 'px';
+              el.style.width = bx[2].toFixed(1) + 'px'; el.style.height = bx[3].toFixed(1) + 'px';
+              el.style.setProperty('--d', (k * 0.16).toFixed(2) + 's');
+              if (c === M.curCl) { el.style.transition = 'none'; el.classList.add('is-on'); fresh.push(el); }
+              hl.appendChild(el); els.push(el);
+            }
+            hlR.push(els);
+          }
+          if (fresh.length) { void hl.offsetWidth; for (var f = 0; f < fresh.length; f++) fresh[f].style.transition = ''; }
+        }
+
+        function setClip(el, v) { if (el && el._c !== v) { el._c = v; el.style.webkitClipPath = v; el.style.clipPath = v; } }
+        function place(el, x, y, o, r) {
+          el.style.transform = 'translate3d(' + (x * M.sc - r).toFixed(2) + 'px,' + (y * M.sc - r).toFixed(2) + 'px,0)';
+          el.style.opacity = o.toFixed(3);
+        }
+        function toggle(list, store, flags, cls) {
+          for (var i = 0; i < list.length; i++) {
+            if (store[i] !== flags[i]) { store[i] = flags[i]; list[i].classList.toggle(cls, flags[i]); }
+          }
+        }
+
+        /* p: lerped progress through the pin (0..1). u: the stage's raw approach before
+           the pin, in stage heights (-1 = stage top at the viewport bottom, 0 = pinned).
+           The intro runs on u, so the held beat happens while the stage arrives, not as
+           extra pinned scroll; the route runs on p. */
+        function mpRender(p, u) {
+          var g = GEO[M.o], s = strands[M.o];
+          /* 1. "How is this possible?" arrives a size larger with nothing under it (the
+                held breath, kept short: the heading rises alone through the lower part of
+                the screen), then settles while the route fades in beneath it */
+          var e = M.tall ? 1 : ease(seg(u, -0.58, -0.2));
+          head.style.transform = e >= 1 ? 'none' : 'scale(' + (1 + (M.S - 1) * (1 - e)).toFixed(4) + ')';
+          /* the route and paragraph are either waiting (the heading's beat) or complete:
+             crossing u = -0.5 on the way down starts a timed fade-up (CSS), and they only
+             leave again below u = -0.64, so a reader who stops mid-approach never sees them
+             stuck half faded. The first render (a reload mid-page) lands without a fade. */
+          var show = M.tall || (M.shown ? u > -0.64 : u >= -0.5);
+          if (show !== M.shown) {
+            var first = M.shown === null;
+            M.shown = show;
+            if (first) body.style.transition = 'none';
+            body.classList.toggle('is-shown', show);
+            if (first) { void body.offsetWidth; body.style.transition = ''; }
+          }
+
+          /* 2. the stream: property -> Apartment Agents, split, then on to you */
+          var a = smooth(seg(p, 0.04, 0.40));
+          var k = seg(p, 0.42, 0.63), km = smooth(k);
+          var gr = smooth(seg(p, 0.47, 0.84));
+          var mainPos = lerp(g.P, g.A, a);
+          var greenPos = gr > 0 ? lerp(g.A, g.Y, gr) : mainPos;
+          if (g.axis === 1) {
+            setClip(s.g, 'inset(0 0 ' + pct(1 - (greenPos + 1) / g.H) + ' 0)');
+            setClip(s.l, 'inset(0 0 ' + pct(1 - (mainPos + 1) / g.H) + ' 0)');
+          } else {
+            setClip(s.g, 'inset(0 ' + pct(1 - (greenPos + 1) / g.W) + ' 0 0)');
+            setClip(s.l, 'inset(0 ' + pct(1 - (mainPos + 1) / g.W) + ' 0 0)');
+          }
+          var kp = bez(g.kept, km);
+          setClip(s.k, k <= 0 ? 'inset(0 100% 100% 0)' : 'inset(0 ' + pct(1 - (kp[0] + g.half) / g.W) + ' ' + pct(1 - (kp[1] + g.half) / g.H) + ' 0)');
+
+          /* tokens: one pair travels together, parts at the split */
+          var appear = seg(p, 0.03, 0.055);
+          if (k <= 0) place(tokL, g.axis ? g.l : mainPos, g.axis ? mainPos : g.l, appear, M.rl);
+          else place(tokL, kp[0], kp[1], 1 - km * km, M.rl);
+          place(tokG, g.axis ? g.g : greenPos, g.axis ? greenPos : g.g, appear * (1 - seg(p, 0.84, 0.88)), M.rg);
+
+          /* 3. nodes and clauses light as the money passes; the first clause is lit as the
+                paragraph finishes arriving, so the reader starts on full-strength text */
+          toggle(nodes, M.on, [p >= 0.025, p >= 0.395, p >= 0.84], 'is-on');
+          var lit = [M.tall ? p >= 0.02 : (u >= -0.1 || p > 0), p >= 0.04, p >= 0.40, p >= 0.52];
+          toggle(clauses, M.lit, lit, 'is-lit');
+          /* the reading marker follows the money and leaves once it has landed, so no
+             sentence is left marked after the peak */
+          var cur = p >= 0.9 ? -1 : lit[3] ? 3 : lit[2] ? 2 : lit[1] ? 1 : lit[0] ? 0 : -1;
+          if (cur !== M.curCl) {
+            M.curCl = cur;
+            for (var i = 0; i < clauses.length; i++) {
+              clauses[i].classList.toggle('is-cur', i === cur);
+              for (var j = 0; hlR[i] && j < hlR[i].length; j++) hlR[i][j].classList.toggle('is-on', i === cur);
+            }
+          }
+        }
+
+        /* ---------------- the loop ---------------- */
+        var running = false;
+        function frame() {
+          running = false;
+          if (rm.matches) return;
+          var busy = false;
+          if (HR.vis) heroRender();
+          if (M.vis || M.pending) {
+            var raw = window.scrollY - M.s0;
+            var tgt = clamp(raw / M.travel, 0, 1);
+            var u = M.tall ? 0 : clamp(raw / M.sh, -2, 0);   /* raw, never lerped: the stage is still scrolling */
+            if (!M.inited || !M.vis) { M.cur = tgt; M.inited = true; M.pending = false; }
+            else {
+              var d = tgt - M.cur;
+              if (Math.abs(d) > 0.35) M.cur = tgt;              /* a jump (anchor link, restore): land, don't replay */
+              else if (Math.abs(d) > 0.0006) { M.cur += d * 0.2; busy = true; }
+              else M.cur = tgt;
+            }
+            if (Math.abs(M.cur - M.last) > 0.00004 || Math.abs(u - M.lu) > 0.0004) { M.last = M.cur; M.lu = u; mpRender(M.cur, u); }
+          }
+          if (busy) kick();
+        }
+        function kick() { if (!running) { running = true; window.requestAnimationFrame(frame); } }
+
+        function measureAll() {
+          if (rm.matches) return;
+          heroMeasure();
+          mpMeasure();
+          M.pending = true;
+          kick();
+        }
+
+        clearAll = function () {
+          for (var i = 0; i < planes.length; i++) { planes[i].el.style.transform = ''; planes[i].el.style.opacity = ''; }
+          reelRun(false);
+          if (REEL.snap) { clearTimeout(REEL.snap); REEL.snap = 0; }
+          REEL.i = 0;
+          if (reelEl) reelEl.style.transition = '';
+          if (fanEl) fanEl.style.removeProperty('--app');
+          head.style.transform = ''; body.style.opacity = ''; body.style.transform = ''; body.style.transition = '';
+          body.classList.remove('is-shown'); M.shown = null;
+          ['v', 'h'].forEach(function (o) { for (var key in strands[o]) { var el = strands[o][key]; el._c = null; el.style.clipPath = ''; el.style.webkitClipPath = ''; } });
+          tokL.style.transform = tokL.style.opacity = ''; tokG.style.transform = tokG.style.opacity = '';
+          sec.classList.remove('mp--tall'); M.tall = false;
+          nodes.forEach(function (n) { n.classList.remove('is-on'); });
+          clauses.forEach(function (c) { c.classList.remove('is-lit', 'is-cur'); });
+          M.on = []; M.lit = []; M.curCl = -2; M.last = -2; M.lu = -9; M.inited = false; HR.last = -1;
+        };
+
+        /* pause offscreen sections */
+        if (hasIO) {
+          var secIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.target === hero) { HR.vis = en.isIntersecting; reelRun(HR.vis); }
+              else { M.vis = en.isIntersecting; M.pending = true; }
+            });
+            kick();
+          }, { rootMargin: '120px 0px 120px 0px' });
+          secIO.observe(hero);
+          secIO.observe(track);
+        } else { M.vis = true; }
+        /* the reel rests while the tab is hidden */
+        document.addEventListener('visibilitychange', function () { reelRun(HR.vis); });
+
+        /* entry reveal (once): the matrix */
+        var reveals = [].slice.call(document.querySelectorAll('#mxSheet'));
+        if (!hasIO || rm.matches) reveals.forEach(function (el) { el.classList.add('is-in'); });
+        else {
+          /* anything already above the viewport (a mid-page reload further down) is
+             shown settled, so it does not replay on the way back up */
+          var inIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add('is-in'); inIO.unobserve(en.target); }
+            });
+          }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+          reveals.forEach(function (el) { inIO.observe(el); });
+        }
+
+        window.addEventListener('scroll', kick, { passive: true });
+        window.addEventListener('resize', measureAll, { passive: true });
+        window.addEventListener('load', measureAll);
+        window.addEventListener('pageshow', measureAll);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureAll, function () {});
+        var onRm = function () { if (rm.matches) clearAll(); else measureAll(); };
+        if (rm.addEventListener) rm.addEventListener('change', onRm); else if (rm.addListener) rm.addListener(onRm);
+        var onWide = function () { measureAll(); };
+        if (routeWide.addEventListener) routeWide.addEventListener('change', onWide);
+
+        measureAll();
+      } catch (err) { bail(); }
+    })();
   </script>
 </body>
 </html>

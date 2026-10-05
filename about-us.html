@@ -104,7 +104,7 @@
 
     /* Mobile nav CTA — declared after .btn-coral so its display wins */
     .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
-    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
+    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
     .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
 
     /* inline text links on light surfaces — every state accounted for */
@@ -363,7 +363,7 @@
   <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
         <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
           <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
@@ -371,17 +371,19 @@
           </span>
         </a>
       </div>
-      <a href="#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-      <div class="hidden md:flex items-center gap-6">
+      <a href="#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden min-[1100px]:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
         <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
         <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
       <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
       <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
       <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
