@@ -950,6 +950,15 @@
     .h1-dfw .dfw, .h1-dfw .nw { white-space: nowrap; }
     @media (max-width: 699px) { .h1-dfw .dfw { white-space: normal; } }
     @media (min-width: 1000px) { .hero h1.h1-dfw { font-size: clamp(2.8rem, 4.4vw, 3.8rem); } }
+
+    /* PHONES ONLY (John, 2026-10-05): body paragraphs at 18px. Product-screen text inside the moving-quotes panel,
+       the fine print under the hero button and the phone line in the closing section keep their sizes. */
+    @media (max-width: 699px) {
+      .steps-head .lede, .st-body p, .st-catch p,
+      #move-demo .mx-lede, #move-demo .mx-promise-txt, #move-demo .mx-body, #move-demo.mx-live .mx-body, #move-demo .mx-coda p,
+      .sec p.lede, .faq-content-inner, .tcard p { font-size: 18px; }
+      #signup-bottom h2 + p { font-size: 18px !important; }   /* its size is set inline */
+    }
   </style>
 </head>
 <body>
