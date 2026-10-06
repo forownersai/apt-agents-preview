@@ -159,7 +159,7 @@
     .hero h1 .h1-beat { display: inline-block; margin-top: 0.14em; font-style: italic; color: #4A55B8; }
     .hero h1 em { font-style: normal; color: inherit; }
     .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
-    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
+    .hero-sub { color: var(--navy); font-size: 1.25rem; line-height: 1.5; margin: 0 0 16px; }
 
     .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
     .hero-pill {
@@ -224,8 +224,10 @@
        and writes the plane and list transforms directly.
        ----------------------------------------------------------------------- */
     .hero { --hp-p: 0; }
-    .hero-cta { display: flex; flex-direction: column; align-items: stretch; margin: 0 0 18px; }
-    .hero-cta .form-micro { margin-top: 8px; text-align: center; }
+    /* the hero button sizes to its label on every width (it used to stretch full width on phones) */
+    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; margin: 0 0 18px; }
+    .hero-cta .form-submit { width: auto; margin-left: 0; margin-right: 0; padding: 15px 34px; }
+    .hero-cta .form-micro { margin-top: 8px; text-align: left; align-self: flex-start; }
 
     .hp-stage {
       --pw: 262px;                              /* phone width */
