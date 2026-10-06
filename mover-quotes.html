@@ -658,6 +658,19 @@
     }
     /* MOVE-DEMO-CSS:END */
   </style>
+  <style>
+    /* PHONES ONLY (John, 2026-10-05): type matched to the home page. Paragraphs 18px, sub-headings 22px, hero line 20px.
+       Labels, fine print, illustrations and the rebuilt app screens keep their sizes. */
+    @media (max-width: 699px) {
+      .hero-sub { font-size: 20px; }
+      .form-card__intro, .form-panel p:not(.panel-alt), .trust-sec p { font-size: 18px; }
+      #move-demo .mx-lede, #move-demo .mx-promise-txt, #move-demo .mx-body, #move-demo.mx-live .mx-body { font-size: 18px; }
+      #move-demo .mx-title, #move-demo.mx-live .mx-title { font-size: 18px; }
+      #move-demo .mx-coda p { font-size: 18px; }
+      #move-demo .mx-coda h3 { font-size: 22px; text-wrap: balance; }
+      #signup-bottom h2 + p { font-size: 18px !important; }   /* its size is set inline */
+    }
+  </style>
 </head>
 <body>
 

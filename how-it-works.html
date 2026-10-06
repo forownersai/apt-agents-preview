@@ -794,6 +794,18 @@
     #move-demo { padding-bottom: 64px; }
     @media (min-width: 700px) { #move-demo { padding-bottom: 88px; } }
   </style>
+  <style>
+    /* PHONES ONLY (John, 2026-10-05): type matched to the home page. Paragraphs 18px, sub-headings 22px, hero line 20px.
+       Labels, fine print, illustrations and the rebuilt app screens keep their sizes. */
+    @media (max-width: 699px) {
+      .hero-sub { font-size: 20px; }
+      .step-card p, .check-text, .trust-sec p { font-size: 18px; }
+      .step-card h2 { font-size: 22px; text-wrap: balance; }
+      #move-demo .mx-lede, #move-demo .mx-promise-txt, #move-demo .mx-body, #move-demo.mx-live .mx-body { font-size: 18px; }
+      #move-demo .mx-title, #move-demo.mx-live .mx-title { font-size: 18px; }
+      #signup h2 + p { font-size: 18px !important; }   /* its size is set inline */
+    }
+  </style>
 </head>
 <body>
 

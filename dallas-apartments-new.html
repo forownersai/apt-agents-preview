@@ -157,7 +157,7 @@
     .hero h1 .h1-beat { display: inline-block; margin-top: 0.14em; font-style: italic; color: #4A55B8; }
     .hero h1 em { font-style: normal; color: inherit; }
     .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
-    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.55; margin: 0 0 14px; }
+    .hero-sub { color: var(--navy); font-size: 1.25rem; line-height: 1.5; margin: 0 0 16px; }
 
     .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
     .hero-pill {
@@ -222,8 +222,10 @@
        and writes the plane and list transforms directly.
        ----------------------------------------------------------------------- */
     .hero { --hp-p: 0; }
-    .hero-cta { display: flex; flex-direction: column; align-items: stretch; margin: 0 0 18px; }
-    .hero-cta .form-micro { margin-top: 8px; text-align: center; }
+    /* the hero button sizes to its label on every width (it used to stretch full width on phones) */
+    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; margin: 0 0 18px; }
+    .hero-cta .form-submit { width: auto; margin-left: 0; margin-right: 0; padding: 15px 34px; }
+    .hero-cta .form-micro { margin-top: 8px; text-align: left; align-self: flex-start; }
 
     .hp-stage {
       --pw: 262px;                              /* phone width */
@@ -868,6 +870,8 @@
     .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.75; }
     .faq-item.open .faq-content { max-height: 600px; }
     .faq-content-inner { padding: 0 18px 18px; }
+    .faq-content-inner p { margin: 0; }
+    .faq-content-inner p + p { margin-top: 12px; }
 
     /* ---------------- FINAL CTA ---------------- */
     .cta-sec { padding: var(--s6) 20px; position: relative; overflow: hidden; }
@@ -937,6 +941,22 @@
     }
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+  <style>
+    /* PHONES ONLY (John, 2026-10-05): body paragraphs at 18px. Product-screen text inside the moving-quotes panel,
+       the fine print under the hero button and the phone line in the closing section keep their sizes. */
+    @media (max-width: 699px) {
+      .steps-head .lede, .st-body p, .st-catch p,
+      #move-demo .mx-lede, #move-demo .mx-promise-txt, #move-demo .mx-body, #move-demo.mx-live .mx-body, #move-demo .mx-coda p,
+      .sec p.lede, .faq-content-inner, .tcard p { font-size: 18px; }
+      #signup-bottom h2 + p { font-size: 18px !important; }   /* its size is set inline */
+      /* sub-headings at one size: step titles, the catch, the two cards closing the moving-quotes section */
+      .st-body h3, .st-catch h3, #move-demo .mx-coda h3 { font-size: 22px; text-wrap: balance; }
+      /* FAQ questions match their 18px answers */
+      .faq-btn > span:first-child { font-size: 18px; }
+      /* the three moving-quotes step titles (tabs over the quote screen) */
+      #move-demo .mx-title, #move-demo.mx-live .mx-title { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -1209,7 +1229,7 @@
             <span class="st-dot" aria-hidden="true"></span>
             <div class="st-body">
               <h3>Tour your favorites and get up to $250 on us</h3>
-              <p>Visit the apartments whenever it suits you: no agent tagging along, no schedules to coordinate. List <strong>Apartment Agents</strong> on your guest card and application as how you learned about their property, tell us where you leased, and we&rsquo;ll get your reward started.</p>
+              <p>Visit the apartments whenever it suits you: no agent tagging along, no schedules to coordinate. List <strong>Apartment Agents</strong> on your <strong>guest card</strong> and <strong>rental application</strong> as how you learned about their property, tell us where you leased, and we&rsquo;ll get your reward started.</p>
             </div>
           </li>
         </ol>
@@ -1960,7 +1980,8 @@
           <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
         </button>
         <div class="faq-content"><div class="faq-content-inner">
-          You can, and plenty of people do. The difference is what it costs you. The rent is identical either way. Communities don't give you a better price for going direct, so doing it alone means the same apartment, at the same price, minus up to $250. You'd also be doing the part that takes the longest: mindlessly scrolling listing sites, navigating fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you. Which buildings get noise complaints from residents or the bars next door. Which ones have maintenance problems. What a block actually feels like at night. And after all that, you're still chasing down mover quotes and setting up your utilities yourself.
+          <p>You can, and plenty of people do. The difference is what it costs you. The rent is identical either way. Communities don't give you a better price for going direct, so doing it alone means the same apartment, at the same price, minus up to $250.</p>
+          <p>You'd also be doing the part that takes the longest: mindlessly scrolling listing sites, navigating fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you. Which buildings get noise complaints from residents or the bars next door. Which ones have maintenance problems. What a block actually feels like at night. And after all that, you're still chasing down mover quotes and setting up your utilities yourself.</p>
         </div></div>
       </div>
 
@@ -2352,11 +2373,21 @@
     function toggleFaq(btn) {
       var item = btn.closest('.faq-item');
       var isOpen = item.classList.contains('open');
+      /* answers open to their real height (a fixed cap cut long answers off once the text got bigger on phones) */
       document.querySelectorAll('.faq-item.open').forEach(function (el) {
+        var c = el.querySelector('.faq-content');
+        if (c) { c.style.maxHeight = c.scrollHeight + 'px'; void c.offsetHeight; c.style.maxHeight = '0px'; }
         el.classList.remove('open');
         var b = el.querySelector('.faq-btn'); if (b) b.setAttribute('aria-expanded', 'false');
       });
-      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+      if (!isOpen) {
+        item.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
+        var c = item.querySelector('.faq-content');
+        if (c) {
+          c.style.maxHeight = c.scrollHeight + 'px';
+          c.addEventListener('transitionend', function done() { c.removeEventListener('transitionend', done); if (item.classList.contains('open')) c.style.maxHeight = 'none'; });
+        }
+      }
     }
   </script>
 </body>

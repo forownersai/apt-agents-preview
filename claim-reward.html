@@ -299,6 +299,15 @@
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
   </style>
+  <style>
+    /* PHONES ONLY (John, 2026-10-05): type matched to the home page. Paragraphs 18px, sub-headings 22px, hero line 20px.
+       Labels, fine print, illustrations and the rebuilt app screens keep their sizes. */
+    @media (max-width: 699px) {
+      .hero-sub { font-size: 20px; }
+      .form-card__intro, .form-panel p:not(.panel-alt), .how-sec .step-card p, .how-sec p { font-size: 18px; }
+      .how-sec h3 { font-size: 22px; text-wrap: balance; }
+    }
+  </style>
 </head>
 <body>
 

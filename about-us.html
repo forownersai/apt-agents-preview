@@ -356,6 +356,19 @@
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
   </style>
+  <style>
+    /* PHONES ONLY (John, 2026-10-05): type matched to the home page. Paragraphs 18px, sub-headings 22px, hero line 20px.
+       Labels, fine print, illustrations and the rebuilt app screens keep their sizes. */
+    @media (max-width: 699px) {
+      .hero-sub { font-size: 20px; }
+      .story p, .sec p.lede, .dark-sec p.body, .three-card p, .person p, .spec-intro, .spec-foot, .spec-card li { font-size: 18px; }
+      .form-card p:not(.form-micro):not(.form-card__eyebrow) { font-size: 18px !important; }   /* the intro has its size set inline */
+      .disclose p, .spec-card > p.spec-intro { font-size: 18px; }
+      .disclose h3 { font-size: 22px; text-wrap: balance; }
+      .three-card h3, .person__name, .spec-card h3, .form-card__title { font-size: 22px; text-wrap: balance; }
+      #signup h2 + p { font-size: 18px !important; }   /* its size is set inline */
+    }
+  </style>
 </head>
 <body>
 
