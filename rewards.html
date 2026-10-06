@@ -1119,6 +1119,25 @@
       #signup h2 + p { font-size: 18px !important; }   /* its size is set inline */
     }
   </style>
+  <style>
+    /* hero top space halved (John, 2026-10-05). Phones: the empty grid row above the copy is gone. Desktop: the hero
+       content sits at the top instead of centred, and the hero is shorter by the same amount so no gap moves to its foot. */
+    @media (max-width: 699px) {
+      .rh { padding-top: 42px; }
+      .rh-inner { grid-template-rows: 0 auto minmax(0, 2fr) auto minmax(0, 1.2fr); }
+    }
+    @media (max-width: 699px) and (max-height: 760px) {
+      .rh { padding-top: 28px; }
+      .rh-inner { grid-template-rows: 0 auto minmax(0, 2fr) auto minmax(0, 0.6fr); }
+    }
+    @media (min-width: 1000px) {
+      .rh { justify-content: flex-start; padding-top: 40px; padding-bottom: 96px; min-height: 0; }
+    }
+    /* iPhone overscroll: Safari paints the bounce past the page edge with the root background. Near the bottom it is the
+       footer navy (set by the script below), so the bounce under the footer matches it instead of flashing white. */
+    html.at-foot { background: var(--navy); }
+    body { background: #fff; }
+  </style>
 </head>
 <body>
 
@@ -2063,6 +2082,16 @@
 
         measureAll();
       } catch (err) { bail(); }
+    })();
+  </script>
+  <script>
+    /* root background follows the half of the page you are in: white near the top, footer navy near the bottom */
+    (function () {
+      var root = document.documentElement, on = null, ticking = false;
+      function set() { ticking = false; var foot = window.scrollY + window.innerHeight > root.scrollHeight / 2; if (foot !== on) { on = foot; root.classList.toggle('at-foot', foot); } }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; window.requestAnimationFrame(set); } }, { passive: true });
+      window.addEventListener('resize', set, { passive: true });
+      set();
     })();
   </script>
 </body>
