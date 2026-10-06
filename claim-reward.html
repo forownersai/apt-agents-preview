@@ -232,37 +232,6 @@
     .link-quiet:focus-visible { outline: 3px solid var(--lav); outline-offset: 2px; border-radius: 6px; }
     .link-quiet:active { opacity: 0.7; }
 
-    /* ---------------- HOW IT WORKS (step system from claim-reward.html) ---------------- */
-    .how-sec { padding: var(--s5) 20px var(--s6); background: var(--paper-2); border-top: 1px solid rgba(15,19,56,0.06); }
-    @media (min-width: 700px) { .how-sec { padding: var(--s6) 24px var(--s7); } }
-    .section-badge {
-      display: inline-block; background: rgba(157,170,242,0.14); color: #6b78c4;
-      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
-      border-radius: 20px; padding: 5px 14px;
-    }
-    .how-sec h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.15; margin: 12px 0 22px; }
-    .step { display: flex; gap: 16px; align-items: flex-start; }
-    .step + .step { margin-top: 14px; }
-    .step-num {
-      width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', serif; font-size: 1.3rem; flex-shrink: 0;
-      background: var(--lav); color: var(--navy);
-      box-shadow: 0 2px 6px rgba(157,170,242,0.35), 0 10px 24px rgba(90,104,190,0.30);
-    }
-    .step-card {
-      flex: 1; background: #fff; border: 1px solid rgba(15,19,56,0.08); border-radius: 16px;
-      padding: 16px 18px; box-shadow: var(--sh-base);
-    }
-    .step-card h3 { font-size: 1.15rem; line-height: 1.25; margin: 0 0 6px; color: var(--navy); }
-    .step-card p { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
-    @media (min-width: 700px) {
-      .step { gap: 20px; }
-      .step + .step { margin-top: 16px; }
-      .step-num { width: 52px; height: 52px; font-size: 1.45rem; }
-      .step-card { padding: 20px 24px; }
-      .step-card h3 { font-size: 1.25rem; }
-    }
-
     /* ---------------- FOOTER (system) ---------------- */
     .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
@@ -304,8 +273,7 @@
        Labels, fine print, illustrations and the rebuilt app screens keep their sizes. */
     @media (max-width: 699px) {
       .hero-sub { font-size: 20px; }
-      .form-card__intro, .form-panel p:not(.panel-alt), .how-sec .step-card p, .how-sec p { font-size: 18px; }
-      .how-sec h3 { font-size: 22px; text-wrap: balance; }
+      .form-card__intro, .form-panel p:not(.panel-alt) { font-size: 18px; }
     }
   </style>
 </head>
@@ -421,36 +389,6 @@
           <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ 3 · WHAT HAPPENS NEXT ══════════════════════════ -->
-  <section class="how-sec">
-    <div class="wrap-narrow">
-      <div class="section-badge">What happens next</div>
-      <h2>Three things, in this order.</h2>
-
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-card">
-          <h3>You report the lease</h3>
-          <p>Open your link, pick your community, and add your apartment number. Your agent hears about it right away.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-card">
-          <h3>We confirm it with the community</h3>
-          <p>Your agent will reach out to the apartment to confirm your lease.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-card">
-          <h3>We send your reward</h3>
-          <p>The way you chose on the form. The exact amount depends on your rent and the referral fee. <a href="rewards.html" class="inline-link">See the amounts</a>.</p>
-        </div>
       </div>
     </div>
   </section>
