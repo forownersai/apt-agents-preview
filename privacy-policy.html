@@ -48,7 +48,6 @@
       --paper-2:   #f8f9ff;
       --btn:       #0d6efd;
       --btn-hover: #0b5ed7;
-      --chg:       #C8102E;   /* review-only: marks text that differs from the live page */
 
       --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
       --s5: 48px; --s6: 64px; --s7: 88px;
@@ -102,7 +101,7 @@
     .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
 
     .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
-    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
+    @media (min-width: 768px) { .nav-cta-mobile { display: none !important; } }
     .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
 
     .inline-link, .legal a {
@@ -139,26 +138,6 @@
       .hero-sub { font-size: 1.15rem; }
     }
 
-    /* ---------------- REVIEW BAR (delete before publishing) ---------------- */
-    .review-bar { background: var(--yellow); color: var(--navy); padding: 12px 20px; border-bottom: 1px solid rgba(15,19,56,0.08); }
-    .review-bar-inner { max-width: 760px; margin: 0 auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .review-bar p { margin: 0; font-size: 0.92rem; line-height: 1.5; font-weight: 500; }
-    .review-bar strong { font-weight: 800; }
-    .review-bar button {
-      font-family: inherit; font-size: 0.86rem; font-weight: 700; color: var(--navy); background: #fff;
-      border: 1.5px solid rgba(15,19,56,0.25); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer;
-      transition: background-color 0.18s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
-    }
-    .review-bar button:hover { background: #fffaf0; transform: translateY(-1px); }
-    .review-bar button:active { transform: translateY(0) scale(0.985); }
-    .review-bar button:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
-
-    /* Change markup: red = new or changed, red strikethrough = removed. */
-    .chg { color: var(--chg); }
-    del.chg { text-decoration: line-through; text-decoration-thickness: 1.5px; opacity: 0.8; }
-    .chg-note { color: var(--chg); font-style: italic; font-size: 0.95rem; }
-    body.hide-chg .chg { color: inherit; }
-    body.hide-chg del.chg, body.hide-chg .chg-note { display: none; }
 
     /* ---------------- LEGAL BODY ---------------- */
     .legal-sec { padding: 28px 20px var(--s6); background: #fff; }
@@ -238,7 +217,7 @@
   <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <button class="md:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
         <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
           <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
@@ -246,40 +225,28 @@
           </span>
         </a>
       </div>
-      <a href="dallas-apartments-new.html#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-      <div class="hidden min-[1100px]:flex items-center gap-6">
+      <a href="dallas-apartments-new.html#signup" class="md:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden md:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
-        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
         <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
         <a href="dallas-apartments-new.html#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
       <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
       <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
-      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
       <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
       <a href="dallas-apartments-new.html#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
     </div>
   </nav>
 
-  <!-- ══════════ REVIEW BAR — delete this block, every class="chg", every <del class="chg">
-       and every .chg-note before publishing. It exists only so John can compare. ══════════ -->
-  <div class="review-bar" id="reviewBar">
-    <div class="review-bar-inner">
-      <p><strong>Review copy.</strong> Red text is new or changed versus the live apartmentagents.com/privacy-policy page. Red strikethrough is text that comes out. Bracketed red notes explain removed sections. Delete this bar and the red markup before publishing.</p>
-      <button type="button" onclick="toggleChg()" id="chgBtn">Preview without markup</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-kicker">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="hero-sub">Last updated: <span class="chg">September 29, 2026</span> <del class="chg">June 07, 2022</del></p>
+      <p class="hero-sub">Last updated: <span>September 29, 2026</span> </p>
     </div>
   </section>
 
@@ -289,7 +256,7 @@
 
       <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
       <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
-      <p class="chg"><strong>In short:</strong> We do not sell Your personal information. We share it only to provide the apartment locating service You asked for and as described below. We never share Your mobile phone number or Your SMS consent with third parties or affiliates for their marketing purposes.</p>
+      <p><strong>In short:</strong> We do not sell Your personal information. We share it only to provide the apartment locating service You asked for and as described below. We never share Your mobile phone number or Your SMS consent with third parties or affiliates for their marketing purposes.</p>
 
       <div class="toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
@@ -319,10 +286,9 @@
       <h3>Definitions</h3>
       <p>For the purposes of this Privacy Policy:</p>
       <dl>
-        <dt><del class="chg">Account</del></dt>
-        <dd><del class="chg">means a unique account created for You to access our Service or parts of our Service.</del> <span class="chg-note">[Removed. The Website has no user accounts.]</span></dd>
-        <dt class="chg">Agent</dt>
-        <dd class="chg">means a real estate agent or broker licensed by the Texas Real Estate Commission who is sponsored by, or independently contracted with, the Company to provide apartment locating services.</dd>
+        
+        <dt>Agent</dt>
+        <dd>means a real estate agent or broker licensed by the Texas Real Estate Commission who is sponsored by, or independently contracted with, the Company to provide apartment locating services.</dd>
         <dt>Company</dt>
         <dd>(referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to JLC Real Estate, Inc DBA Apartment Agents, 2626 Cole Ave Suite 370 Dallas, TX 75204.</dd>
         <dt>Cookies</dt>
@@ -333,18 +299,18 @@
         <dd>means any device that can access the Service such as a computer, a cellphone or a digital tablet.</dd>
         <dt>Personal Data</dt>
         <dd>is any information that relates to an identified or identifiable individual.</dd>
-        <dt class="chg">Properties</dt>
-        <dd class="chg">refer to third-party independently owned and operated rental communities.</dd>
+        <dt>Properties</dt>
+        <dd>refer to third-party independently owned and operated rental communities.</dd>
         <dt>Service</dt>
-        <dd>refers to the Website<span class="chg"> and the apartment locating services provided by Our Agents</span>.</dd>
+        <dd>refers to the Website<span> and the apartment locating services provided by Our Agents</span>.</dd>
         <dt>Service Provider</dt>
         <dd>means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</dd>
         <dt>Third-party Social Media Service</dt>
-        <dd>refers to any website or any social network website through which a User can <del class="chg">log in or create an account to use the Service</del><span class="chg">contact Us or interact with Our content</span>.</dd>
+        <dd>refers to any website or any social network website through which a User can <span>contact Us or interact with Our content</span>.</dd>
         <dt>Usage Data</dt>
         <dd>refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</dd>
-        <dt class="chg">Vendor</dt>
-        <dd class="chg">means an independent third-party business, such as a moving company, that You ask Us to connect You with through the Website.</dd>
+        <dt>Vendor</dt>
+        <dd>means an independent third-party business, such as a moving company, that You ask Us to connect You with through the Website.</dd>
         <dt>Website</dt>
         <dd>refers to Apartment Agents, accessible from www.apartmentagents.com</dd>
         <dt>You</dt>
@@ -361,9 +327,9 @@
         <li>First name and last name</li>
         <li>Phone number</li>
         <li>Address, State, Province, ZIP/Postal code, City</li>
-        <li class="chg">Details about Your apartment search that You choose to give Us, such as the areas You want to live in, budget, bedrooms and bathrooms, move-in date, lease length, pets, income range, and rental or credit history</li>
-        <li class="chg">Lease details You report when You claim a reward, such as the community, unit, lease dates, rent, and the Agent who helped You</li>
-        <li class="chg">The contents of Your communications with Us and Your Agent, such as emails, text messages, form submissions, and notes from phone calls</li>
+        <li>Details about Your apartment search that You choose to give Us, such as the areas You want to live in, budget, bedrooms and bathrooms, move-in date, lease length, pets, income range, and rental or credit history</li>
+        <li>Lease details You report when You claim a reward, such as the community, unit, lease dates, rent, and the Agent who helped You</li>
+        <li>The contents of Your communications with Us and Your Agent, such as emails, text messages, form submissions, and notes from phone calls</li>
         <li>Usage Data</li>
       </ul>
       <h3>Usage Data</h3>
@@ -372,19 +338,19 @@
       <p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
       <p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
 
-      <h3><del class="chg">Information from Third-Party Social Media Services</del></h3>
-      <p class="chg-note">[Removed. The section said You can create an account and log in through Google, Facebook, Twitter and LinkedIn. The Website has no login, so a validator comparing the policy to the site would see a description that is not true. Replaced with the paragraph below.]</p>
-      <h3 class="chg">Information from Social Media</h3>
-      <p class="chg">If You message Us or comment on Our posts on Instagram, Facebook, TikTok or another social platform, We receive the information You send and the public profile details that platform makes available to Us, and We may use it to reply to You and to provide the Service. Your interactions on those platforms are also governed by their own privacy policies.</p>
+      <h3></h3>
+      
+      <h3>Information from Social Media</h3>
+      <p>If You message Us or comment on Our posts on Instagram, Facebook, TikTok or another social platform, We receive the information You send and the public profile details that platform makes available to Us, and We may use it to reply to You and to provide the Service. Your interactions on those platforms are also governed by their own privacy policies.</p>
 
       <h3>Tracking Technologies and Cookies</h3>
       <p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>
       <ul>
         <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</li>
-        <li><del class="chg"><strong>Flash Cookies.</strong> Certain features of our Service may use local stored objects (or Flash Cookies) to collect and store information about Your preferences or Your activity on our Service.</del> <span class="chg-note">[Removed. Flash has been discontinued since 2020 and the Website does not use it.]</span></li>
+        
         <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>
       </ul>
-      <p>Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser. <del class="chg">You can learn more about cookies on TermsFeed website article.</del></p>
+      <p>Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser. </p>
       <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
       <ul>
         <li><strong>Necessary / Essential Cookies.</strong> Type: Session Cookies. Administered by: Us. Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</li>
@@ -392,17 +358,17 @@
         <li><strong>Functionality Cookies.</strong> Type: Persistent Cookies. Administered by: Us. Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</li>
         <li><strong>Tracking and Performance Cookies.</strong> Type: Persistent Cookies. Administered by: Third-Parties. Purpose: These Cookies are used to track information about traffic to the Website and how users use the Website. The information gathered via these Cookies may directly or indirectly identify you as an individual visitor. This is because the information collected is typically linked to a pseudonymous identifier associated with the device you use to access the Website. We may also use these Cookies to test new pages, features or new functionality of the Website to see how our users react to them.</li>
       </ul>
-      <p><del class="chg">For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy.</del> <span class="chg">You can change Your cookie choices at any time using the "Manage Consent" link on the Website, and You can decline non-essential cookies without losing access to the Service.</span></p>
+      <p> <span>You can change Your cookie choices at any time using the "Manage Consent" link on the Website, and You can decline non-essential cookies without losing access to the Service.</span></p>
 
       <!-- ─────────── 3 ─────────── -->
       <h2 id="use">3. Use of Your Personal Data</h2>
       <p>The Company may use Personal Data for the following purposes:</p>
       <ul>
-        <li class="chg"><strong>To provide apartment locating services:</strong> to match You with Properties, prepare and send Your apartment list, schedule tours, register You as Our client with the Properties You choose, follow up on Your search, and process any reward You claim.</li>
+        <li><strong>To provide apartment locating services:</strong> to match You with Properties, prepare and send Your apartment list, schedule tours, register You as Our client with the Properties You choose, follow up on Your search, and process any reward You claim.</li>
         <li><strong>To provide and maintain our Service,</strong> including to monitor the usage of our Service.</li>
-        <li><del class="chg"><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</del> <span class="chg-note">[Removed. No accounts.]</span></li>
+        
         <li><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</li>
-        <li><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation. <span class="chg">We send SMS only to people who have opted in, as described in Section 10.</span></li>
+        <li><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation. <span>We send SMS only to people who have opted in, as described in Section 10.</span></li>
         <li><strong>To provide You with news, special offers and general information</strong> about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</li>
         <li><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</li>
         <li><strong>To deliver targeted advertising to You:</strong> We may use Your information to develop and display content and advertising (and work with third-party vendors who do so) tailored to Your interests and/or location and to measure its effectiveness.</li>
@@ -411,27 +377,27 @@
       </ul>
 
       <!-- ─────────── 4 ─────────── -->
-      <h2 id="sharing">4. <span class="chg">When We Share Your Personal Data</span></h2>
-      <p class="chg-note">[This list replaces the live "We may share Your personal information in the following situations" list. The live bullets "With business partners ... to offer You certain products, services or promotions" and "With other users" are removed; the first is the sentence A2P validators are trained to reject, the second describes a community feature the Website does not have. The "Mobile information" paragraph is the carrier-required clause, kept word for word.]</p>
+      <h2 id="sharing">4. <span>When We Share Your Personal Data</span></h2>
+      
       <p>We may share Your personal information in the following situations:</p>
       <ul>
-        <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers <span class="chg">who process it on Our behalf</span> to <span class="chg">provide and maintain the Service, such as our customer relationship management and SMS/email messaging platform, website hosting, and analytics providers, to</span> monitor and analyze the use of our Service, to advertise on third party websites to You after You visited our Service, <del class="chg">to contact You</del><span class="chg">and to contact You on Our behalf. These providers may use Your information only to perform services for Us</span>.</li>
-        <li class="chg"><strong>With apartment communities at Your direction:</strong> When You ask Us to help You find an apartment, We may provide Your name and contact information, and the search preferences relevant to Your application, to the Properties You choose to visit, apply to, or lease from, for example to register You as Our client, schedule a tour, or confirm a lease. This is done solely to provide the apartment locating service You requested. We do not provide Your SMS consent to any Property, and We do not share Your mobile information with Properties for their own marketing purposes.</li>
-        <li class="chg"><strong>With Vendors You ask Us to connect You with:</strong> If You request a quote or service from a Vendor through the Website, such as a moving company, We pass the information You submitted for that purpose to that Vendor so it can respond to You. The Vendor's use of Your information is governed by its own privacy policy.</li>
-        <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates<span class="chg"> for the purpose of providing the Service</span>, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us. <span class="chg">Mobile phone numbers and SMS opt-in information are never shared with affiliates for marketing or promotional purposes.</span></li>
-        <li><del class="chg"><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</del></li>
-        <li><del class="chg"><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside. If You interact with other users or register through a Third-Party Social Media Service, Your contacts on the Third-Party Social Media Service may see Your name, profile, pictures and description of Your activity. Similarly, other users will be able to view descriptions of Your activity, communicate with You and view Your profile.</del></li>
+        <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers <span>who process it on Our behalf</span> to <span>provide and maintain the Service, such as our customer relationship management and SMS/email messaging platform, website hosting, and analytics providers, to</span> monitor and analyze the use of our Service, to advertise on third party websites to You after You visited our Service, <span>and to contact You on Our behalf. These providers may use Your information only to perform services for Us</span>.</li>
+        <li><strong>With apartment communities at Your direction:</strong> When You ask Us to help You find an apartment, We may provide Your name and contact information, and the search preferences relevant to Your application, to the Properties You choose to visit, apply to, or lease from, for example to register You as Our client, schedule a tour, or confirm a lease. This is done solely to provide the apartment locating service You requested. We do not provide Your SMS consent to any Property, and We do not share Your mobile information with Properties for their own marketing purposes.</li>
+        <li><strong>With Vendors You ask Us to connect You with:</strong> If You request a quote or service from a Vendor through the Website, such as a moving company, We pass the information You submitted for that purpose to that Vendor so it can respond to You. The Vendor's use of Your information is governed by its own privacy policy.</li>
+        <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates<span> for the purpose of providing the Service</span>, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us. <span>Mobile phone numbers and SMS opt-in information are never shared with affiliates for marketing or promotional purposes.</span></li>
+        
+        
         <li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
         <li><strong>With Your consent:</strong> We may disclose Your personal information for any other purpose with Your consent.</li>
-        <li class="chg"><strong>Mobile information:</strong> No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</li>
+        <li><strong>Mobile information:</strong> No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</li>
       </ul>
-      <p class="chg">We do not sell Your personal information, and We do not share it with third parties for their own marketing.</p>
+      <p>We do not sell Your personal information, and We do not share it with third parties for their own marketing.</p>
 
       <!-- ─────────── 5 ─────────── -->
       <h2 id="retention">5. Retention of Your Personal Data</h2>
       <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
       <p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
-      <p class="chg">We keep a record of Your SMS consent and of any opt-out request for as long as necessary to honor Your choices and to demonstrate compliance with applicable law. Because Texas real estate brokers are required to keep transaction records, information connected to a lease We were paid for may be retained for at least four years after the transaction.</p>
+      <p>We keep a record of Your SMS consent and of any opt-out request for as long as necessary to honor Your choices and to demonstrate compliance with applicable law. Because Texas real estate brokers are required to keep transaction records, information connected to a lease We were paid for may be retained for at least four years after the transaction.</p>
 
       <!-- ─────────── 6 ─────────── -->
       <h2 id="transfer">6. Transfer of Your Personal Data</h2>
@@ -458,7 +424,7 @@
       <!-- ─────────── 8 ─────────── -->
       <h2 id="security">8. Security of Your Personal Data</h2>
       <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
-      <p class="chg">Only employees and Agents who need Your information to help You are given access to it, and Our systems require individual logins. If We learn of a breach affecting Your Personal Data, We will notify You as required by Texas law.</p>
+      <p>Only employees and Agents who need Your information to help You are given access to it, and Our systems require individual logins. If We learn of a breach affecting Your Personal Data, We will notify You as required by Texas law.</p>
 
       <!-- ─────────── 9 ─────────── -->
       <h2 id="processing">9. Detailed Information on the Processing of Your Personal Data</h2>
@@ -467,14 +433,14 @@
       <h3>Analytics</h3>
       <p>We may use third-party Service providers to monitor and analyze the use of our Service.</p>
       <p><strong>Google Analytics.</strong> Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network. You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js and dc.js) from sharing information with Google Analytics about visits activity. For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
-      <p class="chg"><strong>Crazy Egg.</strong> We use Crazy Egg to understand how visitors use Our pages through heatmaps and session recordings. Recordings mask the text You type into form fields. For more information, see Crazy Egg's privacy policy: <a href="https://www.crazyegg.com/privacy" target="_blank" rel="noopener">https://www.crazyegg.com/privacy</a></p>
-      <p class="chg-note">[Crazy Egg is added because its script runs on the live site today. Remove it if it is not carried over to the new site.]</p>
+      <p><strong>Crazy Egg.</strong> We use Crazy Egg to understand how visitors use Our pages through heatmaps and session recordings. Recordings mask the text You type into form fields. For more information, see Crazy Egg's privacy policy: <a href="https://www.crazyegg.com/privacy" target="_blank" rel="noopener">https://www.crazyegg.com/privacy</a></p>
+      
 
       <h3>Email Marketing</h3>
       <p>We may use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You. You may opt-out of receiving any, or all, of these communications from Us by following the unsubscribe link or instructions provided in any email We send or by contacting Us.</p>
-      <p>We may use <del class="chg">Email Marketing Service Providers</del><span class="chg">a customer relationship management platform</span> to manage and send emails <span class="chg">and text messages</span> to You.</p>
-      <p><del class="chg"><strong>Mailchimp.</strong> Mailchimp is an email marketing sending service provided by The Rocket Science Group LLC. For more information on the privacy practices of Mailchimp, please visit their Privacy policy: https://mailchimp.com/legal/privacy/</del></p>
-      <p class="chg"><strong>LeadConnector (HighLevel).</strong> Our customer relationship management, email and SMS platform is provided by HighLevel Inc. through its LeadConnector service. For more information on its privacy practices, see <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener">https://www.gohighlevel.com/privacy-policy</a>.</p>
+      <p>We may use <span>a customer relationship management platform</span> to manage and send emails <span>and text messages</span> to You.</p>
+      
+      <p><strong>LeadConnector (HighLevel).</strong> Our customer relationship management, email and SMS platform is provided by HighLevel Inc. through its LeadConnector service. For more information on its privacy practices, see <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener">https://www.gohighlevel.com/privacy-policy</a>.</p>
 
       <h3>Behavioral Remarketing</h3>
       <p>The Company uses remarketing services to advertise to You after You accessed or visited our Service. We and Our third-party vendors use cookies and non-cookie technologies to help Us recognize Your Device and understand how You use our Service so that We can improve our Service to reflect Your interests and serve You advertisements that are likely to be of more interest to You.</p>
@@ -491,46 +457,46 @@
         <li>The DAA's opt-out platform: <a href="http://optout.aboutads.info/?c=2&amp;lang=EN" target="_blank" rel="noopener">http://optout.aboutads.info/?c=2&amp;lang=EN</a></li>
       </ul>
       <p>You may opt-out of all personalized advertising by enabling privacy features on Your mobile device such as Limit Ad Tracking (iOS) and Opt Out of Ads Personalization (Android). See Your mobile device Help system for more information.</p>
-      <p>We may share information, such as hashed email addresses (if available) <del class="chg">or other online identifiers</del> collected on Our Service with these third-party vendors. This allows Our third-party vendors to recognize and deliver You ads across devices and browsers. <span class="chg">We do not upload mobile phone numbers to advertising platforms.</span> To read more about the technologies used by these third-party vendors and their cross-device capabilities please refer to the Privacy Policy of each vendor listed below.</p>
-      <p class="chg-note">[Decision for John: the sentence "We do not upload mobile phone numbers to advertising platforms" is what makes the remarketing section compatible with the carrier clause in Section 4. Keep it only if phone lists are never sent to Meta, Google or TikTok custom audiences.]</p>
+      <p>We may share information, such as hashed email addresses (if available)  collected on Our Service with these third-party vendors. This allows Our third-party vendors to recognize and deliver You ads across devices and browsers. <span>We do not upload mobile phone numbers to advertising platforms.</span> To read more about the technologies used by these third-party vendors and their cross-device capabilities please refer to the Privacy Policy of each vendor listed below.</p>
+      
       <p>The third-party vendors We use are:</p>
       <p><strong>Google Ads (AdWords).</strong> Google Ads (AdWords) remarketing service is provided by Google Inc. You can opt-out of Google Analytics for Display Advertising and customise the Google Display Network ads by visiting the Google Ads Settings page: <a href="http://www.google.com/settings/ads" target="_blank" rel="noopener">http://www.google.com/settings/ads</a>. Google also recommends installing the Google Analytics Opt-out Browser Add-on, <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a>, for your web browser. Google Analytics Opt-out Browser Add-on provides visitors with the ability to prevent their data from being collected and used by Google Analytics. For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
-      <p><del class="chg"><strong>Bing Ads Remarketing.</strong> Bing Ads remarketing service is provided by Microsoft Inc.</del> <span class="chg-note">[Removed with its opt-out links. No Microsoft tag runs on the live site. Put it back if Bing Ads is added.]</span></p>
-      <p><del class="chg"><strong>Twitter.</strong> Twitter remarketing service is provided by Twitter Inc.</del> <span class="chg-note">[Removed with its opt-out links. Not in use.]</span></p>
-      <p><strong><del class="chg">Facebook</del><span class="chg">Meta (Facebook and Instagram)</span>.</strong> <del class="chg">Facebook</del><span class="chg">Meta</span> remarketing service is provided by <del class="chg">Facebook Inc.</del><span class="chg">Meta Platforms, Inc.</span> You can learn more about interest-based advertising from Facebook by visiting this page: <a href="https://www.facebook.com/help/516147308587266" target="_blank" rel="noopener">https://www.facebook.com/help/516147308587266</a>. To opt-out from Facebook's interest-based ads, follow these instructions from Facebook: <a href="https://www.facebook.com/help/568137493302217" target="_blank" rel="noopener">https://www.facebook.com/help/568137493302217</a>. Facebook adheres to the Self-Regulatory Principles for Online Behavioural Advertising established by the Digital Advertising Alliance. You can also opt-out from Facebook and other participating companies through the Digital Advertising Alliance in the USA <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener">http://www.aboutads.info/choices/</a>, the Digital Advertising Alliance of Canada in Canada <a href="http://youradchoices.ca/" target="_blank" rel="noopener">http://youradchoices.ca/</a> or the European Interactive Digital Advertising Alliance in Europe <a href="http://www.youronlinechoices.eu/" target="_blank" rel="noopener">http://www.youronlinechoices.eu/</a>, or opt-out using your mobile device settings. For more information on the privacy practices of Facebook, please visit Facebook's Data Policy: <a href="https://www.facebook.com/privacy/explanation" target="_blank" rel="noopener">https://www.facebook.com/privacy/explanation</a></p>
-      <p class="chg"><strong>TikTok.</strong> TikTok remarketing service is provided by TikTok Inc. You can manage TikTok's interest-based ads in the TikTok app under Settings and privacy, Ads, and learn more in TikTok's privacy policy: <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener">https://www.tiktok.com/legal/privacy-policy</a></p>
-      <p class="chg-note">[TikTok is added because the TikTok for Business pixel runs on the live site today.]</p>
-      <p><del class="chg"><strong>Pinterest.</strong> Pinterest remarketing service is provided by Pinterest Inc.</del> <span class="chg-note">[Removed with its opt-out links. Not in use.]</span></p>
+      
+      
+      <p><strong><span>Meta (Facebook and Instagram)</span>.</strong> <span>Meta</span> remarketing service is provided by <span>Meta Platforms, Inc.</span> You can learn more about interest-based advertising from Facebook by visiting this page: <a href="https://www.facebook.com/help/516147308587266" target="_blank" rel="noopener">https://www.facebook.com/help/516147308587266</a>. To opt-out from Facebook's interest-based ads, follow these instructions from Facebook: <a href="https://www.facebook.com/help/568137493302217" target="_blank" rel="noopener">https://www.facebook.com/help/568137493302217</a>. Facebook adheres to the Self-Regulatory Principles for Online Behavioural Advertising established by the Digital Advertising Alliance. You can also opt-out from Facebook and other participating companies through the Digital Advertising Alliance in the USA <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener">http://www.aboutads.info/choices/</a>, the Digital Advertising Alliance of Canada in Canada <a href="http://youradchoices.ca/" target="_blank" rel="noopener">http://youradchoices.ca/</a> or the European Interactive Digital Advertising Alliance in Europe <a href="http://www.youronlinechoices.eu/" target="_blank" rel="noopener">http://www.youronlinechoices.eu/</a>, or opt-out using your mobile device settings. For more information on the privacy practices of Facebook, please visit Facebook's Data Policy: <a href="https://www.facebook.com/privacy/explanation" target="_blank" rel="noopener">https://www.facebook.com/privacy/explanation</a></p>
+      <p><strong>TikTok.</strong> TikTok remarketing service is provided by TikTok Inc. You can manage TikTok's interest-based ads in the TikTok app under Settings and privacy, Ads, and learn more in TikTok's privacy policy: <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener">https://www.tiktok.com/legal/privacy-policy</a></p>
+      
+      
 
       <h3>Usage, Performance and Miscellaneous</h3>
       <p>We may use third-party Service Providers to provide better improvement of our Service.</p>
       <p><strong>Invisible reCAPTCHA.</strong> We use an invisible captcha service named reCAPTCHA. reCAPTCHA is operated by Google. The reCAPTCHA service may collect information from You and from Your Device for security purposes. The information gathered by reCAPTCHA is held in accordance with the Privacy Policy of Google: <a href="https://www.google.com/intl/en/policies/privacy/" target="_blank" rel="noopener">https://www.google.com/intl/en/policies/privacy/</a></p>
 
       <!-- ─────────── 10 ─────────── -->
-      <h2 id="sms">10. <span class="chg">SMS / Text Messaging</span></h2>
-      <p class="chg-note">[New section. Required for A2P 10DLC campaign approval. Confirm the phone number after the port.]</p>
-      <p class="chg"><strong>How we collect SMS consent.</strong> Phone number fields on Our forms are optional. If You provide a mobile number, You may separately choose to opt in to (1) service notifications about Your apartment search and (2) marketing messages, using two unchecked checkboxes presented with the form. You may also opt in by texting START to (972) 919-0155. When You opt in, We record Your mobile number, which consents You gave, the date and time, and the page or keyword through which You opted in.</p>
-      <p class="chg"><strong>How we use it.</strong> If You opt in to service notifications, We and Your assigned licensed Agent may text You links to Your apartment list, tour scheduling confirmations and reminders, replies to Your questions, property follow-ups, and lease-related updates. If You separately opt in to marketing messages, We may text You apartment specials, new listings, promotions, and special offers. We do not send marketing messages to anyone who has not opted in to them. Messages may come from Our main business number or from Your assigned Agent's individual business line; all of Our numbers run through the same messaging platform and are covered by the same consent.</p>
-      <p class="chg"><strong>Who receives it.</strong> Your mobile number and SMS opt-in information are shared only with the SMS platform provider that delivers Our messages. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</p>
-      <p class="chg"><strong>How to opt out.</strong> Reply STOP to any message, from any of Our numbers, or text STOP to (972) 919-0155 to stop receiving text messages from all of Our numbers, including Your Agent's line. You will receive one confirmation message. Reply HELP for help, or contact legal@apartmentagents.com. Message frequency varies. Message and data rates may apply.</p>
-      <p class="chg"><strong>Retention.</strong> We keep a record of Your consent and of any opt-out request for as long as necessary to honor Your choices and to demonstrate compliance with applicable law.</p>
-      <p class="chg">The full program terms are in Section 7 of Our <a href="terms-of-use.html#sms">Terms of Use</a>.</p>
+      <h2 id="sms">10. <span>SMS / Text Messaging</span></h2>
+      
+      <p><strong>How we collect SMS consent.</strong> Phone number fields on Our forms are optional. If You provide a mobile number, You may separately choose to opt in to (1) service notifications about Your apartment search and (2) marketing messages, using two unchecked checkboxes presented with the form. You may also opt in by texting START to (972) 919-0155. When You opt in, We record Your mobile number, which consents You gave, the date and time, and the page or keyword through which You opted in.</p>
+      <p><strong>How we use it.</strong> If You opt in to service notifications, We and Your assigned licensed Agent may text You links to Your apartment list, tour scheduling confirmations and reminders, replies to Your questions, property follow-ups, and lease-related updates. If You separately opt in to marketing messages, We may text You apartment specials, new listings, promotions, and special offers. We do not send marketing messages to anyone who has not opted in to them. Messages may come from Our main business number or from Your assigned Agent's individual business line; all of Our numbers run through the same messaging platform and are covered by the same consent.</p>
+      <p><strong>Who receives it.</strong> Your mobile number and SMS opt-in information are shared only with the SMS platform provider that delivers Our messages. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</p>
+      <p><strong>How to opt out.</strong> Reply STOP to any message, from any of Our numbers, or text STOP to (972) 919-0155 to stop receiving text messages from all of Our numbers, including Your Agent's line. You will receive one confirmation message. Reply HELP for help, or contact legal@apartmentagents.com. Message frequency varies. Message and data rates may apply.</p>
+      <p><strong>Retention.</strong> We keep a record of Your consent and of any opt-out request for as long as necessary to honor Your choices and to demonstrate compliance with applicable law.</p>
+      <p>The full program terms are in Section 7 of Our <a href="terms-of-use.html#sms">Terms of Use</a>.</p>
 
       <!-- ─────────── 11 ─────────── -->
-      <h2 id="rights">11. <span class="chg">Your Choices and Rights</span></h2>
-      <p class="chg-note">[New section, modeled on UMoveFree's "Correcting / Updating / Deactivating Personal Information". Neither the live page nor Smart City's tells people how to get their data corrected or deleted.]</p>
-      <p class="chg">You can make the following choices about Your Personal Data at any time:</p>
-      <ul class="chg">
+      <h2 id="rights">11. <span>Your Choices and Rights</span></h2>
+      
+      <p>You can make the following choices about Your Personal Data at any time:</p>
+      <ul>
         <li><strong>Marketing email:</strong> use the unsubscribe link in any email We send, or email legal@apartmentagents.com.</li>
         <li><strong>Text messages:</strong> reply STOP to any message or text STOP to (972) 919-0155.</li>
         <li><strong>Cookies and advertising:</strong> use the "Manage Consent" link on the Website, Your browser settings, and the industry opt-out tools listed in Section 9.</li>
-        <li><strong>Access, correction and deletion:</strong> You may ask Us to tell You what Personal Data We hold about You, to correct it, or to delete it. Email legal@apartmentagents.com or write to the address in Section 15. We will verify Your identity, respond within a reasonable time, and honor Your request except where We must keep the information to complete a transaction You asked for, meet a legal obligation such as Texas real estate record-keeping rules, or defend a legal claim.</li>
+        <li><strong>Access, correction and deletion:</strong> You may ask Us to tell You what Personal Data We hold about You, to correct it, or to delete it. Email legal@apartmentagents.com or write to the mailing address in Section 15. We will verify Your identity, respond within a reasonable time, and honor Your request except where We must keep the information to complete a transaction You asked for, meet a legal obligation such as Texas real estate record-keeping rules, or defend a legal claim.</li>
       </ul>
-      <p class="chg">We will not discriminate against You for exercising any of these choices. If You are a Texas resident, the Texas Data Privacy and Security Act may give You additional rights, and You may appeal a decision We make about Your request by replying to Our response.</p>
+      <p>We will not discriminate against You for exercising any of these choices. If You are a Texas resident, the Texas Data Privacy and Security Act may give You additional rights, and You may appeal a decision We make about Your request by replying to Our response.</p>
 
       <!-- ─────────── 12 ─────────── -->
       <h2 id="children">12. Children's Privacy</h2>
-      <p><span class="chg">Our Service is intended for adults, and Our Terms of Use require users to be 18 or older.</span> Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
+      <p><span>Our Service is intended for adults, and Our Terms of Use require users to be 18 or older.</span> Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
       <p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
 
       <!-- ─────────── 13 ─────────── -->
@@ -543,17 +509,15 @@
       <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
       <p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.</p>
       <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-      <p class="chg"><strong>Revision history.</strong> September 29, 2026: added the SMS / Text Messaging section and consent process, rewrote the sharing section to remove sharing with business partners and to describe sharing with apartment communities and Vendors at Your direction, added Your Choices and Rights, updated the list of analytics and advertising providers, and removed descriptions of features the Website does not have. June 7, 2022: previous version.</p>
+      <p><strong>Revision history.</strong> September 29, 2026: added the SMS / Text Messaging section and consent process, rewrote the sharing section to remove sharing with business partners and to describe sharing with apartment communities and Vendors at Your direction, added Your Choices and Rights, updated the list of analytics and advertising providers, and removed descriptions of features the Website does not have. June 7, 2022: previous version.</p>
 
       <!-- ─────────── 15 ─────────── -->
       <h2 id="contact">15. Contact Us</h2>
       <p>If you have any questions about this Privacy Policy, You can contact us:</p>
-      <p>Apartment Agents<br>Attn: Legal<br>
-        <span class="chg">2626 Cole Ave Ste 370<br>Dallas, TX 75204</span><br>
-        <del class="chg">5605 FM 423 STE 500 PMB #297, FRISCO TX 75036-8976</del><br>
+      <p><span>Mailing address:</span><br>Apartment Agents<br>Attn: Legal<br>5605 FM 423 STE 500 PMB #297<br>Frisco, TX 75036-8976<br>
         Email: <a href="mailto:legal@apartmentagents.com">legal@apartmentagents.com</a><br>
-        <span class="chg">Phone: <a href="tel:+19729937300">(972) 993-7300</a></span></p>
-      <p class="chg-note">[Same address note as the Terms: one address throughout, matching the IRS letter for A2P.]</p>
+        <span>Phone: <a href="tel:+19729937300">(972) 993-7300</a></span></p>
+      
 
     </div>
   </section>
@@ -574,7 +538,7 @@
         <h4>Learn More</h4>
         <ul>
           <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
-          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="reward-terms.html">Reward Terms</a></li>
           <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
         </ul>
       </div>
@@ -620,11 +584,6 @@
       var btn = document.querySelector('[aria-controls="mobile-menu"]');
       menu.classList.toggle('hidden');
       if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
-    }
-    /* Review-only: flips the red change markup off so the page can be seen as it will publish. */
-    function toggleChg() {
-      var on = document.body.classList.toggle('hide-chg');
-      document.getElementById('chgBtn').textContent = on ? 'Show changes in red' : 'Preview without markup';
     }
   </script>
 </body>

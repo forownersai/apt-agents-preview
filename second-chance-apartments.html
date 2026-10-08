@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Second Chance Leasing | Apartment Agents</title>
+  <meta name="description" content="Credit issues, a broken lease or an eviction? Here is what we can help with before you continue your apartment search." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F1338', purple: '#9DAAF2', coral: '#F5736C',
+              green: '#AECD81', yellow: '#FFD67B', gray: '#7A7A7A',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — brand system inherited from claim-reward.html /
+       dallas-apartments-new.html. Spacing is a fixed scale, not ad-hoc steps.
+       ============================================================ */
+    :root {
+      --navy:      #0F1338;
+      --navy-2:    #1A2240;
+      --lav:       #9DAAF2;
+      --green:     #AECD81;
+      --yellow:    #FFD67B;
+      --coral:     #F5736C;
+      --ink:       #0F1338;
+      --ink-soft:  #4A4A6A;
+      --ink-mute:  #5A5A7A;
+      --paper:     #ffffff;
+      --paper-2:   #f8f9ff;
+      --btn:       #0d6efd;
+      --btn-hover: #0b5ed7;
+
+      /* spacing scale */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 88px;
+
+      /* layered, colour-tinted elevation system (base -> elevated -> floating) */
+      --sh-base:  0 1px 2px rgba(15,19,56,0.05), 0 2px 8px rgba(15,19,56,0.05);
+      --sh-elev:  0 1px 3px rgba(15,19,56,0.06), 0 6px 18px rgba(15,19,56,0.08), 0 18px 40px rgba(15,19,56,0.06);
+      --sh-float: 0 2px 6px rgba(15,19,56,0.08), 0 12px 28px rgba(15,19,56,0.12), 0 32px 72px rgba(15,19,56,0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--ink); margin: 0; font-size: 1.0625rem; line-height: 1.7;
+      padding-top: 66px; background: #fff; overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; letter-spacing: -0.02em; }
+    h1 { letter-spacing: -0.03em; }
+    img { max-width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------------- NAV (verbatim system from sibling pages) ---------------- */
+    .nav-link { color: var(--navy); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--lav); }
+    .nav-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .nav-link:active { color: #7b8ee8; }
+    .nav-logo { height: 38px; width: auto; max-width: 150px; object-fit: contain; object-position: left center; }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn-primary {
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease, opacity 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-primary:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-primary:active { transform: translateY(0) scale(0.985); }
+    .btn-primary:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+    .btn-primary:disabled { opacity: 0.72; cursor: progress; transform: none; box-shadow: none; }
+
+    .btn-coral { /* kept as the sibling pages define it (same blue pill) */
+      background-color: var(--btn); color: #fff; font-weight: 800; border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+      border: none; cursor: pointer; display: inline-block; text-decoration: none;
+    }
+    .btn-coral:hover { background-color: var(--btn-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,110,253,0.4); }
+    .btn-coral:active { transform: translateY(0) scale(0.985); }
+    .btn-coral:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+
+    /* Mobile nav CTA — declared after .btn-coral so its display wins */
+    .nav-cta-mobile { display: inline-flex !important; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; font-size: 0.86rem; padding-left: 14px; padding-right: 14px; }
+    @media (min-width: 1100px) { .nav-cta-mobile { display: none !important; } }
+    .nav-cta-desktop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; min-height: 44px; }
+    nav button:active { opacity: 0.65; }
+
+    /* inline text links on light surfaces — every state accounted for */
+    .inline-link {
+      color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease;
+    }
+    .inline-link:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .inline-link:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .inline-link:active { opacity: 0.7; }
+
+    /* ---------------- HERO (light lavender-white field, single column) ----------------
+       Near-white base + low-opacity lavender/green radial washes + faint grain.
+       ------------------------------------------------------------------------------- */
+    .hero {
+      background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        radial-gradient(760px 520px at 46% 118%, rgba(174,205,129,0.20) 0%, rgba(174,205,129,0) 64%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 52%, #ffffff 100%);
+      position: relative; overflow: hidden;
+      padding: 28px 20px 30px;
+      border-bottom: 1px solid rgba(15,19,56,0.06);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .hero h1 { color: var(--navy); font-size: clamp(2.1rem, 9vw, 3.4rem); line-height: 1.06; margin: 0 0 12px; }
+    .hero-kicker { color: #4C6B22; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 10px; }
+    .hero-sub { color: var(--navy); font-size: 1.0625rem; line-height: 1.6; margin: 0; max-width: 34em; }
+    .hero h1 .h1-beat { display: inline-block; margin-top: 0.1em; font-style: italic; color: #4A55B8; }
+
+    /* ---------------- SECTION SHELL ---------------- */
+    .sec { padding: var(--s6) 20px; }
+    @media (min-width: 700px) { .sec { padding: var(--s7) 24px; } }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .wrap-narrow { max-width: 760px; margin: 0 auto; }
+    .sec h2 { font-size: clamp(1.75rem, 5.4vw, 2.5rem); line-height: 1.14; margin: 0 0 12px; color: var(--navy); }
+    .lede { color: var(--ink-mute); font-size: 1.0625rem; line-height: 1.75; margin: 0; }
+    .eyebrow { display: inline-block; background: rgba(157,170,242,0.14); color: #5f6cbb; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; border-radius: 20px; padding: 5px 14px; margin: 0 0 12px; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
+    .btn-lg { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 15px 30px; font-size: 1.05rem; }
+    .btn-lg svg { width: 0.55em; height: 1em; flex-shrink: 0; }
+
+    /* ---------------- FOOTER (system) ---------------- */
+    .site-footer { background: var(--navy); color: #fff; padding: 48px 20px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .footer-col ul a { color: #fff; font-size: 1rem; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-col p { font-size: 1rem; line-height: 1.8; margin: 0; }
+    .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--lav); }
+    .footer-col a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-col a:active { opacity: 0.7; }
+    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .social-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--lav); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; text-decoration: none; transition: background-color 0.2s ease, transform 0.15s ease; }
+    .social-icon:hover { background: #b8c3f7; transform: scale(1.08); }
+    .social-icon:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .social-icon:active { transform: scale(0.96); }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.95rem; color: #fff; margin: 0; }
+    .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 0.95rem; color: #fff; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; min-height: 44px; }
+    .footer-bottom-links a:hover { color: var(--lav); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .footer-bottom-links a:active { opacity: 0.7; }
+    .site-footer p a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+
+    @media (min-width: 700px) {
+      .hero { padding: 52px 24px 52px; }
+      .hero h1 { font-size: clamp(2.6rem, 5vw, 3.4rem); }
+      .hero-sub { font-size: 1.15rem; }
+    }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    /* ---------------- SITUATION PAGES: a short note, then where to look instead ---------------- */
+    .sit-body { padding: 32px 20px var(--s6); background: #fff; }
+    @media (min-width: 700px) { .sit-body { padding: 48px 24px var(--s7); } }
+    .sit-body p { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 16px; }
+    .sit-body h2 { font-size: 1.5rem; line-height: 1.2; margin: 36px 0 14px; color: var(--navy); }
+    .sit-body h2:first-child { margin-top: 0; }
+
+    /* resource rows: the whole row is the link */
+    .res-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    /* phones: icon + name on one row, the description full width under them; wider: description sits under the name */
+    .res {
+      position: relative; display: grid; grid-template-columns: 40px 1fr; grid-template-areas: 'ico name' 'desc desc';
+      column-gap: 12px; row-gap: 8px; align-items: center;
+      padding: 16px 44px 16px 14px; border-radius: 16px; text-decoration: none; color: inherit;
+      background: #fff; border: 1px solid rgba(15,19,56,0.10); box-shadow: var(--sh-base);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
+    }
+    .res:hover { border-color: rgba(157,170,242,0.9); box-shadow: var(--sh-elev); transform: translateY(-1px); }
+    .res:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; }
+    .res:active { transform: translateY(0) scale(0.99); }
+    .res-ico { grid-area: ico; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(157,170,242,0.18); color: #4A55B8; font-size: 1.05rem; }
+    .res-name { grid-area: name; display: block; font-weight: 800; color: var(--navy); font-size: 1.05rem; line-height: 1.3; margin: 0; }
+    .res-body { grid-area: desc; display: block; }
+    .res-desc { display: block; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.6; }
+    .res-perk { display: inline-block; margin-top: 8px; background: rgba(255,214,123,0.38); color: #5a4206; font-size: 0.9rem; font-weight: 700; border-radius: 10px; padding: 5px 10px; line-height: 1.4; }
+    .res-go { position: absolute; top: 19px; right: 16px; color: #8b8fae; font-size: 0.9rem; transition: color 0.18s ease; }
+    .res:hover .res-go { color: #4A55B8; }
+    @media (min-width: 700px) {
+      .res { grid-template-columns: 44px 1fr; grid-template-areas: 'ico name' 'ico desc'; align-items: start; row-gap: 3px; column-gap: 16px; }
+      .res-ico { width: 44px; height: 44px; }
+      .res-name { margin-top: 1px; }
+    }
+    .res--lead { border-color: rgba(157,170,242,0.75); background: linear-gradient(180deg, #fbfbff 0%, #ffffff 100%); }
+    .res--lead .res-ico { background: var(--lav); color: var(--navy); }
+
+    /* two lists: what we can help with, what we can't */
+    .fit { display: grid; gap: 14px; margin: 0 0 8px; }
+    @media (min-width: 700px) { .fit { grid-template-columns: 1fr 1fr; gap: 18px; } }
+    .fit-col { border-radius: 18px; padding: 20px 18px 16px; border: 1px solid rgba(15,19,56,0.08); }
+    .fit-col h2 { font-size: 1.2rem; margin: 0 0 12px !important; display: flex; align-items: center; gap: 10px; }
+    .fit-col ul { list-style: none; margin: 0; padding: 0; }
+    .fit-col li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-soft); font-size: 1rem; line-height: 1.5; padding: 7px 0; border-top: 1px solid rgba(15,19,56,0.06); }
+    .fit-col li:first-child { border-top: none; }
+    .fit-col li i { margin-top: 4px; width: 16px; flex-shrink: 0; text-align: center; }
+    .fit-col--yes { background: #f6faf0; border-color: rgba(174,205,129,0.6); }
+    .fit-col--yes h2 i, .fit-col--yes li i { color: #4C6B22; }
+    .fit-col--no { background: #fff7f6; border-color: rgba(245,115,108,0.35); }
+    .fit-col--no h2 i, .fit-col--no li i { color: #B33F38; }
+    .fit-col a { color: #0b5ed7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; text-decoration-color: rgba(11,94,215,0.4); }
+    .fit-col a:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .fit-col a:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .fit-col a:active { opacity: 0.7; }
+
+    /* the income rule, with the worked example set as a sum */
+    .income { margin: 22px 0 8px; border-radius: 18px; padding: 20px 18px; background: var(--paper-2); border: 1px solid rgba(157,170,242,0.45); }
+    .income h2 { font-size: 1.2rem; margin: 0 0 8px !important; }
+    .income p { font-size: 1rem !important; margin: 0 0 14px !important; }
+    .sum { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; font-variant-numeric: tabular-nums; }
+    .sum b { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.7rem; letter-spacing: -0.02em; color: var(--navy); line-height: 1; }
+    .sum span { color: var(--ink-mute); font-size: 0.92rem; }
+    .sum .op { font-size: 1.3rem; color: #8b8fae; }
+
+    /* closing: back to the form */
+    .sit-close { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(15,19,56,0.10); }
+    .sit-close h2 { margin-top: 0 !important; }
+    .quiet { margin: 16px 0 0 !important; font-size: 0.95rem !important; color: var(--ink-mute) !important; }
+
+    /* PHONES ONLY (John, 2026-10-05): paragraphs 18px, sub-headings 22px, hero line 20px. */
+    @media (max-width: 699px) {
+      .hero-sub { font-size: 20px; }
+      .sit-body p:not(.quiet), .res-desc { font-size: 18px; }
+      .sit-body h2 { font-size: 22px; }
+      .fit-col li { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+  <nav style="background:#fff; border-bottom:1px solid rgba(0,0,0,0.08);" class="fixed top-0 left-0 right-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="min-[1100px]:hidden text-[#0F1338] text-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#9DAAF2]" style="min-width:44px; min-height:44px;" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+        <a href="index.html" class="flex items-center gap-2" style="text-decoration:none;">
+          <img src="brand_assets/apartment_agents_logo.png" alt="Apartment Agents" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <span style="display:none; color:#0F1338; font-weight:900; font-size:1.05rem; align-items:center; gap:1px;">
+            Apartment<span style="color:#9DAAF2;">Agents</span>
+          </span>
+        </a>
+      </div>
+      <a href="dallas-apartments-search.html" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <div class="hidden min-[1100px]:flex items-center gap-6">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
+        <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
+        <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
+        <a href="dallas-apartments-search.html" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
+      <a href="how-it-works.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">How It Works</a>
+      <a href="rewards.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Up to $250 Cash Back</a>
+      <a href="mover-quotes.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Moving Quotes</a>
+      <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
+      <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
+      <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
+      <a href="dallas-apartments-search.html" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════ 1 · HERO ══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">Second chance leasing</p>
+      <h1>Second Chance Leasing</h1>
+      <p class="hero-sub">Please read the following before you continue.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 2 · WHAT TO KNOW + WHERE TO LOOK ══════════════════════════ -->
+  <section class="sit-body">
+    <div class="wrap-narrow">
+          <div class="fit">
+            <div class="fit-col fit-col--yes">
+              <h2><i class="fas fa-circle-check" aria-hidden="true"></i>We can help if you have</h2>
+              <ul>
+                <li><i class="fas fa-check" aria-hidden="true"></i>A first-time rental</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>No established credit</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>Bad credit or credit issues</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>Late payments</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>A broken lease</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>An eviction</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>A foreclosure</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i>A bankruptcy</li>
+              </ul>
+            </div>
+            <div class="fit-col fit-col--no">
+              <h2><i class="fas fa-circle-xmark" aria-hidden="true"></i>We&rsquo;re unable to help with</h2>
+              <ul>
+                <li><i class="fas fa-xmark" aria-hidden="true"></i>More than 3 unpaid apartment debts or evictions</li>
+                <li><i class="fas fa-xmark" aria-hidden="true"></i>Apartment debt or an eviction under 1 year old (unless everything owed has been paid in full)</li>
+                <li><i class="fas fa-xmark" aria-hidden="true"></i>An open bankruptcy with apartment debt or an eviction</li>
+                <li><i class="fas fa-xmark" aria-hidden="true"></i><span><a href="section-8-housing.html">Section 8 housing vouchers</a></span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="income">
+            <h2>Your income still needs to qualify</h2>
+            <p>You need enough income to rent the apartment, or a co-signer who can qualify. Most places require 3 times the monthly rent in gross income, before taxes.</p>
+            <div class="sum" aria-label="Example: 1,200 dollars a month in rent times 3 equals 3,600 dollars a month in gross income">
+              <b>$1,200</b><span>rent</span><span class="op" aria-hidden="true">&times;</span><b>3</b><span class="op" aria-hidden="true">=</span><b>$3,600</b><span>monthly income</span>
+            </div>
+          </div>
+
+          <h2>If your situation is outside what we can help with</h2>
+          <p>Our best recommendation is HAR.com, where private owners list their properties for rent. They&rsquo;re sometimes more willing to rent to people whose circumstances keep them from leasing at the professionally managed communities we work with.</p>
+          <ul class="res-list">
+            <li><a class="res" href="https://www.har.com/" target="_blank" rel="noopener">
+              <span class="res-ico" aria-hidden="true"><i class="fas fa-house"></i></span>
+              <span class="res-name">HAR.com</span>
+              <span class="res-body"><span class="res-desc">Homes and apartments for rent listed by private owners.</span></span>
+              <i class="fas fa-arrow-up-right-from-square res-go" aria-hidden="true"></i>
+            </a></li>
+          </ul>
+
+          <div class="sit-close">
+            <h2>Ready to keep going?</h2>
+            <p>If your situation is on the list we can help with, continue and tell us what you&rsquo;re looking for.</p>
+            <!-- SECOND_CHANCE_FORM_URL: John is building a separate GHL second-chance form (2026-10-07). Put its URL here.
+                 Do NOT point this at the main survey: it asks "Do any of these apply?" again and the renter loops back here. -->
+            <a href="SECOND_CHANCE_FORM_URL" class="btn-primary btn-lg">Continue <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+          </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="dallas-apartments-new.html#signup">Get My Free Matches</a></li>
+          <li><a href="how-it-works.html">How it Works</a></li>
+          <li><a href="rewards.html">Up to $250 Cash Back</a></li>
+          <li><a href="claim-reward.html">Claim Your Reward</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://apartmentagents.com/claim-reward/">Report Your Lease</a></li>
+          <li><a href="https://apartmentagents.com/rebate-terms/">Reward Terms</a></li>
+          <li><a href="https://apartmentagents.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Dallas Office<br>
+          <a href="tel:+19729937300">(972) 993-7300</a><br>
+          <a href="mailto:dallas@apartmentagents.com">dallas@apartmentagents.com</a><br>
+          2626 Cole Ave Ste 370<br>Dallas, TX 75204
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Currently Accepting Followers</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/apartmentagents/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ApartmentAgents/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Apartment Agents. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://apartmentagents.com/terms-of-use/">Terms of Use</a>
+        <a href="https://apartmentagents.com/privacy-statement-us/">Privacy Policy</a>
+        <a href="https://apartmentagents.com/fair-housing/">Fair Housing</a>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:16px auto 0; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-size:0.92rem; color:#fff; line-height:1.8; margin:0;">
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Information About Brokerage Services</a><br>
+        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-4-1_0.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Texas Real Estate Commission Consumer Protection Notice</a><br>
+        TREC Broker #505184. Any rebate offer(s) is subject to principal consent and restrictions.<br>
+        APARTMENT AGENTS and related marks are registered trademarks of JLC Real Estate, Inc.<br>
+        Copyright &copy; 2026 JLC Real Estate, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      var btn = document.querySelector('[aria-controls="mobile-menu"]');
+      menu.classList.toggle('hidden');
+      if (btn) btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+    }
+  </script>
+</body>
+</html>
