@@ -1035,11 +1035,18 @@
         <h2 class="form-card__title">A few quick questions to start your search.</h2>
         <div class="survey-frame">
           <iframe
-            src="https://api.leadconnectorhq.com/widget/survey/HTXW30b5cVIQacSCY73c"
+            data-src="https://api.leadconnectorhq.com/widget/survey/HTXW30b5cVIQacSCY73c"
             style="border:none; width:100%; min-height:420px;"
             scrolling="no"
             id="HTXW30b5cVIQacSCY73c"
             title="Apartment search sign-up form"></iframe>
+          <script>
+            /* load the survey with this page's query string (utm_* + deal_id feed its hidden fields) */
+            (function () {
+              var f = document.getElementById('HTXW30b5cVIQacSCY73c');
+              f.src = f.getAttribute('data-src') + (window.location.search || '');
+            })();
+          </script>
         </div>
         <p class="form-micro">No cost, no obligation, no spam.</p>
       </div>
