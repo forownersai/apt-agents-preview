@@ -987,6 +987,50 @@
     .next-step p { margin: 0; color: var(--ink-soft); font-size: 0.97rem; line-height: 1.6; }
     .next-step strong { color: var(--navy); }
   </style>
+  <style>
+    /* deal form title: bigger than the generic card title so the deal reads first; deal number in the action blue */
+    #deal-title { font-size: 1.8rem; line-height: 1.14; letter-spacing: -0.02em; margin: 2px 0 16px; }
+    @media (min-width: 700px) { #deal-title { font-size: 2.2rem; } }
+    #deal-label { color: #0d6efd; }
+    /* "Why trust us" header lines up with the FAQ column above it (John 2026-10-09): the reviews use the wide .wrap
+       (1120px) but the badge, headline and intro sit in the same 760px column as .wrap-narrow. Cards stay full width. */
+    #reviews > .wrap > .section-badge, #reviews > .wrap > h2, #reviews > .wrap > .lede { margin-left: max(0px, calc((100% - 760px) / 2)); }
+    /* ONE hero section holds the Dallas copy AND the form (John 2026-10-09): the hero background runs behind both,
+       no divider line. --deal-gap is the ONE spacing used above the kicker and between the copy and the form card (John:
+       the top space must equal the copy-to-form space). Two classes so these beat .hero's own media-query padding. */
+    :root { --deal-gap: 22px; }
+    @media (min-width: 700px) { :root { --deal-gap: 28px; } }
+    /* +3px: the fixed nav is 3px taller than the body's top offset, so it covers the first 3px of the page */
+    .hero.deal-hero { padding: calc(var(--deal-gap) + 3px) 0 0; border-bottom: 0; }
+    .deal-hero .deal-pitch { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    .deal-hero .deal-pitch .hero-kicker { margin-top: 0; padding-top: 0; }
+    .deal-hero .deal-pitch .hero-sub { max-width: 34em; margin-left: auto; margin-right: auto; }
+    .deal-hero .survey-sec { position: relative; z-index: 1; background: transparent; padding-top: var(--deal-gap); padding-bottom: 56px; }
+    /* phones: let the card shadow run past the hero instead of being cut at its edge. Desktop: 80px of room inside the
+       (clipping) hero lets the shadow fade out fully; there the overflow route left a faint band. Both checked 2026-10-09. */
+    @media (max-width: 699px) { .hero.deal-hero { overflow: visible; } }
+    @media (min-width: 700px) { .deal-hero .survey-sec { padding-bottom: 80px; } }
+    /* the hero clips overflow, so the card's deep shadow (30px offset, 64px blur) needs room inside the hero or it is cut
+       off in a hard line (John 2026-10-09). That room IS the card-to-FAQ gap: the FAQ adds no top padding of its own. */
+    /* the hero's tint and grain must reach pure white by its bottom edge, or the white FAQ below meets it in a visible line
+       (the card shadow spills across that edge). Same lavender washes as .hero, minus the green glow at the bottom. */
+    .hero.deal-hero { background:
+        radial-gradient(880px 560px at 84% -14%, rgba(157,170,242,0.46) 0%, rgba(157,170,242,0) 62%),
+        radial-gradient(720px 520px at -10% 4%,  rgba(157,170,242,0.30) 0%, rgba(157,170,242,0) 58%),
+        linear-gradient(180deg, #f6f6fd 0%, #fafaff 50%, #ffffff 82%); }
+    .hero.deal-hero::before { -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 85%); mask-image: linear-gradient(to bottom, #000 45%, transparent 85%); }
+    .deal-hero + .sec { padding-top: 0; padding-bottom: var(--deal-gap); }
+    /* FAQ -> reviews: the background changes there, so --deal-gap on each side of the color change (John: no big gaps) */
+    #reviews.sec { padding-top: var(--deal-gap); }
+    .deal-hero + .sec .faq-item:last-child { margin-bottom: 0; }   /* its 12px margin would add to the gap */
+    @media (min-width: 700px) { .deal-hero .deal-pitch { padding: 0 24px; } } 
+    /* the Dallas page's hero copy (styled text, not a heading: the deal title is the page's h1) */
+    .deal-pitch .deal-pitch__title { color: var(--navy); font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.3rem, 9.5vw, 3.6rem); line-height: 1.06; letter-spacing: -0.03em; margin: 0 0 12px; }
+    .deal-pitch .deal-pitch__title em { font-style: normal; color: inherit; }
+    .deal-pitch .deal-pitch__title .h1-beat { display: inline-block; margin-top: 0.14em; font-style: italic; color: #4A55B8; }
+    .deal-pitch .hero-sub { margin-bottom: 0; }
+    @media (min-width: 1000px) { .deal-pitch .deal-pitch__title { font-size: clamp(2.8rem, 4.4vw, 3.8rem); } }
+  </style>
 </head>
 
 <body>
@@ -1023,6 +1067,15 @@
     </div>
   </nav>
 
+  <!-- ══════════════════════════ 1 · DALLAS PITCH (top, John 2026-10-09) ══════════════════════════
+       Same copy and styling as the Dallas page hero (dallas-apartments-new.html), without its phone or button. -->
+  <div class="hero deal-hero">
+    <div class="deal-pitch">
+      <p class="hero-kicker">Save more with us</p>
+      <p class="deal-pitch__title">The <em>Dallas</em> apartment you actually want.<br><span class="h1-beat">Without the search.</span></p>
+      <p class="hero-sub">Right matches. Best prices. Up to $250 cash back.</p>
+    </div>
+
   <!-- ══════════════════════════ 2 · THE SURVEY ══════════════════════════
        The GHL survey "Main Website Form" (HTXW30b5cVIQacSCY73c) is embedded here. The
        consent checkboxes, the optional phone field and the SMS disclosure live INSIDE the
@@ -1055,6 +1108,327 @@
 
     </div>
   </section>
+  </div><!-- /.deal-hero: the Dallas copy and the form share one hero background (John 2026-10-09) -->
+
+  <!-- FAQ + reviews: standalone copy (tools/website-hero/deal-form-faq-reviews.html); edit both pages -->
+<!-- Deal form page: Straight answers FAQ + Why trust us reviews (John 2026-10-09).
+     A standalone copy taken from dallas-apartments-new.html on 2026-10-09. It no longer updates itself: when John
+     changes a question or a review, apply the change on BOTH pages. The reviews are real Google reviews: never reword them. -->
+    <!-- ═══════════ 4 · OBJECTIONS / STRAIGHT ANSWERS (must precede reviews) ═══════════ -->
+  <section class="sec" style="background:#fff;">
+    <div class="wrap-narrow">
+      <div class="section-badge">Straight answers</div>
+      <h2>The questions everyone asks.</h2>
+      <p class="lede" style="margin-bottom:var(--s4);">Short versions, no fine-print games.</p>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>I can find an apartment myself. Why use you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          <p>You can, and plenty of people do. The difference is what it costs you. The rent is identical either way. Communities don't give you a better price for going direct, so doing it alone means the same apartment, at the same price, minus up to $250.</p>
+          <p>You'd also be doing the part that takes the longest: mindlessly scrolling listing sites, navigating fake listings, and leaving voicemails at leasing offices that never get returned. Then guessing at everything a listing never tells you. Which buildings get noise complaints from residents or the bars next door. Which ones have maintenance problems. What a block actually feels like at night. And after all that, you're still chasing down mover quotes and setting up your utilities yourself.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Is it really free? What's the catch?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          There's no catch, but there is a reason. Communities set aside a marketing budget to fill their units and pay us a referral fee only when someone we refer signs a lease. You never pay us anything, and your rent isn't a dollar higher for using us.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Do you just send me wherever pays you the most?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Straight answer: we only work with communities that pay a referral fee. That's what makes this free for you. But we're not paid unless you actually sign a lease, so sending you somewhere that doesn't fit what you asked for gets us nothing. A large share of our business comes from repeat clients and referrals, so a bad recommendation costs us far more than a bigger fee is ever worth.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>If I'm applying with a roommate or partner, does everyone need to list you?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes, and this one trips people up. A community can only pay one locator per lease. If one applicant lists Apartment Agents and another lists a different company or referral source, it can cancel the referral out entirely and the reward disappears for everyone on the lease.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          <span>Can I still use you if I've already started looking?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-content"><div class="faq-content-inner">
+          Yes, and most people have already started looking by the time they find us. The main thing that gets in the way is if you've already toured or listed someone else as your referral source at a community. Tell us where you've been and we'll sort out quickly what still works.
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ 5 · WALL OF REVIEWS ══════════════════════════
+       Every card below is a REAL published Google review, copied verbatim from
+       index.html. Do not edit, reword, shorten or invent one. New reviews come
+       from the live Google Business profile only.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="sec" id="reviews" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="section-badge">Why trust us</div>
+      <h2>Saving Dallas renters money since 2003.</h2>
+      <p class="lede" style="max-width:620px;">We're a licensed Texas brokerage that <strong>focuses 100% on apartment rentals</strong>, not home sales, so every bit of our expertise goes into getting you the right place at the right price.</p>
+
+      <div class="reviews-wall">
+
+        <!-- 1: Amanda E. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige was awesome in helping my boyfriend and me find somewhere to live. She listened to our needs and did everything she could to make sure they were met."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">AE</div>
+            <div class="tname">Amanda E.</div>
+          </div>
+        </div>
+
+        <!-- 2: Lx -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I worked with Jeff A., he made the experience painless, he provided great options based on what I told him I was looking for. Very efficient, and anytime I emailed questions or concerns he responded in a timely manner. I would work with Jeff again and I would recommend him. Thanks Jeff!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">L</div>
+            <div class="tname">Lx</div>
+          </div>
+        </div>
+
+        <!-- 3: Jordyn S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"After many failed attempts at moving the last two years, I finally decided to look into help from an apartment locator. I worked with 4 people from different companies this time around, and Sydney at Apartment Agents was by far the best! I'm a very particular person when it comes to where I live, and Sydney was very understanding and worked tirelessly to help find my dream apartment. She sent me a list of available units with all the specs, and even set up tours for me to attend. After just 2 weeks of searching I signed a lease for an apartment that had pretty much all of my wants &amp; needs for an amazing price! I even got a rebate! I would recommend Apartment Agents (specifically Sydney Jepson) to everyone I know looking for a new place!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">JS</div>
+            <div class="tname">Jordyn S.</div>
+          </div>
+        </div>
+
+        <!-- 4: Ally C. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I'm moving cross country to Texas. I was getting so distraught and nervous because I didn't know what location I should move to and I couldn't find an apartment that fit all my needs. I found Alex and his company on Google and after 30 minutes from contacting him, he found me the perfect location and place. Before you exhaust yourself with endless searches, I recommend 100% you contact Alex first!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">AC</div>
+            <div class="tname">Ally C.</div>
+          </div>
+        </div>
+
+        <!-- 5: Sam Z. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"No money? No problem! A friend of mine recommended this service to me when I said I was moving into town, and this made it incredibly easy to find a quality apartment and move in without any hassle. I would recommend SIX stars if I could! Thank you Ms. Cindy!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">SZ</div>
+            <div class="tname">Sam Z.</div>
+          </div>
+        </div>
+
+        <!-- 6: Isaac Z. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Sydney was the apartment realtor who helped me relocate to Dallas. She was extremely helpful in locating an apartment that best fit my requirements. I am honestly more than satisfied with the choice she provided as my new apartment. I would definitely recommend Apartment Agents for their services and their realtors like Sydney!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">IZ</div>
+            <div class="tname">Isaac Z.</div>
+          </div>
+        </div>
+
+        <!-- 7: Annie B. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"When I found out I had to find a place to move on such short notice (2 weeks!) I was overwhelmed. I needed private garage parking and a yard and it's nearly impossible to sort through apartment websites looking for those 'must-haves'. Paige reached out to me and made it happen! She worked hard to find me multiple options and I settled on a place that was brand new, had everything I wanted (and more!), great move-in specials, and most importantly, felt like home. I was able to move-in just 4 days after viewing the property. I could not have done it without Paige!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">AB</div>
+            <div class="tname">Annie B.</div>
+          </div>
+        </div>
+
+        <!-- 8: Trey M. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige Prestwood is absolutely amazing. I started a search over a year ago and then decided to stay put. She not only kept in touch with me, but was extremely professional and ultimately found me the perfect place well within my budget. Thanks so much Paige! I'll be sending friends and family your way."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">TM</div>
+            <div class="tname">Trey M.</div>
+          </div>
+        </div>
+
+        <!-- 9: Blaine S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Paige is incredible. Trust me when I tell you she is the one you want to work with. Went above and beyond to find me the perfect place. If you do only one thing, ask for Paige. She rocks."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">BS</div>
+            <div class="tname">Blaine S.</div>
+          </div>
+        </div>
+
+        <!-- 10: Jessica S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I have used Shannon with Apartment Agents now twice to find my perfect home. She's delivered in spades both times and I cannot more highly recommend her and Apartment Agents as a whole."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">JS</div>
+            <div class="tname">Jessica S.</div>
+          </div>
+        </div>
+
+        <!-- 11: J. S. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I've been using Shannon as my apartment locator for the past 4 years and she's nothing short of amazing. Always willing to make adjustments for different areas I've been interested in and catering to my requests for amenities. I also never have to wait around for an updated list because she's on top of everything and knows the DFW like the back of her hand. As long as I'm living in apartments, she's my go-to without hesitation!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">JS</div>
+            <div class="tname">J. S.</div>
+          </div>
+        </div>
+
+        <!-- 12: Ros M. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Kristina was an amazing agent &ndash; she was kind, attentive, listened to my needs and wants, and was able to provide me with several amazing options within my requested price range. She scheduled everything and made the entire process unbelievably easy, and I was able to find and sign a lease at a great apartment within a week of reaching out to Kristina! 10/10"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">RM</div>
+            <div class="tname">Ros M.</div>
+          </div>
+        </div>
+
+        <!-- 13: Dina D. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Shannon was great in helping my colleagues and I find accommodation in Dallas. We told her what we were looking for, size, location, amenities, and she very quickly sent us a list of places within our budget and helped set up viewings. Moving to a new place can be very difficult and stressful. Shannon helped ease that stress for us, and we all ended up in a fantastic apartment complex that more than fulfilled all our wish list."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">DD</div>
+            <div class="tname">Dina D.</div>
+          </div>
+        </div>
+
+        <!-- 14: Carline U. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Cindy from Apartment Agents was amazing, quick responses and provided a comprehensive list that allowed me to narrow down my options. It is now week 3 in my apartment and I love it more each day. Thanks again, Cindy!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">CU</div>
+            <div class="tname">Carline U.</div>
+          </div>
+        </div>
+
+        <!-- 15: John G. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I have used this apartment locator service 2x in a row. Kristina C. is so helpful and flexible. I'm very picky with where I live and Kristina definitely catered to that. She helped me look through several apartments across the metroplex and find the right one. She is very communicative and goal-oriented. Thanks for all your help Kristina!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">JG</div>
+            <div class="tname">John G.</div>
+          </div>
+        </div>
+
+        <!-- 16: Troy H. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Apartment Agents (and Cindy Little in particular) were GREAT to work with, and found me a new apartment (and exactly what I wanted!) that SAME DAY. I sent her a list of 'must haves' and I had several choices in my inbox very quickly. Her first choice for me was the one I ended up choosing after looking at like 5 others. I would highly recommend Cindy and WILL be using her again if the need arises."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">TH</div>
+            <div class="tname">Troy H.</div>
+          </div>
+        </div>
+
+        <!-- 17: Frances F. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I've been using Sara Dahlen for a couple of years now for my apartment finding needs and she is amazing!! All you have to do is tell her what you're looking for and she does all the rest. She will find perfect matches all the way up to booking tours for you. Not only does she have a strong work ethic, she is such a joy to get to work with. I highly recommend using Sara for your next move!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">FF</div>
+            <div class="tname">Frances F.</div>
+          </div>
+        </div>
+
+        <!-- 18: Deja T. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Shannon was great. She found my dream apartment! Definitely would recommend her to anyone looking to rent in the DFW."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">DT</div>
+            <div class="tname">Deja T.</div>
+          </div>
+        </div>
+
+        <!-- 19: Kat P. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I had the pleasure of having Kristina helping me with my apartment search. She has been wonderful. She would always respond to my emails within a few minutes and went above and beyond to accommodate my criteria. She would even follow up on properties that matched exactly what I wanted but did not have any availability. Finding a decent apartment in Dallas area is close to impossible and the search can be very frustrating but having someone like Kristina on your side is a tremendous help."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">KP</div>
+            <div class="tname">Kat P.</div>
+          </div>
+        </div>
+
+        <!-- 20: Eric L. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"If you need to find an apartment in the Metroplex, Apartment Agents is your best way to locate what you need. I have used their services 3 times. I cannot say enough good about Cindy and the team. Very professional and saved me a lot of time."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#FFD67B; color:#0F1338;" aria-hidden="true">EL</div>
+            <div class="tname">Eric L.</div>
+          </div>
+        </div>
+
+        <!-- 21: Callie D. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Apartment Agents is AMAZING!!! My boyfriend and I had gone to look at apartments on our own 4&ndash;5 times. We thought we had exhausted all our options, until we found Apartment Agents! Cindy Little was our agent, and she was super helpful, professional, quick at responding, and just a HUGE HELP! I told her where we wanted to be and the things we wanted, and she sent me a personalized list that checked all the boxes. I wouldn't have found a place to live if it wasn't for Cindy's help!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#AECD81; color:#0F1338;" aria-hidden="true">CD</div>
+            <div class="tname">Callie D.</div>
+          </div>
+        </div>
+
+        <!-- 22: Michael C. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I cannot thank Jeff enough for his help in finding an apartment. I gave him the challenge of finding a 3-month lease that balances the needs of two work locations, and his work was INCREDIBLE. He was extremely responsive to my feedback, and was able to quickly narrow down which option would be the best fit for me. Loving the apartment he found for me!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#F5736C; color:#fff;" aria-hidden="true">MC</div>
+            <div class="tname">Michael C.</div>
+          </div>
+        </div>
+
+        <!-- 23: Adolph E. -->
+        <div class="tcard">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"It only took Cindy what felt like a matter of minutes to return a list of apartments to me that were directly aligned to my requirements. Within a week I had seen 3 places and made a decision for one of them. Customer experience is what drives loyalty and Cindy has made sure my experience will drive loyalty for a long time to come. Cindy is most definitely an expert in her field and it was a memorable experience working with her."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tavatar" style="background:#9DAAF2; color:#fff;" aria-hidden="true">AE</div>
+            <div class="tname">Adolph E.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center; margin:var(--s5) 0 0;">
+        <a href="https://share.google/tMcbzN3GUeJdmye3K" target="_blank" rel="noopener" class="review-link">
+          See all our reviews
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
   <script>
     /* Deal number in the title. Only a short code like D614 is accepted (letters + digits), and it is written as
        text, never as HTML. Missing or odd values leave the default "this deal". */
