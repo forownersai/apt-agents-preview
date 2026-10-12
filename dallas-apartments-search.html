@@ -1003,13 +1003,13 @@
           </span>
         </a>
       </div>
-      <a href="#signup" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      <a href="#survey" class="min-[1100px]:hidden btn-coral nav-cta-mobile font-bold">Get Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em; margin-left:4px;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       <div class="hidden min-[1100px]:flex items-center gap-6">
         <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="rewards.html" class="nav-link">Up to $250 Cash Back</a>
         <a href="mover-quotes.html" class="nav-link">Moving Quotes</a>
         <a href="claim-reward.html" class="nav-link">Claim Your Reward</a>
-        <a href="#signup" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+        <a href="#survey" class="btn-primary nav-cta-desktop px-5 text-sm">Get My Free Matches <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.525em; height:1.05em;"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
     </div>
     <div id="mobile-menu" class="hidden min-[1100px]:hidden bg-white border-t border-black/10 px-5 py-4 flex flex-col gap-3">
@@ -1019,7 +1019,7 @@
       <a href="claim-reward.html" class="nav-link" style="padding:12px 0;" onclick="toggleMobileMenu()">Claim Your Reward</a>
       <!-- Phone stays a small quiet link, never a primary CTA (agent coverage is thin until the AI receptionist ships). -->
       <a href="tel:+19729937300" class="nav-link" style="padding:12px 0; color:#7A7A7A; font-weight:600;" onclick="toggleMobileMenu()">(972) 993-7300</a>
-      <a href="#signup" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
+      <a href="#survey" class="btn-primary px-5 text-sm text-center mt-1" style="text-decoration:none; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; justify-content:center;" onclick="toggleMobileMenu()">Get My Free Matches</a>
     </div>
   </nav>
 
@@ -1031,8 +1031,8 @@
   <section class="survey-sec" id="survey">
     <div class="wrap-narrow">
       <div class="form-card form-card--light survey-card">
-        <p class="form-card__eyebrow">About two minutes</p>
-        <h2 class="form-card__title">A few quick questions to start your search.</h2>
+        <!-- John 2026-10-12: no title under the eyebrow; it keeps the 12px gap the title had -->
+        <p class="form-card__eyebrow" style="margin-bottom:12px;">About two minutes</p>
         <div class="survey-frame">
           <iframe
             data-src="https://api.leadconnectorhq.com/widget/survey/HTXW30b5cVIQacSCY73c"
