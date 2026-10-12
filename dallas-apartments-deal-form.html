@@ -870,6 +870,8 @@
     .deal-pitch .deal-pitch__title em { font-style: normal; color: inherit; }
     .deal-pitch .deal-pitch__title .h1-beat { display: inline-block; margin-top: 0.14em; font-style: italic; color: #4A55B8; }
     .deal-pitch .hero-sub { margin-bottom: 0; }
+    /* phones only: "Up to $250 cash back." on its own line, like the closing CTA on the other pages (John 2026-10-12) */
+    @media (min-width: 700px) { .br-phone { display: none; } }
     @media (min-width: 1000px) { .deal-pitch .deal-pitch__title { font-size: clamp(2.8rem, 4.4vw, 3.8rem); } }
   </style>
 </head>
@@ -914,7 +916,7 @@
     <div class="deal-pitch">
       <p class="hero-kicker">Save more with us</p>
       <p class="deal-pitch__title">The <em>Dallas</em> apartment you actually want.<br><span class="h1-beat">Without the search.</span></p>
-      <p class="hero-sub">Right matches. Best prices. Up to $250 cash back.</p>
+      <p class="hero-sub">Right matches. Best prices.<br class="br-phone"> Up to $250 cash back.</p>
     </div>
 
   <!-- ══════════════════════════ 2 · THE SURVEY ══════════════════════════
@@ -961,10 +963,11 @@
   <section class="sec steps" id="how-it-works" style="background:#fff;">
     <div class="wrap steps-grid">
 
+      <!-- the heading shows from the start (no fade-in), so the space under a form never looks empty on phones (John 2026-10-12) -->
       <div class="steps-head">
-        <div class="section-badge st-in">Simple process</div>
-        <h2 class="st-in" data-st-delay="1">Three steps. That's the whole thing.</h2>
-        <p class="lede st-in" data-st-delay="2">No hidden fees, no contract, no obligation to tour anything you don't like.</p>
+        <div class="section-badge">Simple process</div>
+        <h2>Three steps. That's the whole thing.</h2>
+        <p class="lede">No hidden fees, no contract, no obligation to tour anything you don't like.</p>
         <a href="#survey" class="btn-primary steps-cta st-in" data-st-delay="3">
           Get My Free Matches
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
