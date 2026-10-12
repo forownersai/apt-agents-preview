@@ -690,6 +690,18 @@
     #move-demo.mx-live .mx-screen--cmp .q-quote:not(.is-in) { opacity: 0; visibility: hidden; transform: translate3d(0, 18px, 0); transition: opacity 0.2s var(--mx-ease), transform 0.2s var(--mx-ease), visibility 0s linear 0.2s; }
     #move-demo.mx-live .mx-label { order: 9; flex: none; margin: 10px 0 12px; text-align: center; font-size: 0.8rem; line-height: 1.45; text-wrap: balance; color: rgba(255,255,255,0.82); }
     #move-demo.mx-snap *, #move-demo.mx-snap *::before, #move-demo.mx-snap *::after { transition: none !important; animation: none !important; }
+    /* phones (John 2026-10-12): the progress underline is green so each step stands out as it fills, and the step's
+       text sits BELOW the phone screen, so the three stage titles and the screen are what the eye meets first.
+       The rail drops out of the layout (display: contents) so its titles, underlines and texts join the grid. */
+    @media (max-width: 899px) {
+      #move-demo.mx-live .mx-seg i { background: var(--green); }
+      #move-demo.mx-live .mx-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr) auto auto; column-gap: 10px; }
+      #move-demo.mx-live .mx-rail { display: contents; }
+      #move-demo.mx-live .mx-step > .mx-title { margin-top: 12px; }
+      #move-demo.mx-live .mx-panel { grid-row: 2; grid-column: 1 / -1; }
+      #move-demo.mx-live .mx-step > .mx-body { grid-row: 3; grid-column: 1 / -1; align-self: start; margin-top: 12px; }
+      #move-demo.mx-live .mx-label { grid-row: 4; grid-column: 1 / -1; }
+    }
 
     @media (max-width: 374px) {
       #move-demo.mx-live .mx-rail { column-gap: 6px; }
