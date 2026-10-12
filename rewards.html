@@ -1137,6 +1137,8 @@
        footer navy (set by the script below), so the bounce under the footer matches it instead of flashing white. */
     html.at-foot { background: var(--navy); }
     body { background: #fff; }
+    /* phones only: the closing CTA puts "Up to $250 cash back." on its own line (John 2026-10-12) */
+    @media (min-width: 700px) { .br-phone { display: none; } }
   </style>
 </head>
 <body>
@@ -1635,7 +1637,7 @@
     <div class="cta-glow" aria-hidden="true"></div>
     <div style="position:relative; z-index:2; max-width:560px; margin:0 auto;">
       <h2 style="color:#fff; font-size:clamp(1.9rem, 6vw, 3rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; text-align:center; text-wrap:balance;">The apartment you actually want.</h2>
-      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices. Up to $250 cash back.</p>
+      <p style="color:rgba(255,255,255,0.75); text-align:center; font-size:1.05rem; line-height:1.7; margin:0 0 26px;">Right matches. Best prices.<br class="br-phone"> Up to $250 cash back.</p>
 
       <!-- Bottom CTA: button only (the card copy was removed 2026-10-04 at John's request). Links out to SIGNUP_URL. -->
       <p style="text-align:center; margin:0;">
