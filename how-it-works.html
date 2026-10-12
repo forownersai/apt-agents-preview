@@ -701,6 +701,11 @@
       #move-demo.mx-live .mx-panel { grid-row: 2; grid-column: 1 / -1; }
       #move-demo.mx-live .mx-step > .mx-body { grid-row: 3; grid-column: 1 / -1; align-self: start; margin-top: 12px; }
       #move-demo.mx-live .mx-label { grid-row: 4; grid-column: 1 / -1; }
+      /* "1. 2. 3." in front of each step's text, so the text below the screen reads as its numbered step (John 2026-10-12) */
+      #move-demo.mx-live .mx-step > .mx-body::before { font-weight: 700; color: #fff; }
+      #move-demo.mx-live .mx-step:nth-child(1) > .mx-body::before { content: "1. "; }
+      #move-demo.mx-live .mx-step:nth-child(2) > .mx-body::before { content: "2. "; }
+      #move-demo.mx-live .mx-step:nth-child(3) > .mx-body::before { content: "3. "; }
     }
 
     @media (max-width: 374px) {
