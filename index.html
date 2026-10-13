@@ -554,6 +554,16 @@
     .vs-tick { width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--green); color: var(--navy); font-size: 0.6rem; display: flex; align-items: center; justify-content: center; }
     /* 3: what the mover quotes come without: a plain cross on lavender rather than a tick
        (the slashed phone and handshake glyphs blurred into smudges at this size) */
+    /* a card's "learn more" link (John 2026-10-12): the cash card links to the rewards page, the mover card to the
+       moving-quotes page. A text link, not a button, so the price card stays the stack's only strong call. */
+    .vs .vs-more { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: 10px 0 -10px; color: #0b5ed7; font-size: 0.97rem; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(11,94,215,0.35); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease; }
+    .vs .vs-more svg { width: 0.55em; height: 1.1em; flex: none; transition: transform 0.2s cubic-bezier(.34,1.56,.64,1); }
+    .vs .vs-more:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .vs .vs-more:hover svg { transform: translateX(3px); }
+    .vs .vs-more:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .vs .vs-more:active { opacity: 0.7; }
+    .vs-slab--cash .vs-more { color: var(--green-ink); text-decoration-color: rgba(76,107,34,0.4); }
+    .vs-slab--cash .vs-more:hover { color: #3b5419; }
     .vs-tick--no { background: rgba(157,170,242,0.30); box-shadow: inset 0 0 0 1px rgba(107,120,196,0.26); font-size: 0.72rem; }
 
     /* 2: the cash, on green stock (the body names the three apps; no app tiles are drawn) */
@@ -1185,6 +1195,7 @@
             <h3 class="vs-t">Up to <span class="vs-cash">$250</span> extra cash on us</h3>
           </div>
           <p class="vs-d">Paid straight to you by Zelle, Venmo, PayPal, or an Amazon gift card. The best offer in the industry.</p>
+          <a href="rewards.html" class="vs-more">See how the cash back works <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
           <span class="vs-veil" aria-hidden="true"></span>
         </div>
 
@@ -1199,6 +1210,7 @@
             <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>No sales calls from movers</span></li>
             <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>Clean quotes with no kickbacks, affiliate payments, or referral fees paid to us so you get the best pricing</span></li>
           </ul>
+          <a href="mover-quotes.html" class="vs-more">See how mover quotes work <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
           <span class="vs-veil" aria-hidden="true"></span>
         </div>
 

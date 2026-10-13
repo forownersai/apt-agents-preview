@@ -552,6 +552,16 @@
     .vs-tick { width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--green); color: var(--navy); font-size: 0.6rem; display: flex; align-items: center; justify-content: center; }
     /* 3: what the mover quotes come without: a plain cross on lavender rather than a tick
        (the slashed phone and handshake glyphs blurred into smudges at this size) */
+    /* a card's "learn more" link (John 2026-10-12): the cash card links to the rewards page, the mover card to the
+       moving-quotes page. A text link, not a button, so the price card stays the stack's only strong call. */
+    .vs .vs-more { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: 10px 0 -10px; color: #0b5ed7; font-size: 0.97rem; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(11,94,215,0.35); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.15s ease; }
+    .vs .vs-more svg { width: 0.55em; height: 1.1em; flex: none; transition: transform 0.2s cubic-bezier(.34,1.56,.64,1); }
+    .vs .vs-more:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .vs .vs-more:hover svg { transform: translateX(3px); }
+    .vs .vs-more:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+    .vs .vs-more:active { opacity: 0.7; }
+    .vs-slab--cash .vs-more { color: var(--green-ink); text-decoration-color: rgba(76,107,34,0.4); }
+    .vs-slab--cash .vs-more:hover { color: #3b5419; }
     .vs-tick--no { background: rgba(157,170,242,0.30); box-shadow: inset 0 0 0 1px rgba(107,120,196,0.26); font-size: 0.72rem; }
 
     /* 2: the cash, on green stock (the body names the three apps; no app tiles are drawn) */
@@ -829,7 +839,11 @@
     /* deal form title: bigger than the generic card title so the deal reads first; deal number in the action blue */
     #deal-title { font-size: 1.8rem; line-height: 1.14; letter-spacing: -0.02em; margin: 2px 0 16px; }
     @media (min-width: 700px) { #deal-title { font-size: 2.2rem; } }
-    #deal-label { color: #0d6efd; }
+    #deal-label, .deal-label { color: #0d6efd; }
+    .deal-title-2 { font-size: 1.8rem; line-height: 1.14; letter-spacing: -0.02em; margin: 2px 0 16px; }
+    @media (min-width: 700px) { .deal-title-2 { font-size: 2.2rem; } }
+    /* the second form, after the reviews (John 2026-10-12): same card on the page's white, one normal section gap */
+    .survey-sec--end { padding-top: var(--s6); }   /* keeps .survey-sec's side gutters and bottom padding */
     /* "Why trust us" header lines up with the FAQ column above it (John 2026-10-09): the reviews use the wide .wrap
        (1120px) but the badge, headline and intro sit in the same 760px column as .wrap-narrow. Cards stay full width. */
     #reviews > .wrap > .section-badge, #reviews > .wrap > h2, #reviews > .wrap > .lede { margin-left: max(0px, calc((100% - 760px) / 2)); }
@@ -968,10 +982,6 @@
         <div class="section-badge">Simple process</div>
         <h2>Three steps. That's the whole thing.</h2>
         <p class="lede">No hidden fees, no contract, no obligation to tour anything you don't like.</p>
-        <a href="#survey" class="btn-primary steps-cta st-in" data-st-delay="3">
-          Get My Free Matches
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </a>
       </div>
 
       <div>
@@ -1011,10 +1021,6 @@
           <p>Using us never costs you a dollar more. What it gets you is people who track this market every day, who know which communities are running the best move-in specials right now and which ones fit what you're after, plus up to $250 to offset some of your moving costs. <a href="rewards.html" class="inline-link">Learn more</a>.</p>
         </div>
         <!-- Phones and tablets: the section's button sits here, after the catch. Desktop keeps it in the head column. -->
-        <a href="#survey" class="btn-primary steps-cta steps-cta--end st-in">
-          Get My Free Matches
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:0.6em; height:1em;" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </a>
       </div>
 
     </div>
@@ -1106,6 +1112,7 @@
             <h3 class="vs-t">Up to <span class="vs-cash">$250</span> extra cash on us</h3>
           </div>
           <p class="vs-d">Paid straight to you by Zelle, Venmo, PayPal, or an Amazon gift card. The best offer in the industry.</p>
+          <a href="rewards.html" class="vs-more">See how the cash back works <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
           <span class="vs-veil" aria-hidden="true"></span>
         </div>
 
@@ -1120,6 +1127,7 @@
             <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>No sales calls from movers</span></li>
             <li><span class="vs-tick vs-tick--no" aria-hidden="true"><i class="fas fa-xmark"></i></span><span>Clean quotes with no kickbacks, affiliate payments, or referral fees paid to us so you get the best pricing</span></li>
           </ul>
+          <a href="mover-quotes.html" class="vs-more">See how mover quotes work <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
           <span class="vs-veil" aria-hidden="true"></span>
         </div>
 
@@ -1688,6 +1696,30 @@
     </div>
   </section>
 
+  <!-- ══════════ THE SAME FORM AGAIN, after the reviews (John 2026-10-12) ══════════ -->
+  <section class="survey-sec survey-sec--end" id="survey-end">
+    <div class="wrap-narrow">
+      <div class="form-card form-card--light survey-card">
+        <h2 class="form-card__title deal-title-2">Let’s get you more information on <span class="deal-label">this deal</span> and other apartments you’ll love.</h2>
+        <div class="survey-frame">
+          <iframe
+            data-src="https://api.leadconnectorhq.com/widget/survey/HTXW30b5cVIQacSCY73c"
+            style="border:none; width:100%; min-height:420px;"
+            scrolling="no"
+            id="HTXW30b5cVIQacSCY73c-end"
+            title="Apartment search sign-up form"></iframe>
+          <script>
+            (function () {
+              var f = document.getElementById('HTXW30b5cVIQacSCY73c-end');
+              f.src = f.getAttribute('data-src') + (window.location.search || '');
+            })();
+          </script>
+        </div>
+        <p class="form-micro">No cost, no obligation, no spam.</p>
+      </div>
+    </div>
+  </section>
+
   <script>
     /* Deal number in the title. Only a short code like D614 is accepted (letters + digits), and it is written as
        text, never as HTML. Missing or odd values leave the default "this deal". */
@@ -1696,8 +1728,8 @@
       try { raw = new URLSearchParams(window.location.search).get('deal_id') || ''; } catch (e) {}
       var id = raw.trim().toUpperCase();
       if (!/^[A-Z]{0,3}[0-9]{1,6}[A-Z0-9-]{0,8}$/.test(id)) return;
-      var label = document.getElementById('deal-label');
-      if (label) label.textContent = 'deal #' + id;
+      var labels = document.querySelectorAll('#deal-label, .deal-label');   // top title + the form at the bottom
+      for (var i = 0; i < labels.length; i++) labels[i].textContent = 'deal #' + id;
       document.title = 'Get More Info on Deal #' + id + ' | Apartment Agents';
     })();
   </script>
