@@ -828,7 +828,7 @@
     .survey-frame iframe { display: block; width: 100%; box-sizing: content-box; padding-bottom: 20px; background: #fff; }
     .survey-card .form-micro { font-size: 0.88rem; color: #5c5c7d; line-height: 1.5; margin: 14px 0 0; text-align: center; }
     /* the form without its card (search page, John 2026-10-13): the survey sits right under the nav */
-    .survey-sec--bare { padding-top: 0; }   /* the form's own progress bar already sits 6px below the nav */
+    .survey-sec--bare { padding-top: 12px; }   /* a little room above the progress bar (John 2026-10-13); NEXT still fits a 664px-tall phone view */
     @media (min-width: 700px) { .survey-sec--bare { padding-top: 28px; } }
     .survey-card--bare { padding: 0; }
     .survey-card--bare .survey-frame { border: 0; border-radius: 0; }   /* no outline around the form either */
