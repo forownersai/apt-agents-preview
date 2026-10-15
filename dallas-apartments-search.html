@@ -983,6 +983,9 @@
     .survey-sec--bare { padding-top: 12px; }   /* a little room above the progress bar (John 2026-10-13); NEXT still fits a 664px-tall phone view */
     @media (min-width: 700px) { .survey-sec--bare { padding-top: 28px; } }
     .survey-card--bare { padding: 0; }
+    .sms-terms { font-size: 0.8rem; color: #6b6b85; line-height: 1.55; margin: 18px auto 0; max-width: 640px; text-align: left; }
+    .sms-terms strong { color: #4a4a66; }
+    .sms-terms a { color: #4a4a66; text-decoration: underline; }
     .survey-card--bare .survey-frame { border: 0; border-radius: 0; }   /* no outline around the form either */
 
     .next-steps { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: var(--s4); }
@@ -1053,6 +1056,9 @@
           </script>
         </div>
         <p class="form-micro">No cost, no obligation, no spam.</p>
+        <!-- A2P (John 2026-10-15): the consent boxes sit on the survey's LAST slide, which neither GHL's compliance scanner
+             nor a carrier reviewer can see from this page, so the SMS disclosure is repeated here in plain page text. -->
+        <p class="sms-terms"><strong>Text message terms.</strong> If you tick the text-message boxes on this form, you agree to receive SMS from Apartment Agents (JLC REAL ESTATE INC) and your assigned agent: updates about your apartment search (apartment lists, tour confirmations and reminders, agent follow-ups) and, if you choose, recurring marketing messages such as apartment specials and promotions. Consent is optional and not a condition of service. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.</p>
       </div>
 
     </div>
