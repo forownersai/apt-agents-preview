@@ -1198,6 +1198,9 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        // keep GTM's generic Form Submission trigger (the old 'Dallas Form Submit' Ads conversion) from counting
+        // every tap, even failed ones: the real conversions fire on the success/completed page views
+        e.stopPropagation();
         err.classList.remove('show');
         var v = function (n) { return (form.elements[n].value || '').trim(); };
         var bed = form.querySelector('input[name="bedrooms"]:checked');
