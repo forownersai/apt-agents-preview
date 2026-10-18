@@ -988,60 +988,6 @@
     .sms-terms a { color: #4a4a66; text-decoration: underline; }
     .survey-card--bare .survey-frame { border: 0; border-radius: 0; }   /* no outline around the form either */
 
-    /* ---------- one-page signup form (A2P opt-in, John 2026-10-16): phone + both SMS boxes in one view ---------- */
-    .sf { max-width: 560px; margin: 0 auto; }
-    .sf-title { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; color: var(--navy); font-size: clamp(1.75rem, 7vw, 2.4rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 8px; text-align: center; }
-    .sf-intro { color: var(--ink-mute); font-size: 1rem; line-height: 1.6; margin: 0 auto 22px; max-width: 30em; text-align: center; }
-    .sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
-    .sf-fg { margin: 0 0 14px; border: 0; padding: 0; min-width: 0; }
-    .sf-fg > label, .sf-fg > legend { display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin: 0 0 6px; padding: 0; }
-    .sf-fg input[type="text"], .sf-fg input[type="email"], .sf-fg input[type="tel"] {
-      width: 100%; min-height: 52px; font-size: 16px; font-family: 'DM Sans', sans-serif;
-      padding: 13px 16px; border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16);
-      background: #fbfbff; color: var(--navy); line-height: 1.4; -webkit-appearance: none; appearance: none; box-sizing: border-box;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-    }
-    .sf-fg input::placeholder { color: #8b8fae; }
-    .sf-fg input:hover { border-color: rgba(15,19,56,0.3); }
-    .sf-fg input:focus { outline: none; border-color: var(--lav); background: #fff; box-shadow: 0 0 0 4px rgba(157,170,242,0.28); }
-    .sf-fg input.is-bad, .sf-chips.is-bad .sf-chip span { border-color: var(--coral); background: #fff7f7; }
-    .sf-money { position: relative; }
-    .sf-money > span { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--navy); font-weight: 700; pointer-events: none; }
-    .sf-fg .sf-money input { padding-left: 32px; }
-
-    /* bedrooms: four tappable chips, one row even on a 360px phone */
-    .sf-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .sf-chip { position: relative; display: block; cursor: pointer; }
-    .sf-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-    .sf-chip span {
-      display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 6px 4px;
-      border-radius: 14px; border: 1.5px solid rgba(15,19,56,0.16); background: #fbfbff;
-      font-size: 0.95rem; font-weight: 700; color: var(--navy); text-align: center; white-space: nowrap;
-      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
-    }
-    .sf-chip:hover span { border-color: rgba(15,19,56,0.3); }
-    .sf-chip:active span { transform: scale(0.97); }
-    .sf-chip input:focus-visible + span { box-shadow: 0 0 0 4px rgba(157,170,242,0.4); border-color: var(--lav); }
-    .sf-chip input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; box-shadow: 0 2px 6px rgba(15,19,56,0.18), 0 8px 18px rgba(48,58,140,0.18); }
-
-    /* the SMS boxes: unticked, optional, full wording beside each box */
-    .sf-consent { margin: 4px 0 18px; padding: 14px 14px 12px; border-radius: 14px; background: var(--paper-2); border: 1px solid rgba(15,19,56,0.08); }
-    .sf-check { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; cursor: pointer; margin: 0 0 12px; font-size: 0.84rem; line-height: 1.5; color: #4a4a66; }
-    .sf-check strong { color: var(--navy); font-weight: 700; }
-    .sf-check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--navy); cursor: pointer; }
-    .sf-check input:focus-visible { outline: 3px solid var(--lav); outline-offset: 2px; }
-    .sf-check:hover strong { text-decoration: underline; text-underline-offset: 2px; }
-    .sf-note { margin: 2px 0 0; font-size: 0.8rem; line-height: 1.5; color: #6b6b85; }
-
-    .sf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    .sf-submit { width: 100%; min-height: 56px; font-size: 1.08rem; padding: 15px 20px; }
-    .sf-submit:disabled { cursor: progress; opacity: 0.75; transform: none; }
-    .sf-error { display: none; color: #B33F38; font-size: 0.94rem; font-weight: 600; margin: 12px 0 0; text-align: center; }
-    .sf-error.show { display: block; }
-    .sf-legal { font-size: 0.84rem; color: #5c5c7d; line-height: 1.5; margin: 12px 0 0; text-align: center; }
-    .sf-legal a, .sf-check a { color: #4a4a66; text-decoration: underline; }
-    .sf-legal a:hover { color: var(--navy); }
-    .sf-legal a:focus-visible { outline: 2px solid var(--lav); outline-offset: 2px; border-radius: 4px; }
     .next-steps { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: var(--s4); }
     @media (min-width: 700px) { .next-steps { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
     .next-step { display: flex; gap: 14px; align-items: flex-start; background: var(--paper-2); border: 1px solid rgba(15,19,56,0.08); border-radius: 16px; padding: 16px 18px; box-shadow: var(--sh-base); }
@@ -1085,167 +1031,39 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════════ 2 · THE SIGNUP FORM ══════════════════════════
-       A2P (John 2026-10-16): the carrier rejected the campaign (30909, "opt-in could not be found")
-       because the multi-slide survey shows its phone field and SMS boxes only on its last slide.
-       This page now carries a plain one-page form with the phone field and both consent boxes in
-       view. It posts to the agent center (ac.apartmentagents.com/api/site/signup), which writes the
-       same contact fields the survey writes and runs the same routing workflow, then this page opens
-       the same thank-you page the survey would (low budget → completed, otherwise success).
-       The deal-form page keeps the survey.
+  <!-- ══════════════════════════ 2 · THE SURVEY ══════════════════════════
+       The GHL survey "Main Website Form" (HTXW30b5cVIQacSCY73c) is embedded here. The
+       consent checkboxes, the optional phone field and the SMS disclosure live INSIDE the
+       survey (last slide), so this page only frames it. form_embed.js resizes the iframe.
        ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- John 2026-10-13: no card and no "About two minutes" around the form, so the NEXT button shows on a phone without scrolling -->
   <section class="survey-sec survey-sec--bare" id="survey">
     <div class="wrap-narrow">
-      <form class="sf" id="signupForm" novalidate data-endpoint="https://ac.apartmentagents.com/api/site/signup">
-        <h1 class="sf-title">Get your free apartment matches</h1>
-        <p class="sf-intro">Tell us what you need. A licensed Dallas locator sends you real matches with real prices.</p>
-
-        <div class="sf-row">
-          <div class="sf-fg">
-            <label for="sfFirst">First name</label>
-            <input id="sfFirst" name="firstName" type="text" autocomplete="given-name" required>
-          </div>
-          <div class="sf-fg">
-            <label for="sfLast">Last name</label>
-            <input id="sfLast" name="lastName" type="text" autocomplete="family-name" required>
-          </div>
+      <div class="survey-card survey-card--bare">
+        <div class="survey-frame">
+          <iframe
+            data-src="https://api.leadconnectorhq.com/widget/survey/HTXW30b5cVIQacSCY73c"
+            style="border:none; width:100%; min-height:420px;"
+            scrolling="no"
+            id="HTXW30b5cVIQacSCY73c"
+            title="Apartment search sign-up form"></iframe>
+          <script>
+            /* load the survey with this page's query string (utm_* + deal_id feed its hidden fields) */
+            (function () {
+              var f = document.getElementById('HTXW30b5cVIQacSCY73c');
+              f.src = f.getAttribute('data-src') + (window.location.search || '');
+            })();
+          </script>
         </div>
+        <p class="form-micro">No cost, no obligation, no spam.</p>
+        <!-- A2P (John 2026-10-15): the consent boxes sit on the survey's LAST slide, which neither GHL's compliance scanner
+             nor a carrier reviewer can see from this page, so the SMS disclosure is repeated here in plain page text. -->
+        <p class="sms-terms"><strong>Text message terms.</strong> If you tick the text-message boxes on this form, you agree to receive SMS from Apartment Agents (JLC REAL ESTATE INC) and your assigned agent: updates about your apartment search (apartment lists, tour confirmations and reminders, agent follow-ups) and, if you choose, recurring marketing messages such as apartment specials and promotions. Consent is optional and not a condition of service. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.</p>
+      </div>
 
-        <div class="sf-fg">
-          <label for="sfEmail">Email</label>
-          <input id="sfEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
-        </div>
-
-        <fieldset class="sf-fg sf-beds">
-          <legend>Bedrooms</legend>
-          <div class="sf-chips">
-            <label class="sf-chip"><input type="radio" name="bedrooms" value="0 or Studio"><span>Studio</span></label>
-            <label class="sf-chip"><input type="radio" name="bedrooms" value="1 Bedroom"><span>1 bed</span></label>
-            <label class="sf-chip"><input type="radio" name="bedrooms" value="2 Bedrooms"><span>2 beds</span></label>
-            <label class="sf-chip"><input type="radio" name="bedrooms" value="3 Bedrooms"><span>3 beds</span></label>
-          </div>
-        </fieldset>
-
-        <div class="sf-fg">
-          <label for="sfRent">Max monthly rent</label>
-          <div class="sf-money">
-            <span aria-hidden="true">$</span>
-            <input id="sfRent" name="maxRent" type="text" inputmode="numeric" autocomplete="off" placeholder="1,500" required>
-          </div>
-        </div>
-
-        <div class="sf-fg">
-          <label for="sfPhone">Mobile phone</label>
-          <input id="sfPhone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="(214) 555-0123">
-        </div>
-
-        <!-- the SMS consent boxes sit right under the phone field, unticked, and are optional (A2P) -->
-        <div class="sf-consent">
-          <label class="sf-check">
-            <input type="checkbox" name="smsService" id="sfSmsService">
-            <span><strong>Yes, text me my apartment list, tour details, and updates from my agent.</strong> By checking this box, I consent to receive SMS notifications, alerts, and reminders about my apartment search from Apartment Agents (JLC Real Estate, Inc.) and my assigned agent at the number provided. Consent is not a condition of purchase. Message frequency varies. Message &amp; data rates may apply. Reply STOP to unsubscribe or HELP for help.</span>
-          </label>
-          <label class="sf-check">
-            <input type="checkbox" name="smsMarketing" id="sfSmsMarketing">
-            <span><strong>Yes, text me apartment deals and specials.</strong> By checking this box, I consent to receive recurring automated marketing messages, including apartment specials, new listings, promotions, and special offers, from Apartment Agents (JLC Real Estate, Inc.) at the number provided. Consent is not a condition of purchase. Message frequency varies. Message &amp; data rates may apply. Reply STOP to unsubscribe or HELP for help.</span>
-          </label>
-          <p class="sf-note">Your privacy is our priority, and your mobile information will not be shared with third parties for marketing purposes. Your agent will be in touch by phone or email either way.</p>
-        </div>
-
-        <!-- people never see this field; bots fill it -->
-        <div class="sf-hp" aria-hidden="true"><label for="sfCompany">Company</label><input id="sfCompany" name="company" type="text" tabindex="-1" autocomplete="off"></div>
-
-        <button type="submit" class="btn-primary sf-submit" id="sfSubmit">Get My Free Matches</button>
-        <p class="sf-error" id="sfError" role="alert"></p>
-        <p class="sf-legal">By submitting this form, you agree to Apartment Agents' <a href="terms-of-use.html">Terms of Use</a> and <a href="privacy-policy.html">Privacy Policy</a>. No cost, no obligation, no spam.</p>
-      </form>
-
-      <p class="sms-terms"><strong>Text message terms.</strong> If you tick the text-message boxes on this form, you agree to receive SMS from Apartment Agents (JLC REAL ESTATE INC) and your assigned agent: updates about your apartment search (apartment lists, tour confirmations and reminders, agent follow-ups) and, if you choose, recurring marketing messages such as apartment specials and promotions. Consent is optional and not a condition of service. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.</p>
     </div>
   </section>
-  <script>
-    (function () {
-      var form = document.getElementById('signupForm');
-      var btn = document.getElementById('sfSubmit');
-      var err = document.getElementById('sfError');
-      var rent = document.getElementById('sfRent');
-      var phone = document.getElementById('sfPhone');
-      var opened = Date.now();
-      var qs = new URLSearchParams(window.location.search);
-      var onSite = /(^|\.)apartmentagents\.com$/.test(window.location.hostname);
-      // local preview only: ?endpoint= points the form at a dev server
-      var endpoint = (!onSite && qs.get('endpoint')) || form.getAttribute('data-endpoint');
-      var NEXT = onSite
-        ? { success: '/dallas-apartments/success/', completed: '/dallas-apartments/completed/' }
-        : { success: 'dallas-apartments-success.html', completed: 'dallas-apartments-completed.html' };
-
-      rent.addEventListener('blur', function () {
-        var n = parseInt(rent.value.replace(/[^0-9]/g, ''), 10);
-        rent.value = n ? n.toLocaleString('en-US') : '';
-      });
-      phone.addEventListener('blur', function () {
-        var d = phone.value.replace(/\D/g, '');
-        if (d.length === 11 && d.charAt(0) === '1') d = d.slice(1);
-        if (d.length === 10) phone.value = '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
-      });
-
-      function fail(msg, el) {
-        err.textContent = msg;
-        err.classList.add('show');
-        form.querySelectorAll('.is-bad').forEach(function (x) { x.classList.remove('is-bad'); });
-        if (el) { el.classList.add('is-bad'); if (el.focus) el.focus(); }
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        // keep GTM's generic Form Submission trigger (the old 'Dallas Form Submit' Ads conversion) from counting
-        // every tap, even failed ones: the real conversions fire on the success/completed page views
-        e.stopPropagation();
-        err.classList.remove('show');
-        var v = function (n) { return (form.elements[n].value || '').trim(); };
-        var bed = form.querySelector('input[name="bedrooms"]:checked');
-        var digits = v('phone').replace(/\D/g, '');
-        var ticked = form.elements.smsService.checked || form.elements.smsMarketing.checked;
-        if (!v('firstName')) return fail('Please enter your first name.', form.elements.firstName);
-        if (!v('lastName')) return fail('Please enter your last name.', form.elements.lastName);
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v('email'))) return fail('Please enter a valid email address.', form.elements.email);
-        if (!bed) return fail('Please choose how many bedrooms.', form.querySelector('.sf-chips'));
-        var maxRent = parseInt(v('maxRent').replace(/[^0-9]/g, ''), 10);
-        if (!maxRent || maxRent < 300) return fail('Please enter your max monthly rent.', rent);
-        if (digits && !(digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1'))) return fail('Please enter a 10-digit US mobile number.', phone);
-        if (ticked && !digits) return fail('Add your mobile number so we can text you, or untick the text boxes.', phone);
-
-        var attribution = {};
-        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'deal_id'].forEach(function (k) { if (qs.get(k)) attribution[k] = qs.get(k); });
-        btn.disabled = true;
-        btn.classList.add('is-busy');
-        btn.textContent = 'Sending…';
-        fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            firstName: v('firstName'), lastName: v('lastName'), email: v('email'), phone: v('phone'),
-            bedrooms: bed.value, maxRent: maxRent,
-            smsService: form.elements.smsService.checked, smsMarketing: form.elements.smsMarketing.checked,
-            company: v('company'), elapsedMs: Date.now() - opened,
-            attribution: attribution, page: window.location.href.split('#')[0]
-          })
-        })
-          .then(function (r) { return r.json().catch(function () { return {}; }); })
-          .then(function (res) {
-            if (!res || !res.ok) throw new Error((res && res.error) || 'Something went wrong. Please try again.');
-            if (window.dataLayer) window.dataLayer.push({ event: 'search_form_submitted', lead_budget: res.next });
-            window.location.href = NEXT[res.next] || NEXT.success;
-          })
-          .catch(function (x) {
-            btn.disabled = false;
-            btn.classList.remove('is-busy');
-            btn.textContent = 'Get My Free Matches';
-            fail(x && x.message && !/fetch|network/i.test(x.message) ? x.message : 'We could not send that. Please check your connection and try again.');
-          });
-      });
-    })();
-  </script>
+  <script src="https://api.leadconnectorhq.com/js/form_embed.js"></script>
 
 
   <footer class="site-footer">
