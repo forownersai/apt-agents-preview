@@ -335,7 +335,9 @@
                (Apartment-List-Builder: web/app/api/mover-quotes/link/route.ts).
                The endpoint answers { ok, result } where result is one of
                sent | not_client | rate_limited | failed, and the handler swaps the
-               card body for the matching panel. Allowed origins live in the
+               card body for the matching panel. not_client / rate_limited also carry
+               formUrl: a blank claim form for an email we couldn't match, which is
+               emailed to John to match by hand. Allowed origins live in the
                route's cors allow-list — add the final site domain there if it changes.
                ──────────────────────────────────────────────────────────────────── -->
           <form id="linkForm" novalidate onsubmit="return aaLinkSubmit(event)">
@@ -373,11 +375,21 @@
         <div class="form-panel" id="panel-not-client" tabindex="-1">
           <div class="panel-ico panel-ico--lav" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v10h13V10"></path><path d="M10 20v-6h4v6"></path></svg></div>
           <h2>We couldn&rsquo;t find that email</h2>
+          <!-- With the endpoint's formUrl: a blank claim form (emailed to John to match by hand). Without it: call us. -->
+          <div id="guestForm" hidden>
+            <p>No problem. Fill out the claim form and we&rsquo;ll match it to your file.</p>
+            <a href="#" id="guestFormLink" class="btn-primary panel-cta">
+              Fill out the claim form
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+          <div id="guestCall">
           <p>Try the email you gave your agent. Still stuck? Call us and we&rsquo;ll get your reward started.</p>
           <a href="tel:+19729937300" class="btn-primary panel-cta">
             Call (972) 993-7300
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
+          </div>
           <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
         </div>
 
@@ -386,6 +398,7 @@
           <div class="panel-ico panel-ico--sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7.5 8.5 6 8.5-6"></path></svg></div>
           <h2>We already sent your link</h2>
           <p>Check your inbox and spam folder. You can request another in an hour.</p>
+          <p id="limitedForm" hidden>Didn&rsquo;t get one? <a href="#" id="limitedFormLink" class="link-quiet">Fill out the claim form</a> and we&rsquo;ll match it to your file.</p>
           <p class="panel-alt"><button type="button" class="link-quiet" onclick="aaLinkReset()">Try a different email</button></p>
         </div>
 
@@ -524,6 +537,12 @@
         var result = data && data.result;
         if (!PANELS[result]) throw new Error('result ' + result);
         if (result === 'sent') el('sentEmail').textContent = email;
+        /* An email we can't match still gets the claim form (formUrl), blank. */
+        var formUrl = typeof data.formUrl === 'string' && /^https:\/\//.test(data.formUrl) ? data.formUrl : '';
+        el('guestForm').hidden = !formUrl;
+        el('guestCall').hidden = !!formUrl;
+        el('limitedForm').hidden = !formUrl;
+        if (formUrl) { el('guestFormLink').href = formUrl; el('limitedFormLink').href = formUrl; }
         showPanel(result);
       }).catch(function () {
         err.textContent = MSG_FAILED;
