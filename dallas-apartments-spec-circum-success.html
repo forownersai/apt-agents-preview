@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | Apartment Agents</title>
-  <meta name="description" content="Thanks for reaching out. A licensed agent who specializes in second-chance leasing will contact you shortly." />
+  <meta name="description" content="Thanks for reaching out. We've referred you to an independent apartment locator who specializes in special circumstances." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -199,6 +199,45 @@
     .sc-hero .hero-sub { margin: 0 auto; max-width: 30em; }
     @media (min-width: 700px) { .sc-hero { padding: 80px 24px 88px; } }
     @media (max-width: 699px) { .hero-sub { font-size: 20px; } }
+
+    /* ---------------- REFERRAL CARD (floating layer over the lavender field) ---------------- */
+    .ref-card {
+      margin: var(--s4) auto 0; max-width: 460px; text-align: left;
+      background: var(--paper); border: 1px solid rgba(15,19,56,0.07); border-radius: 20px;
+      padding: var(--s3); box-shadow: var(--sh-float);
+    }
+    .ref-top { display: flex; align-items: center; gap: var(--s2); }
+    .ref-photo {
+      width: 88px; height: 88px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+      border: 3px solid #fff; box-shadow: 0 0 0 2px rgba(157,170,242,0.55), var(--sh-base);
+    }
+    .ref-label { margin: 0; color: #5f6cbb; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.4; }
+    .ref-name { margin: 2px 0 2px; color: var(--navy); font-size: 1.75rem; line-height: 1.1; }
+    .ref-role { margin: 0; color: var(--ink-mute); font-size: 0.98rem; line-height: 1.45; }
+    .ref-actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: var(--s3); }
+    @media (min-width: 420px) { .ref-actions { grid-template-columns: 1.5fr 1fr; } }
+    .ref-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 12px 18px; font-size: 1rem; font-weight: 800; border-radius: 999px;
+      text-decoration: none; white-space: nowrap;
+    }
+    .ref-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .ref-btn-ghost {
+      color: var(--navy); background: #fff; border: 2px solid rgba(15,19,56,0.14);
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
+    }
+    .ref-btn-ghost:hover { border-color: var(--lav); background: var(--paper-2); transform: translateY(-1px); }
+    .ref-btn-ghost:active { transform: translateY(0) scale(0.985); }
+    .ref-btn-ghost:focus-visible { outline: 3px solid var(--btn); outline-offset: 2px; }
+    .ref-email {
+      display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 6px;
+      color: #0b5ed7; font-weight: 600; font-size: 0.98rem; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-color: rgba(11,94,215,0.4); overflow-wrap: anywhere; transition: color 0.2s ease, opacity 0.15s ease;
+    }
+    .ref-email:hover { color: #0a53be; text-decoration-color: currentColor; }
+    .ref-email:focus-visible { outline: 3px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+    .ref-email:active { opacity: 0.7; }
+    .ref-note { margin: var(--s1) 0 0; padding-top: var(--s2); border-top: 1px solid rgba(15,19,56,0.08); color: var(--ink-soft); font-size: 0.98rem; line-height: 1.6; text-align: center; }
   </style>
 </head>
 <body>
@@ -237,7 +276,31 @@
     <div class="hero-inner">
       <div class="sc-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
       <h1>Thank You!</h1>
-      <p class="hero-sub">A licensed agent at Apartment Agents or one of our partner providers who specializes in second-chance leasing will contact you shortly to help you with your apartment search.</p>
+      <p class="hero-sub">We&rsquo;ve referred you to an independent apartment locator who specializes in special circumstances that can make leasing harder, like a past eviction, a broken lease, or a criminal record.</p>
+
+      <!-- Referral partner card (John, 2026-11-10): details from Forsythe Realty Group's Facebook flyer -->
+      <div class="ref-card">
+        <div class="ref-top">
+          <img class="ref-photo" src="images/john-forsythe-headshot.jpg" alt="John Forsythe" width="88" height="88" loading="eager" />
+          <div class="ref-id">
+            <p class="ref-label">Your locator</p>
+            <h2 class="ref-name">John Forsythe</h2>
+            <p class="ref-role">Real Estate Broker, Forsythe Realty Group</p>
+          </div>
+        </div>
+        <div class="ref-actions">
+          <a class="btn-primary ref-btn" href="tel:+12145523764">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (214) 552-3764
+          </a>
+          <a class="ref-btn ref-btn-ghost" href="sms:+12145523764">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Text him
+          </a>
+        </div>
+        <a class="ref-email" href="mailto:jforsythe@anewplacetolive.com">jforsythe@anewplacetolive.com</a>
+        <p class="ref-note">When you reach out, let him know Apartment Agents referred you.</p>
+      </div>
     </div>
   </section>
 
